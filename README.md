@@ -1,6 +1,6 @@
 Projekt aplikacji
 
-git clone https://github.com/JuliuszZolich/projekt-aplikacja
-npm install
-npm run preview
+git clone https://github.com/JuliuszZolich/projekt-aplikacja <br>
+npm install <br>
+npm run preview <br>
 👌
