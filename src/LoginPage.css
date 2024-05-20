@@ -1,0 +1,131 @@
+.login-main-content{
+    position: relative;
+    background-color: #F5F5F5;
+}
+
+.login-left-content{
+    float: left;
+    padding-top: 12%;
+    width: 50%;
+    height: 60%;
+}
+
+.login-email, .login-password{
+    width: 60%;
+    margin: 0 20%;
+    height: 35%;
+    float: left;
+}
+
+.login-email > label, .login-password > label{
+    width: 95%;
+    height: 20%;
+    font-size: 50px;
+    margin: 5% 0 5% 5%;
+    color: #797579;
+    float: left;
+    text-shadow: 0 1px #666161;
+}
+
+.login-email > input, .login-password > input{
+    width: 100%;
+    height: 50px;
+    float: left;
+    border-radius: 10px;
+    font-size: 30px;
+    padding-left: 3%;
+    border: 2px solid #423E3E;
+    outline: none;
+    transition: 0.1s;
+    cursor: pointer;
+    background-color: #D9D9D9;
+}
+
+.login-email > input:focus, .login-password > input:focus{
+    border-color: #E32C2C;
+}
+
+.login-email > input:focus::placeholder, .login-password > input:focus::placeholder{
+    color: transparent;
+}
+
+
+
+.forgot-password{
+    font-size: 15px;
+    width: 20%;
+    margin: 0 58% 0 22%;
+    height: 10%;
+    float: left;
+    color: #E32C2C;
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+.forgot-password > p:hover{
+    text-decoration: underline;
+}
+
+.login-register{
+    width: 38%;
+    margin: 5% 0 0 22%;
+    height: 35%;
+    float: left;
+}
+
+.log-in{
+    margin-top: 5%;
+    width: 20%;
+    height: 35%;
+    margin-right: 20%;
+    float: right;
+}
+
+.log-in > button{
+    width: 100%;
+    height: 20%;
+    font-size: 25px;
+    line-height: 100%;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #D4D4D4;
+    border: 2px solid #423E3E;
+    color: #545252;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.login-register > button{
+    width: 80%;
+    height: 20%;
+    font-size: 25px;
+    line-height: 100%;
+    text-align: center;
+    margin-right: 20%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #D4D4D4;
+    border: 2px solid #423E3E;
+    color: #545252;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.login-register > button:hover, .log-in > button:hover{
+    color: #1D1C1D;
+    background-color: #ec6e6e;
+    border-color: #E32C2C;
+}
+
+.login-right-content{
+    float: left;
+    width: 50%;
+    height: 100%;
+}
+
+.login-right-content > img{
+    padding: 25% 20%;
+    width: 60%;
+    height: 50%;
+}
