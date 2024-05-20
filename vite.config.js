@@ -5,7 +5,6 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   base: '/projekt-aplikacja/',
   plugins: [
-    react(),
-    ghPages()
+    react()
   ],
 })
