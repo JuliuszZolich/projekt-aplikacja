@@ -2,7 +2,8 @@
     background-color: #E32C2C;
     height: 7%;
     width: 100%;
-    position: sticky;
+    top: 0;
+    position: fixed;
     border-bottom: 1px black solid;
     box-shadow: rgba(0, 0, 0, 0.30) 0 5px 13px;
 }
@@ -31,7 +32,7 @@
     margin: 2.5% 5%;
     height: 60%;
     width: 80%;
-    background-color: #D9D9D9;
+    background-color: #dadada;
     border: black 1px solid;
     border-radius: 30px;
     box-shadow: rgba(0, 0, 0, 0.20) 0 2px 5px;
@@ -80,9 +81,9 @@
 }
 
 .weather-bar-icon > img {
-    padding: 0 20% 0 30%;
-    width: 50%;
-    height: 100%;
+    padding: 0 25% 5% 35%;
+    width: 40%;
+    height: 90%;
 }
 
 .notification-bell {
@@ -94,8 +95,9 @@
 }
 
 .notification-bell > img {
-    width: 75%;
-    height: 75%;
+    padding: 25%;
+    width: 40%;
+    height: 50%;
     rotate: -30deg;
 }
 
@@ -109,16 +111,19 @@
     align-items: center;
 }
 
-.user-icon > img {
-    width: 80%;
-    height: 80%;
+.user-icon > * > img {
+    padding: 20% 30% 20% 10%;
+    width: 60%;
+    height: 60%;
 }
 
 .on-click-menu {
+    opacity: 0.96;
     z-index: 9999;
-    position: absolute;
+    position: fixed;
     height: 100%;
-    width: 25%;
+    width: 20%;
+    top: 0;
     margin-left: -25%;
     border-right: 2px solid #000000;
     background-color: #EFEFEF;
@@ -134,12 +139,22 @@
     width: 25%;
     height: 100%;
     float: left;
+    transition: 0.2s;
 }
 
-.on-click-menu-top-bar-home-page > img, .on-click-menu-top-bar-close-menu > img {
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.on-click-menu-top-bar-home-page > a > img, .on-click-menu-top-bar-close-menu > img {
     padding: 5% 10%;
     width: 80%;
     height: 80%;
+}
+
+.on-click-menu-top-bar-home-page > a > img:hover, .on-click-menu-top-bar-close-menu > img:hover {
+    filter: invert(73%) sepia(73%) saturate(6867%) hue-rotate(332deg) brightness(111%) contrast(98%);
 }
 
 .on-click-menu-top-bar-close-menu {
@@ -147,12 +162,14 @@
     height: 100%;
     float: right;
     cursor: pointer;
+    transition: 0.2s;
 }
 
 .on-click-menu-middle-content {
-    height: 72%;
+    height: 68%;
     width: 80%;
     margin: 5.5% 10%;
+    float: left;
 }
 
 .on-click-menu-middle-content-item {
@@ -163,7 +180,7 @@
     transition: 0.2s;
 }
 
-.on-click-menu-middle-content-line{
+.on-click-menu-middle-content-line {
     border-bottom: 1px solid grey;
 }
 
@@ -171,12 +188,8 @@
     color: #FF5555;
 }
 
-.on-click-menu-middle-content-item:hover > .on-click-menu-middle-content-item-img > img{
+.on-click-menu-middle-content-item:hover > .on-click-menu-middle-content-item-img > img {
     filter: invert(73%) sepia(73%) saturate(6867%) hue-rotate(332deg) brightness(111%) contrast(98%);
-}
-
-.on-click-menu-middle-content-item:hover > .on-click-menu-middle-content-item-text > p {
-    text-decoration: underline;
 }
 
 .on-click-menu-middle-content-item-img {
@@ -190,7 +203,7 @@
 
 .on-click-menu-middle-content-item-img > img {
     width: 60%;
-    height: 50%;
+    height: 40%;
 }
 
 .on-click-menu-middle-content-item-text {
@@ -204,22 +217,30 @@
     height: 80%;
     margin-block-end: 0;
     margin-block-start: 10%;
-    font-size: 3em;
+    font-size: 40px;
 }
 
 .on-click-menu-bottom-bar {
     width: 100%;
-    height: 18%;
+    height: 16%;
+    bottom: 0;
+    float: left;
 }
 
 .on-click-menu-bottom-bar-item {
     width: 25%;
     height: 100%;
     float: left;
+    transition: 0.2s;
 }
 
 .on-click-menu-bottom-bar-item > img {
-    width: 60%;
-    height: 35%;
-    padding: 50% 20% 15% 20%;
+    width: 50%;
+    height: 30%;
+    margin: 70% 25% 0 25%;
+    cursor: pointer;
+}
+
+.on-click-menu-bottom-bar-item > img:hover {
+    filter: invert(73%) sepia(73%) saturate(6867%) hue-rotate(332deg) brightness(111%) contrast(98%);
 }
