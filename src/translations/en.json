@@ -1,0 +1,26 @@
+{
+  "menu": {
+    "timetable": "Timetable",
+    "announcements": "Announcements",
+    "tasksList": "Tasks List",
+    "notes": "Notes",
+    "map": "Map",
+    "subjects": "Subjects",
+    "settings": "Settings"
+  },
+  "topBar": {
+    "day": "17",
+    "month": "May",
+    "year": "2024",
+    "time": "3:00 PM"
+  },
+  "login": {
+    "email": "E-mail:",
+    "enterEmail": "Enter e-mail",
+    "password": "Password:",
+    "enterPassword": "Enter password",
+    "forgotPassword": "Forgot password?",
+    "registration": "Sign in",
+    "logIn": "Log in"
+  }
+}
