@@ -1,0 +1,26 @@
+{
+  "menu": {
+    "timetable": "Terminarz",
+    "announcements": "Ogłoszenia",
+    "tasksList": "Lista Zadań",
+    "notes": "Notatki",
+    "map": "Mapa",
+    "subjects": "Przedmioty",
+    "settings": "Ustawienia"
+  },
+  "topBar": {
+    "day": "17",
+    "month": "Maja",
+    "year": "2024",
+    "time": "15:00"
+  },
+  "login": {
+    "email": "E-mail:",
+    "enterEmail": "Wprowadz e-mail",
+    "password": "Hasło:",
+    "enterPassword": "Wprowadź hasło",
+    "forgotPassword": "Nie pamiętasz hasła?",
+    "registration": "Zarejestruj się",
+    "logIn": "Zaloguj"
+  }
+}
