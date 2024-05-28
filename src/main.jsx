@@ -15,6 +15,7 @@ import Map from './Map.jsx'
 import Subjects from './Subjects.jsx'
 import Settings from './Settings.jsx'
 import MapResult from "./MapResult.jsx";
+import SubjectPage from "./SubjectPage.jsx";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
@@ -29,6 +30,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 <Route path={"projekt-aplikacja/notes"} element={<Notes/>}/>
                 <Route path={"projekt-aplikacja/map"} element={<Map/>}/>
                 <Route path={"projekt-aplikacja/subjects"} element={<Subjects/>}/>
+                <Route path={"projekt-aplikacja/subjectpage"} element={<SubjectPage/>}/>
                 <Route path={"projekt-aplikacja/settings"} element={<Settings/>}/>
                 <Route path={"projekt-aplikacja/mapresult"} element={<MapResult/>}/>
             </Routes>
