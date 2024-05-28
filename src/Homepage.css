@@ -64,9 +64,9 @@ a > .menu-item:hover {
 }
 
 a > .menu-item > img {
-    padding: 10% 25% 5% 25%;
+    padding: 7% 25% 3% 25%;
     width: 50%;
-    height: 50%;
+    height: 60%;
     filter: invert(7%) sepia(0%) saturate(1548%) hue-rotate(75deg) brightness(96%) contrast(88%);
 }
 

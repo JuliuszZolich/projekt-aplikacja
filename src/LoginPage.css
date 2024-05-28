@@ -39,6 +39,7 @@
     transition: 0.1s;
     cursor: pointer;
     background-color: #D9D9D9;
+    box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
 }
 
 .login-email > input:focus, .login-password > input:focus {
@@ -93,6 +94,7 @@
     color: #545252;
     transition: 0.2s;
     cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
 }
 
 .login-register > button {
@@ -109,6 +111,7 @@
     color: #545252;
     transition: 0.2s;
     cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
 }
 
 .login-register > button:hover, .log-in > button:hover {
