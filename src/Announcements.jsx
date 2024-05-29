@@ -1,0 +1,124 @@
+import TopBarAndSideMenu from "./TopBarAndSideMenu.jsx";
+import './Announcements.css'
+import {Link} from "react-router-dom";
+
+const Announcements = () => {
+    return (
+        <>
+            {TopBarAndSideMenu()}
+            <div className={"announcements-main-content"}>
+                <div className={"announcements-top-bar"}>
+                    <select name={"interval"} id="interval">
+                        <option value={"latest"}>Najnowsze</option>
+                        <option value={"oldest"}>Najstarsze</option>
+                        <option value={"last-week"}>Ostatni Tydzień</option>
+                        <option value={"last-month"}>Ostatni Miesiąc</option>
+                    </select>
+                    <select name={"types"} id="types">
+                        <option value={"all"}>Wszystkie</option>
+                        <option value={"univerity"}>Uczelniane</option>
+                        <option value={"faculty"}>Wydziałowe</option>
+                        <option value={"student-council"}>Sam. Studencki</option>
+                    </select>
+                    <div className={"announcements-find"}>
+                        <img src={'./src/assets/find.png'} alt="finc-icon" title={"Wyszukaj"}/>
+                        <input type={"text"} name={"find"} placeholder={"Wyszukaj..."}/>
+                    </div>
+                </div>
+                <div className={"announcements-posts"}>
+                    <div className={"announcements-posts-item"}>
+                        <Link to={'/projekt-aplikacja/announcementspostpage'}>
+                            <div className={"announcements-posts-item-left-content"}>
+                                <img src={"./src/assets/postimage.webp"} alt="post-image"/>
+                            </div>
+                        </Link>
+                        <div className={"announcements-posts-item-right-content"}>
+                            <Link to={'/projekt-aplikacja/announcementspostpage'}>
+                                <div className={"announcements-posts-item-right-content-title"}>
+                                    Na PŁ rekrutacja do programu Legia Akademicka
+                                </div>
+                            </Link>
+                            <div className={"announcements-posts-item-right-content-publication-date"}>
+                                <img src={"./src/assets/clock.png"} alt="clock-image"/>
+                                <span>26.04.2024</span>
+                            </div>
+                            <div className={"announcements-posts-item-right-content-text"}>
+                                Politechnika Łódzka po raz kolejny przystąpiła do programu Legia Akademicka. Absolwenci
+                                LA, jako żołnierze rezerwy, mogą ubiegać się o powołanie do zawodowej służby wojskowej w
+                                różnych formacjach i rodzajach Sił Zbrojnych RP.
+                                <br/>
+                                <Link to={'/projekt-aplikacja/announcementspostpage'}>
+                                    <span className={"announcements-posts-item-right-content-find-more"}>
+                                        dowiedz się wiecej {'>'}
+                                    </span>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={"announcements-posts-item"}>
+                        <div className={"announcements-posts-item-left-content"}>
+                            <img src={"./src/assets/postimage.webp"} alt="post-image"/>
+                        </div>
+                        <div className={"announcements-posts-item-right-content"}>
+                            <div className={"announcements-posts-item-right-content-title"}>
+                                Na PŁ rekrutacja do programu Legia Akademicka
+                            </div>
+                            <div className={"announcements-posts-item-right-content-publication-date"}>
+                                <img src={"./src/assets/clock.png"} alt="clock-image"/>
+                                <span>26.04.2024</span>
+                            </div>
+                            <div className={"announcements-posts-item-right-content-text"}>
+                                Politechnika Łódzka po raz kolejny przystąpiła do programu Legia Akademicka. Absolwenci
+                                LA, jako żołnierze rezerwy, mogą ubiegać się o powołanie do zawodowej służby wojskowej w
+                                różnych formacjach i rodzajach Sił Zbrojnych RP.
+                                <br/><span className={"announcements-posts-item-right-content-find-more"}>dowiedz się wiecej {'>'}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={"announcements-posts-item"}>
+                        <div className={"announcements-posts-item-left-content"}>
+                            <img src={"./src/assets/postimage.webp"} alt="post-image"/>
+                        </div>
+                        <div className={"announcements-posts-item-right-content"}>
+                            <div className={"announcements-posts-item-right-content-title"}>
+                                Na PŁ rekrutacja do programu Legia Akademicka
+                            </div>
+                            <div className={"announcements-posts-item-right-content-publication-date"}>
+                                <img src={"./src/assets/clock.png"} alt="clock-image"/>
+                                <span>26.04.2024</span>
+                            </div>
+                            <div className={"announcements-posts-item-right-content-text"}>
+                                Politechnika Łódzka po raz kolejny przystąpiła do programu Legia Akademicka. Absolwenci
+                                LA, jako żołnierze rezerwy, mogą ubiegać się o powołanie do zawodowej służby wojskowej w
+                                różnych formacjach i rodzajach Sił Zbrojnych RP.
+                                <br/><span className={"announcements-posts-item-right-content-find-more"}>dowiedz się wiecej {'>'}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={"announcements-posts-item"}>
+                        <div className={"announcements-posts-item-left-content"}>
+                            <img src={"./src/assets/postimage.webp"} alt="post-image"/>
+                        </div>
+                        <div className={"announcements-posts-item-right-content"}>
+                            <div className={"announcements-posts-item-right-content-title"}>
+                                Na PŁ rekrutacja do programu Legia Akademicka
+                            </div>
+                            <div className={"announcements-posts-item-right-content-publication-date"}>
+                                <img src={"./src/assets/clock.png"} alt="clock-image"/>
+                                <span>26.04.2024</span>
+                            </div>
+                            <div className={"announcements-posts-item-right-content-text"}>
+                                Politechnika Łódzka po raz kolejny przystąpiła do programu Legia Akademicka. Absolwenci
+                                LA, jako żołnierze rezerwy, mogą ubiegać się o powołanie do zawodowej służby wojskowej w
+                                różnych formacjach i rodzajach Sił Zbrojnych RP.
+                                <br/><span className={"announcements-posts-item-right-content-find-more"}>dowiedz się wiecej {'>'}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
+
+export default Announcements;
