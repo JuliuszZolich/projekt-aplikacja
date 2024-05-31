@@ -1,4 +1,5 @@
 import './LoginPage.css'
+import {Link} from "react-router-dom";
 
 const Login = () => {
     return (
@@ -18,9 +19,11 @@ const Login = () => {
                     <div className={"forgot-password"}>
                         <p>Nie pamiętasz hasła?</p>
                     </div>
-                    <div className={"login-register"}>
-                        <button>Zarejestruj się</button>
-                    </div>
+                    <Link to={"/projekt-aplikacja/register"}>
+                        <div className={"login-register"}>
+                            <button>Zarejestruj się</button>
+                        </div>
+                    </Link>
                     <div className={"log-in"}>
                         <button>Zaloguj</button>
                     </div>
