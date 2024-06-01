@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import {CloseMenu, OpenMenu} from "./OpenCloseMenu.jsx";
+import {CloseMenu, OpenMenu, OpenFacilitiesMenu, CloseFacilitiesMenu} from "./TopBarAndmenuFunctions.jsx";
 import './TopBarAndSideMenu.css'
 
 const TopBarAndSideMenu = () => {
@@ -124,8 +124,31 @@ const TopBarAndSideMenu = () => {
                     <img src={'./src/assets/notification.png'} alt="notifications-icon"/>
                 </div>
                 <div className={"facilities"}>
-                    <img src={'./src/assets/facilities.png'} alt="facilities-icon"/>
+                    <img src={'./src/assets/facilities.png'} alt="facilities-icon" onClick={() => OpenFacilitiesMenu()}/>
                 </div>
+                <div className={"drop-down-menu-facilities"} id={"facilities-drop-down-menu"}>
+                    <div className={"triangle"}></div>
+                    <div className={"triangle-2"}></div>
+                    <div className={"facilities-content"}>
+                        <div className={"fonts font-small"}>
+                            A
+                        </div>
+                        <div className={"fonts font-medium"}>
+                            A
+                        </div>
+                        <div className={"fonts font-large"}>
+                            A
+                        </div>
+                        <div className={"facilities-content-line"}></div>
+                        <div className={"language-pl"}>
+                            <img src={'./src/assets/pl.png'} alt="poland-flag" onClick={() => CloseFacilitiesMenu()}/>
+                        </div>
+                        <div className={"language-en"}>
+                            <img src={'./src/assets/en.png'} alt="uk-flag"/>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </>
     )

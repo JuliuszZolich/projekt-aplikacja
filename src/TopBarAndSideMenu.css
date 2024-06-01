@@ -9,6 +9,118 @@
     box-shadow: rgba(0, 0, 0, 0.30) 0 5px 13px;
 }
 
+.drop-down-menu-facilities{
+    width: 10%;
+    right: 4.3%;
+    height: 200%;
+    position: absolute;
+    top: 80%;
+    display: none;
+}
+
+.triangle{
+    width: 0;
+    height: 0;
+    border-left: 19px solid transparent;
+    border-right: 19px solid transparent;
+    border-bottom: 19px solid black;
+    margin: 0 50% 0 40%;
+}
+
+.triangle-2{
+    width: 0;
+    height: 0;
+    border-left: 21px solid transparent;
+    border-right: 21px solid transparent;
+    border-bottom: 21px solid #D9D9D9;
+    position: absolute;
+    top: 2.8%;
+    left: -1.5%;
+    z-index: 1000;
+    margin: 0 50% 0 40%;
+}
+
+.facilities-content{
+    width: 100%;
+    height: 90%;
+    background-color: #D9D9D9;
+    border: 3px solid black;
+    border-radius: 10px;
+}
+
+.fonts{
+    width: 20%;
+    height: 35%;
+    margin-top: 5%;
+    float: left;
+    text-align: center;
+    border: 1px solid black;
+    transition: 0.2s;
+    cursor: pointer;
+    background-color: #F5F5F5;
+}
+
+.fonts:hover{
+    border-color: #F40606;
+    color: #F40606;
+}
+
+.font-small{
+    margin-left: 10%;
+    font-size: 20px;
+    line-height: 50px;
+}
+
+.font-medium{
+    margin-left: 7.5%;
+    margin-right: 7.5%;
+    font-size: 30px;
+    line-height: 45px;
+}
+
+.font-large{
+    margin-right: 10%;
+    font-size: 40px;
+    line-height: 40px;
+}
+
+.facilities-content-line{
+    width: 80%;
+    margin-top: 5%;
+    height: 1%;
+    background-color: grey;
+    margin-left: 10%;
+    float: left;
+}
+
+.language-pl{
+    width: 20%;
+    height: 40%;
+    margin: 2% 5% 0 25%;
+    float: left;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.language-pl > img{
+    width: 100%;
+    height: 100%;
+}
+
+.language-en{
+    width: 20%;
+    height: 40%;
+    margin: 2% 25% 0 5%;
+    cursor: pointer;
+    transition: 0.2s;
+    float: left;
+}
+
+.language-en > img{
+    width: 100%;
+    height: 100%;
+}
+
 .hamburger-menu {
     cursor: pointer;
     height: 100%;
@@ -106,6 +218,7 @@
     height: 50%;
     padding: 25% 5% 25% 55%;
     rotate: 0deg;
+    cursor: pointer;
 }
 
 .user-icon {
