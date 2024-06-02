@@ -1,6 +1,8 @@
 import './Subjects.css'
 import TopBarAndSideMenu from "./TopBarAndSideMenu.jsx";
 import {Link} from "react-router-dom";
+import {changeScenery} from "./SubjectsFunctions.jsx"
+
 const SubjectPage = () => {
     return (
         <>
@@ -17,23 +19,23 @@ const SubjectPage = () => {
                             </div>
                         </div>
                     </Link>
-                    <div className={"subject-page-main-content-top-bar-item lectures"}>
+                    <div className={"subject-page-main-content-top-bar-item lectures"} onClick={() => changeScenery(1)}>
                         Wykłady
                     </div>
                     <div className={"subject-page-main-content-top-bar-item exercises"}>
                         Ćwiczenia
                     </div>
-                    <div className={"subject-page-main-content-top-bar-item subjects-page-announcements"}>
+                    <div className={"subject-page-main-content-top-bar-item subjects-page-announcements"} onClick={() => changeScenery(2)}>
                         Ogłoszenia
                     </div>
-                    <div className={"subject-page-main-content-top-bar-item marks"}>
+                    <div className={"subject-page-main-content-top-bar-item marks"} onClick={() => changeScenery(3)}>
                         Oceny
                     </div>
                     <div className={"subject-page-main-content-top-bar-subject-name"}>
                         Komunikacja Człowiek-Komputer
                     </div>
                 </div>
-                <div className={"subject-page-middle-content-lectures"}>
+                <div className={"subject-page-middle-content-lectures"}  id={"lectures"}>
                     <div className={"subject-page-middle-content-lectures-left"}>
                         <div className={"subject-page-middle-content-lectures-left-item"}>
                             <div className={"item-image"}>
@@ -162,7 +164,7 @@ const SubjectPage = () => {
                         </div>
                     </div>
                 </div>
-                <div className={"subject-page-middle-content-announcements"}>
+                <div className={"subject-page-middle-content-announcements"} id={"announcements"}>
                     <div className={"subject-page-middle-content-announcements-item"}>
                         <div className={"subject-page-middle-content-announcements-item-top"}>
                             <div className={"top-title"}>
@@ -340,7 +342,7 @@ const SubjectPage = () => {
                         </div>
                     </div>
                 </div>
-                <div className={"subject-page-middle-content-marks"}>
+                <div className={"subject-page-middle-content-marks"} id={"marks"}>
                     <div className={"subject-page-middle-content-marks-item"}>
                         <div className={"marks-item-title"}>
                             Kolokwium I
