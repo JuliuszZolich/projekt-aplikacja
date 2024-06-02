@@ -1,5 +1,6 @@
 import './LoginPage.css'
 import {Link} from "react-router-dom";
+import logoimage from "./assets/logo.png"
 
 const Login = () => {
     return (
@@ -29,7 +30,7 @@ const Login = () => {
                     </div>
                 </div>
                 <div className={"login-right-content"}>
-                    <img src={'./src/assets/logo.png'} alt="logo"/>
+                    <img src={logoimage} alt="logo"/>
                 </div>
             </div>
         </>

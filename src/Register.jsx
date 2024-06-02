@@ -1,5 +1,6 @@
 import './Register.css'
 import {Link} from "react-router-dom";
+import accepticon from "./assets/accept.png"
 
 const Register = () => {
     return (
@@ -90,7 +91,7 @@ const Register = () => {
                     </div>
                     <div className={"register-middle-content-finished"}>
                         <div className={"register-middle-content-finished-img"}>
-                            <img src={'./src/assets/accept.png'} alt="accepted-icon"/>
+                            <img src={accepticon} alt="accepted-icon"/>
                         </div>
                         <div className={"register-middle-content-finished-text"}>
                             <Link to={'/projekt-aplikacja/login'}>

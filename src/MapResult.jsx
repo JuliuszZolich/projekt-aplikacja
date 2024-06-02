@@ -1,6 +1,8 @@
 import './Map.css'
 import TopBarAndSideMenu from "./TopBarAndSideMenu.jsx";
 import {Link} from "react-router-dom";
+import findicon from "./assets/find.png"
+import locationimage from "./assets/weeia.jpg"
 
 const MapResult = () => {
     return (
@@ -10,7 +12,7 @@ const MapResult = () => {
                 <div className={"map-result-left-content"}>
                     <div className={"map-result-find"}>
                         <Link to={"/projekt-aplikacja/mapresult"}>
-                            <img src={'./src/assets/find.png'} alt="finc-icon" title={"Znajdz"}/>
+                            <img src={findicon} alt="finc-icon" title={"Znajdz"}/>
                         </Link>
                         <input type={"text"} name={"find"} placeholder={"Wpisz lokalizacje"}/>
                     </div>
@@ -20,7 +22,7 @@ const MapResult = () => {
                 </div>
                 <div className={"map-result-right-content"}>
                     <div className={"map-result-location-image"}>
-                        <img src={'./src/assets/weeia.jpg'} alt="location-image"/>
+                        <img src={locationimage} alt="location-image"/>
                     </div>
                     <div className={"map-result-location-name"}>
                         <p>Budynek A10 ul. Wólczańska 175, Kampus A</p>

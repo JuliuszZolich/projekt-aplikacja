@@ -1,5 +1,10 @@
 import TopBarAndSideMenu from "./TopBarAndSideMenu.jsx";
 import './Taskslist.css'
+import findicon from "./assets/find.png"
+import addicon from "./assets/add.png"
+import completedicon from "./assets/check.png"
+import favouriteicon from "./assets/star.png"
+import deleteicon from "./assets/bin.png"
 const Tasklist = () => {
     return(
         <>
@@ -7,7 +12,7 @@ const Tasklist = () => {
             <div className={"tasks-list-main-content"}>
                 <div className={"tasks-list-top-bar"}>
                     <div className={"tasks-list-find"}>
-                        <img src={'./src/assets/find.png'} alt="finc-icon" title={"Wyszukaj"}/>
+                        <img src={findicon} alt="finc-icon" title={"Wyszukaj"}/>
                         <input type={"text"} name={"find"} placeholder={"Wyszukaj..."}/>
                     </div>
                 </div>
@@ -29,7 +34,7 @@ const Tasklist = () => {
                 <div className={"tasks-list-right-content"}>
                     <div className={"tasks-list-right-content-add"}>
                         <div className={"tasks-list-right-content-add-img"}>
-                            <img src={'./src/assets/add.png'} alt="add-icon"/>
+                            <img src={addicon} alt="add-icon"/>
                         </div>
                         <div className={"tasks-list-right-content-add-text"}>
                             Dodaj pozycję
@@ -38,7 +43,7 @@ const Tasklist = () => {
                     <div className={"tasks-list-right-content-item"}>
                         <div className={"tasks-list-right-content-item-left"}>
                             <div className={"circle"}>
-                                <img src={'./src/assets/check.png'} alt="check-icon"/>
+                                <img src={completedicon} alt="check-icon"/>
                             </div>
                         </div>
                         <div className={"tasks-list-right-content-item-middle"}>
@@ -54,17 +59,17 @@ const Tasklist = () => {
                         </div>
                         <div className={"tasks-list-right-content-item-right"}>
                             <div className={"right-content-item-right-star"}>
-                                <img src={'./src/assets/star.png'} alt="star-icon" title={"Dodaj do Ważnych"}/>
+                                <img src={favouriteicon} alt="star-icon" title={"Dodaj do Ważnych"}/>
                             </div>
                             <div className={"right-content-item-right-delete"}>
-                                <img src={'./src/assets/bin.png'} alt="delete-icon" title={"Usuń Zadanie"}/>
+                                <img src={deleteicon} alt="delete-icon" title={"Usuń Zadanie"}/>
                             </div>
                         </div>
                     </div>
                     <div className={"tasks-list-right-content-item"}>
                         <div className={"tasks-list-right-content-item-left"}>
                             <div className={"circle"}>
-                                <img src={'./src/assets/check.png'} alt="check-icon"/>
+                                <img src={completedicon} alt="check-icon"/>
                             </div>
                         </div>
                         <div className={"tasks-list-right-content-item-middle"}>
@@ -80,17 +85,17 @@ const Tasklist = () => {
                         </div>
                         <div className={"tasks-list-right-content-item-right"}>
                             <div className={"right-content-item-right-star"}>
-                                <img src={'./src/assets/star.png'} alt="star-icon" title={"Dodaj do Ważnych"}/>
+                                <img src={favouriteicon} alt="star-icon" title={"Dodaj do Ważnych"}/>
                             </div>
                             <div className={"right-content-item-right-delete"}>
-                                <img src={'./src/assets/bin.png'} alt="delete-icon" title={"Usuń Zadanie"}/>
+                                <img src={deleteicon} alt="delete-icon" title={"Usuń Zadanie"}/>
                             </div>
                         </div>
                     </div>
                     <div className={"tasks-list-right-content-item"}>
                         <div className={"tasks-list-right-content-item-left"}>
                             <div className={"circle"}>
-                                <img src={'./src/assets/check.png'} alt="check-icon"/>
+                                <img src={completedicon} alt="check-icon"/>
                             </div>
                         </div>
                         <div className={"tasks-list-right-content-item-middle"}>
@@ -106,17 +111,17 @@ const Tasklist = () => {
                         </div>
                         <div className={"tasks-list-right-content-item-right"}>
                             <div className={"right-content-item-right-star"}>
-                                <img src={'./src/assets/star.png'} alt="star-icon" title={"Dodaj do Ważnych"}/>
+                                <img src={favouriteicon} alt="star-icon" title={"Dodaj do Ważnych"}/>
                             </div>
                             <div className={"right-content-item-right-delete"}>
-                                <img src={'./src/assets/bin.png'} alt="delete-icon" title={"Usuń Zadanie"}/>
+                                <img src={deleteicon} alt="delete-icon" title={"Usuń Zadanie"}/>
                             </div>
                         </div>
                     </div>
                     <div className={"tasks-list-right-content-item"}>
                         <div className={"tasks-list-right-content-item-left"}>
                             <div className={"circle"}>
-                                <img src={'./src/assets/check.png'} alt="check-icon"/>
+                                <img src={completedicon} alt="check-icon"/>
                             </div>
                         </div>
                         <div className={"tasks-list-right-content-item-middle"}>
@@ -132,17 +137,17 @@ const Tasklist = () => {
                         </div>
                         <div className={"tasks-list-right-content-item-right"}>
                             <div className={"right-content-item-right-star"}>
-                                <img src={'./src/assets/star.png'} alt="star-icon" title={"Dodaj do Ważnych"}/>
+                                <img src={favouriteicon} alt="star-icon" title={"Dodaj do Ważnych"}/>
                             </div>
                             <div className={"right-content-item-right-delete"}>
-                                <img src={'./src/assets/bin.png'} alt="delete-icon" title={"Usuń Zadanie"}/>
+                                <img src={deleteicon} alt="delete-icon" title={"Usuń Zadanie"}/>
                             </div>
                         </div>
                     </div>
                     <div className={"tasks-list-right-content-item"}>
                         <div className={"tasks-list-right-content-item-left"}>
                             <div className={"circle"}>
-                                <img src={'./src/assets/check.png'} alt="check-icon"/>
+                                <img src={completedicon} alt="check-icon"/>
                             </div>
                         </div>
                         <div className={"tasks-list-right-content-item-middle"}>
@@ -158,17 +163,17 @@ const Tasklist = () => {
                         </div>
                         <div className={"tasks-list-right-content-item-right"}>
                             <div className={"right-content-item-right-star"}>
-                                <img src={'./src/assets/star.png'} alt="star-icon" title={"Dodaj do Ważnych"}/>
+                                <img src={favouriteicon} alt="star-icon" title={"Dodaj do Ważnych"}/>
                             </div>
                             <div className={"right-content-item-right-delete"}>
-                                <img src={'./src/assets/bin.png'} alt="delete-icon" title={"Usuń Zadanie"}/>
+                                <img src={deleteicon} alt="delete-icon" title={"Usuń Zadanie"}/>
                             </div>
                         </div>
                     </div>
                     <div className={"tasks-list-right-content-item"}>
                         <div className={"tasks-list-right-content-item-left"}>
                             <div className={"circle"}>
-                                <img src={'./src/assets/check.png'} alt="check-icon"/>
+                                <img src={completedicon} alt="check-icon"/>
                             </div>
                         </div>
                         <div className={"tasks-list-right-content-item-middle"}>
@@ -184,17 +189,17 @@ const Tasklist = () => {
                         </div>
                         <div className={"tasks-list-right-content-item-right"}>
                             <div className={"right-content-item-right-star"}>
-                                <img src={'./src/assets/star.png'} alt="star-icon" title={"Dodaj do Ważnych"}/>
+                                <img src={favouriteicon} alt="star-icon" title={"Dodaj do Ważnych"}/>
                             </div>
                             <div className={"right-content-item-right-delete"}>
-                                <img src={'./src/assets/bin.png'} alt="delete-icon" title={"Usuń Zadanie"}/>
+                                <img src={deleteicon} alt="delete-icon" title={"Usuń Zadanie"}/>
                             </div>
                         </div>
                     </div>
                     <div className={"tasks-list-right-content-item"}>
                         <div className={"tasks-list-right-content-item-left"}>
                             <div className={"circle"}>
-                                <img src={'./src/assets/check.png'} alt="check-icon"/>
+                                <img src={completedicon} alt="check-icon"/>
                             </div>
                         </div>
                         <div className={"tasks-list-right-content-item-middle"}>
@@ -210,17 +215,17 @@ const Tasklist = () => {
                         </div>
                         <div className={"tasks-list-right-content-item-right"}>
                             <div className={"right-content-item-right-star"}>
-                                <img src={'./src/assets/star.png'} alt="star-icon" title={"Dodaj do Ważnych"}/>
+                                <img src={favouriteicon} alt="star-icon" title={"Dodaj do Ważnych"}/>
                             </div>
                             <div className={"right-content-item-right-delete"}>
-                                <img src={'./src/assets/bin.png'} alt="delete-icon" title={"Usuń Zadanie"}/>
+                                <img src={deleteicon} alt="delete-icon" title={"Usuń Zadanie"}/>
                             </div>
                         </div>
                     </div>
                     <div className={"tasks-list-right-content-item"}>
                         <div className={"tasks-list-right-content-item-left"}>
                             <div className={"circle"}>
-                                <img src={'./src/assets/check.png'} alt="check-icon"/>
+                                <img src={completedicon} alt="check-icon"/>
                             </div>
                         </div>
                         <div className={"tasks-list-right-content-item-middle"}>
@@ -236,10 +241,10 @@ const Tasklist = () => {
                         </div>
                         <div className={"tasks-list-right-content-item-right"}>
                             <div className={"right-content-item-right-star"}>
-                                <img src={'./src/assets/star.png'} alt="star-icon" title={"Dodaj do Ważnych"}/>
+                                <img src={favouriteicon} alt="star-icon" title={"Dodaj do Ważnych"}/>
                             </div>
                             <div className={"right-content-item-right-delete"}>
-                                <img src={'./src/assets/bin.png'} alt="delete-icon" title={"Usuń Zadanie"}/>
+                                <img src={deleteicon} alt="delete-icon" title={"Usuń Zadanie"}/>
                             </div>
                         </div>
                     </div>

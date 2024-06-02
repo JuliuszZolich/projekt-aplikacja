@@ -2,6 +2,13 @@ import './Subjects.css'
 import TopBarAndSideMenu from "./TopBarAndSideMenu.jsx";
 import {Link} from "react-router-dom";
 import {changeScenery} from "./SubjectsFunctions.jsx"
+import backicon from "./assets/arrowback.png"
+import fileicon from "./assets/file.png"
+import mailicon from "./assets/mail.png"
+import buildingicon from "./assets/building.png"
+import roomicon from "./assets/room.png"
+import locationicon from "./assets/location.png"
+import clockicon from "./assets/clock.png"
 
 const SubjectPage = () => {
     return (
@@ -12,7 +19,7 @@ const SubjectPage = () => {
                     <Link to={"/projekt-aplikacja/subjects"}>
                         <div className={"subject-page-main-content-top-bar-item back"}>
                             <div className={"back-image"}>
-                                <img src={'./src/assets/arrowback.png'} alt="back-icon"/>
+                                <img src={backicon} alt="back-icon"/>
                             </div>
                             <div className={"back-text"}>
                                 Powrót
@@ -39,7 +46,7 @@ const SubjectPage = () => {
                     <div className={"subject-page-middle-content-lectures-left"}>
                         <div className={"subject-page-middle-content-lectures-left-item"}>
                             <div className={"item-image"}>
-                                <img src={'./src/assets/file.png'} alt="download-file-icon"/>
+                                <img src={fileicon} alt="download-file-icon"/>
                             </div>
                             <div className={"item-text"}>
                                 Wyklad 1
@@ -47,7 +54,7 @@ const SubjectPage = () => {
                         </div>
                         <div className={"subject-page-middle-content-lectures-left-item"}>
                             <div className={"item-image"}>
-                                <img src={'./src/assets/file.png'} alt="download-file-icon"/>
+                                <img src={fileicon} alt="download-file-icon"/>
                             </div>
                             <div className={"item-text"}>
                                 Wyklad 1
@@ -55,7 +62,7 @@ const SubjectPage = () => {
                         </div>
                         <div className={"subject-page-middle-content-lectures-left-item"}>
                             <div className={"item-image"}>
-                                <img src={'./src/assets/file.png'} alt="download-file-icon"/>
+                                <img src={fileicon} alt="download-file-icon"/>
                             </div>
                             <div className={"item-text"}>
                                 Wyklad 1
@@ -63,7 +70,7 @@ const SubjectPage = () => {
                         </div>
                         <div className={"subject-page-middle-content-lectures-left-item"}>
                             <div className={"item-image"}>
-                                <img src={'./src/assets/file.png'} alt="download-file-icon"/>
+                                <img src={fileicon} alt="download-file-icon"/>
                             </div>
                             <div className={"item-text"}>
                                 Wyklad 1
@@ -71,7 +78,7 @@ const SubjectPage = () => {
                         </div>
                         <div className={"subject-page-middle-content-lectures-left-item"}>
                             <div className={"item-image"}>
-                                <img src={'./src/assets/file.png'} alt="download-file-icon"/>
+                                <img src={fileicon} alt="download-file-icon"/>
                             </div>
                             <div className={"item-text"}>
                                 Wyklad 1
@@ -79,7 +86,7 @@ const SubjectPage = () => {
                         </div>
                         <div className={"subject-page-middle-content-lectures-left-item"}>
                             <div className={"item-image"}>
-                                <img src={'./src/assets/file.png'} alt="download-file-icon"/>
+                                <img src={fileicon} alt="download-file-icon"/>
                             </div>
                             <div className={"item-text"}>
                                 Wyklad 1
@@ -87,7 +94,7 @@ const SubjectPage = () => {
                         </div>
                         <div className={"subject-page-middle-content-lectures-left-item"}>
                             <div className={"item-image"}>
-                                <img src={'./src/assets/file.png'} alt="download-file-icon"/>
+                                <img src={fileicon} alt="download-file-icon"/>
                             </div>
                             <div className={"item-text"}>
                                 Wyklad 1
@@ -95,7 +102,7 @@ const SubjectPage = () => {
                         </div>
                         <div className={"subject-page-middle-content-lectures-left-item"}>
                             <div className={"item-image"}>
-                                <img src={'./src/assets/file.png'} alt="download-file-icon"/>
+                                <img src={fileicon} alt="download-file-icon"/>
                             </div>
                             <div className={"item-text"}>
                                 Wyklad 1
@@ -103,7 +110,7 @@ const SubjectPage = () => {
                         </div>
                         <div className={"subject-page-middle-content-lectures-left-item"}>
                             <div className={"item-image"}>
-                                <img src={'./src/assets/file.png'} alt="download-file-icon"/>
+                                <img src={fileicon} alt="download-file-icon"/>
                             </div>
                             <div className={"item-text"}>
                                 Wyklad 1
@@ -111,7 +118,7 @@ const SubjectPage = () => {
                         </div>
                         <div className={"subject-page-middle-content-lectures-left-item"}>
                             <div className={"item-image"}>
-                                <img src={'./src/assets/file.png'} alt="download-file-icon"/>
+                                <img src={fileicon} alt="download-file-icon"/>
                             </div>
                             <div className={"item-text"}>
                                 Wyklad 1
@@ -132,7 +139,7 @@ const SubjectPage = () => {
                                 Kontakt:
                             </div>
                             <div className={"contact-img"}>
-                                <img src={'./src/assets/mail.png'} alt="mail-icon"/>
+                                <img src={mailicon} alt="mail-icon"/>
                             </div>
                             <div className={"contact-text"}>
                                 loremipsum@gmail.com
@@ -144,7 +151,7 @@ const SubjectPage = () => {
                             </div>
                             <div className={"subject-location-item"}>
                                 <div className={"subject-location-item-img"}>
-                                    <img src={'./src/assets/building.png'} alt="building-icon"/>
+                                    <img src={buildingicon} alt="building-icon"/>
                                 </div>
                                 <div className={"subject-location-item-text"}>
                                     A21
@@ -152,13 +159,13 @@ const SubjectPage = () => {
                             </div>
                             <div className={"subject-location-item"}>
                                 <div className={"subject-location-item-img"}>
-                                    <img src={'./src/assets/room.png'} alt="room-icon"/>
+                                    <img src={roomicon} alt="room-icon"/>
                                 </div>
                                 <div className={"subject-location-item-text"}>
                                     E2
                                 </div>
                                 <div className={"subject-location-find"}>
-                                    <img src={'./src/assets/location.png'} alt="location-icon"/>
+                                    <img src={locationicon} alt="location-icon"/>
                                 </div>
                             </div>
                         </div>
@@ -172,7 +179,7 @@ const SubjectPage = () => {
                             </div>
                             <div className={"top-date"}>
                                 <div className={"top-date-img"}>
-                                    <img src={'./src/assets/clock.png'} alt="clock-icon"/>
+                                    <img src={clockicon} alt="clock-icon"/>
                                 </div>
                                 <div className={"top-date-text"}>
                                     26.06.2024
@@ -194,7 +201,7 @@ const SubjectPage = () => {
                             </div>
                             <div className={"top-date"}>
                                 <div className={"top-date-img"}>
-                                    <img src={'./src/assets/clock.png'} alt="clock-icon"/>
+                                    <img src={clockicon} alt="clock-icon"/>
                                 </div>
                                 <div className={"top-date-text"}>
                                     26.06.2024
@@ -216,7 +223,7 @@ const SubjectPage = () => {
                             </div>
                             <div className={"top-date"}>
                                 <div className={"top-date-img"}>
-                                    <img src={'./src/assets/clock.png'} alt="clock-icon"/>
+                                    <img src={clockicon} alt="clock-icon"/>
                                 </div>
                                 <div className={"top-date-text"}>
                                     26.06.2024
@@ -238,7 +245,7 @@ const SubjectPage = () => {
                             </div>
                             <div className={"top-date"}>
                                 <div className={"top-date-img"}>
-                                    <img src={'./src/assets/clock.png'} alt="clock-icon"/>
+                                    <img src={clockicon} alt="clock-icon"/>
                                 </div>
                                 <div className={"top-date-text"}>
                                     26.06.2024
@@ -260,7 +267,7 @@ const SubjectPage = () => {
                             </div>
                             <div className={"top-date"}>
                                 <div className={"top-date-img"}>
-                                    <img src={'./src/assets/clock.png'} alt="clock-icon"/>
+                                    <img src={clockicon} alt="clock-icon"/>
                                 </div>
                                 <div className={"top-date-text"}>
                                     26.06.2024
@@ -282,7 +289,7 @@ const SubjectPage = () => {
                             </div>
                             <div className={"top-date"}>
                                 <div className={"top-date-img"}>
-                                    <img src={'./src/assets/clock.png'} alt="clock-icon"/>
+                                    <img src={clockicon} alt="clock-icon"/>
                                 </div>
                                 <div className={"top-date-text"}>
                                     26.06.2024
@@ -304,7 +311,7 @@ const SubjectPage = () => {
                             </div>
                             <div className={"top-date"}>
                                 <div className={"top-date-img"}>
-                                    <img src={'./src/assets/clock.png'} alt="clock-icon"/>
+                                    <img src={clockicon} alt="clock-icon"/>
                                 </div>
                                 <div className={"top-date-text"}>
                                     26.06.2024
@@ -326,7 +333,7 @@ const SubjectPage = () => {
                             </div>
                             <div className={"top-date"}>
                                 <div className={"top-date-img"}>
-                                    <img src={'./src/assets/clock.png'} alt="clock-icon"/>
+                                    <img src={clockicon} alt="clock-icon"/>
                                 </div>
                                 <div className={"top-date-text"}>
                                     26.06.2024

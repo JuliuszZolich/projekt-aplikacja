@@ -88,15 +88,19 @@
     height: 100%;
 }
 
-.register-middle-content-step-three{
-    display: none;
-}
-
 .register-middle-content-step-one{
     display: none;
 }
 
 .register-middle-content-step-two{
+    display: none;
+}
+
+.register-middle-content-step-three{
+    display: block;
+}
+
+.register-middle-content-finished{
     display: none;
 }
 
@@ -132,7 +136,7 @@
     margin-left: 5%;
     float: left;
     position: relative;
-    display: none;
+    display: block;
 }
 
 .register-input-text{

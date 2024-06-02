@@ -1,5 +1,9 @@
 import './Notes.css'
 import TopBarAndSideMenu from "./TopBarAndSideMenu.jsx";
+import findicon from "./assets/find.png"
+import addicon from "./assets/add.png"
+import deleteicon from "./assets/bin.png"
+import modifyicon from "./assets/modify.png"
 
 const Notes = () => {
     return (
@@ -7,12 +11,12 @@ const Notes = () => {
             {TopBarAndSideMenu()}
             <div className={"notes-main-content"}>
                 <div className={"notes-search-input"}>
-                    <img src={'./src/assets/find.png'} alt="finc-icon" title={"Znajdz"}/>
+                    <img src={findicon} alt="finc-icon" title={"Znajdz"}/>
                     <input type={"text"} name={"find"} placeholder={"Wyszukaj..."}/>
                 </div>
                 <div className={"note"} title={"Dodaj notatke"}>
                     <div className={"add-note"}>
-                        <img src={"./src/assets/add.png"} alt="add-note-icon"/>
+                        <img src={addicon} alt="add-note-icon"/>
                     </div>
                 </div>
                 <div className={"note"} title={"Wyświetl treść notatki"}>
@@ -32,7 +36,7 @@ const Notes = () => {
                         non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </div>
                     <div className={"note-delete"} title={"Usuń notatke"}>
-                        <img src={"./src/assets/bin.png"} alt="note-delete-icon"/>
+                        <img src={deleteicon} alt="note-delete-icon"/>
                     </div>
                 </div>
                 <div className={"note"}>
@@ -52,7 +56,7 @@ const Notes = () => {
                         non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </div>
                     <div className={"note-delete"}>
-                        <img src={"./src/assets/bin.png"} alt="note-delete-icon"/>
+                        <img src={deleteicon} alt="note-delete-icon"/>
                     </div>
                 </div>
                 <div className={"note"}>
@@ -72,7 +76,7 @@ const Notes = () => {
                         non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </div>
                     <div className={"note-delete"}>
-                        <img src={"./src/assets/bin.png"} alt="note-delete-icon"/>
+                        <img src={deleteicon} alt="note-delete-icon"/>
                     </div>
                 </div>
                 <div className={"note"}>
@@ -92,7 +96,7 @@ const Notes = () => {
                         non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </div>
                     <div className={"note-delete"}>
-                        <img src={"./src/assets/bin.png"} alt="note-delete-icon"/>
+                        <img src={deleteicon} alt="note-delete-icon"/>
                     </div>
                 </div>
                 <div className={"note"}>
@@ -112,7 +116,7 @@ const Notes = () => {
                         non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </div>
                     <div className={"note-delete"}>
-                        <img src={"./src/assets/bin.png"} alt="note-delete-icon"/>
+                        <img src={deleteicon} alt="note-delete-icon"/>
                     </div>
                 </div>
                 <div className={"note"}>
@@ -132,7 +136,7 @@ const Notes = () => {
                         non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </div>
                     <div className={"note-delete"}>
-                        <img src={"./src/assets/bin.png"} alt="note-delete-icon"/>
+                        <img src={deleteicon} alt="note-delete-icon"/>
                     </div>
                 </div>
                 <div className={"note"}>
@@ -152,7 +156,7 @@ const Notes = () => {
                         non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </div>
                     <div className={"note-delete"}>
-                        <img src={"./src/assets/bin.png"} alt="note-delete-icon"/>
+                        <img src={deleteicon} alt="note-delete-icon"/>
                     </div>
                 </div>
                 <div className={"note"}>
@@ -172,7 +176,7 @@ const Notes = () => {
                         non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </div>
                     <div className={"note-delete"}>
-                        <img src={"./src/assets/bin.png"} alt="note-delete-icon"/>
+                        <img src={deleteicon} alt="note-delete-icon"/>
                     </div>
                 </div>
                 <div className={"note"}>
@@ -192,7 +196,7 @@ const Notes = () => {
                         non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </div>
                     <div className={"note-delete"}>
-                        <img src={"./src/assets/bin.png"} alt="note-delete-icon"/>
+                        <img src={deleteicon} alt="note-delete-icon"/>
                     </div>
                 </div>
                 <div className={"note-window"}>
@@ -201,7 +205,7 @@ const Notes = () => {
                             Title
                         </div>
                         <div className={"note-window-top-bar-modify"}>
-                            <img src={"./src/assets/modify.png"} alt="modify-icon" title={"Modyfikuj"}/>
+                            <img src={modifyicon} alt="modify-icon" title={"Modyfikuj"}/>
                         </div>
                     </div>
                     <div className={"note-window-text"}>
@@ -338,7 +342,7 @@ const Notes = () => {
                             Modyfikuj notatke
                         </div>
                         <div className={"modify-note-window-top-bar-delete"}>
-                            <img src={"./src/assets/bin.png"} alt="delete-icon" title={"Usuń"}/>
+                            <img src={deleteicon} alt="delete-icon" title={"Usuń"}/>
                         </div>
                     </div>
                     <div className={"modify-note-window-middle-content"}>

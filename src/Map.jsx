@@ -1,6 +1,7 @@
 import './Map.css'
 import TopBarAndSideMenu from "./TopBarAndSideMenu.jsx";
 import {Link} from "react-router-dom";
+import findicon from "./assets/find.png"
 
 const Map = () => {
     return (
@@ -9,7 +10,7 @@ const Map = () => {
             <div className={"map-main-content"}>
                 <div className={"map-find-input"}>
                     <Link to={"/projekt-aplikacja/mapresult"}>
-                        <img src={'./src/assets/find.png'} alt="finc-icon" title={"Znajdz"}/>
+                        <img src={findicon} alt="finc-icon" title={"Znajdz"}/>
                     </Link>
                     <input type={"text"} name={"find"} placeholder={"Wpisz lokalizacje"}/>
                 </div>
