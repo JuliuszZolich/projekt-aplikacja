@@ -1,0 +1,102 @@
+.settings-main-content{
+    width: 80%;
+    height: 80%;
+    margin: 4% 10%;
+    position: fixed;
+}
+
+.settings-change-email{
+    float: left;
+    width: 100%;
+    height: 25%;
+    margin-top: 5%;
+    position: relative;
+}
+
+.settings-change-password{
+    float: left;
+    width: 100%;
+    height: 25%;
+    margin: 2% 0;
+    position: relative;
+}
+
+.settings-set-main-language{
+    float: left;
+    width: 100%;
+    height: 25%;
+    margin-bottom: 5%;
+}
+
+.settings-title{
+    height: 40%;
+    border-bottom: 3px solid grey;
+    padding-left: 5%;
+    font-size: 40px;
+}
+
+.settings-input{
+    width: 30%;
+    height: 50%;
+    position: relative;
+    margin-left: 3%;
+    margin-top: 1%;
+    float: left;
+}
+
+.settings-input > input{
+    width: 90%;
+    height: 60%;
+    position: absolute;
+    top: 20%;
+    font-size: 30px;
+    outline: none;
+    padding-left: 2%;
+    border-radius: 10px;
+    border: 3px solid grey;
+    background-color: transparent;
+    z-index: 9997;
+}
+
+.settings-input > input:focus + .settings-input-text, .settings-input > input:valid + .settings-input-text{
+    transform: translate(-4%, -120%);
+    font-size: 20px;
+    height: 20%;
+    color: grey;
+    z-index: 9999;
+}
+
+.settings-input-text{
+    height: 50%;
+    background-color: #F5F5F5;
+    position: absolute;
+    top: 32%;
+    left: 2%;
+    font-size: 30px;
+    color: gray;
+    transition: 0.3s;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.settings-button-pl, .settings-button-en{
+    height: 25%;
+    float: left;
+    width: 15%;
+    text-align: center;
+    background-color: #FF5555;
+    font-size: 30px;
+    line-height: 50px;
+    margin-top: 2%;
+    margin-left: 3%;
+    border-radius: 30px;
+    border: 3px solid #F40606;
+    color: #202020;
+    cursor: pointer;
+}
+
+.settings-button-en{
+    background-color: transparent;
+    border-color: gray;
+    color: gray;
+}
