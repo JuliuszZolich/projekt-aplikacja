@@ -70,15 +70,7 @@ public class NotesHandler implements HttpHandler {
 
     @Override
     public void handle(HttpExchange t) throws IOException {
-        if(t.getRequestHeaders().get("UserID") == null) {
-            System.out.println("CORS request received");
-            t.getResponseHeaders().add("Access-Control-Allow-Methods", "*");
-            t.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
-            t.getResponseHeaders().add("Access-Control-Allow-Headers", "*");
-            t.sendResponseHeaders(200, 100);
-            t.getResponseBody().close();
-            return;
-        }
+        if (Utils.handleCORS(t)) return;
         System.out.println("Notes request received");
         System.out.println(t.getRequestHeaders().get("UserID").get(0));
         t.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
