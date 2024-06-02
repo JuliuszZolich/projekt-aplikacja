@@ -11,7 +11,7 @@ import java.util.concurrent.ExecutionException;
 
 import static DBUtils.FirebaseUtils.db;
 
-public class DBCalendar {
+public class DBTimetable {
     public static String get_calendar(String userID) {
         System.out.println("Getting calendar for user: " + userID);
         ApiFuture<QuerySnapshot> query = db.collection("calendar")

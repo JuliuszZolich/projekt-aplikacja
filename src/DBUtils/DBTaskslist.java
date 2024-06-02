@@ -92,7 +92,7 @@ public class DBTaskslist {
     }
 
 
-    public static void update_note(String userID, String noteID, String title, String content, String date, boolean favourite) {
+    public static void update_task(String userID, String noteID, String title, String content, String date, boolean favourite) {
         db.collection("notes")
                 .document(noteID)
                 .update(Map.of("userID", userID,"title", title, "content", content, "date", Date.from(Instant.parse(date)), "favourite", favourite));
