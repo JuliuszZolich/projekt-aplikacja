@@ -1,6 +1,9 @@
 import TopBarAndSideMenu from "./TopBarAndSideMenu.jsx";
 import './Announcements.css'
 import {Link} from "react-router-dom";
+import findicon from "./assets/find.png"
+import postimage from "./assets/postimage.webp"
+import clockicon from "./assets/clock.png"
 
 const Announcements = () => {
     return (
@@ -21,7 +24,7 @@ const Announcements = () => {
                         <option value={"student-council"}>Sam. Studencki</option>
                     </select>
                     <div className={"announcements-find"}>
-                        <img src={'./src/assets/find.png'} alt="finc-icon" title={"Wyszukaj"}/>
+                        <img src={findicon} alt="find-icon" title={"Wyszukaj"}/>
                         <input type={"text"} name={"find"} placeholder={"Wyszukaj..."}/>
                     </div>
                 </div>
@@ -29,7 +32,7 @@ const Announcements = () => {
                     <div className={"announcements-posts-item"}>
                         <Link to={'/projekt-aplikacja/announcementspostpage'}>
                             <div className={"announcements-posts-item-left-content"}>
-                                <img src={"./src/assets/postimage.webp"} alt="post-image"/>
+                                <img src={postimage} alt="post-image"/>
                             </div>
                         </Link>
                         <div className={"announcements-posts-item-right-content"}>
@@ -39,7 +42,7 @@ const Announcements = () => {
                                 </div>
                             </Link>
                             <div className={"announcements-posts-item-right-content-publication-date"}>
-                                <img src={"./src/assets/clock.png"} alt="clock-image"/>
+                                <img src={clockicon} alt="clock-image"/>
                                 <span>26.04.2024</span>
                             </div>
                             <div className={"announcements-posts-item-right-content-text"}>
@@ -57,14 +60,14 @@ const Announcements = () => {
                     </div>
                     <div className={"announcements-posts-item"}>
                         <div className={"announcements-posts-item-left-content"}>
-                            <img src={"./src/assets/postimage.webp"} alt="post-image"/>
+                            <img src={postimage} alt="post-image"/>
                         </div>
                         <div className={"announcements-posts-item-right-content"}>
                             <div className={"announcements-posts-item-right-content-title"}>
                                 Na PŁ rekrutacja do programu Legia Akademicka
                             </div>
                             <div className={"announcements-posts-item-right-content-publication-date"}>
-                                <img src={"./src/assets/clock.png"} alt="clock-image"/>
+                                <img src={clockicon} alt="clock-image"/>
                                 <span>26.04.2024</span>
                             </div>
                             <div className={"announcements-posts-item-right-content-text"}>
@@ -77,14 +80,14 @@ const Announcements = () => {
                     </div>
                     <div className={"announcements-posts-item"}>
                         <div className={"announcements-posts-item-left-content"}>
-                            <img src={"./src/assets/postimage.webp"} alt="post-image"/>
+                            <img src={postimage} alt="post-image"/>
                         </div>
                         <div className={"announcements-posts-item-right-content"}>
                             <div className={"announcements-posts-item-right-content-title"}>
                                 Na PŁ rekrutacja do programu Legia Akademicka
                             </div>
                             <div className={"announcements-posts-item-right-content-publication-date"}>
-                                <img src={"./src/assets/clock.png"} alt="clock-image"/>
+                                <img src={clockicon} alt="clock-image"/>
                                 <span>26.04.2024</span>
                             </div>
                             <div className={"announcements-posts-item-right-content-text"}>
@@ -97,14 +100,14 @@ const Announcements = () => {
                     </div>
                     <div className={"announcements-posts-item"}>
                         <div className={"announcements-posts-item-left-content"}>
-                            <img src={"./src/assets/postimage.webp"} alt="post-image"/>
+                            <img src={postimage} alt="post-image"/>
                         </div>
                         <div className={"announcements-posts-item-right-content"}>
                             <div className={"announcements-posts-item-right-content-title"}>
                                 Na PŁ rekrutacja do programu Legia Akademicka
                             </div>
                             <div className={"announcements-posts-item-right-content-publication-date"}>
-                                <img src={"./src/assets/clock.png"} alt="clock-image"/>
+                                <img src={clockicon} alt="clock-image"/>
                                 <span>26.04.2024</span>
                             </div>
                             <div className={"announcements-posts-item-right-content-text"}>

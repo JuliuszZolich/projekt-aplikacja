@@ -1,6 +1,9 @@
 import TopBarAndSideMenu from "./TopBarAndSideMenu.jsx";
 import './Announcements.css'
 import {Link} from "react-router-dom";
+import backicon from "./assets/arrowback.png"
+import postimage from "./assets/postimage.webp"
+import clockicon from "./assets/clock.png"
 
 const AnnouncementsPostPage = () => {
     return (<>
@@ -10,7 +13,7 @@ const AnnouncementsPostPage = () => {
                 <div className={"back-button"}>
                     <Link to={"/projekt-aplikacja/announcements"}>
                         <div className={"back-button-image"}>
-                            <img src={'./src/assets/arrowback.png'} alt="back-icon"/>
+                            <img src={backicon} alt="back-icon"/>
                         </div>
                         <div className={"back-button-text"}>
                             Powrót
@@ -24,7 +27,7 @@ const AnnouncementsPostPage = () => {
                 </div>
                 <div className={"post-page-header-date"}>
                     <div className={"post-page-header-date-img"}>
-                        <img src={'./src/assets/clock.png'} alt="clock-icon"/>
+                        <img src={clockicon} alt="clock-icon"/>
                     </div>
                     <div className={"post-page-header-date-text"}>
                         26.04.2026
@@ -33,7 +36,7 @@ const AnnouncementsPostPage = () => {
             </div>
             <div className={"post-page-main-content-middle-content"}>
                 <div className={"post-page-main-content-middle-content-left"}>
-                    <img src={'./src/assets/postimage.webp'} alt="post-image"/>
+                    <img src={postimage} alt="post-image"/>
                 </div>
                 <div className={"post-page-main-content-middle-content-right"}>
                     <span className={"text-header"}>Politechnika Łódzka po raz kolejny przystąpiła do programu Legia Akademicka. Absolwenci LA, jako
