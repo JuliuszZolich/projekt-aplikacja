@@ -5,7 +5,7 @@ import {useLanguage} from './ChangeLanguage.jsx';
 import findicon from "./assets/find.png"
 
 const Map = () => {
-    const {t} = useLanguage();
+    const {t: translation} = useLanguage();
     return (
         <>
             {TopBarAndSideMenu()}
@@ -14,7 +14,7 @@ const Map = () => {
                     <Link to={"/projekt-aplikacja/mapresult"}>
                         <img src={findicon} alt="finc-icon" title={"Znajdz"}/>
                     </Link>
-                    <input type={"text"} name={"find"} placeholder={t.Map.find}/>
+                    <input type={"text"} name={"find"} placeholder={translation.Map.find}/>
                 </div>
             </div>
         </>

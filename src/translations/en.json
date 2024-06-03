@@ -1,7 +1,7 @@
 {
   "Homepage": {
     "timetable": "Timetable",
-    "announcements": "Announcements",
+    "news": "News",
     "tasksList": "Tasks List",
     "notes": "Notes",
     "map": "Map",
@@ -83,7 +83,7 @@
     "back": "Back",
     "lectures": "Lectures",
     "exercises": "Exercises",
-    "announcements": "Announcements",
+    "news": "News",
     "grades": "Grades",
     "lecture": "Lecture",
     "lecturer": "Lecturer:",

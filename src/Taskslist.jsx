@@ -8,7 +8,7 @@ import favouriteicon from "./assets/star.png"
 import deleteicon from "./assets/bin.png"
 
 const Tasklist = () => {
-    const {t} = useLanguage();
+    const {t: translation} = useLanguage();
     return(
         <>
             {TopBarAndSideMenu()}
@@ -16,21 +16,21 @@ const Tasklist = () => {
                 <div className={"tasks-list-top-bar"}>
                     <div className={"tasks-list-find"}>
                         <img src={findicon} alt="finc-icon" title={"Wyszukaj"}/>
-                        <input type={"text"} name={"find"} placeholder={t.TasksList.find}/>
+                        <input type={"text"} name={"find"} placeholder={translation.TasksList.find}/>
                     </div>
                 </div>
                 <div className={"tasks-list-left-content"}>
                     <div className="tasks-list-left-content-item">
-                        {t.TasksList.all}
+                        {translation.TasksList.all}
                     </div>
                     <div className="tasks-list-left-content-item">
-                        {t.TasksList.important}
+                        {translation.TasksList.important}
                     </div>
                     <div className="tasks-list-left-content-item">
-                        {t.TasksList.active}
+                        {translation.TasksList.active}
                     </div>
                     <div className="tasks-list-left-content-item">
-                        {t.TasksList.done}
+                        {translation.TasksList.done}
                     </div>
                 </div>
                 <div className="tasks-list-line"></div>
@@ -40,7 +40,7 @@ const Tasklist = () => {
                             <img src={addicon} alt="add-icon"/>
                         </div>
                         <div className={"tasks-list-right-content-add-text"}>
-                            {t.TasksList.addItem}
+                            {translation.TasksList.addItem}
                         </div>
                     </div>
                     <div className={"tasks-list-right-content-item"}>

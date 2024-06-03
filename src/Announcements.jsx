@@ -7,27 +7,27 @@ import postimage from "./assets/postimage.webp"
 import clockicon from "./assets/clock.png"
 
 const Announcements = () => {
-    const {t} = useLanguage();
+    const {t: translation} = useLanguage();
     return (
         <>
             {TopBarAndSideMenu()}
             <div className={"announcements-main-content"}>
                 <div className={"announcements-top-bar"}>
                     <select name={"interval"} id="interval">
-                        <option value={"latest"}>{t.Announcements.latest}</option>
-                        <option value={"oldest"}>{t.Announcements.oldest}</option>
-                        <option value={"last-week"}>{t.Announcements.lastWeek}</option>
-                        <option value={"last-month"}>{t.Announcements.lastMonth}</option>
+                        <option value={"latest"}>{translation.Announcements.latest}</option>
+                        <option value={"oldest"}>{translation.Announcements.oldest}</option>
+                        <option value={"last-week"}>{translation.Announcements.lastWeek}</option>
+                        <option value={"last-month"}>{translation.Announcements.lastMonth}</option>
                     </select>
                     <select name={"types"} id="types">
-                        <option value={"all"}>{t.Announcements.all}</option>
-                        <option value={"univerity"}>{t.Announcements.university}</option>
-                        <option value={"faculty"}>{t.Announcements.faculty}</option>
-                        <option value={"student-council"}>{t.Announcements.studentCouncil}</option>
+                        <option value={"all"}>{translation.Announcements.all}</option>
+                        <option value={"univerity"}>{translation.Announcements.university}</option>
+                        <option value={"faculty"}>{translation.Announcements.faculty}</option>
+                        <option value={"student-council"}>{translation.Announcements.studentCouncil}</option>
                     </select>
                     <div className={"announcements-find"}>
                         <img src={findicon} alt="find-icon" title={"Wyszukaj"}/>
-                        <input type={"text"} name={"find"} placeholder={t.Announcements.find}/>
+                        <input type={"text"} name={"find"} placeholder={translation.Announcements.find}/>
                     </div>
                 </div>
                 <div className={"announcements-posts"}>
@@ -54,7 +54,7 @@ const Announcements = () => {
                                 <br/>
                                 <Link to={'/projekt-aplikacja/announcementspostpage'}>
                                     <span className={"announcements-posts-item-right-content-find-more"}>
-                                        {t.Announcements.learnMore}
+                                        {translation.Announcements.learnMore}
                                     </span>
                                 </Link>
                             </div>
@@ -76,7 +76,7 @@ const Announcements = () => {
                                 Politechnika Łódzka po raz kolejny przystąpiła do programu Legia Akademicka. Absolwenci
                                 LA, jako żołnierze rezerwy, mogą ubiegać się o powołanie do zawodowej służby wojskowej w
                                 różnych formacjach i rodzajach Sił Zbrojnych RP.
-                                <br/><span className={"announcements-posts-item-right-content-find-more"}>{t.Announcements.learnMore}</span>
+                                <br/><span className={"announcements-posts-item-right-content-find-more"}>{translation.Announcements.learnMore}</span>
                             </div>
                         </div>
                     </div>
@@ -96,7 +96,7 @@ const Announcements = () => {
                                 Politechnika Łódzka po raz kolejny przystąpiła do programu Legia Akademicka. Absolwenci
                                 LA, jako żołnierze rezerwy, mogą ubiegać się o powołanie do zawodowej służby wojskowej w
                                 różnych formacjach i rodzajach Sił Zbrojnych RP.
-                                <br/><span className={"announcements-posts-item-right-content-find-more"}>{t.Announcements.learnMore}</span>
+                                <br/><span className={"announcements-posts-item-right-content-find-more"}>{translation.Announcements.learnMore}</span>
                             </div>
                         </div>
                     </div>
@@ -116,7 +116,7 @@ const Announcements = () => {
                                 Politechnika Łódzka po raz kolejny przystąpiła do programu Legia Akademicka. Absolwenci
                                 LA, jako żołnierze rezerwy, mogą ubiegać się o powołanie do zawodowej służby wojskowej w
                                 różnych formacjach i rodzajach Sił Zbrojnych RP.
-                                <br/><span className={"announcements-posts-item-right-content-find-more"}>{t.Announcements.learnMore}</span>
+                                <br/><span className={"announcements-posts-item-right-content-find-more"}>{translation.Announcements.learnMore}</span>
                             </div>
                         </div>
                     </div>

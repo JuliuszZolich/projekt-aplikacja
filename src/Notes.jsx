@@ -7,14 +7,14 @@ import deleteicon from "./assets/bin.png"
 import modifyicon from "./assets/modify.png"
 
 const Notes = () => {
-    const {t} = useLanguage();
+    const {t: translation} = useLanguage();
     return (
         <>
             {TopBarAndSideMenu()}
             <div className={"notes-main-content"}>
                 <div className={"notes-search-input"}>
                     <img src={findicon} alt="finc-icon" title={"Znajdz"}/>
-                    <input type={"text"} name={"find"} placeholder={t.Notes.find}/>
+                    <input type={"text"} name={"find"} placeholder={translation.Notes.find}/>
                 </div>
                 <div className={"note"} title={"Dodaj notatke"}>
                     <div className={"add-note"}>

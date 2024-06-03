@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 import plTranslations from './translations/pl.json';
 import enTranslations from './translations/en.json';
 import PropTypes from 'prop-types';
@@ -11,7 +11,14 @@ const translations = {
 const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
-    const [language, setLanguage] = useState('pl');
+    const [language, setLanguage] = useState(() => {
+        const savedLanguage = localStorage.getItem('language');
+        return savedLanguage || 'pl';
+    });
+
+    useEffect(() => {
+        localStorage.setItem('language', language);
+    }, [language]);
 
     const toggleLanguage = () => {
         setLanguage((prevLanguage) => (prevLanguage === 'en' ? 'pl' : 'en'));

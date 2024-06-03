@@ -7,7 +7,7 @@ import postimage from "./assets/postimage.webp"
 import clockicon from "./assets/clock.png"
 
 const AnnouncementsPostPage = () => {
-    const {t} = useLanguage();
+    const {t: translation} = useLanguage();
     return (<>
         {TopBarAndSideMenu()}
         <div className={"post-page-main-content"}>
@@ -18,7 +18,7 @@ const AnnouncementsPostPage = () => {
                             <img src={backicon} alt="back-icon"/>
                         </div>
                         <div className={"back-button-text"}>
-                            {t.Announcements.back}
+                            {translation.Announcements.back}
                         </div>
                     </Link>
                 </div>

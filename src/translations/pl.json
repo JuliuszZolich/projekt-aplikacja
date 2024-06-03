@@ -1,7 +1,7 @@
 {
   "Homepage": {
     "timetable": "Terminarz",
-    "announcements": "Ogłoszenia",
+    "news": "Ogłoszenia",
     "tasksList": "Lista Zadań",
     "notes": "Notatki",
     "map": "Mapa",
@@ -83,7 +83,7 @@
     "back": "Powrót",
     "lectures": "Wykłady",
     "exercises": "Ćwiczenia",
-    "announcements": "Ogłoszenia",
+    "news": "Ogłoszenia",
     "grades": "Oceny",
     "lecture": "Wyklad",
     "lecturer": "Prowadzący:",
