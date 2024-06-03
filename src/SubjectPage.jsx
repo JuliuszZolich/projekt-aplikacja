@@ -2,6 +2,7 @@ import './Subjects.css'
 import TopBarAndSideMenu from "./TopBarAndSideMenu.jsx";
 import {Link} from "react-router-dom";
 import {changeScenery} from "./SubjectsFunctions.jsx"
+import {useLanguage} from './ChangeLanguage.jsx';
 import backicon from "./assets/arrowback.png"
 import fileicon from "./assets/file.png"
 import mailicon from "./assets/mail.png"
@@ -11,6 +12,7 @@ import locationicon from "./assets/location.png"
 import clockicon from "./assets/clock.png"
 
 const SubjectPage = () => {
+    const {t} = useLanguage();
     return (
         <>
             {TopBarAndSideMenu()}
@@ -22,21 +24,21 @@ const SubjectPage = () => {
                                 <img src={backicon} alt="back-icon"/>
                             </div>
                             <div className={"back-text"}>
-                                Powrót
+                                {t.Subjects.back}
                             </div>
                         </div>
                     </Link>
                     <div className={"subject-page-main-content-top-bar-item lectures"} onClick={() => changeScenery(1)}>
-                        Wykłady
+                        {t.Subjects.lectures}
                     </div>
                     <div className={"subject-page-main-content-top-bar-item exercises"}>
-                        Ćwiczenia
+                        {t.Subjects.exercises}
                     </div>
                     <div className={"subject-page-main-content-top-bar-item subjects-page-announcements"} onClick={() => changeScenery(2)}>
-                        Ogłoszenia
+                        {t.Subjects.announcements}
                     </div>
                     <div className={"subject-page-main-content-top-bar-item marks"} onClick={() => changeScenery(3)}>
-                        Oceny
+                        {t.Subjects.grades}
                     </div>
                     <div className={"subject-page-main-content-top-bar-subject-name"}>
                         Komunikacja Człowiek-Komputer
@@ -49,7 +51,7 @@ const SubjectPage = () => {
                                 <img src={fileicon} alt="download-file-icon"/>
                             </div>
                             <div className={"item-text"}>
-                                Wyklad 1
+                                {t.Subjects.lecture} 1
                             </div>
                         </div>
                         <div className={"subject-page-middle-content-lectures-left-item"}>
@@ -57,7 +59,7 @@ const SubjectPage = () => {
                                 <img src={fileicon} alt="download-file-icon"/>
                             </div>
                             <div className={"item-text"}>
-                                Wyklad 1
+                                {t.Subjects.lecture} 1
                             </div>
                         </div>
                         <div className={"subject-page-middle-content-lectures-left-item"}>
@@ -65,7 +67,7 @@ const SubjectPage = () => {
                                 <img src={fileicon} alt="download-file-icon"/>
                             </div>
                             <div className={"item-text"}>
-                                Wyklad 1
+                                {t.Subjects.lecture} 1
                             </div>
                         </div>
                         <div className={"subject-page-middle-content-lectures-left-item"}>
@@ -73,7 +75,7 @@ const SubjectPage = () => {
                                 <img src={fileicon} alt="download-file-icon"/>
                             </div>
                             <div className={"item-text"}>
-                                Wyklad 1
+                                {t.Subjects.lecture} 1
                             </div>
                         </div>
                         <div className={"subject-page-middle-content-lectures-left-item"}>
@@ -81,7 +83,7 @@ const SubjectPage = () => {
                                 <img src={fileicon} alt="download-file-icon"/>
                             </div>
                             <div className={"item-text"}>
-                                Wyklad 1
+                                {t.Subjects.lecture} 1
                             </div>
                         </div>
                         <div className={"subject-page-middle-content-lectures-left-item"}>
@@ -89,7 +91,7 @@ const SubjectPage = () => {
                                 <img src={fileicon} alt="download-file-icon"/>
                             </div>
                             <div className={"item-text"}>
-                                Wyklad 1
+                                {t.Subjects.lecture} 1
                             </div>
                         </div>
                         <div className={"subject-page-middle-content-lectures-left-item"}>
@@ -97,7 +99,7 @@ const SubjectPage = () => {
                                 <img src={fileicon} alt="download-file-icon"/>
                             </div>
                             <div className={"item-text"}>
-                                Wyklad 1
+                                {t.Subjects.lecture} 1
                             </div>
                         </div>
                         <div className={"subject-page-middle-content-lectures-left-item"}>
@@ -105,7 +107,7 @@ const SubjectPage = () => {
                                 <img src={fileicon} alt="download-file-icon"/>
                             </div>
                             <div className={"item-text"}>
-                                Wyklad 1
+                                {t.Subjects.lecture} 1
                             </div>
                         </div>
                         <div className={"subject-page-middle-content-lectures-left-item"}>
@@ -113,7 +115,7 @@ const SubjectPage = () => {
                                 <img src={fileicon} alt="download-file-icon"/>
                             </div>
                             <div className={"item-text"}>
-                                Wyklad 1
+                                {t.Subjects.lecture} 1
                             </div>
                         </div>
                         <div className={"subject-page-middle-content-lectures-left-item"}>
@@ -121,14 +123,14 @@ const SubjectPage = () => {
                                 <img src={fileicon} alt="download-file-icon"/>
                             </div>
                             <div className={"item-text"}>
-                                Wyklad 1
+                                {t.Subjects.lecture} 1
                             </div>
                         </div>
                     </div>
                     <div className={"subject-page-middle-content-lectures-right"}>
                         <div className={"teacher"}>
                             <div className={"header"}>
-                                Prowadzący:
+                                {t.Subjects.lecturer}
                             </div>
                             <div className={"teacher-name"}>
                                 lorem ipsum
@@ -136,7 +138,7 @@ const SubjectPage = () => {
                         </div>
                         <div className={"contact"}>
                             <div className={"header"}>
-                                Kontakt:
+                                {t.Subjects.contact}
                             </div>
                             <div className={"contact-img"}>
                                 <img src={mailicon} alt="mail-icon"/>
@@ -147,7 +149,7 @@ const SubjectPage = () => {
                         </div>
                         <div className={"subject-location"}>
                             <div className={"header"}>
-                                Lokalizacja:
+                                {t.Subjects.location}
                             </div>
                             <div className={"subject-location-item"}>
                                 <div className={"subject-location-item-img"}>
@@ -365,7 +367,7 @@ const SubjectPage = () => {
                         </div>
                         <div className={"marks-item-bottom"}>
                             <div className={"marks-item-bottom-text"}>
-                                Ocena:
+                                {t.Subjects.grade}
                             </div>
                             <div className={"marks-item-bottom-mark"}>
                                 4
@@ -387,7 +389,7 @@ const SubjectPage = () => {
                         </div>
                         <div className={"marks-item-bottom"}>
                             <div className={"marks-item-bottom-text"}>
-                                Ocena:
+                                {t.Subjects.grade}
                             </div>
                             <div className={"marks-item-bottom-mark"}>
                                 4
@@ -409,7 +411,7 @@ const SubjectPage = () => {
                         </div>
                         <div className={"marks-item-bottom"}>
                             <div className={"marks-item-bottom-text"}>
-                                Ocena:
+                                {t.Subjects.grade}
                             </div>
                             <div className={"marks-item-bottom-mark"}>
                                 4
@@ -431,7 +433,7 @@ const SubjectPage = () => {
                         </div>
                         <div className={"marks-item-bottom"}>
                             <div className={"marks-item-bottom-text"}>
-                                Ocena:
+                                {t.Subjects.grade}
                             </div>
                             <div className={"marks-item-bottom-mark"}>
                                 4
@@ -453,7 +455,7 @@ const SubjectPage = () => {
                         </div>
                         <div className={"marks-item-bottom"}>
                             <div className={"marks-item-bottom-text"}>
-                                Ocena:
+                                {t.Subjects.grade}
                             </div>
                             <div className={"marks-item-bottom-mark"}>
                                 4
@@ -475,7 +477,7 @@ const SubjectPage = () => {
                         </div>
                         <div className={"marks-item-bottom"}>
                             <div className={"marks-item-bottom-text"}>
-                                Ocena:
+                                {t.Subjects.grade}
                             </div>
                             <div className={"marks-item-bottom-mark"}>
                                 4
@@ -497,7 +499,7 @@ const SubjectPage = () => {
                         </div>
                         <div className={"marks-item-bottom"}>
                             <div className={"marks-item-bottom-text"}>
-                                Ocena:
+                                {t.Subjects.grade}
                             </div>
                             <div className={"marks-item-bottom-mark"}>
                                 4
@@ -519,7 +521,7 @@ const SubjectPage = () => {
                         </div>
                         <div className={"marks-item-bottom"}>
                             <div className={"marks-item-bottom-text"}>
-                                Ocena:
+                                {t.Subjects.grade}
                             </div>
                             <div className={"marks-item-bottom-mark"}>
                                 4
