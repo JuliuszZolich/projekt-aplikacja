@@ -17,7 +17,8 @@ public class NotesHandler implements HttpHandler {
 
     private void get_notes(HttpExchange t) throws IOException {
         String userID = t.getRequestHeaders().get("UserID").get(0);
-        String response = DBNotes.get_notes(userID);
+        String response = DBNotes.getNotes(userID);
+        System.out.println(response);
         t.sendResponseHeaders(200, response.length());
         OutputStream os = t.getResponseBody();
         os.write(response.getBytes());
@@ -28,7 +29,7 @@ public class NotesHandler implements HttpHandler {
         OutputStream os = t.getResponseBody();
         String userID = t.getRequestHeaders().get("UserID").get(0);
         String noteID = t.getRequestHeaders().get("Note-ID").get(0);
-        String response = DBNotes.get_note(userID, noteID);
+        String response = DBNotes.getNote(userID, noteID);
         t.sendResponseHeaders(200, response.length());
         os.write(response.getBytes());
         os.close();
@@ -40,7 +41,7 @@ public class NotesHandler implements HttpHandler {
         ObjectMapper mapper = new ObjectMapper();
         String body = new String(t.getRequestBody().readAllBytes());
         Note note = mapper.readValue(body, Note.class);
-        String id = DBNotes.add_note(userID, note.title, note.content);
+        String id = DBNotes.addNote(userID, note.title, note.content);
         t.sendResponseHeaders(200, id.length());
         os.write(id.getBytes());
         os.close();
@@ -51,7 +52,7 @@ public class NotesHandler implements HttpHandler {
         String userID = t.getRequestHeaders().get("UserID").get(0);
         String noteID = t.getRequestHeaders().get("Note-ID").get(0);
         System.out.println(noteID);
-        DBNotes.delete_note(userID, noteID);
+        DBNotes.deleteNote(userID, noteID);
         t.sendResponseHeaders(200, 0);
         os.close();
     }
@@ -63,7 +64,7 @@ public class NotesHandler implements HttpHandler {
         ObjectMapper mapper = new ObjectMapper();
         String body = new String(t.getRequestBody().readAllBytes());
         Note note = mapper.readValue(body, Note.class);
-        DBNotes.update_note(userID, noteID, note.title, note.content);
+        DBNotes.updateNote(userID, noteID, note.title, note.content);
         t.sendResponseHeaders(200, 0);
         os.close();
     }

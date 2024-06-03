@@ -10,13 +10,13 @@ import java.util.concurrent.ExecutionException;
 import static DBUtils.FirebaseUtils.*;
 
 public class DBNotes {
-    public static String get_notes(String userID) {
+    public static String getNotes(String userID) {
         System.out.println("Getting notes for user: " + userID);
         ApiFuture<QuerySnapshot> query = db.collection("notes")
-                .whereEqualTo("userID", userID)
+                .whereEqualTo("userid", Integer.parseInt(userID))
                 .get();
         StringBuilder json = new StringBuilder();
-        json.append("{ \"notes\": [");
+        json.append("{\"notes\": [");
         List<QueryDocumentSnapshot> listaQuery;
         try {
             listaQuery = query.get().getDocuments();
@@ -30,16 +30,16 @@ public class DBNotes {
                     .append("\"content\": \"").append(document.getString("content")).append("\"")
                     .append("}").append(",");
         }
-        json.delete(json.length() - 1, json.length());
+        if(!listaQuery.isEmpty()) json.delete(json.length() - 1, json.length());
         json.append("]}");
         return json.toString();
     }
 
-    public static String get_note(String userID, String noteID) {
+    public static String getNote(String userID, String noteID) {
         DocumentSnapshot document;
         try {
             DocumentReference docRef = db.collection("notes")
-                    .whereEqualTo("userID", userID)
+                    .whereEqualTo("userID", Integer.parseInt(userID))
                     .whereEqualTo("noteID", noteID)
                     .get()
                     .get()
@@ -61,17 +61,17 @@ public class DBNotes {
         }
     }
 
-    public static String add_note(String userID, String title, String content) {
+    public static String addNote(String userID, String title, String content) {
         DocumentReference docRef = db.collection("notes").document();
-        docRef.set(Map.of("title", title, "content", content, "userID", userID));
+        docRef.set(Map.of("title", title, "content", content, "userid", Integer.parseInt(userID)));
         return docRef.getId();
     }
 
-    public static void delete_note(String userID, String noteID) {
+    public static void deleteNote(String userID, String noteID) {
         System.out.println("Deleting note: " + noteID);
         try {
             db.collection("notes")
-                    .whereEqualTo("userID", userID)
+                    .whereEqualTo("userid", Integer.parseInt(userID))
                     .get()
                     .get()
                     .getDocuments()
@@ -85,7 +85,7 @@ public class DBNotes {
         }
     }
 
-    public static void update_note(String userID, String noteID, String title, String content) {
+    public static void updateNote(String userID, String noteID, String title, String content) {
         db.collection("notes")
                 .document(noteID)
                 .update(Map.of("userID",userID,"title", title, "content", content));
