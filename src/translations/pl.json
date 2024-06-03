@@ -1,5 +1,5 @@
 {
-  "menu": {
+  "Homepage": {
     "timetable": "Terminarz",
     "announcements": "Ogłoszenia",
     "tasksList": "Lista Zadań",
@@ -8,13 +8,13 @@
     "subjects": "Przedmioty",
     "settings": "Ustawienia"
   },
-  "topBar": {
+  "TopBar": {
     "day": "17",
     "month": "Maja",
     "year": "2024",
     "time": "15:00"
   },
-  "login": {
+  "Login": {
     "email": "E-mail:",
     "enterEmail": "Wprowadz e-mail",
     "password": "Hasło:",
@@ -22,5 +22,25 @@
     "forgotPassword": "Nie pamiętasz hasła?",
     "registration": "Zarejestruj się",
     "logIn": "Zaloguj"
+  },
+  "Register": {
+    "registration": "Rejestracja",
+    "step1": "Krok 1",
+    "step2": "Krok 2",
+    "step3": "Step 3",
+    "enterEmail": "Wpisz e-mail",
+    "enterPassword": "Wpisz Hasło",
+    "confirmPassword": "Potwierdz hasło",
+    "chooseFaculty": "Wybierz Wydział",
+    "chooseMajor": "Wybierz Kierunek",
+    "chooseYear": "Wybierz Rok",
+    "enterName": "Wpisz Imię",
+    "enterSurname": "Wpisz Nazwisko",
+    "enterPhoneNumber": "Wpisz Nr Telefonu",
+    "successful": "Rejestracja pomyślna",
+    "backToLogin": "Wróć do strony Logowania",
+    "back": "Cofnij",
+    "next": "Dalej",
+    "account": "Posiadam już konto."
   }
 }

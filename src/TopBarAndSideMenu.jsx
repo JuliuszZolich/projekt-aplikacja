@@ -1,5 +1,6 @@
-import {Link} from "react-router-dom";
-import {CloseMenu, OpenMenu, OpenFacilitiesMenu, CloseFacilitiesMenu} from "./TopBarAndmenuFunctions.jsx";
+import { Link } from "react-router-dom";
+import { CloseMenu, OpenMenu, OpenFacilitiesMenu, CloseFacilitiesMenu } from "./TopBarAndmenuFunctions.jsx";
+import { useLanguage } from './ChangeLanguage.jsx';
 import './TopBarAndSideMenu.css'
 import timetableicon from "./assets/timetable.png"
 import announcementsicon from "./assets/announcements.png"
@@ -21,6 +22,8 @@ import polandflag from "./assets/pl.png"
 import ukflag from "./assets/en.png"
 
 const TopBarAndSideMenu = () => {
+    const {setLanguage} = useLanguage();
+    const {t} = useLanguage();
     return (
         <>
             <div className={"on-click-menu"} id={"on-click-menu"}>
@@ -41,7 +44,7 @@ const TopBarAndSideMenu = () => {
                                 <img src={timetableicon} alt="time-table-icon"/>
                             </div>
                             <div className={"on-click-menu-middle-content-item-text"}>
-                                <p id={"on-click-menu-timetable"}>Terminarz</p>
+                                <p id={"on-click-menu-timetable"}>{t.Homepage.timetable}</p>
                             </div>
                         </div>
                     </Link>
@@ -52,7 +55,7 @@ const TopBarAndSideMenu = () => {
                                 <img src={taskslisticon} alt="task-list-icon"/>
                             </div>
                             <div className={"on-click-menu-middle-content-item-text"}>
-                                <p>Lista Zadań</p>
+                                <p>{t.Homepage.tasksList}</p>
                             </div>
                         </div>
                     </Link>
@@ -63,7 +66,7 @@ const TopBarAndSideMenu = () => {
                                 <img src={notesicon} alt="notes-icion"/>
                             </div>
                             <div className={"on-click-menu-middle-content-item-text"}>
-                                <p>Notatki</p>
+                                <p>{t.Homepage.notes}</p>
                             </div>
                         </div>
                     </Link>
@@ -74,7 +77,7 @@ const TopBarAndSideMenu = () => {
                                 <img src={announcementsicon} alt="announcements-icion"/>
                             </div>
                             <div className={"on-click-menu-middle-content-item-text"}>
-                                <p>Ogłoszenia</p>
+                                <p>{t.Homepage.announcements}</p>
                             </div>
                         </div>
                     </Link>
@@ -85,7 +88,7 @@ const TopBarAndSideMenu = () => {
                                 <img src={subjectsicon} alt="subjects-icion"/>
                             </div>
                             <div className={"on-click-menu-middle-content-item-text"}>
-                                <p>Przedmioty</p>
+                                <p>{t.Homepage.subjects}</p>
                             </div>
                         </div>
                     </Link>
@@ -96,7 +99,7 @@ const TopBarAndSideMenu = () => {
                                 <img src={mapicon} alt="map-icion"/>
                             </div>
                             <div className={"on-click-menu-middle-content-item-text"}>
-                                <p>Mapa</p>
+                                <p>{t.Homepage.map}</p>
                             </div>
                         </div>
                     </Link>
@@ -123,10 +126,10 @@ const TopBarAndSideMenu = () => {
                 <div className={"weather"}>
                     <div className={"weather-bar"}>
                         <div className={"weather-bar-date"}>
-                            <p>17 Maja 2024</p>
+                            <p>{t.TopBar.day} {t.TopBar.month} {t.TopBar.year}</p>
                         </div>
                         <div className={"weather-bar-time"}>
-                            <p>15:00</p>
+                            <p>{t.TopBar.time}</p>
                         </div>
                         <div className={"weather-bar-icon"}>
                             <img src={weathericon} alt="weather-icon"/>
@@ -159,14 +162,13 @@ const TopBarAndSideMenu = () => {
                         </div>
                         <div className={"facilities-content-line"}></div>
                         <div className={"language-pl"}>
-                            <img src={polandflag} alt="poland-flag" onClick={() => CloseFacilitiesMenu()}/>
+                            <img src={polandflag} alt="poland-flag" onClick={() => { setLanguage('pl'); CloseFacilitiesMenu(); }} />
                         </div>
                         <div className={"language-en"}>
-                            <img src={ukflag} alt="uk-flag"/>
+                            <img src={ukflag} alt="uk-flag" onClick={() => { setLanguage('en'); CloseFacilitiesMenu(); }} />
                         </div>
                     </div>
                 </div>
-
             </div>
         </>
     )

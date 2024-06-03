@@ -1,5 +1,5 @@
 {
-  "menu": {
+  "Homepage": {
     "timetable": "Timetable",
     "announcements": "Announcements",
     "tasksList": "Tasks List",
@@ -8,13 +8,13 @@
     "subjects": "Subjects",
     "settings": "Settings"
   },
-  "topBar": {
+  "TopBar": {
     "day": "17",
     "month": "May",
     "year": "2024",
     "time": "3:00 PM"
   },
-  "login": {
+  "Login": {
     "email": "E-mail:",
     "enterEmail": "Enter e-mail",
     "password": "Password:",
