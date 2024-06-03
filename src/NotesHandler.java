@@ -15,7 +15,7 @@ class Note {
 
 public class NotesHandler implements HttpHandler {
 
-    private void get_notes(HttpExchange t) throws IOException {
+    private void getNotes(HttpExchange t) throws IOException {
         String userID = t.getRequestHeaders().get("UserID").get(0);
         String response = DBNotes.getNotes(userID);
         System.out.println(response);
@@ -25,7 +25,7 @@ public class NotesHandler implements HttpHandler {
         os.close();
     }
 
-    private void get_note(HttpExchange t) throws IOException {
+    private void getNote(HttpExchange t) throws IOException {
         OutputStream os = t.getResponseBody();
         String userID = t.getRequestHeaders().get("UserID").get(0);
         String noteID = t.getRequestHeaders().get("Note-ID").get(0);
@@ -35,7 +35,7 @@ public class NotesHandler implements HttpHandler {
         os.close();
     }
 
-    private void add_note(HttpExchange t) throws IOException {
+    private void addNote(HttpExchange t) throws IOException {
         OutputStream os = t.getResponseBody();
         String userID = t.getRequestHeaders().get("UserID").get(0);
         ObjectMapper mapper = new ObjectMapper();
@@ -47,7 +47,7 @@ public class NotesHandler implements HttpHandler {
         os.close();
     }
 
-    private void delete_note(HttpExchange t) throws IOException {
+    private void deleteNote(HttpExchange t) throws IOException {
         OutputStream os = t.getResponseBody();
         String userID = t.getRequestHeaders().get("UserID").get(0);
         String noteID = t.getRequestHeaders().get("Note-ID").get(0);
@@ -57,7 +57,7 @@ public class NotesHandler implements HttpHandler {
         os.close();
     }
 
-    private void update_note(HttpExchange t) throws IOException {
+    private void updateNote(HttpExchange t) throws IOException {
         OutputStream os = t.getResponseBody();
         String userID = t.getRequestHeaders().get("UserID").get(0);
         String noteID = t.getRequestHeaders().get("Note-ID").get(0);
@@ -77,17 +77,17 @@ public class NotesHandler implements HttpHandler {
         t.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
         switch (t.getRequestHeaders().get("Action-Type").get(0)) {
             case "GET":
-                if (t.getRequestHeaders().get("Note-ID").get(0).equals("all")) get_notes(t);
-                else get_note(t);
+                if (t.getRequestHeaders().get("Note-ID").get(0).equals("all")) getNotes(t);
+                else getNote(t);
                 break;
             case "POST":
-                add_note(t);
+                addNote(t);
                 break;
             case "DELETE":
-                delete_note(t);
+                deleteNote(t);
                 break;
             case "UPDATE":
-                update_note(t);
+                updateNote(t);
                 break;
             default:
                 System.out.println("Invalid request: " + t.getRequestHeaders().get("Action-Type").get(0));
