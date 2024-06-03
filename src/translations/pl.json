@@ -27,13 +27,13 @@
     "registration": "Rejestracja",
     "step1": "Krok 1",
     "step2": "Krok 2",
-    "step3": "Step 3",
+    "step3": "Krok 3",
     "enterEmail": "Wpisz e-mail",
     "enterPassword": "Wpisz Hasło",
     "confirmPassword": "Potwierdz hasło",
-    "chooseFaculty": "Wybierz Wydział",
-    "chooseMajor": "Wybierz Kierunek",
-    "chooseYear": "Wybierz Rok",
+    "selectFaculty": "Wybierz Wydział",
+    "selectMajor": "Wybierz Kierunek",
+    "selectYear": "Wybierz Rok",
     "enterName": "Wpisz Imię",
     "enterSurname": "Wpisz Nazwisko",
     "enterPhoneNumber": "Wpisz Nr Telefonu",
@@ -42,5 +42,63 @@
     "back": "Cofnij",
     "next": "Dalej",
     "account": "Posiadam już konto."
+  },
+  "Timetable": {
+
+  },
+  "Announcements": {
+    "latest": "Najnowsze",
+    "oldest": "Najstarsze",
+    "lastWeek": "Ostatni Tydzień",
+    "lastMonth": "Ostatni Miesiąc",
+    "all": "Wszystkie",
+    "university": "Uczelniane",
+    "faculty": "Wydziałowe",
+    "studentCouncil": "Sam. Studencki",
+    "find": "Wyszukaj...",
+    "back": "Powrót"
+  },
+  "TasksList": {
+    "find": "Wyszukaj...",
+    "all": "Wszystkie",
+    "important": "Ważnene",
+    "active": "Aktywne",
+    "ended": "Zakończone",
+    "addItem": "Dodaj pozycję"
+  },
+  "Notes": {
+    "find": "Wyszukaj..."
+  },
+  "Map": {
+    "find": "Wpisz lokalizacje",
+    "building": "Budynek",
+    "campus": "Kampus",
+    "faculty": "Wydział",
+    "floor": "piętro"
+  },
+  "Subjects": {
+    "year": "Rok",
+    "semester": "Semestr",
+    "back": "Powrót",
+    "lectures": "Wykłady",
+    "exercises": "Ćwiczenia",
+    "announcements": "Ogłoszenia",
+    "grades": "Oceny",
+    "lecture": "Wyklad",
+    "lecturer": "Prowadzący:",
+    "contact": "Kontakt",
+    "location": "Lokalizacja:",
+    "grade": "Ocena:"
+  },
+  "Settings": {
+    "changeEmail": "Zmiana e-mail",
+    "newEmail": "Wpisz nowy e-mail",
+    "changePassword": "Zmiana hasła",
+    "currentPassword": "Wprowadź aktualne hasło",
+    "newPassword": "Wprowadź nowe hasło",
+    "confirmPassword": "Potwierdz hasło",
+    "mainLanguage": "Wybór głównego języka",
+    "pl": "Polski",
+    "en": "Angielski"
   }
 }

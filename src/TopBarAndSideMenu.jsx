@@ -22,8 +22,7 @@ import polandflag from "./assets/pl.png"
 import ukflag from "./assets/en.png"
 
 const TopBarAndSideMenu = () => {
-    const {setLanguage} = useLanguage();
-    const {t} = useLanguage();
+    const {t, setLanguage} = useLanguage();
     return (
         <>
             <div className={"on-click-menu"} id={"on-click-menu"}>

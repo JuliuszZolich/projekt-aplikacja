@@ -20,7 +20,85 @@
     "password": "Password:",
     "enterPassword": "Enter password",
     "forgotPassword": "Forgot password?",
-    "registration": "Sign in",
-    "logIn": "Log in"
+    "registration": "Register",
+    "logIn": "Log In"
+  },
+  "Register": {
+    "registration": "Registration",
+    "step1": "Step 1",
+    "step2": "Step 2",
+    "step3": "Step 3",
+    "enterEmail": "Enter email",
+    "enterPassword": "Enter password",
+    "confirmPassword": "Confirm password",
+    "selectFaculty": "Select Faculty",
+    "selectMajor": "Select Major",
+    "selectYear": "Select Year",
+    "enterName": "Enter Name",
+    "enterSurname": "Enter Surname",
+    "enterPhoneNumber": "Enter Phone Number",
+    "successful": "Registration successful",
+    "backToLogin": "Back to Login page",
+    "back": "Back",
+    "next": "Next",
+    "account": "I already have an account."
+  },
+  "Timetable": {
+
+  },
+  "Announcements": {
+    "latest": "Latest",
+    "oldest": "Oldest",
+    "lastWeek": "Last Week",
+    "lastMonth": "Last Month",
+    "all": "All",
+    "university": "University",
+    "faculty": "Faculty",
+    "studentCouncil": "Student Council",
+    "find": "Search...",
+    "back": "Back"
+  },
+  "TasksList": {
+    "find": "Search...",
+    "all": "All",
+    "important": "Important",
+    "active": "Active",
+    "ended": "Ended",
+    "addItem": "Add item"
+  },
+  "Notes": {
+    "find": "Search..."
+  },
+  "Map": {
+    "find": "Enter location",
+    "building": "Building",
+    "campus": "Campus",
+    "faculty": "Faculty",
+    "floor": "Floor"
+  },
+  "Subjects": {
+    "year": "Year",
+    "semester": "Semester",
+    "back": "Back",
+    "lectures": "Lectures",
+    "exercises": "Exercises",
+    "announcements": "Announcements",
+    "grades": "Grades",
+    "lecture": "Lecture",
+    "lecturer": "Lecturer:",
+    "contact": "Contact:",
+    "location": "Location:",
+    "grade": "Grade:"
+  },
+  "Settings": {
+    "changeEmail": "Change email",
+    "newEmail": "Enter new email",
+    "changePassword": "Change password",
+    "currentPassword": "Enter current password",
+    "newPassword": "Enter new password",
+    "confirmPassword": "Confirm password",
+    "mainLanguage": "Select main language",
+    "pl": "Polish",
+    "en": "English"
   }
 }

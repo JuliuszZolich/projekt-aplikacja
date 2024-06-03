@@ -1,59 +1,61 @@
-import "./Settings.css"
+import "./Settings.css";
 import TopBarAndSideMenu from "./TopBarAndSideMenu.jsx";
+import { useLanguage } from './ChangeLanguage.jsx';
 
 const Settings = () => {
-    return(
+    const {t, setLanguage} = useLanguage();
+    return (
         <>
-            {TopBarAndSideMenu()}
+            <TopBarAndSideMenu />
             <div className={"settings-main-content"}>
                 <div className={"settings-change-email"}>
                     <div className={"settings-title"}>
-                        Zmiana e-mail
+                        {t.Settings.changeEmail}
                     </div>
                     <div className={"settings-input"}>
-                        <input type="text" required/>
+                        <input type="text" required />
                         <div className={"settings-input-text"}>
-                            Wpisz nowy e-mail
+                            {t.Settings.newEmail}
                         </div>
                     </div>
                 </div>
                 <div className={"settings-change-password"}>
                     <div className={"settings-title"}>
-                        Zmiana hasła
+                        {t.Settings.changePassword}
                     </div>
                     <div className={"settings-input"}>
-                        <input type="password" required/>
+                        <input type="password" required />
                         <div className={"settings-input-text"}>
-                            Wprowadz aktualne hasło
+                            {t.Settings.currentPassword}
                         </div>
                     </div>
                     <div className={"settings-input"}>
-                        <input type="password" required/>
+                        <input type="password" required />
                         <div className={"settings-input-text"}>
-                            Wprowadz nowe hasło
+                            {t.Settings.newPassword}
                         </div>
                     </div>
                     <div className={"settings-input"}>
-                        <input type="password" required/>
+                        <input type="password" required />
                         <div className={"settings-input-text"}>
-                            Potwierdz hasło
+                            {t.Settings.confirmPassword}
                         </div>
                     </div>
                 </div>
                 <div className={"settings-set-main-language"}>
                     <div className={"settings-title"}>
-                        Wybór głównego języka
+                        {t.Settings.mainLanguage}
                     </div>
-                    <div className={"settings-button-pl"}>
-                         Polski
+                    <div className={"settings-button-pl"} onClick={() => setLanguage('pl')}>
+                        {t.Settings.pl}
                     </div>
-                    <div className={"settings-button-en"}>
-                        Angielski
+                    <div className={"settings-button-en"} onClick={() => setLanguage('en')}>
+                        {t.Settings.en}
                     </div>
                 </div>
             </div>
         </>
-    )
+    );
 }
 
 export default Settings;
