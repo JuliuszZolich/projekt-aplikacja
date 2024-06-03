@@ -1,11 +1,13 @@
 import TopBarAndSideMenu from "./TopBarAndSideMenu.jsx";
 import './Announcements.css'
 import {Link} from "react-router-dom";
+import {useLanguage} from './ChangeLanguage.jsx';
 import backicon from "./assets/arrowback.png"
 import postimage from "./assets/postimage.webp"
 import clockicon from "./assets/clock.png"
 
 const AnnouncementsPostPage = () => {
+    const {t} = useLanguage();
     return (<>
         {TopBarAndSideMenu()}
         <div className={"post-page-main-content"}>
@@ -16,7 +18,7 @@ const AnnouncementsPostPage = () => {
                             <img src={backicon} alt="back-icon"/>
                         </div>
                         <div className={"back-button-text"}>
-                            Powrót
+                            {t.Announcements.back}
                         </div>
                     </Link>
                 </div>

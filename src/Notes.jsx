@@ -1,18 +1,20 @@
 import './Notes.css'
 import TopBarAndSideMenu from "./TopBarAndSideMenu.jsx";
+import {useLanguage} from './ChangeLanguage.jsx';
 import findicon from "./assets/find.png"
 import addicon from "./assets/add.png"
 import deleteicon from "./assets/bin.png"
 import modifyicon from "./assets/modify.png"
 
 const Notes = () => {
+    const {t} = useLanguage();
     return (
         <>
             {TopBarAndSideMenu()}
             <div className={"notes-main-content"}>
                 <div className={"notes-search-input"}>
                     <img src={findicon} alt="finc-icon" title={"Znajdz"}/>
-                    <input type={"text"} name={"find"} placeholder={"Wyszukaj..."}/>
+                    <input type={"text"} name={"find"} placeholder={t.Notes.find}/>
                 </div>
                 <div className={"note"} title={"Dodaj notatke"}>
                     <div className={"add-note"}>

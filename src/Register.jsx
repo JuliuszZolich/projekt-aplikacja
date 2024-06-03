@@ -1,45 +1,47 @@
 import './Register.css'
 import {Link} from "react-router-dom";
+import {useLanguage} from './ChangeLanguage.jsx';
 import accepticon from "./assets/accept.png"
 
 const Register = () => {
+    const {t} = useLanguage();
     return (
         <>
             <div className={"register-main-content"}>
                 <div className={"register-panel"}>
                     <div className={"register-top-bar"}>
-                        Rejestracja
+                        {t.Register.registration}
                     </div>
                     <div className={"register-progress-bar"}>
                         <div className={"register-progress-bar-item step-one"}>
-                            Krok 1
+                            {t.Register.step1}
                         </div>
                         <div className={"progress-bar-line"}></div>
                         <div className={"register-progress-bar-item step-two"}>
-                            Krok 2
+                            {t.Register.step2}
                         </div>
                         <div className={"progress-bar-line"}></div>
                         <div className={"register-progress-bar-item step-three"}>
-                            Krok 3
+                            {t.Register.step3}
                         </div>
                     </div>
                     <div className={"register-middle-content-step-one"}>
                         <div className={"register-middle-content-item"}>
                             <input type="text" required/>
                             <div className={"register-input-text"}>
-                                Wpisz e-mail
+                                {t.Register.enterEmail}
                             </div>
                         </div>
                         <div className={"register-middle-content-item"}>
                             <input type="password" required/>
                             <div className={"register-input-text"}>
-                                Wpisz Hasło
+                                {t.Register.enterPassword}
                             </div>
                         </div>
                         <div className={"register-middle-content-item"}>
                             <input type="password" required/>
                             <div className={"register-input-text"}>
-                                Potwierdz hasło
+                                {t.Register.confirmPassword}
                             </div>
                         </div>
                     </div>
@@ -49,7 +51,7 @@ const Register = () => {
                                 <option value="default"></option>
                             </select>
                             <div className={"register-input-text"}>
-                                Wybierz Wydział
+                                {t.Register.selectFaculty}
                             </div>
                         </div>
                         <div className={"register-middle-content-item"}>
@@ -57,7 +59,7 @@ const Register = () => {
                                 <option value="default"></option>
                             </select>
                             <div className={"register-input-text"}>
-                                Wybierz Kierunek
+                                {t.Register.selectMajor}
                             </div>
                         </div>
                         <div className={"register-middle-content-item"}>
@@ -65,7 +67,7 @@ const Register = () => {
 
                             </select>
                             <div className={"register-input-text"}>
-                                Wybierz Rok
+                                {t.Register.selectYear}
                             </div>
                         </div>
                     </div>
@@ -73,19 +75,19 @@ const Register = () => {
                         <div className={"register-middle-content-item"}>
                             <input type="text" required/>
                             <div className={"register-input-text"}>
-                                Wpisz Imię
+                                {t.Register.enterName}
                             </div>
                         </div>
                         <div className={"register-middle-content-item"}>
                             <input type="text" required/>
                             <div className={"register-input-text"}>
-                                Wpisz Nazwisko
+                                {t.Register.enterSurname}
                             </div>
                         </div>
                         <div className={"register-middle-content-item"}>
                             <input type="text" required/>
                             <div className={"register-input-text"}>
-                                Wpisz Nr Telefonu
+                                {t.Register.enterPhoneNumber}
                             </div>
                         </div>
                     </div>
@@ -95,22 +97,22 @@ const Register = () => {
                         </div>
                         <div className={"register-middle-content-finished-text"}>
                             <Link to={'/projekt-aplikacja/login'}>
-                                Rejestracja pomyślna
+                                {t.Register.successful}
                                 <br/>
-                                Wróć do strony Logowania
+                                {t.Register.backToLogin}
                             </Link>
                         </div>
                     </div>
                     <div className={"register-bottom-bar"}>
                         <div className={"register-bottom-bar-back"}>
-                            Cofnij
+                            {t.Register.back}
                         </div>
                         <div className={"register-bottom-bar-next"}>
-                            Dalej
+                            {t.Register.next}
                         </div>
                         <div className={"register-bottom-bar-back-to-login-page"}>
                             <Link to={'/projekt-aplikacja/login'}>
-                                Posiadam już konto.
+                                {t.Register.account}
                             </Link>
                         </div>
                     </div>

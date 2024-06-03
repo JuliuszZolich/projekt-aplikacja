@@ -1,11 +1,14 @@
 import TopBarAndSideMenu from "./TopBarAndSideMenu.jsx";
 import './Taskslist.css'
+import {useLanguage} from './ChangeLanguage.jsx';
 import findicon from "./assets/find.png"
 import addicon from "./assets/add.png"
 import completedicon from "./assets/check.png"
 import favouriteicon from "./assets/star.png"
 import deleteicon from "./assets/bin.png"
+
 const Tasklist = () => {
+    const {t} = useLanguage();
     return(
         <>
             {TopBarAndSideMenu()}
@@ -13,21 +16,21 @@ const Tasklist = () => {
                 <div className={"tasks-list-top-bar"}>
                     <div className={"tasks-list-find"}>
                         <img src={findicon} alt="finc-icon" title={"Wyszukaj"}/>
-                        <input type={"text"} name={"find"} placeholder={"Wyszukaj..."}/>
+                        <input type={"text"} name={"find"} placeholder={t.TasksList.find}/>
                     </div>
                 </div>
                 <div className={"tasks-list-left-content"}>
                     <div className="tasks-list-left-content-item">
-                        Wszystkie
+                        {t.TasksList.all}
                     </div>
                     <div className="tasks-list-left-content-item">
-                        Ważnene
+                        {t.TasksList.important}
                     </div>
                     <div className="tasks-list-left-content-item">
-                        Aktywne
+                        {t.TasksList.active}
                     </div>
                     <div className="tasks-list-left-content-item">
-                        Zakończone
+                        {t.TasksList.done}
                     </div>
                 </div>
                 <div className="tasks-list-line"></div>
@@ -37,7 +40,7 @@ const Tasklist = () => {
                             <img src={addicon} alt="add-icon"/>
                         </div>
                         <div className={"tasks-list-right-content-add-text"}>
-                            Dodaj pozycję
+                            {t.TasksList.addItem}
                         </div>
                     </div>
                     <div className={"tasks-list-right-content-item"}>

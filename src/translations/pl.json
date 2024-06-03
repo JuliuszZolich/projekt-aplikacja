@@ -56,14 +56,15 @@
     "faculty": "Wydziałowe",
     "studentCouncil": "Sam. Studencki",
     "find": "Wyszukaj...",
+    "learnMore": "dowiedz się wiecej >",
     "back": "Powrót"
   },
   "TasksList": {
     "find": "Wyszukaj...",
     "all": "Wszystkie",
-    "important": "Ważnene",
+    "important": "Ważne",
     "active": "Aktywne",
-    "ended": "Zakończone",
+    "done": "Zakończone",
     "addItem": "Dodaj pozycję"
   },
   "Notes": {
