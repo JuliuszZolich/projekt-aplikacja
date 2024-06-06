@@ -119,7 +119,7 @@ const Notes = () => {
             <div className={"notes-main-content"}>
                 <div className={"notes-search-input"}>
                     <img src={findicon} alt="finc-icon" title={"Znajdz"}/>
-                    <input type={"text"} name={"find"} placeholder={translation.Notes.find}/>
+                    <input type={"text"} name={"find"} className={"home-p"} placeholder={translation.Notes.find}/>
                 </div>
                 <div className={"note"} title={"Dodaj notatke"}  onClick={() => {
                     if(document.getElementsByClassName("add-note-window")[0].style.display === "none") {

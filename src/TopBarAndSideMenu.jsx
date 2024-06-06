@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-import { CloseMenu, OpenMenu, OpenFacilitiesMenu, CloseFacilitiesMenu } from "./TopBarAndmenuFunctions.jsx";
-import { useLanguage } from './ChangeLanguage.jsx';
+import {Link} from "react-router-dom";
+import {CloseMenu, OpenMenu, OpenFacilitiesMenu, CloseFacilitiesMenu, ChangeFontSize, setFontSize} from "./TopBarAndmenuFunctions.jsx";
+import {useLanguage} from './ChangeLanguage.jsx';
 import './TopBarAndSideMenu.css'
 import timetableicon from "./assets/timetable.png"
 import announcementsicon from "./assets/announcements.png"
@@ -20,9 +20,19 @@ import notificationicon from "./assets/notification.png"
 import facilitesicon from "./assets/facilities.png"
 import polandflag from "./assets/pl.png"
 import ukflag from "./assets/en.png"
+import {useEffect, useRef} from "react";
 
 const TopBarAndSideMenu = () => {
     const {t: translation, setLanguage} = useLanguage();
+
+    const didEffectRun = useRef(false);
+    useEffect(() => {
+        if (!didEffectRun.current) {
+            setFontSize();
+            didEffectRun.current = true;
+        }
+    }, []);
+
     return (
         <>
             <div className={"on-click-menu"} id={"on-click-menu"}>
@@ -43,7 +53,8 @@ const TopBarAndSideMenu = () => {
                                 <img src={timetableicon} alt="time-table-icon"/>
                             </div>
                             <div className={"on-click-menu-middle-content-item-text"}>
-                                <p id={"on-click-menu-timetable"}>{translation.Homepage.timetable}</p>
+                                <p className={"side-menu-p"}
+                                   id={"on-click-menu-timetable"}>{translation.Homepage.timetable}</p>
                             </div>
                         </div>
                     </Link>
@@ -54,7 +65,7 @@ const TopBarAndSideMenu = () => {
                                 <img src={taskslisticon} alt="task-list-icon"/>
                             </div>
                             <div className={"on-click-menu-middle-content-item-text"}>
-                                <p>{translation.Homepage.tasksList}</p>
+                                <p className={"side-menu-p"}>{translation.Homepage.tasksList}</p>
                             </div>
                         </div>
                     </Link>
@@ -65,7 +76,7 @@ const TopBarAndSideMenu = () => {
                                 <img src={notesicon} alt="notes-icion"/>
                             </div>
                             <div className={"on-click-menu-middle-content-item-text"}>
-                                <p>{translation.Homepage.notes}</p>
+                                <p className={"side-menu-p"}>{translation.Homepage.notes}</p>
                             </div>
                         </div>
                     </Link>
@@ -76,7 +87,7 @@ const TopBarAndSideMenu = () => {
                                 <img src={announcementsicon} alt="announcements-icion"/>
                             </div>
                             <div className={"on-click-menu-middle-content-item-text"}>
-                                <p>{translation.Homepage.news}</p>
+                                <p className={"side-menu-p"}>{translation.Homepage.news}</p>
                             </div>
                         </div>
                     </Link>
@@ -87,7 +98,7 @@ const TopBarAndSideMenu = () => {
                                 <img src={subjectsicon} alt="subjects-icion"/>
                             </div>
                             <div className={"on-click-menu-middle-content-item-text"}>
-                                <p>{translation.Homepage.subjects}</p>
+                                <p className={"side-menu-p"}>{translation.Homepage.subjects}</p>
                             </div>
                         </div>
                     </Link>
@@ -98,7 +109,7 @@ const TopBarAndSideMenu = () => {
                                 <img src={mapicon} alt="map-icion"/>
                             </div>
                             <div className={"on-click-menu-middle-content-item-text"}>
-                                <p>{translation.Homepage.map}</p>
+                                <p className={"side-menu-p"}>{translation.Homepage.map}</p>
                             </div>
                         </div>
                     </Link>
@@ -125,10 +136,10 @@ const TopBarAndSideMenu = () => {
                 <div className={"weather"}>
                     <div className={"weather-bar"}>
                         <div className={"weather-bar-date"}>
-                            <p>{translation.TopBar.day} {translation.TopBar.month} {translation.TopBar.year}</p>
+                            <p className={"top-bar-p"}>{translation.TopBar.day} {translation.TopBar.month} {translation.TopBar.year}</p>
                         </div>
                         <div className={"weather-bar-time"}>
-                            <p>{translation.TopBar.time}</p>
+                            <p className={"top-bar-p"}>{translation.TopBar.time}</p>
                         </div>
                         <div className={"weather-bar-icon"}>
                             <img src={weathericon} alt="weather-icon"/>
@@ -150,21 +161,36 @@ const TopBarAndSideMenu = () => {
                     <div className={"triangle"}></div>
                     <div className={"triangle-2"}></div>
                     <div className={"facilities-content"}>
-                        <div className={"fonts font-small"}>
+                        <div className={"fonts font-small"} onClick={() => {
+                            ChangeFontSize('s');
+                            CloseFacilitiesMenu();
+                        }}>
                             A
                         </div>
-                        <div className={"fonts font-medium"}>
+                        <div className={"fonts font-medium"} onClick={() => {
+                            ChangeFontSize('m');
+                            CloseFacilitiesMenu();
+                        }}>
                             A
                         </div>
-                        <div className={"fonts font-large"}>
+                        <div className={"fonts font-large"} onClick={() => {
+                            ChangeFontSize('l');
+                            CloseFacilitiesMenu();
+                        }}>
                             A
                         </div>
                         <div className={"facilities-content-line"}></div>
                         <div className={"language-pl"}>
-                            <img src={polandflag} alt="poland-flag" onClick={() => { setLanguage('pl'); CloseFacilitiesMenu(); }} />
+                            <img src={polandflag} alt="poland-flag" onClick={() => {
+                                setLanguage('pl');
+                                CloseFacilitiesMenu();
+                            }}/>
                         </div>
                         <div className={"language-en"}>
-                            <img src={ukflag} alt="uk-flag" onClick={() => { setLanguage('en'); CloseFacilitiesMenu(); }} />
+                            <img src={ukflag} alt="uk-flag" onClick={() => {
+                                setLanguage('en');
+                                CloseFacilitiesMenu();
+                            }}/>
                         </div>
                     </div>
                 </div>

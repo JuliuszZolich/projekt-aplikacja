@@ -17,7 +17,7 @@ const AnnouncementsPostPage = () => {
                         <div className={"back-button-image"}>
                             <img src={backicon} alt="back-icon"/>
                         </div>
-                        <div className={"back-button-text"}>
+                        <div className={"back-button-text side-menu-p"}>
                             {translation.Announcements.back}
                         </div>
                     </Link>

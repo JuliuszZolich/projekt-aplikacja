@@ -16,7 +16,7 @@ const MapResult = () => {
                         <Link to={"/projekt-aplikacja/mapresult"}>
                             <img src={findicon} alt="finc-icon" title={"Znajdz"}/>
                         </Link>
-                        <input type={"text"} name={"find"} placeholder={translation.Map.find}/>
+                        <input type={"text"} name={"find"} className={"home-p"} placeholder={translation.Map.find}/>
                     </div>
                     <div className={"map-result-iframe"}>
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2420.217857163626!2d21.744122993635052!3d52.656042454209754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471f037c7bd4657d%3A0xeedc3814c5cb25d3!2sAgroturystyka%20Na%20Zadupiu!5e0!3m2!1spl!2spl!4v1716817941116!5m2!1spl!2spl"></iframe>
@@ -27,8 +27,8 @@ const MapResult = () => {
                         <img src={locationimage} alt="location-image"/>
                     </div>
                     <div className={"map-result-location-name"}>
-                        <p>{translation.Map.building} A10 ul. Wólczańska 175, {translation.Map.campus} A</p>
-                        <p>{translation.Map.faculty} EEIA, II {translation.Map.floor}</p>
+                        <p className={"medium-text-p"}>{translation.Map.building} A10 ul. Wólczańska 175, {translation.Map.campus} A</p>
+                        <p className={"medium-text-p"}>{translation.Map.faculty} EEIA, II {translation.Map.floor}</p>
                     </div>
                 </div>
             </div>
