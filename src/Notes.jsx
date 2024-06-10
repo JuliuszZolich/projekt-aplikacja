@@ -7,7 +7,6 @@ import deleteicon from "./assets/bin.png"
 import modifyicon from "./assets/modify.png"
 import {useEffect, useState} from "react";
 
-//todo Zmienna globalna XD
 let currentNoteId = 0;
 
 
@@ -38,19 +37,26 @@ async function get_notes(user_id, setNotes) {
         throw new Error(`HTTP error! status: ${response.status}`);
     }
     let data = await response.json();
+
+    function show_note_widow(note) {
+        if(document.getElementsByClassName("delete-window")[0].style.display !== "none") return;
+        currentNoteId = note["id"];
+        document.getElementsByClassName("note-window")[0].style.display = "block";
+        document.getElementsByClassName("note-window-top-bar-title")[0].textContent = note["title"];
+        document.getElementsByClassName("note-window-text")[0].innerHTML = note["content"].replace(new RegExp("\\n", "g"),"<br />");
+    }
+
     setNotes(data["notes"].map(note => {
             return (
-                <div className={'note'} key={note["id"]} onClick={() => {
-                    currentNoteId = note["id"];
-                    document.getElementsByClassName("note-window")[0].style.display = "block";
-                    document.getElementsByClassName("note-window-top-bar-title")[0].textContent = note["title"];
-                    document.getElementsByClassName("note-window-text")[0].textContent = note["content"];
+                <div className={'note'} key={note["id"]}  onClick={() => {
+                    show_note_widow(note);
                 }}>
                     <div className={'note-title'}>
                         {note["title"]}
                     </div>
-                    <div className={'note-content'}>
-                        {note["content"]}
+                    <div className={'note-content'}
+                         dangerouslySetInnerHTML={{ __html: note["content"].replace(new RegExp("\\n", "g"),"<br />") }
+                    }>
                     </div>
                     <div className={'note-delete'} onClick={() => {
                         if(document.getElementsByClassName("delete-window")[0].style.display === "none") {
@@ -66,7 +72,7 @@ async function get_notes(user_id, setNotes) {
                         }
 
                     }}>
-                        <img src={'./src/assets/bin.png'} alt='note-delete-icon'/>
+                        <img src={deleteicon} alt='note-delete-icon'/>
                     </div>
                 </div>
             );
@@ -107,7 +113,6 @@ let headers = new Headers();
 
 const Notes = () => {
     const [notes, setNotes] = useState([]);
-
     useEffect(() => {
         //todo Ustawić user_id na podstawie ciasteczek
         get_notes("0", setNotes).then(() => console.log("Notes loaded"));
@@ -118,7 +123,7 @@ const Notes = () => {
             {TopBarAndSideMenu()}
             <div className={"notes-main-content"}>
                 <div className={"notes-search-input"}>
-                    <img src={findicon} alt="finc-icon" title={"Znajdz"}/>
+                    <img src={findicon} alt="find-icon" title={"Znajdz"}/>
                     <input type={"text"} name={"find"} placeholder={translation.Notes.find}/>
                 </div>
                 <div className={"note"} title={"Dodaj notatke"}  onClick={() => {
@@ -163,7 +168,7 @@ const Notes = () => {
                         </div>
                     </div>
                 </div>
-                <div className={"add-note-window"}>
+                <div className={"add-note-window"} style={{"display": "none"}}>
                     <div className={"add-note-window-top-bar"}>
                         Dodaj notatke
                     </div>
@@ -218,7 +223,7 @@ const Notes = () => {
                         </div>
                     </div>
                 </div>
-                <div className={"delete-window"}>
+                <div className={"delete-window"} style={{"display": "none"}}>
                     <div className={"delete-window-text"}>
                         Czy napewno chcesz <span className={"delete-window-text-decoration"}>usunąć</span> notatke?
                     </div>
@@ -238,7 +243,8 @@ const Notes = () => {
                         </div>
                         <div className={"modify-note-window-top-bar-delete"} onClick={()=>{
                             document.getElementsByClassName("modify-note-window")[0].style.display = "none";
-
+                            document.getElementsByClassName("note-window")[0].style.display = "none";
+                            remove_note(currentNoteId);
                         }}>
                             <img src={deleteicon} alt="delete-icon" title={"Usuń"}/>
                         </div>
