@@ -135,20 +135,20 @@ const Tasklist = () => {
                 <div className={"tasks-list-top-bar"}>
                     <div className={"tasks-list-find"}>
                         <img src={findicon} alt="finc-icon" title={"Wyszukaj"}/>
-                        <input type={"text"} name={"find"} placeholder={translation.TasksList.find}/>
+                        <input type={"text"} name={"find"} className={"top-bar-p"} placeholder={translation.TasksList.find}/>
                     </div>
                 </div>
                 <div className={"tasks-list-left-content"}>
-                    <div className="tasks-list-left-content-item">
+                    <div className="tasks-list-left-content-item tasks-list-p">
                         {translation.TasksList.all}
                     </div>
-                    <div className="tasks-list-left-content-item">
+                    <div className="tasks-list-left-content-item tasks-list-p">
                         {translation.TasksList.important}
                     </div>
-                    <div className="tasks-list-left-content-item">
+                    <div className="tasks-list-left-content-item tasks-list-p">
                         {translation.TasksList.active}
                     </div>
-                    <div className="tasks-list-left-content-item">
+                    <div className="tasks-list-left-content-item tasks-list-p">
                         {translation.TasksList.done}
                     </div>
                 </div>
@@ -158,7 +158,7 @@ const Tasklist = () => {
                         <div className={"tasks-list-right-content-add-img"}>
                             <img src={addicon} alt="add-icon"/>
                         </div>
-                        <div className={"tasks-list-right-content-add-text"}>
+                        <div className={"tasks-list-right-content-add-text home-p"}>
                             {translation.TasksList.addItem}
                         </div>
                     </div>
@@ -170,13 +170,13 @@ const Tasklist = () => {
                             </div>
                         </div>
                         <div className={"tasks-list-right-content-item-middle"}>
-                            <div className={"right-content-item-middle-date"}>
+                            <div className={"right-content-item-middle-date medium-text-p"}>
                                 24.05.2024
                             </div>
-                            <div className={"right-content-item-middle-title"}>
+                            <div className={"right-content-item-middle-title tasks-list-p"}>
                                 Projekt KCK Figma
                             </div>
-                            <div className={"right-content-item-middle-text"}>
+                            <div className={"right-content-item-middle-text top-bar-p"}>
                                 Wykonać makiete cyfrową aplikacji
                             </div>
                         </div>

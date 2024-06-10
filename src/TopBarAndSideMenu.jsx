@@ -1,6 +1,20 @@
-import { Link } from "react-router-dom";
-import { CloseMenu, OpenMenu, OpenFacilitiesMenu, CloseFacilitiesMenu } from "./TopBarAndmenuFunctions.jsx";
-import { useLanguage } from './ChangeLanguage.jsx';
+import {Link} from "react-router-dom";
+import {
+    CloseMenu,
+    OpenMenu,
+    OpenFacilitiesMenu,
+    CloseFacilitiesMenu,
+    ChangeFontSize,
+    setFontSize,
+    widget,
+    OpenNotifications,
+    CloseNotifications,
+    OpenUserMenu,
+    CloseUserMenu
+}
+from
+"./TopBarAndmenuFunctions.jsx";
+import {useLanguage} from './ChangeLanguage.jsx';
 import './TopBarAndSideMenu.css'
 import timetableicon from "./assets/timetable.png"
 import announcementsicon from "./assets/announcements.png"
@@ -15,14 +29,37 @@ import reporticon from "./assets/report.png"
 import askicon from "./assets/ask.png"
 import usericon from "./assets/user.png"
 import menuicon from "./assets/h-icon.png"
-import weathericon from "./assets/weather-sunny.png"
 import notificationicon from "./assets/notification.png"
 import facilitesicon from "./assets/facilities.png"
 import polandflag from "./assets/pl.png"
 import ukflag from "./assets/en.png"
+import {useEffect, useRef} from "react";
 
 const TopBarAndSideMenu = () => {
     const {t: translation, setLanguage} = useLanguage();
+    const didEffectRun = useRef(false);
+    useEffect(() => {
+        widget();
+        OpenMenu();
+        CloseMenu();
+        OpenFacilitiesMenu();
+        OpenNotifications();
+        CloseNotifications();
+        OpenUserMenu();
+        CloseUserMenu();
+    }, []);
+    useEffect(() => {
+        setInterval(() => {
+            widget();
+        }, 20000);
+    }, []);
+    useEffect(() => {
+        if (!didEffectRun.current) {
+            setFontSize();
+            didEffectRun.current = true;
+        }
+    }, []);
+
     return (
         <>
             <div className={"on-click-menu"} id={"on-click-menu"}>
@@ -32,7 +69,7 @@ const TopBarAndSideMenu = () => {
                             <img src={homeicon} alt="homepage-icon"/>
                         </Link>
                     </div>
-                    <div onClick={() => CloseMenu()} className={"on-click-menu-top-bar-close-menu"}>
+                    <div className={"on-click-menu-top-bar-close-menu"}>
                         <img src={closemenuicon} alt="close-menu-icon"/>
                     </div>
                 </div>
@@ -43,7 +80,8 @@ const TopBarAndSideMenu = () => {
                                 <img src={timetableicon} alt="time-table-icon"/>
                             </div>
                             <div className={"on-click-menu-middle-content-item-text"}>
-                                <p id={"on-click-menu-timetable"}>{translation.Homepage.timetable}</p>
+                                <p className={"side-menu-p"}
+                                   id={"on-click-menu-timetable"}>{translation.Homepage.timetable}</p>
                             </div>
                         </div>
                     </Link>
@@ -54,7 +92,7 @@ const TopBarAndSideMenu = () => {
                                 <img src={taskslisticon} alt="task-list-icon"/>
                             </div>
                             <div className={"on-click-menu-middle-content-item-text"}>
-                                <p>{translation.Homepage.tasksList}</p>
+                                <p className={"side-menu-p"}>{translation.Homepage.tasksList}</p>
                             </div>
                         </div>
                     </Link>
@@ -65,7 +103,7 @@ const TopBarAndSideMenu = () => {
                                 <img src={notesicon} alt="notes-icion"/>
                             </div>
                             <div className={"on-click-menu-middle-content-item-text"}>
-                                <p>{translation.Homepage.notes}</p>
+                                <p className={"side-menu-p"}>{translation.Homepage.notes}</p>
                             </div>
                         </div>
                     </Link>
@@ -76,7 +114,7 @@ const TopBarAndSideMenu = () => {
                                 <img src={announcementsicon} alt="announcements-icion"/>
                             </div>
                             <div className={"on-click-menu-middle-content-item-text"}>
-                                <p>{translation.Homepage.news}</p>
+                                <p className={"side-menu-p"}>{translation.Homepage.news}</p>
                             </div>
                         </div>
                     </Link>
@@ -87,7 +125,7 @@ const TopBarAndSideMenu = () => {
                                 <img src={subjectsicon} alt="subjects-icion"/>
                             </div>
                             <div className={"on-click-menu-middle-content-item-text"}>
-                                <p>{translation.Homepage.subjects}</p>
+                                <p className={"side-menu-p"}>{translation.Homepage.subjects}</p>
                             </div>
                         </div>
                     </Link>
@@ -98,7 +136,7 @@ const TopBarAndSideMenu = () => {
                                 <img src={mapicon} alt="map-icion"/>
                             </div>
                             <div className={"on-click-menu-middle-content-item-text"}>
-                                <p>{translation.Homepage.map}</p>
+                                <p className={"side-menu-p"}>{translation.Homepage.map}</p>
                             </div>
                         </div>
                     </Link>
@@ -119,52 +157,166 @@ const TopBarAndSideMenu = () => {
                 </div>
             </div>
             <div className={"top-bar"} id={"top-bar"}>
-                <div onClick={() => OpenMenu()} className={"hamburger-menu"}>
+                <div className={"hamburger-menu"}>
                     <img src={menuicon} alt="hamburger-menu-icon"/>
                 </div>
                 <div className={"weather"}>
                     <div className={"weather-bar"}>
                         <div className={"weather-bar-date"}>
-                            <p>{translation.TopBar.day} {translation.TopBar.month} {translation.TopBar.year}</p>
+                            <p id={"weather-bar-date"}></p>
                         </div>
                         <div className={"weather-bar-time"}>
-                            <p>{translation.TopBar.time}</p>
+                            <p id={"weather-bar-time"}></p>
                         </div>
                         <div className={"weather-bar-icon"}>
-                            <img src={weathericon} alt="weather-icon"/>
+                            <img id={"weather-icon"} alt="weather-icon"/>
                         </div>
                     </div>
                 </div>
                 <div className={"user-icon"}>
-                    <Link to={"/projekt-aplikacja/login"}>
-                        <img src={usericon} alt="user-icon"/>
-                    </Link>
+                    <img src={usericon} alt="user-icon" className={"open-user-menu"}/>
+                    <div className={"user-menu"}>
+                        <div className={"user-menu-item"}>
+                            Mój Profil
+                        </div>
+                        <div className={"user-menu-item"}>
+                            Ustawienia
+                        </div>
+                        <div className={"user-menu-item user-menu-item-last"}>
+                            Wyloguj
+                        </div>
+                    </div>
                 </div>
                 <div className={"notification-bell"}>
-                    <img src={notificationicon} alt="notifications-icon"/>
+                    <img src={notificationicon} alt="notifications-icon" className={"open-notifications"}/>
+                    <div className={"drop-down-notifications"}>
+                        <div className={"drop-down-notifications-item"}>
+                            <div className={"drop-down-notifications-item-text"}>
+                                KOLOS AOI
+                            </div>
+                            <div className={"drop-down-notifications-item-when"}>
+                                Po jutrze!
+                            </div>
+                        </div>
+                        <div className={"drop-down-notifications-item-line"}></div>
+                        <div className={"drop-down-notifications-item"}>
+                            <div className={"drop-down-notifications-item-text"}>
+                                KOLOS AOI
+                            </div>
+                            <div className={"drop-down-notifications-item-when"}>
+                                Po jutrze!
+                            </div>
+                        </div>
+                        <div className={"drop-down-notifications-item-line"}></div>
+                        <div className={"drop-down-notifications-item"}>
+                            <div className={"drop-down-notifications-item-text"}>
+                                KOLOS AOI
+                            </div>
+                            <div className={"drop-down-notifications-item-when"}>
+                                Po jutrze!
+                            </div>
+                        </div>
+                        <div className={"drop-down-notifications-item-line"}></div>
+                        <div className={"drop-down-notifications-item"}>
+                            <div className={"drop-down-notifications-item-text"}>
+                                KOLOS AOI
+                            </div>
+                            <div className={"drop-down-notifications-item-when"}>
+                                Po jutrze!
+                            </div>
+                        </div>
+                        <div className={"drop-down-notifications-item-line"}></div>
+                        <div className={"drop-down-notifications-item"}>
+                            <div className={"drop-down-notifications-item-text"}>
+                                KOLOS AOI
+                            </div>
+                            <div className={"drop-down-notifications-item-when"}>
+                                Po jutrze!
+                            </div>
+                        </div>
+                        <div className={"drop-down-notifications-item-line"}></div>
+                        <div className={"drop-down-notifications-item"}>
+                            <div className={"drop-down-notifications-item-text"}>
+                                KOLOS AOI
+                            </div>
+                            <div className={"drop-down-notifications-item-when"}>
+                                Po jutrze!
+                            </div>
+                        </div>
+                        <div className={"drop-down-notifications-item-line"}></div>
+                        <div className={"drop-down-notifications-item"}>
+                            <div className={"drop-down-notifications-item-text"}>
+                                KOLOS AOI
+                            </div>
+                            <div className={"drop-down-notifications-item-when"}>
+                                Po jutrze!
+                            </div>
+                        </div>
+                        <div className={"drop-down-notifications-item-line"}></div>
+                        <div className={"drop-down-notifications-item"}>
+                            <div className={"drop-down-notifications-item-text"}>
+                                KOLOS AOI
+                            </div>
+                            <div className={"drop-down-notifications-item-when"}>
+                                Po jutrze!
+                            </div>
+                        </div>
+                        <div className={"drop-down-notifications-item-line"}></div>
+                        <div className={"drop-down-notifications-item"}>
+                            <div className={"drop-down-notifications-item-text"}>
+                                KOLOS AOI
+                            </div>
+                            <div className={"drop-down-notifications-item-when"}>
+                                Po jutrze!
+                            </div>
+                        </div>
+                        <div className={"drop-down-notifications-item-line"}></div>
+                        <div className={"drop-down-notifications-item"}>
+                            <div className={"drop-down-notifications-item-text"}>
+                                KOLOS AOI
+                            </div>
+                            <div className={"drop-down-notifications-item-when"}>
+                                Po jutrze!
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div className={"facilities"}>
-                    <img src={facilitesicon} alt="facilities-icon" onClick={() => OpenFacilitiesMenu()}/>
-                </div>
-                <div className={"drop-down-menu-facilities"} id={"facilities-drop-down-menu"}>
-                    <div className={"triangle"}></div>
-                    <div className={"triangle-2"}></div>
-                    <div className={"facilities-content"}>
-                        <div className={"fonts font-small"}>
-                            A
-                        </div>
-                        <div className={"fonts font-medium"}>
-                            A
-                        </div>
-                        <div className={"fonts font-large"}>
-                            A
-                        </div>
-                        <div className={"facilities-content-line"}></div>
-                        <div className={"language-pl"}>
-                            <img src={polandflag} alt="poland-flag" onClick={() => { setLanguage('pl'); CloseFacilitiesMenu(); }} />
-                        </div>
-                        <div className={"language-en"}>
-                            <img src={ukflag} alt="uk-flag" onClick={() => { setLanguage('en'); CloseFacilitiesMenu(); }} />
+                    <img src={facilitesicon} alt="facilities-icon" className={"open"}/>
+                    <div className={"drop-down-menu-facilities"} id={"facilities-drop-down-menu"}>
+                        <div className={"facilities-content"}>
+                            <div className={"fonts font-small close-facilities-menu"} onClick={() => {
+                                ChangeFontSize('s');
+                                CloseFacilitiesMenu();
+                            }}>
+                                A
+                            </div>
+                            <div className={"fonts font-medium close-facilities-menu"} onClick={() => {
+                                ChangeFontSize('m');
+                                CloseFacilitiesMenu();
+                            }}>
+                                A
+                            </div>
+                            <div className={"fonts font-large close-facilities-menu"} onClick={() => {
+                                ChangeFontSize('l');
+                                CloseFacilitiesMenu();
+                            }}>
+                                A
+                            </div>
+                            <div className={"facilities-content-line"}></div>
+                            <div className={"language-pl"}>
+                                <img className={"close-facilities-menu"} src={polandflag} alt="poland-flag"
+                                     onClick={() => {
+                                         setLanguage('pl');
+                                         CloseFacilitiesMenu();
+                                     }}/>
+                            </div>
+                            <div className={"language-en"}>
+                                <img className={"close-facilities-menu"} src={ukflag} alt="uk-flag" onClick={() => {
+                                    setLanguage('en');
+                                    CloseFacilitiesMenu();
+                                }}/>
+                            </div>
                         </div>
                     </div>
                 </div>

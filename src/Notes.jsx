@@ -113,6 +113,7 @@ let headers = new Headers();
 
 const Notes = () => {
     const [notes, setNotes] = useState([]);
+
     useEffect(() => {
         //todo Ustawić user_id na podstawie ciasteczek
         get_notes("0", setNotes).then(() => console.log("Notes loaded"));
@@ -123,8 +124,8 @@ const Notes = () => {
             {TopBarAndSideMenu()}
             <div className={"notes-main-content"}>
                 <div className={"notes-search-input"}>
-                    <img src={findicon} alt="find-icon" title={"Znajdz"}/>
-                    <input type={"text"} name={"find"} placeholder={translation.Notes.find}/>
+                    <img src={findicon} alt="finc-icon" title={"Znajdz"}/>
+                    <input type={"text"} name={"find"} className={"home-p"} placeholder={translation.Notes.find}/>
                 </div>
                 <div className={"note"} title={"Dodaj notatke"}  onClick={() => {
                     if(document.getElementsByClassName("add-note-window")[0].style.display === "none") {

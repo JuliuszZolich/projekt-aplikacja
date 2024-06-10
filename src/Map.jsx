@@ -14,7 +14,7 @@ const Map = () => {
                     <Link to={"/projekt-aplikacja/mapresult"}>
                         <img src={findicon} alt="finc-icon" title={"Znajdz"}/>
                     </Link>
-                    <input type={"text"} name={"find"} placeholder={translation.Map.find}/>
+                    <input type={"text"} name={"find"} className={"home-p"} placeholder={translation.Map.find}/>
                 </div>
             </div>
         </>

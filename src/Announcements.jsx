@@ -14,20 +14,23 @@ const Announcements = () => {
             <div className={"announcements-main-content"}>
                 <div className={"announcements-top-bar"}>
                     <select name={"interval"} id="interval">
-                        <option value={"latest"}>{translation.Announcements.latest}</option>
-                        <option value={"oldest"}>{translation.Announcements.oldest}</option>
-                        <option value={"last-week"}>{translation.Announcements.lastWeek}</option>
-                        <option value={"last-month"}>{translation.Announcements.lastMonth}</option>
+                        <option value={"latest"} className={"top-bar-p"}>{translation.Announcements.latest}</option>
+                        <option value={"oldest"} className={"top-bar-p"}>{translation.Announcements.oldest}</option>
+                        <option value={"last-week"} className={"top-bar-p"}>{translation.Announcements.lastWeek}</option>
+                        <option value={"last-month"}
+                                className={"top-bar-p"}>{translation.Announcements.lastMonth}</option>
                     </select>
                     <select name={"types"} id="types">
-                        <option value={"all"}>{translation.Announcements.all}</option>
-                        <option value={"univerity"}>{translation.Announcements.university}</option>
-                        <option value={"faculty"}>{translation.Announcements.faculty}</option>
-                        <option value={"student-council"}>{translation.Announcements.studentCouncil}</option>
+                        <option value={"all"} className={"top-bar-p"}>{translation.Announcements.all}</option>
+                        <option value={"univerity"}
+                                className={"top-bar-p"}>{translation.Announcements.university}</option>
+                        <option value={"faculty"} className={"top-bar-p"}>{translation.Announcements.faculty}</option>
+                        <option value={"student-council"}
+                                className={"top-bar-p"}>{translation.Announcements.studentCouncil}</option>
                     </select>
                     <div className={"announcements-find"}>
                         <img src={findicon} alt="find-icon" title={"Wyszukaj"}/>
-                        <input type={"text"} name={"find"} placeholder={translation.Announcements.find}/>
+                        <input type={"text"} name={"find"} className={"top-bar-p"} placeholder={translation.Announcements.find}/>
                     </div>
                 </div>
                 <div className={"announcements-posts"}>
@@ -39,13 +42,13 @@ const Announcements = () => {
                         </Link>
                         <div className={"announcements-posts-item-right-content"}>
                             <Link to={'/projekt-aplikacja/announcementspostpage'}>
-                                <div className={"announcements-posts-item-right-content-title"}>
+                                <div className={"announcements-posts-item-right-content-title header-p"}>
                                     Na PŁ rekrutacja do programu Legia Akademicka
                                 </div>
                             </Link>
                             <div className={"announcements-posts-item-right-content-publication-date"}>
                                 <img src={clockicon} alt="clock-image"/>
-                                <span>26.04.2024</span>
+                                <span className={"home-p"}>26.04.2024</span>
                             </div>
                             <div className={"announcements-posts-item-right-content-text"}>
                                 Politechnika Łódzka po raz kolejny przystąpiła do programu Legia Akademicka. Absolwenci
@@ -65,18 +68,19 @@ const Announcements = () => {
                             <img src={postimage} alt="post-image"/>
                         </div>
                         <div className={"announcements-posts-item-right-content"}>
-                            <div className={"announcements-posts-item-right-content-title"}>
+                            <div className={"announcements-posts-item-right-content-title header-p"}>
                                 Na PŁ rekrutacja do programu Legia Akademicka
                             </div>
                             <div className={"announcements-posts-item-right-content-publication-date"}>
                                 <img src={clockicon} alt="clock-image"/>
-                                <span>26.04.2024</span>
+                                <span className={"home-p"}>26.04.2024</span>
                             </div>
                             <div className={"announcements-posts-item-right-content-text"}>
                                 Politechnika Łódzka po raz kolejny przystąpiła do programu Legia Akademicka. Absolwenci
                                 LA, jako żołnierze rezerwy, mogą ubiegać się o powołanie do zawodowej służby wojskowej w
                                 różnych formacjach i rodzajach Sił Zbrojnych RP.
-                                <br/><span className={"announcements-posts-item-right-content-find-more"}>{translation.Announcements.learnMore}</span>
+                                <br/><span
+                                className={"announcements-posts-item-right-content-find-more"}>{translation.Announcements.learnMore}</span>
                             </div>
                         </div>
                     </div>
@@ -85,18 +89,19 @@ const Announcements = () => {
                             <img src={postimage} alt="post-image"/>
                         </div>
                         <div className={"announcements-posts-item-right-content"}>
-                            <div className={"announcements-posts-item-right-content-title"}>
+                            <div className={"announcements-posts-item-right-content-title header-p"}>
                                 Na PŁ rekrutacja do programu Legia Akademicka
                             </div>
                             <div className={"announcements-posts-item-right-content-publication-date"}>
                                 <img src={clockicon} alt="clock-image"/>
-                                <span>26.04.2024</span>
+                                <span className={"home-p"}>26.04.2024</span>
                             </div>
                             <div className={"announcements-posts-item-right-content-text"}>
                                 Politechnika Łódzka po raz kolejny przystąpiła do programu Legia Akademicka. Absolwenci
                                 LA, jako żołnierze rezerwy, mogą ubiegać się o powołanie do zawodowej służby wojskowej w
                                 różnych formacjach i rodzajach Sił Zbrojnych RP.
-                                <br/><span className={"announcements-posts-item-right-content-find-more"}>{translation.Announcements.learnMore}</span>
+                                <br/><span
+                                className={"announcements-posts-item-right-content-find-more"}>{translation.Announcements.learnMore}</span>
                             </div>
                         </div>
                     </div>
@@ -105,18 +110,19 @@ const Announcements = () => {
                             <img src={postimage} alt="post-image"/>
                         </div>
                         <div className={"announcements-posts-item-right-content"}>
-                            <div className={"announcements-posts-item-right-content-title"}>
+                            <div className={"announcements-posts-item-right-content-title header-p"}>
                                 Na PŁ rekrutacja do programu Legia Akademicka
                             </div>
                             <div className={"announcements-posts-item-right-content-publication-date"}>
                                 <img src={clockicon} alt="clock-image"/>
-                                <span>26.04.2024</span>
+                                <span className={"home-p"}>26.04.2024</span>
                             </div>
                             <div className={"announcements-posts-item-right-content-text"}>
                                 Politechnika Łódzka po raz kolejny przystąpiła do programu Legia Akademicka. Absolwenci
                                 LA, jako żołnierze rezerwy, mogą ubiegać się o powołanie do zawodowej służby wojskowej w
                                 różnych formacjach i rodzajach Sił Zbrojnych RP.
-                                <br/><span className={"announcements-posts-item-right-content-find-more"}>{translation.Announcements.learnMore}</span>
+                                <br/><span
+                                className={"announcements-posts-item-right-content-find-more"}>{translation.Announcements.learnMore}</span>
                             </div>
                         </div>
                     </div>

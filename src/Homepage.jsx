@@ -10,6 +10,8 @@ import mapicon from "./assets/map.png"
 import subjectsicon from "./assets/subjects.png"
 import settingsicon from "./assets/settings.png"
 import logoimage from "./assets/logo.png"
+import {useEffect} from "react";
+import {widget} from "./TopBarAndmenuFunctions.jsx";
 
 const Homepage = () => {
     const {t: translation} = useLanguage();
@@ -21,43 +23,43 @@ const Homepage = () => {
                     <Link to={"/projekt-aplikacja/timetable"}>
                         <div className={"menu-item timetable"}>
                             <img src={timetableicon} alt="timetable-icon"/>
-                            <p>{translation.Homepage.timetable}</p>
+                            <p className={"home-p"}>{translation.Homepage.timetable}</p>
                         </div>
                     </Link>
                     <Link to={"/projekt-aplikacja/announcements"}>
                         <div className={"menu-item announcements"}>
                             <img src={announcementsicon} alt="announcements-icon"/>
-                            <p>{translation.Homepage.news}</p>
+                            <p className={"home-p"}>{translation.Homepage.news}</p>
                         </div>
                     </Link>
                     <Link to={"/projekt-aplikacja/taskslist"}>
                         <div className={"menu-item tasks-list"}>
                             <img src={taskslisticon} alt="tasks-list-icon"/>
-                            <p>{translation.Homepage.tasksList}</p>
+                            <p className={"home-p"}>{translation.Homepage.tasksList}</p>
                         </div>
                     </Link>
                     <Link to={"/projekt-aplikacja/notes"}>
                         <div className={"menu-item notes"}>
                             <img src={notesicon} alt="notes-icon"/>
-                            <p>{translation.Homepage.notes}</p>
+                            <p className={"home-p"}>{translation.Homepage.notes}</p>
                         </div>
                     </Link>
                     <Link to={"/projekt-aplikacja/map"}>
                         <div className={"menu-item map"}>
                             <img src={mapicon} alt="map-icon"/>
-                            <p>{translation.Homepage.map}</p>
+                            <p className={"home-p"}>{translation.Homepage.map}</p>
                         </div>
                     </Link>
                     <Link to={"/projekt-aplikacja/subjects"}>
                         <div className={"menu-item subjects"}>
                             <img src={subjectsicon} alt="subjects-icon"/>
-                            <p>{translation.Homepage.subjects}</p>
+                            <p className={"home-p"}>{translation.Homepage.subjects}</p>
                         </div>
                     </Link>
                     <Link to={"/projekt-aplikacja/settings"} className={"menu-item-last"}>
                         <div className={"menu-item settings"}>
                             <img src={settingsicon} alt="settings-icon"/>
-                            <p>{translation.Homepage.settings}</p>
+                            <p className={"home-p"}>{translation.Homepage.settings}</p>
                         </div>
                     </Link>
                 </div>
