@@ -1,15 +1,134 @@
-import TopBarAndSideMenu from "./TopBarAndSideMenu.jsx";
 import './Taskslist.css'
+import TopBarAndSideMenu from "./TopBarAndSideMenu.jsx";
 import {useLanguage} from './ChangeLanguage.jsx';
 import findicon from "./assets/find.png"
 import addicon from "./assets/add.png"
 import completedicon from "./assets/check.png"
 import favouriteicon from "./assets/star.png"
 import deleteicon from "./assets/bin.png"
+import {useEffect, useState} from "react";
+
+let currentTaskId = 0;
+
+async function getTasks(user_id, setTasks) {
+    let headers = new Headers();
+    headers.append("UserID", user_id);
+    headers.append("Action-Type", "GET");
+    headers.append("Task-ID", "all");
+    const response = await fetch("http://localhost:8001/tasklist", {
+        method: "GET",
+        headers: headers,
+    });
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    let data = await response.json();
+    console.log(data);
+
+    setTasks(data["tasklist"].map(task => {
+            return (
+                <div className={"tasks-list-right-content-item"} key={task["id"]}>
+                    <div className={"tasks-list-right-content-item-left"}>
+                        <div className={"circle"}>
+                            {(() => {
+                                if (task["completed"] === "true") {
+                                    return <img src={completedicon} alt="check-icon"/>;
+                                } else {
+                                    return <img src={completedicon} alt="check-icon"/>;
+                                }
+                            })()
+                            }
+                        </div>
+                    </div>
+                    <div className={"tasks-list-right-content-item-middle"}>
+                        <div className={"right-content-item-middle-date"}>
+                            {(()=>{
+                                const date = task["date"].split(" ")
+                                let day = date[2];
+                                const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                                let month = months.indexOf(date[1]) + 1;
+                                let year = date[5];
+                                let hours = date[3].split(":")[0];
+                                let minutes = date[3].split(":")[1];
+                                if (day < 10) {
+                                    day = "0" + day;
+                                }
+                                if (month < 10) {
+                                    month = "0" + month;
+                                }
+                                return `${day}.${month}.${year} ${hours}:${minutes}`;
+                            })()}
+                        </div>
+                        <div className={"right-content-item-middle-title"}>
+                            {task["title"]}
+                        </div>
+                        <div className={"right-content-item-middle-text"}>
+                            {task["content"]}
+                        </div>
+                    </div>
+                    <div className={"tasks-list-right-content-item-right"}>
+                        <div className={"right-content-item-right-star"}>
+                            {(() => {
+                                if (task["favourite"] === "true") {
+                                    return <img src={favouriteicon} alt="star - icon" title={"Dodaj do Ważnych"}/>;
+                                } else {
+                                    return <img src={favouriteicon} alt="star - icon" title={"Usuń z Ważnych"}/>;
+                                }
+                            })()
+                            }
+                        </div>
+                        <div className={"right-content-item-right-delete"}>
+                            <img src={deleteicon} alt="delete-icon" title={"Usuń Zadanie"}/>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+    ));
+}
+
+async function remove_task(task_id) {
+    let headers = new Headers();
+    headers.append("Note-ID", note_id);
+    headers.append("Action-Type", "DELETE");
+    const response = await fetch("http://localhost:8001/tasklist", {
+        method: "DELETE",
+        headers: headers,
+    });
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    document.getElementsByClassName("delete-window")[0].style.display = "none";
+    window.location.reload();
+}
+
+async function add_task(title, content, date) {
+    let headers = new Headers();
+    headers.append("Action-Type", "POST");
+    headers.append("Content-Type", "application/json");
+    const response = await fetch("http://localhost:8001/tasklist", {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify({
+            title: title,
+            content: content,
+            date: date,
+        }),
+    });
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    window.location.reload();
+}
 
 const Tasklist = () => {
+    const [tasks, setTasks] = useState([]);
+    useEffect(() => {
+        //todo Ustawić user_id na podstawie ciasteczek
+        getTasks("0", setTasks).then(() => console.log("Tasks loaded"));
+    }, []);
     const {t: translation} = useLanguage();
-    return(
+    return (
         <>
             {TopBarAndSideMenu()}
             <div className={"tasks-list-main-content"}>
@@ -43,188 +162,7 @@ const Tasklist = () => {
                             {translation.TasksList.addItem}
                         </div>
                     </div>
-                    <div className={"tasks-list-right-content-item"}>
-                        <div className={"tasks-list-right-content-item-left"}>
-                            <div className={"circle"}>
-                                <img src={completedicon} alt="check-icon"/>
-                            </div>
-                        </div>
-                        <div className={"tasks-list-right-content-item-middle"}>
-                            <div className={"right-content-item-middle-date"}>
-                                24.05.2024
-                            </div>
-                            <div className={"right-content-item-middle-title"}>
-                                Projekt KCK Figma
-                            </div>
-                            <div className={"right-content-item-middle-text"}>
-                                Wykonać makiete cyfrową aplikacji
-                            </div>
-                        </div>
-                        <div className={"tasks-list-right-content-item-right"}>
-                            <div className={"right-content-item-right-star"}>
-                                <img src={favouriteicon} alt="star-icon" title={"Dodaj do Ważnych"}/>
-                            </div>
-                            <div className={"right-content-item-right-delete"}>
-                                <img src={deleteicon} alt="delete-icon" title={"Usuń Zadanie"}/>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={"tasks-list-right-content-item"}>
-                        <div className={"tasks-list-right-content-item-left"}>
-                            <div className={"circle"}>
-                                <img src={completedicon} alt="check-icon"/>
-                            </div>
-                        </div>
-                        <div className={"tasks-list-right-content-item-middle"}>
-                            <div className={"right-content-item-middle-date"}>
-                                24.05.2024
-                            </div>
-                            <div className={"right-content-item-middle-title"}>
-                                Projekt KCK Figma
-                            </div>
-                            <div className={"right-content-item-middle-text"}>
-                                Wykonać makiete cyfrową aplikacji
-                            </div>
-                        </div>
-                        <div className={"tasks-list-right-content-item-right"}>
-                            <div className={"right-content-item-right-star"}>
-                                <img src={favouriteicon} alt="star-icon" title={"Dodaj do Ważnych"}/>
-                            </div>
-                            <div className={"right-content-item-right-delete"}>
-                                <img src={deleteicon} alt="delete-icon" title={"Usuń Zadanie"}/>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={"tasks-list-right-content-item"}>
-                        <div className={"tasks-list-right-content-item-left"}>
-                            <div className={"circle"}>
-                                <img src={completedicon} alt="check-icon"/>
-                            </div>
-                        </div>
-                        <div className={"tasks-list-right-content-item-middle"}>
-                            <div className={"right-content-item-middle-date"}>
-                                24.05.2024
-                            </div>
-                            <div className={"right-content-item-middle-title"}>
-                                Projekt KCK Figma
-                            </div>
-                            <div className={"right-content-item-middle-text"}>
-                                Wykonać makiete cyfrową aplikacji
-                            </div>
-                        </div>
-                        <div className={"tasks-list-right-content-item-right"}>
-                            <div className={"right-content-item-right-star"}>
-                                <img src={favouriteicon} alt="star-icon" title={"Dodaj do Ważnych"}/>
-                            </div>
-                            <div className={"right-content-item-right-delete"}>
-                                <img src={deleteicon} alt="delete-icon" title={"Usuń Zadanie"}/>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={"tasks-list-right-content-item"}>
-                        <div className={"tasks-list-right-content-item-left"}>
-                            <div className={"circle"}>
-                                <img src={completedicon} alt="check-icon"/>
-                            </div>
-                        </div>
-                        <div className={"tasks-list-right-content-item-middle"}>
-                            <div className={"right-content-item-middle-date"}>
-                                24.05.2024
-                            </div>
-                            <div className={"right-content-item-middle-title"}>
-                                Projekt KCK Figma
-                            </div>
-                            <div className={"right-content-item-middle-text"}>
-                                Wykonać makiete cyfrową aplikacji
-                            </div>
-                        </div>
-                        <div className={"tasks-list-right-content-item-right"}>
-                            <div className={"right-content-item-right-star"}>
-                                <img src={favouriteicon} alt="star-icon" title={"Dodaj do Ważnych"}/>
-                            </div>
-                            <div className={"right-content-item-right-delete"}>
-                                <img src={deleteicon} alt="delete-icon" title={"Usuń Zadanie"}/>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={"tasks-list-right-content-item"}>
-                        <div className={"tasks-list-right-content-item-left"}>
-                            <div className={"circle"}>
-                                <img src={completedicon} alt="check-icon"/>
-                            </div>
-                        </div>
-                        <div className={"tasks-list-right-content-item-middle"}>
-                            <div className={"right-content-item-middle-date"}>
-                                24.05.2024
-                            </div>
-                            <div className={"right-content-item-middle-title"}>
-                                Projekt KCK Figma
-                            </div>
-                            <div className={"right-content-item-middle-text"}>
-                                Wykonać makiete cyfrową aplikacji
-                            </div>
-                        </div>
-                        <div className={"tasks-list-right-content-item-right"}>
-                            <div className={"right-content-item-right-star"}>
-                                <img src={favouriteicon} alt="star-icon" title={"Dodaj do Ważnych"}/>
-                            </div>
-                            <div className={"right-content-item-right-delete"}>
-                                <img src={deleteicon} alt="delete-icon" title={"Usuń Zadanie"}/>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={"tasks-list-right-content-item"}>
-                        <div className={"tasks-list-right-content-item-left"}>
-                            <div className={"circle"}>
-                                <img src={completedicon} alt="check-icon"/>
-                            </div>
-                        </div>
-                        <div className={"tasks-list-right-content-item-middle"}>
-                            <div className={"right-content-item-middle-date"}>
-                                24.05.2024
-                            </div>
-                            <div className={"right-content-item-middle-title"}>
-                                Projekt KCK Figma
-                            </div>
-                            <div className={"right-content-item-middle-text"}>
-                                Wykonać makiete cyfrową aplikacji
-                            </div>
-                        </div>
-                        <div className={"tasks-list-right-content-item-right"}>
-                            <div className={"right-content-item-right-star"}>
-                                <img src={favouriteicon} alt="star-icon" title={"Dodaj do Ważnych"}/>
-                            </div>
-                            <div className={"right-content-item-right-delete"}>
-                                <img src={deleteicon} alt="delete-icon" title={"Usuń Zadanie"}/>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={"tasks-list-right-content-item"}>
-                        <div className={"tasks-list-right-content-item-left"}>
-                            <div className={"circle"}>
-                                <img src={completedicon} alt="check-icon"/>
-                            </div>
-                        </div>
-                        <div className={"tasks-list-right-content-item-middle"}>
-                            <div className={"right-content-item-middle-date"}>
-                                24.05.2024
-                            </div>
-                            <div className={"right-content-item-middle-title"}>
-                                Projekt KCK Figma
-                            </div>
-                            <div className={"right-content-item-middle-text"}>
-                                Wykonać makiete cyfrową aplikacji
-                            </div>
-                        </div>
-                        <div className={"tasks-list-right-content-item-right"}>
-                            <div className={"right-content-item-right-star"}>
-                                <img src={favouriteicon} alt="star-icon" title={"Dodaj do Ważnych"}/>
-                            </div>
-                            <div className={"right-content-item-right-delete"}>
-                                <img src={deleteicon} alt="delete-icon" title={"Usuń Zadanie"}/>
-                            </div>
-                        </div>
-                    </div>
+                    {tasks}
                     <div className={"tasks-list-right-content-item"}>
                         <div className={"tasks-list-right-content-item-left"}>
                             <div className={"circle"}>
