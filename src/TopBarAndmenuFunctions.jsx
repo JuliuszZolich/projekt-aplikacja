@@ -1,19 +1,81 @@
+import sun from './assets/widget/sun.png'
+import moon from './assets/widget/moon.png'
+import cloudymoon from './assets/widget/cloudy-moon.png'
+import cloudysun from './assets/widget/cloudy-sun.png'
+import clouds from './assets/widget/clouds.png'
+import rain from './assets/widget/rain.png'
+import thunderstorm from './assets/widget/thunderstorm.png'
+import snowing from './assets/widget/snowing.png'
+import mist from './assets/widget/mist.png'
+
 export function OpenMenu() {
-    document.getElementById("on-click-menu").style.marginLeft = '0';
-    document.getElementById("on-click-menu").style.display = 'block';
+    document.querySelector(".hamburger-menu").addEventListener("click", () => {
+        document.querySelector('.on-click-menu').style.animationName = "show-side-menu";
+        setTimeout(() => {
+            document.querySelector('.on-click-menu').classList.add("show-side-menu");
+        }, 100);
+    });
 }
 
 export function CloseMenu() {
-    document.getElementById("on-click-menu").style.marginLeft = '-30%';
-    document.getElementById("on-click-menu").style.display = 'none';
+    document.querySelector('.on-click-menu-top-bar-close-menu').addEventListener("click", () => {
+        document.querySelector('.on-click-menu').style.animationName = "hide-side-menu";
+        setTimeout(() => {
+            document.querySelector('.on-click-menu').classList.remove("show-side-menu");
+        }, 500);
+    });
 }
 
 export function OpenFacilitiesMenu() {
-    document.getElementById("facilities-drop-down-menu").style.display = 'block'
+    document.querySelector('.open').addEventListener("click", () => {
+        document.querySelector('.drop-down-menu-facilities').style.animationName = "show-facilities-menu";
+        setTimeout(() => {
+            document.querySelector('.drop-down-menu-facilities').classList.add("show-facilities-menu");
+        }, 100);
+    });
 }
 
 export function CloseFacilitiesMenu() {
-    document.getElementById("facilities-drop-down-menu").style.display = 'none'
+    document.querySelector('.drop-down-menu-facilities').style.animationName = "hide-facilities-menu";
+    setTimeout(() => {
+        document.querySelector('.drop-down-menu-facilities').classList.remove("show-facilities-menu");
+    }, 500);
+}
+
+export function OpenNotifications() {
+    document.querySelector('.open-notifications').addEventListener("click", () => {
+        document.querySelector('.drop-down-notifications').style.animationName = "show-notifications";
+        setTimeout(() => {
+            document.querySelector('.drop-down-notifications').classList.add("show-notifications");
+        }, 100);
+    });
+}
+
+export function CloseNotifications() {
+    document.querySelector('.drop-down-notifications-item-text').addEventListener("click", () => {
+        document.querySelector('.drop-down-notifications').style.animationName = "hide-notifications";
+        setTimeout(() => {
+            document.querySelector('.drop-down-notifications').classList.remove("show-notifications");
+        }, 500);
+    });
+}
+
+export function OpenUserMenu() {
+    document.querySelector('.open-user-menu').addEventListener("click", () => {
+        document.querySelector('.user-menu').style.animationName = "show-user-menu";
+        setTimeout(() => {
+            document.querySelector('.user-menu').classList.add("show-user-menu");
+        }, 100);
+    });
+}
+
+export function CloseUserMenu() {
+    document.querySelector('.user-menu-item').addEventListener("click", () => {
+        document.querySelector('.user-menu').style.animationName = "hide-user-menu";
+        setTimeout(() => {
+            document.querySelector('.user-menu').classList.remove("show-user-menu");
+        }, 500);
+    });
 }
 
 let flag = 0;
@@ -95,4 +157,99 @@ export function setFontSize() {
         flag = 0;
         ChangeFontSize('s');
     }
+}
+
+let language = "pl-PL"
+let dayPart = 0;
+let weather;
+let description;
+let lon;
+let lat;
+let data;
+
+export function getCurrentDate() {
+    data = new Date().toLocaleDateString(language, {day: '2-digit', month: 'long', year: 'numeric'});
+    document.getElementById("weather-bar-date").innerHTML = data;
+}
+
+export function getCurrentTime() {
+    let date = new Date();
+    let hour = date.getHours();
+    let minutes = date.getMinutes();
+    document.getElementById("weather-bar-time").innerHTML = date.toLocaleTimeString(language, {
+        hour: '2-digit',
+        minute: "2-digit",
+        hour12: false
+    });
+    if (hour === 0 && minutes === 0) {
+        getCurrentDate();
+    }
+    if (hour >= 8 && hour <= 20) {
+        dayPart = 0;
+    } else {
+        dayPart = 1;
+    }
+}
+
+async function getCurrentWeather() {
+    const url = 'https://geolocation-db.com/json/';
+    await fetch(url)
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            lon = data.longitude;
+            lat = data.latitude;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=789f15dc022d7efb66b70c8c09986075`)
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            weather = data.weather[0].main.toLowerCase();
+            description = data.weather[0].description.toLowerCase();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    if (weather === "clear") {
+        if (dayPart === 0) {
+            document.getElementById("weather-icon").src = sun;
+        } else {
+            document.getElementById("weather-icon").src = moon;
+        }
+    } else if (weather === "clouds") {
+        if (dayPart === 0) {
+            if (description === "few clouds") {
+                document.getElementById("weather-icon").src = cloudysun;
+            } else {
+                document.getElementById("weather-icon").src = clouds;
+            }
+        } else {
+            if (description === "few clouds") {
+                document.getElementById("weather-icon").src = cloudymoon;
+            } else {
+                document.getElementById("weather-icon").src = clouds;
+            }
+        }
+    } else if (weather === "drizzle" || weather === "rain") {
+        document.getElementById("weather-icon").src = rain;
+    } else if (weather === "thunderstorm") {
+        document.getElementById("weather-icon").src = thunderstorm;
+    } else if (weather === "snow") {
+        document.getElementById("weather-icon").src = snowing;
+    } else {
+        document.getElementById("weather-icon").src = mist;
+    }
+}
+
+
+
+export function widget() {
+    getCurrentDate();
+    getCurrentTime();
+    getCurrentWeather();
 }

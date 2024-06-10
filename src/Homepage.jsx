@@ -10,6 +10,8 @@ import mapicon from "./assets/map.png"
 import subjectsicon from "./assets/subjects.png"
 import settingsicon from "./assets/settings.png"
 import logoimage from "./assets/logo.png"
+import {useEffect} from "react";
+import {widget} from "./TopBarAndmenuFunctions.jsx";
 
 const Homepage = () => {
     const {t: translation} = useLanguage();

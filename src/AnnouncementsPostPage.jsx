@@ -71,7 +71,7 @@ const AnnouncementsPostPage = () => {
                     Uczestnikiem programu nie może być: doktorant, student studiujący poza granicami kraju, student
                     nieposiadający obywatelstwa polskiego, przebywający na terenie Polski na podstawie zezwolenia na
                     pobyt stały. W razie pytań prosimy o kontakt na adres: <span
-                    className={"text-email"}>katarzyna.zykwinska@p.lodz.pl.</span>.
+                    className={"text-email"}>katarzyna.zykwinska@p.lodz.pl</span>.
                 </div>
             </div>
         </div>
