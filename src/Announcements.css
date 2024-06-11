@@ -429,7 +429,18 @@
 @media (max-width: 400px){
     .announcements-posts-item-left-content{
         width: 90%;
+        max-height: 250px;
         margin: 0 5%;
+    }
+
+    .announcements-posts-item-left-content > img{
+        max-height: 250px;
+    }
+
+    .announcements-posts-item-left-content > img:hover{
+        width: 110%;
+        margin: 0 -5% -25px -5%;
+        height: 300px;
     }
 
     .announcements-posts-item-right-content{
