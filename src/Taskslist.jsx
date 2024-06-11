@@ -6,7 +6,9 @@ import addicon from "./assets/add.png"
 import completedicon from "./assets/check.png"
 import favouriteicon from "./assets/star.png"
 import deleteicon from "./assets/bin.png"
+import openmenu from "./assets/arrows.png"
 import {useEffect, useState} from "react";
+import {OpenCloseTasksMenu} from "./TasksListFunctions.jsx";
 
 let currentTaskId = 0;
 
@@ -121,6 +123,8 @@ async function add_task(title, content, date) {
     window.location.reload();
 }
 
+let isOpenMenu = 0;
+
 const Tasklist = () => {
     const [tasks, setTasks] = useState([]);
     useEffect(() => {
@@ -131,10 +135,27 @@ const Tasklist = () => {
     return (
         <>
             {TopBarAndSideMenu()}
+            <div className={"tasks-list-left-content-open-menu"} onClick={() => {OpenCloseTasksMenu(isOpenMenu);if(isOpenMenu === 1) isOpenMenu = 0;else isOpenMenu = 1}}>
+                <img className={"tasks-list-left-content-open-menu-img"} src={openmenu} alt="open-menu-icon"/>
+            </div>
+            <div className={"tasks-list-left-content-menu"}>
+                <div className="tasks-list-left-content-menu-item tasks-list-p ">
+                    {translation.TasksList.all}
+                </div>
+                <div className="tasks-list-left-content-menu-item tasks-list-p">
+                    {translation.TasksList.important}
+                </div>
+                <div className="tasks-list-left-content-menu-item tasks-list-p">
+                    {translation.TasksList.active}
+                </div>
+                <div className="tasks-list-left-content-menu-item tasks-list-p">
+                    {translation.TasksList.done}
+                </div>
+            </div>
             <div className={"tasks-list-main-content"}>
                 <div className={"tasks-list-top-bar"}>
                     <div className={"tasks-list-find"}>
-                        <img src={findicon} alt="finc-icon" title={"Wyszukaj"}/>
+                        <img className={"tasks-list-find-img"} src={findicon} alt="finc-icon" title={"Wyszukaj"}/>
                         <input type={"text"} name={"find"} className={"top-bar-p"} placeholder={translation.TasksList.find}/>
                     </div>
                 </div>
