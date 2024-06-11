@@ -7,7 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
-import static DBUtils.FirebaseUtils.*;
+import static DBUtils.FirebaseUtils.db;
+import static Utils.Utils.escapeCommonChars;
 
 public class DBNotes {
     public static String getNotes(String userID) {
@@ -26,8 +27,8 @@ public class DBNotes {
         for (DocumentSnapshot document : listaQuery) {
             json.append("{")
                     .append("\"id\": \"").append(document.getId()).append("\",")
-                    .append("\"title\": \"").append(document.getString("title")).append("\",")
-                    .append("\"content\": \"").append(document.getString("content")).append("\"")
+                    .append("\"title\": \"").append(escapeCommonChars(document.getString("title"))).append("\",")
+                    .append("\"content\": \"").append(escapeCommonChars(document.getString("content"))).append("\"")
                     .append("}").append(",");
         }
         if(!listaQuery.isEmpty()) json.delete(json.length() - 1, json.length());
@@ -53,8 +54,8 @@ public class DBNotes {
         if (document.exists()) {
             return "{" +
                     "\"id\": \"" + document.getId() + "\"," +
-                    "\"title\": \"" + document.getString("title") + "\"," +
-                    "\"content\": \"" + document.getString("content") + "\"" +
+                    "\"title\": \"" + escapeCommonChars(document.getString("title")) + "\"," +
+                    "\"content\": \"" + escapeCommonChars(document.getString("content")) + "\"" +
                     "}";
         } else {
             return "{}";
@@ -62,6 +63,8 @@ public class DBNotes {
     }
 
     public static String addNote(String userID, String title, String content) {
+        content = content.replace("\n", "\\n");
+        System.out.println("Adding note: " + title + " " + content + " " + userID);
         DocumentReference docRef = db.collection("notes").document();
         docRef.set(Map.of("title", title, "content", content, "userid", Integer.parseInt(userID)));
         return docRef.getId();
@@ -88,6 +91,6 @@ public class DBNotes {
     public static void updateNote(String userID, String noteID, String title, String content) {
         db.collection("notes")
                 .document(noteID)
-                .update(Map.of("userID",userID,"title", title, "content", content));
+                .update(Map.of("userID",Integer.parseInt(userID),"title", escapeCommonChars(title), "content", escapeCommonChars(content)));
     }
 }
