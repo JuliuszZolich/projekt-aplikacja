@@ -1,4 +1,5 @@
 import DBUtils.DBNotes;
+import Utils.Utils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -18,8 +19,7 @@ public class NotesHandler implements HttpHandler {
     private void getNotes(HttpExchange t) throws IOException {
         String userID = t.getRequestHeaders().get("UserID").get(0);
         String response = DBNotes.getNotes(userID);
-        System.out.println(response);
-        t.sendResponseHeaders(200, response.length());
+        t.sendResponseHeaders(200, response.getBytes().length);
         OutputStream os = t.getResponseBody();
         os.write(response.getBytes());
         os.close();
@@ -30,7 +30,7 @@ public class NotesHandler implements HttpHandler {
         String userID = t.getRequestHeaders().get("UserID").get(0);
         String noteID = t.getRequestHeaders().get("Note-ID").get(0);
         String response = DBNotes.getNote(userID, noteID);
-        t.sendResponseHeaders(200, response.length());
+        t.sendResponseHeaders(200, response.getBytes().length);
         os.write(response.getBytes());
         os.close();
     }
@@ -51,7 +51,6 @@ public class NotesHandler implements HttpHandler {
         OutputStream os = t.getResponseBody();
         String userID = t.getRequestHeaders().get("UserID").get(0);
         String noteID = t.getRequestHeaders().get("Note-ID").get(0);
-        System.out.println(noteID);
         DBNotes.deleteNote(userID, noteID);
         t.sendResponseHeaders(200, 0);
         os.close();
@@ -73,7 +72,6 @@ public class NotesHandler implements HttpHandler {
     public void handle(HttpExchange t) throws IOException {
         if (Utils.handleCORS(t)) return;
         System.out.println("Notes request received");
-        System.out.println(t.getRequestHeaders().get("UserID").get(0));
         t.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
         switch (t.getRequestHeaders().get("Action-Type").get(0)) {
             case "GET":
