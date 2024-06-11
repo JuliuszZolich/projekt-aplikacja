@@ -220,14 +220,25 @@
         padding-left: 20%;
     }
 
+    .map-result-find > input{
+        height: 40px;
+        width: 80%;
+        font-size: 20px;
+    }
+
+    .map-result-find > * > img{
+        top: 10px
+    }
+
     .map-result-left-content{
         width: 90%;
-        margin: 150px 5% 0 5%;
+        height: 80%;
+        margin: 100px 5% 10px 5%;
     }
 
     .map-result-right-content{
         width: 90%;
-        margin: 10px 5% 0 5%;
+        margin: 0 5%;
     }
 }
 
