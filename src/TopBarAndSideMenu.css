@@ -638,4 +638,28 @@ a {
         width: 40px;
         height: 40px;
     }
+
+    .on-click-menu{
+        width: 100%;
+    }
+
+    .on-click-menu-bottom-bar{
+        width: 90%;
+        margin-left: 5%;
+    }
+
+    .on-click-menu-top-bar{
+        width: 90%;
+        margin-left: 5%;
+    }
+
+    .on-click-menu-middle-content{
+        width: 70%;
+        margin-left: 15%;
+    }
+
+    .on-click-menu-middle-content-item-text > p{
+        font-size: 35px;
+        line-height: 65px;
+    }
 }
