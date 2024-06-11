@@ -49,7 +49,7 @@
 
 .step-one{
     margin-left: 5%;
-    border-bottom-color: #077412;
+    border-bottom-color: #ff0000;
 }
 
 .register-middle-content-step-one, .register-middle-content-step-two, .register-middle-content-step-three, .register-middle-content-finished{
@@ -104,10 +104,6 @@
     display: none;
 }
 
-.step-two{
-    border-bottom-color: red;
-}
-
 .register-middle-content-item{
     width: 90%;
     height: 20%;
@@ -137,6 +133,7 @@
     float: left;
     position: relative;
     display: block;
+    user-select: none;
 }
 
 .register-input-text{
