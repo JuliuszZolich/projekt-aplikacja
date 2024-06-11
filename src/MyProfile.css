@@ -87,7 +87,7 @@
     }
 
     .my-profile-item{
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .personal-informations, .university-informations{
@@ -99,5 +99,29 @@
 
     .my-profile-item{
         height: 25%;
+    }
+}
+
+@media (max-height: 800px){
+    .personal-informations, .university-informations{
+        height: 45%;
+    }
+
+    .my-profile-item{
+        height: 22.5%;
+    }
+}
+
+@media (max-height: 500px){
+    .personal-informations, .university-informations{
+        height: 60%;
+    }
+
+    .my-profile-item{
+        height: 20%;
+    }
+
+    .personal-informations, .university-informations{
+        margin-bottom: 10px;
     }
 }
