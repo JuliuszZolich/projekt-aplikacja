@@ -12,8 +12,8 @@ import {
     OpenUserMenu,
     CloseUserMenu
 }
-from
-"./TopBarAndmenuFunctions.jsx";
+    from
+        "./TopBarAndmenuFunctions.jsx";
 import {useLanguage} from './ChangeLanguage.jsx';
 import './TopBarAndSideMenu.css'
 import timetableicon from "./assets/timetable.png"
@@ -176,12 +176,16 @@ const TopBarAndSideMenu = () => {
                 <div className={"user-icon"}>
                     <img src={usericon} alt="user-icon" className={"open-user-menu"}/>
                     <div className={"user-menu"}>
-                        <div className={"user-menu-item"}>
-                            Mój Profil
-                        </div>
-                        <div className={"user-menu-item"}>
-                            Ustawienia
-                        </div>
+                        <Link to={"/projekt-aplikacja/myprofile"}>
+                            <div className={"user-menu-item"}>
+                                Mój Profil
+                            </div>
+                        </Link>
+                        <Link to={"/projekt-aplikacja/settings"}>
+                            <div className={"user-menu-item"}>
+                                Ustawienia
+                            </div>
+                        </Link>
                         <div className={"user-menu-item user-menu-item-last"}>
                             Wyloguj
                         </div>
