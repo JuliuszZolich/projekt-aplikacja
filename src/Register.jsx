@@ -67,6 +67,10 @@ const Register = () => {
                         <div className={"register-progress-bar-item step-three"}>
                             {translation.Register.step3}
                         </div>
+                        <div className={"progress-bar-line"}></div>
+                        <div className={"register-progress-bar-item step-four"}>
+                            Krok 4
+                        </div>
                     </div>
                     <div className={"register-middle-content-step-one"} style={{"display": "block"}}>
                         <div className={"register-middle-content-item"}>
@@ -132,6 +136,29 @@ const Register = () => {
                             <div className={"register-input-text"}>
                                 {translation.Register.enterPhoneNumber}
                             </div>
+                        </div>
+                    </div>
+                    <div className={"register-middle-content-step-four"}>
+                        <div className={"register-step-four-information"}>
+                            * - Pole wymagane.
+                        </div>
+                        <div className={"register-step-four-item"}>
+                            <div className={"register-checkbox"}>
+                                <input type="checkbox" id="accept-policy" name="accept-policy"/>
+                            </div>
+                            <div className={"register-step-four-item-text"}>
+                                Wyrażam zgodę na przetwarzanie moich danych osobowych w celu dopasowania wyświetlanych treści adekwatnych do podanych informacji.<span className={"required-checkbox"}>*</span>
+                            </div>
+                        </div>
+                        <div className={"register-step-four-item"}>
+                            <div className={"register-checkbox"}>
+                                <input type="checkbox" id="accept-localization" name="accept-localization"/>
+                            </div>
+                            <div className={"register-step-four-item-text"}>
+                                Wyrażam zgodę udpostępnienie mojej lokalizacji.
+                            </div>
+
+
                         </div>
                     </div>
                     <div className={"register-middle-content-finished"}>

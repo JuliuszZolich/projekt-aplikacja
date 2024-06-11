@@ -30,7 +30,7 @@
 }
 
 .register-progress-bar-item{
-    width: 30%;
+    width: 150px;
     height: 100%;
     border-bottom: 10px solid grey;
     float: left;
@@ -52,7 +52,7 @@
     border-bottom-color: #ff0000;
 }
 
-.register-middle-content-step-one, .register-middle-content-step-two, .register-middle-content-step-three, .register-middle-content-finished{
+.register-middle-content-step-one, .register-middle-content-step-two, .register-middle-content-step-three, .register-middle-content-step-four, .register-middle-content-finished{
     width: 90%;
     height: 60%;
     margin-left: 5%;
@@ -97,11 +97,15 @@
 }
 
 .register-middle-content-step-three{
-    display: block;
+    display: none;
+}
+
+.register-middle-content-step-four{
+    display: none;
 }
 
 .register-middle-content-finished{
-    display: none;
+    display: block;
 }
 
 .register-middle-content-item{
@@ -216,4 +220,41 @@
 .register-bottom-bar-back-to-login-page:hover > a{
     color: #E32C2C;
     text-decoration: underline;
+}
+
+.register-step-four-information{
+    color: #E32C2C;
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+}
+
+.register-step-four-item{
+    width: 80%;
+    float: left;
+    margin: 5% 10%;
+}
+
+.register-checkbox{
+    width: 10%;
+    float: left;
+}
+
+.register-checkbox > input{
+    height: 30px;
+    width: 30px;
+}
+
+.register-checkbox > input:checked{
+    accent-color: #E32C2C;
+}
+
+.register-step-four-item-text{
+    width: 90%;
+    float: left;
+    font-size: 20px;
+}
+
+.required-checkbox{
+    color: #E32C2C;
 }
