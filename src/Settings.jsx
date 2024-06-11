@@ -46,10 +46,10 @@ const Settings = () => {
                     <div className={"settings-title side-menu-p"}>
                         {translation.Settings.mainLanguage}
                     </div>
-                    <div className={"settings-button-pl home-p"} onClick={() => setLanguage('pl')}>
+                    <div className={"settings-button-pl home-p active-language"} onClick={() => setLanguage('pl')}>
                         {translation.Settings.pl}
                     </div>
-                    <div className={"settings-button-en home-p"} onClick={() => setLanguage('en')}>
+                    <div className={"settings-button-en home-p disabled-language"} onClick={() => setLanguage('en')}>
                         {translation.Settings.en}
                     </div>
                 </div>
