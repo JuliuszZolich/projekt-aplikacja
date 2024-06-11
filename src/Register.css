@@ -116,7 +116,7 @@
     position: relative;
 }
 
-.register-middle-content-item > input, select{
+.register-middle-content-item > input, .register-middle-content-item > select{
     width: 97%;
     height: 60%;
     position: absolute;
