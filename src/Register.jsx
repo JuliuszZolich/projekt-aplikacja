@@ -2,52 +2,13 @@ import './Register.css'
 import {Link} from "react-router-dom";
 import {useLanguage} from './ChangeLanguage.jsx';
 import accepticon from "./assets/accept.png"
+import {changeStep} from "./RegisterFunctions";
 
 let step = 1;
 
-function changeColors(step){
-    const steps = document.querySelectorAll(".register-progress-bar-item");
-    if(step === 1){
-        steps[0].style.borderBottomColor = "#ff0000";//#077412 #ff0000 #808080
-        steps[1].style.borderBottomColor = "#808080";
-        steps[2].style.borderBottomColor = "#808080";
-    }
-    if(step === 2){
-        steps[0].style.borderBottomColor = "#077412";
-        steps[1].style.borderBottomColor = "#ff0000";
-        steps[2].style.borderBottomColor = "#808080";
-    }
-    if(step === 3){
-        steps[0].style.borderBottomColor = "#077412";
-        steps[1].style.borderBottomColor = "#077412";
-        steps[2].style.borderBottomColor = "#ff0000";
-    }
-}
-
-function changeStep(step) {
-    const stepOne = document.querySelector(".register-middle-content-step-one");
-    const stepTwo = document.querySelector(".register-middle-content-step-two");
-    const stepThree = document.querySelector(".register-middle-content-step-three");
-    if (step === 1) {
-        stepOne.style.display = "block";
-        stepTwo.style.display = "none";
-        stepThree.style.display = "none";
-    }
-    if (step === 2) {
-        stepOne.style.display = "none";
-        stepTwo.style.display = "block";
-        stepThree.style.display = "none";
-    }
-    if (step === 3) {
-        stepOne.style.display = "none";
-        stepTwo.style.display = "none";
-        stepThree.style.display = "block";
-    }
-    changeColors(step);
-}
-
 const Register = () => {
     const {t: translation} = useLanguage();
+    step = 1;
     return (
         <>
             <div className={"register-main-content"}>
@@ -74,13 +35,13 @@ const Register = () => {
                     </div>
                     <div className={"register-middle-content-step-one"} style={{"display": "block"}}>
                         <div className={"register-middle-content-item"}>
-                            <input type="text" required/>
+                            <input type="text" id={"email"} required/>
                             <div className={"register-input-text"}>
                                 {translation.Register.enterEmail}
                             </div>
                         </div>
                         <div className={"register-middle-content-item"}>
-                            <input type="password" required/>
+                            <input type="password" id={"password"} required/>
                             <div className={"register-input-text"}>
                                 {translation.Register.enterPassword}
                             </div>
@@ -94,51 +55,54 @@ const Register = () => {
                     </div>
                     <div className={"register-middle-content-step-two"} style={{"display": "none"}}>
                         <div className={"register-middle-content-item"}>
-                            <select name={"faculty"} id={"registerFaculty"} required>
-                                <option value="default"></option>
+                            <select name={"faculty"} id={"faculty"} required>
+                                <option value="default">DEFAULT</option>
+                                <option value="test">TEST</option>
                             </select>
                             <div className={"register-input-text"}>
                                 {translation.Register.selectFaculty}
                             </div>
                         </div>
                         <div className={"register-middle-content-item"}>
-                            <select name={"course"} id={"registerCourse"}>
-                                <option value="default"></option>
+                            <select name={"course"} id={"course"}>
+                                <option value="default">DEFAULT</option>
+                                <option value="test">TEST</option>
                             </select>
                             <div className={"register-input-text"}>
                                 {translation.Register.selectMajor}
                             </div>
                         </div>
                         <div className={"register-middle-content-item"}>
-                            <select name={"year"} id={"registerYear"}>
-
+                            <select name={"semester"} id={"semester"}>
+                                <option value="default">DEFAULT</option>
+                                <option value="test">TEST</option>
                             </select>
                             <div className={"register-input-text"}>
-                                {translation.Register.selectYear}
+                                {translation.Register.selectSemester}
                             </div>
                         </div>
                     </div>
                     <div className={"register-middle-content-step-three"} style={{"display": "none"}}>
                         <div className={"register-middle-content-item"}>
-                            <input type="text" required/>
+                            <input type="text" id={"name"} required/>
                             <div className={"register-input-text"}>
                                 {translation.Register.enterName}
                             </div>
                         </div>
                         <div className={"register-middle-content-item"}>
-                            <input type="text" required/>
+                            <input type="text" id={"surname"} required/>
                             <div className={"register-input-text"}>
                                 {translation.Register.enterSurname}
                             </div>
                         </div>
                         <div className={"register-middle-content-item"}>
-                            <input type="text" required/>
+                            <input type="text" id={"phone"} required/>
                             <div className={"register-input-text"}>
                                 {translation.Register.enterPhoneNumber}
                             </div>
                         </div>
                     </div>
-                    <div className={"register-middle-content-step-four"}>
+                    <div className={"register-middle-content-step-four"} style={{"display": "none"}}>
                         <div className={"register-step-four-information"}>
                             * - Pole wymagane.
                         </div>
@@ -147,7 +111,8 @@ const Register = () => {
                                 <input type="checkbox" id="accept-policy" name="accept-policy"/>
                             </div>
                             <div className={"register-step-four-item-text"}>
-                                Wyrażam zgodę na przetwarzanie moich danych osobowych w celu dopasowania wyświetlanych treści adekwatnych do podanych informacji.<span className={"required-checkbox"}>*</span>
+                                Wyrażam zgodę na przetwarzanie moich danych osobowych w celu dopasowania wyświetlanych
+                                treści adekwatnych do podanych informacji.<span className={"required-checkbox"}>*</span>
                             </div>
                         </div>
                         <div className={"register-step-four-item"}>
@@ -161,7 +126,7 @@ const Register = () => {
 
                         </div>
                     </div>
-                    <div className={"register-middle-content-finished"}>
+                    <div className={"register-middle-content-finished"} style={{"display": "none"}}>
                         <div className={"register-middle-content-finished-img"}>
                             <img src={accepticon} alt="accepted-icon"/>
                         </div>
@@ -174,11 +139,10 @@ const Register = () => {
                         </div>
                     </div>
                     <div className={"register-bottom-bar"}>
-                        <div className={"register-bottom-bar-back"}>
+                        <div className={"register-bottom-bar-back"} style={{"display":"none"}}>
                             <span onClick={() => {
                                 if (step > 1) {
-                                    step--;
-                                    changeStep(step);
+                                    if (changeStep(step-1)) step--;
                                 }
                             }
                             }
@@ -186,9 +150,8 @@ const Register = () => {
                         </div>
                         <div className={"register-bottom-bar-next"}>
                             <span onClick={() => {
-                                if (step < 3) {
-                                    step++;
-                                    changeStep(step);
+                                if (step < 5) {
+                                    if (changeStep(step+1)) step++;
                                 }
                             }
                             }
