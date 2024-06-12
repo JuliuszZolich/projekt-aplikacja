@@ -6,9 +6,9 @@
 }
 
 .register-panel{
-    width: 35%;
-    height: 80%;
-    margin: 5% 32.5%;
+    width: 680px;
+    height: 760px;
+    margin: 80px auto;
     background-color: #D9D9D9;
     box-shadow: rgba(0, 0, 0, 0.4) 0 3px 2px, rgba(0, 0, 0, 0.3) 0 7px 13px -3px, rgba(0, 0, 0, 0.2) 0 -2px 0 inset;
     transition: 0.2s;
@@ -152,7 +152,12 @@
     z-index: 9998;
 }
 
+.register-middle-content-item > select > option{
+    font-size: 20px;
+}
+
 .register-bottom-bar{
+    margin-top: 1%;
     width: 90%;
     height: 10%;
     margin-left: 5%;
@@ -177,11 +182,12 @@
 
 .register-middle-content-item > input:focus + .register-input-text, .register-middle-content-item > input:valid + .register-input-text,
 .register-middle-content-item > select:focus + .register-input-text, .register-middle-content-item > select:valid + .register-input-text{
-    transform: translate(-1%, -120%);
+    transform: translate(5%, -120%);
     font-size: 20px;
     height: 20%;
     color: grey;
     z-index: 9999;
+    line-height: 15px;
 }
 
 .register-bottom-bar-back{
@@ -237,6 +243,7 @@
     font-size: 20px;
     cursor: pointer;
     transition: 0.1s;
+    text-decoration: underline;
 }
 
 .register-bottom-bar-back-to-login-page:hover > a{
@@ -252,7 +259,9 @@
 }
 
 .register-step-four-item{
+    position: relative;
     width: 80%;
+    height: 30%;
     float: left;
     margin: 5% 10%;
 }
@@ -279,4 +288,183 @@
 
 .required-checkbox{
     color: #E32C2C;
+}
+
+.register-input-text-wrong-information{
+    position: absolute;
+    top: 100%;
+    color: red;
+    margin-left: 5%;
+}
+
+@media (max-width: 900px){
+    .register-panel{
+        margin-top: 120px;
+        width: 500px;
+        height: 650px;
+    }
+
+    .register-progress-bar-item{
+        width: 110px;
+        font-size: 30px;
+        line-height: 70px;
+        height: 90%;
+        border-bottom-width: 7px;
+    }
+
+    .register-bottom-bar-next{
+        width: 25%;
+        margin-left: 17%;
+        font-size: 22px;
+        line-height: 35px;
+    }
+
+    .register-bottom-bar-back{
+        width: 25%;
+        margin-right: 17%;
+        font-size: 22px;
+        line-height: 35px;
+    }
+
+    .register-bottom-bar-back-to-login-page {
+        font-size: 18px;
+        line-height: 40px;
+    }
+
+    .register-middle-content-item > input, .register-middle-content-item > select{
+        font-size: 20px;
+    }
+
+    .register-input-text{
+        font-size: 22px;
+    }
+
+    .register-middle-content-item > input:focus + .register-input-text, .register-middle-content-item > input:valid + .register-input-text,
+    .register-middle-content-item > select:focus + .register-input-text, .register-middle-content-item > select:valid + .register-input-text{
+        transform: translate(5%, -150%);
+        font-size: 19px;
+    }
+
+    .progress-bar-line{
+        width: 0.3%;
+        top: 5%;
+    }
+
+    .register-step-four-item{
+        width: 90%;
+        margin-left: 5%;
+    }
+
+    .register-step-four-item-text{
+        padding-left: 1%;
+        width: 80%;
+    }
+
+    .register-middle-content-item > select > option{
+        font-size: 15px;
+    }
+
+    .register-middle-content-finished-img > img{
+        height: 80%;
+    }
+
+    .register-middle-content-finished-text > a{
+        font-size: 35px;
+    }
+}
+
+@media (max-width: 600px){
+    .register-panel{
+        width: 350px;
+        height: 600px;
+    }
+
+    .register-progress-bar{
+        margin-top: 5%;
+    }
+
+    .step-one{
+        margin-left: 3%;
+    }
+
+    .register-progress-bar-item{
+        width: 80px;
+        font-size: 20px;
+        height: 70%;
+        line-height: 60px;
+        border-bottom-width: 5px;
+    }
+
+    .progress-bar-line{
+        width: 0.3%;
+        top: 1%;
+        height: 50%;
+    }
+
+    .register-bottom-bar-next{
+        width: 25%;
+        margin-left: 17%;
+    }
+
+    .register-bottom-bar-back{
+        width: 25%;
+        margin-right: 17%;
+    }
+
+    .register-bottom-bar-back-to-login-page {
+        font-size: 18px;
+        line-height: 50px;
+    }
+
+    .register-bottom-bar{
+        margin-top: 0;
+    }
+
+    .register-middle-content-item > input, .register-middle-content-item > select{
+        font-size: 18px;
+    }
+
+    .register-input-text{
+        font-size: 18px;
+        line-height: 30px;
+    }
+
+    .register-middle-content-item > input:focus + .register-input-text, .register-middle-content-item > input:valid + .register-input-text,
+    .register-middle-content-item > select:focus + .register-input-text, .register-middle-content-item > select:valid + .register-input-text{
+        transform: translate(5%, -150%);
+        font-size: 15px;
+        line-height: 20px;
+    }
+
+    .register-middle-content-step-one, .register-middle-content-step-two, .register-middle-content-step-three, .register-middle-content-step-four, .register-middle-content-finished{
+        margin-top: 5%;
+    }
+
+    .register-middle-content-item > select > option{
+        font-size: 12px;
+    }
+
+    .register-step-four-item-text{
+        padding-left: 5%;
+        font-size: 14px;
+    }
+
+    .register-middle-content-finished-img > img{
+        height: 60%;
+        margin-top: 40%;
+    }
+
+    .register-middle-content-finished{
+        margin-top: 10%;
+    }
+
+    .register-middle-content-finished-text > a{
+        font-size: 25px;
+    }
+}
+
+@media (max-height: 800px){
+    .register-panel{
+        margin-top: 80px;
+    }
 }
