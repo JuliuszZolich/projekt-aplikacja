@@ -8,7 +8,12 @@ import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 import static DBUtils.FirebaseUtils.db;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import static Utils.Utils.escapeCommonChars;
+import static Utils.Utils.unescapeCommonChars;
 
 public class DBNotes {
     public static String getNotes(String userID) {
@@ -16,23 +21,22 @@ public class DBNotes {
         ApiFuture<QuerySnapshot> query = db.collection("notes")
                 .whereEqualTo("userid", Integer.parseInt(userID))
                 .get();
-        StringBuilder json = new StringBuilder();
-        json.append("{\"notes\": [");
         List<QueryDocumentSnapshot> listaQuery;
         try {
             listaQuery = query.get().getDocuments();
         } catch (InterruptedException | ExecutionException e) {
             return "{\"notes\": []}";
         }
+        JSONObject json = new JSONObject();
+        JSONArray notes = new JSONArray();
         for (DocumentSnapshot document : listaQuery) {
-            json.append("{")
-                    .append("\"id\": \"").append(document.getId()).append("\",")
-                    .append("\"title\": \"").append(escapeCommonChars(document.getString("title"))).append("\",")
-                    .append("\"content\": \"").append(escapeCommonChars(document.getString("content"))).append("\"")
-                    .append("}").append(",");
+            JSONObject note = new JSONObject();
+            note.put("id", document.getId());
+            note.put("title", unescapeCommonChars(document.getString("title")));
+            note.put("content", unescapeCommonChars(document.getString("content")));
+            notes.put(note);
         }
-        if(!listaQuery.isEmpty()) json.delete(json.length() - 1, json.length());
-        json.append("]}");
+        json.put("notes", notes);
         return json.toString();
     }
 
@@ -52,11 +56,11 @@ public class DBNotes {
             return "{}";
         }
         if (document.exists()) {
-            return "{" +
-                    "\"id\": \"" + document.getId() + "\"," +
-                    "\"title\": \"" + escapeCommonChars(document.getString("title")) + "\"," +
-                    "\"content\": \"" + escapeCommonChars(document.getString("content")) + "\"" +
-                    "}";
+            return new JSONObject()
+                    .put("id", document.getId())
+                    .put("title", document.getString("title"))
+                    .put("content", document.getString("content"))
+                    .toString();
         } else {
             return "{}";
         }
@@ -91,6 +95,6 @@ public class DBNotes {
     public static void updateNote(String userID, String noteID, String title, String content) {
         db.collection("notes")
                 .document(noteID)
-                .update(Map.of("userID",Integer.parseInt(userID),"title", escapeCommonChars(title), "content", escapeCommonChars(content)));
+                .update(Map.of("userid",Integer.parseInt(userID),"title", escapeCommonChars(title), "content", escapeCommonChars(content)));
     }
 }
