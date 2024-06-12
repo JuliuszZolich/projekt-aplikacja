@@ -6,17 +6,15 @@ import addicon from "./assets/add.png"
 import deleteicon from "./assets/bin.png"
 import modifyicon from "./assets/modify.png"
 import {useEffect, useState} from "react";
+import {useCookies} from "react-cookie";
 
 let currentNoteId = 0;
 
-
-async function remove_note(noteID) {
-    console.log(noteID)
+async function remove_note(noteID, cookies){
     let headers = new Headers();
-    headers.append("UserID", "0");
+    headers.append("UserID", cookies['userID']);
     headers.append("Action-Type", "DELETE");
     headers.append("Note-ID", noteID);
-    //todo Potencjalna zmiana linku?
     await fetch("http://localhost:8001/notes", {
         method: "GET",
         headers: headers,
@@ -24,7 +22,7 @@ async function remove_note(noteID) {
     window.location.reload();
 }
 
-async function get_notes(user_id, setNotes) {
+async function get_notes(user_id, setNotes, cookies) {
     let headers = new Headers();
     headers.append("UserID", user_id);
     headers.append("Action-Type", "GET");
@@ -62,7 +60,7 @@ async function get_notes(user_id, setNotes) {
                         if(document.getElementsByClassName("delete-window")[0].style.display === "none") {
                             document.getElementsByClassName("delete-window")[0].style.display = "block";
                             document.getElementsByClassName("delete-window-bottom-bar-delete")[0].onclick = () => {
-                                remove_note(note["id"]);
+                                remove_note(note["id"], cookies);
                             }
                             document.getElementsByClassName("delete-window-bottom-bar-keep")[0].onclick = () => {
                                 document.getElementsByClassName("delete-window")[0].style.display = "none";
@@ -113,11 +111,10 @@ let headers = new Headers();
 
 const Notes = () => {
     const [notes, setNotes] = useState([]);
-
+    const [cookies] = useCookies([]);
     useEffect(() => {
-        //todo Ustawić user_id na podstawie ciasteczek
-        get_notes("0", setNotes).then(() => console.log("Notes loaded"));
-    }, []);
+        get_notes(cookies['userID'], setNotes, cookies).then(() => console.log("Notes loaded"));
+    }, [cookies]);
     const {t: translation} = useLanguage();
     return (
         <>
@@ -189,7 +186,7 @@ const Notes = () => {
                                 alert("Wypełnij wszystkie pola!");
                                 return;
                             }
-                            add_note("0", document.getElementById("add-note-window-title").value, document.getElementById("add-note-window-text").value);
+                            add_note(cookies['userID'], document.getElementById("add-note-window-title").value, document.getElementById("add-note-window-text").value);
                             document.getElementsByClassName("add-note-window")[0].style.display = "none";
                             document.getElementById("add-note-window-title").value = "";
                             document.getElementById("add-note-window-text").value = "";
@@ -200,7 +197,7 @@ const Notes = () => {
                 </div>
                 <div className={"cancel-window"}>
                     <div className={"cancel-window-text"}>
-                        Niezapisane zmiany
+                        <span>Niezapisane zmiany </span>
                         <span className={"cancel-window-text-decoration"}>nie zostaną zachowane</span>,
                         czy chcesz anulować?
                     </div>
@@ -237,7 +234,7 @@ const Notes = () => {
                         </div>
                     </div>
                 </div>
-                <div className={"modify-note-window"}>
+                <div className={"modify-note-window"} style={{"display": "none"}}>
                     <div className={"modify-note-window-top-bar"}>
                         <div className={"modify-note-window-top-bar-text"}>
                             Modyfikuj notatke
@@ -245,7 +242,7 @@ const Notes = () => {
                         <div className={"modify-note-window-top-bar-delete"} onClick={()=>{
                             document.getElementsByClassName("modify-note-window")[0].style.display = "none";
                             document.getElementsByClassName("note-window")[0].style.display = "none";
-                            remove_note(currentNoteId);
+                            remove_note(currentNoteId, cookies);
                         }}>
                             <img src={deleteicon} alt="delete-icon" title={"Usuń"}/>
                         </div>
@@ -267,7 +264,7 @@ const Notes = () => {
                                 alert("Wypełnij wszystkie pola!");
                                 return;
                             }
-                            modify_note("0", currentNoteId, document.getElementById("modify-note-window-title").value, document.getElementById("modify-note-window-text").value);
+                            modify_note(cookies['userID'], currentNoteId, document.getElementById("modify-note-window-title").value, document.getElementById("modify-note-window-text").value);
                             document.getElementsByClassName("modify-note-window")[0].style.display = "none";
                             document.getElementsByClassName("note-window")[0].style.display = "none";
                             document.getElementById("modify-note-window-title").value = "";
