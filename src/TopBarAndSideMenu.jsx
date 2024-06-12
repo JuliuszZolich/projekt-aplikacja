@@ -13,7 +13,7 @@ import {
     CloseNotifications,
 }
     from
-        "./TopBarAndmenuFunctions.jsx";
+        "./TopBarAndMenuFunctions.jsx";
 import {useLanguage} from './ChangeLanguage.jsx';
 import './TopBarAndSideMenu.css'
 import timetableicon from "./assets/timetable.png"
@@ -261,6 +261,38 @@ const TopBarAndSideMenu = () => {
                                 }}/>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div className={"question-window"}>
+                <div className={"question-window-header"}>
+                    Zadaj Pytanie
+                </div>
+                <div className={"question-window-input"}>
+                    <textarea placeholder={"Wpisz treść pytania"}/>
+                </div>
+                <div className={"question-window-buttons"}>
+                    <div className={"question-window-button-cancel"}>
+                        Anuluj
+                    </div>
+                    <div className={"question-window-button-send"}>
+                        Wyślij
+                    </div>
+                </div>
+            </div>
+            <div className={"report-window"}>
+                <div className={"report-window-header"}>
+                    Zadaj Pytanie
+                </div>
+                <div className={"report-window-input"}>
+                    <textarea placeholder={"Wpisz treść zgłoszenia"}/>
+                </div>
+                <div className={"report-window-buttons"}>
+                    <div className={"report-window-button-cancel"}>
+                        Anuluj
+                    </div>
+                    <div className={"report-window-button-send"}>
+                        Zgłoś
                     </div>
                 </div>
             </div>

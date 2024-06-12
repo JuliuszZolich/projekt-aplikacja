@@ -526,6 +526,100 @@ a {
     filter: invert(73%) sepia(73%) saturate(6867%) hue-rotate(332deg) brightness(111%) contrast(98%);
 }
 
+.question-window, .report-window{
+    height: 500px;
+    width: 700px;
+    background-color: #dfdfdf;
+    position: absolute;
+    top: 250px;
+    left: 30%;
+    z-index: 1000;
+    border-radius: 10px;
+    border: 2px solid black;
+    display: none;
+}
+
+.question-window-header, .report-window-header{
+    width: 90%;
+    margin: 2% 5% 0 5%;
+    line-height: 50px;
+    height: 10%;
+    color: #1D1C1D;
+    font-size: 40px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.question-window-input, .report-window-input{
+    width: 80%;
+    height: 60%;
+    margin: 5% 10%;
+}
+
+.question-window-input > textarea, .report-window-input > textarea{
+    width: 94%;
+    height: 94%;
+    background-color: #edecec;
+    padding: 3%;
+    border-radius: 10px;
+    border: 1px solid black;
+    box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+    resize: none;
+    font-size: 20px;
+    outline: none;
+}
+
+.question-window-input > textarea:focus, .report-window-input > textarea:focus{
+    border-color: #b51e1e;
+}
+
+.question-window-buttons, .report-window-buttons{
+    width: 80%;
+    height: 10%;
+    margin: 5% 10%;
+    position: relative;
+}
+
+.question-window-button-cancel, .question-window-button-send, .report-window-button-cancel, .report-window-button-send{
+    width: 25%;
+    height: 70%;
+    font-size: 20px;
+    line-height: 35px;
+    text-align: center;
+    float: left;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 2px solid;
+}
+
+.question-window-button-cancel, .report-window-button-cancel{
+    margin: 1% 14% 0 10%;
+    background-color: #F40606;
+    border-color: #A11A1A;
+    transition: 0.2s;
+}
+
+.question-window-button-cancel:hover, .report-window-button-cancel:hover{
+    background-color: #b50404;
+    border-color: #751212;
+    box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
+    color: #fcfafa;
+}
+
+.question-window-button-send, .report-window-button-send{
+    margin: 1% 10% 0 14%;
+    background-color: #077412;
+    border-color: #375F24;
+    transition: 0.2s;
+}
+
+.question-window-button-send:hover, .report-window-button-send:hover{
+    background-color: #065c0f;
+    border-color: #264219;
+    box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
+    color: #fcfafa;
+}
+
 @media (max-width: 1000px){
     .weather-bar {
         margin: 2.5% 0;
