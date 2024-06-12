@@ -22,7 +22,13 @@ public class Utils {
                 .replace("\t", "\\t")
                 .replace("\r", "\\r")
                 .replace("\b", "\\b")
-                .replace("\f", "\\f")
-                .replace("\"", "\\\"");
+                .replace("\f", "\\f");
+    }
+    public static String unescapeCommonChars(String s) {
+        return s.replace("\\n", "\n")
+                .replace("\\t", "\t")
+                .replace("\\r", "\r")
+                .replace("\\b", "\b")
+                .replace("\\f", "\f");
     }
 }
