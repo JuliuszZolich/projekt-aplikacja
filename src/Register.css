@@ -259,7 +259,9 @@
 }
 
 .register-step-four-item{
+    position: relative;
     width: 80%;
+    height: 30%;
     float: left;
     margin: 5% 10%;
 }
@@ -288,7 +290,12 @@
     color: #E32C2C;
 }
 
-
+.register-input-text-wrong-information{
+    position: absolute;
+    top: 100%;
+    color: red;
+    margin-left: 5%;
+}
 
 @media (max-width: 900px){
     .register-panel{
@@ -439,7 +446,7 @@
 
     .register-step-four-item-text{
         padding-left: 5%;
-        font-size: 18px;
+        font-size: 14px;
     }
 
     .register-middle-content-finished-img > img{

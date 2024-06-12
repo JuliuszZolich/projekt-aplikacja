@@ -39,17 +39,26 @@ const Register = () => {
                             <div className={"register-input-text"}>
                                 {translation.Register.enterEmail}
                             </div>
+                            <div className={"register-input-text-wrong-information wrong-mail"}>
+                                Nie podałeś Emaila!
+                            </div>
                         </div>
                         <div className={"register-middle-content-item"}>
                             <input type="password" id={"password"} required/>
                             <div className={"register-input-text"}>
                                 {translation.Register.enterPassword}
                             </div>
+                            <div className={"register-input-text-wrong-information wrong-password"}>
+                                Nie podałeś Emaila!
+                            </div>
                         </div>
                         <div className={"register-middle-content-item"}>
                             <input type="password" required/>
                             <div className={"register-input-text"}>
                                 {translation.Register.confirmPassword}
+                            </div>
+                            <div className={"register-input-text-wrong-information wrong-password-confirm"}>
+                                Nie podałeś Emaila!
                             </div>
                         </div>
                     </div>
@@ -62,6 +71,9 @@ const Register = () => {
                             <div className={"register-input-text"}>
                                 {translation.Register.selectFaculty}
                             </div>
+                            <div className={"register-input-text-wrong-information wrong-faculty"}>
+                                Nie podałeś Emaila!
+                            </div>
                         </div>
                         <div className={"register-middle-content-item"}>
                             <select name={"course"} id={"course"}>
@@ -70,6 +82,9 @@ const Register = () => {
                             </select>
                             <div className={"register-input-text"}>
                                 {translation.Register.selectMajor}
+                            </div>
+                            <div className={"register-input-text-wrong-information wrong-course"}>
+                                Nie podałeś Emaila!
                             </div>
                         </div>
                         <div className={"register-middle-content-item"}>
@@ -80,6 +95,9 @@ const Register = () => {
                             <div className={"register-input-text"}>
                                 {translation.Register.selectSemester}
                             </div>
+                            <div className={"register-input-text-wrong-information wrong-semester"}>
+                                Nie podałeś Emaila!
+                            </div>
                         </div>
                     </div>
                     <div className={"register-middle-content-step-three"} style={{"display": "none"}}>
@@ -88,17 +106,26 @@ const Register = () => {
                             <div className={"register-input-text"}>
                                 {translation.Register.enterName}
                             </div>
+                            <div className={"register-input-text-wrong-information wrong-name"}>
+                                Nie podałeś Emaila!
+                            </div>
                         </div>
                         <div className={"register-middle-content-item"}>
                             <input type="text" id={"surname"} required/>
                             <div className={"register-input-text"}>
                                 {translation.Register.enterSurname}
                             </div>
+                            <div className={"register-input-text-wrong-information wrong-surname"}>
+                                Nie podałeś Emaila!
+                            </div>
                         </div>
                         <div className={"register-middle-content-item"}>
                             <input type="text" id={"phone"} required/>
                             <div className={"register-input-text"}>
                                 {translation.Register.enterPhoneNumber}
+                            </div>
+                            <div className={"register-input-text-wrong-information wrong-phone-number"}>
+                                Nie podałeś Emaila!
                             </div>
                         </div>
                     </div>
@@ -122,8 +149,9 @@ const Register = () => {
                             <div className={"register-step-four-item-text"}>
                                 Wyrażam zgodę udpostępnienie mojej lokalizacji.
                             </div>
-
-
+                            <div className={"register-input-text-wrong-information not-confirmed"}>
+                                Nie podałeś Emaila!
+                            </div>
                         </div>
                     </div>
                     <div className={"register-middle-content-finished"} style={{"display": "none"}}>
