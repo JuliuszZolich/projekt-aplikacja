@@ -17,6 +17,7 @@ import Settings from './Settings.jsx'
 import MapResult from "./MapResult.jsx";
 import SubjectPage from "./SubjectPage.jsx";
 import AnnouncementsPostPage from "./AnnouncementsPostPage.jsx";
+import MyProfile from "./MyProfile.jsx";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <LanguageProvider>
@@ -35,6 +36,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 <Route path={"projekt-aplikacja/subjectpage"} element={<SubjectPage/>}/>
                 <Route path={"projekt-aplikacja/settings"} element={<Settings/>}/>
                 <Route path={"projekt-aplikacja/mapresult"} element={<MapResult/>}/>
+                <Route path={"projekt-aplikacja/myprofile"} element={<MyProfile/>}/>
             </Routes>
         </BrowserRouter>
     </LanguageProvider>

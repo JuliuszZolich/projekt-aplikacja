@@ -8,31 +8,45 @@ import thunderstorm from './assets/widget/thunderstorm.png'
 import snowing from './assets/widget/snowing.png'
 import mist from './assets/widget/mist.png'
 
+
 export function OpenMenu() {
-    document.querySelector(".hamburger-menu").addEventListener("click", () => {
-        document.querySelector('.on-click-menu').style.animationName = "show-side-menu";
-        setTimeout(() => {
-            document.querySelector('.on-click-menu').classList.add("show-side-menu");
-        }, 100);
-    });
+    document.querySelector('.on-click-menu').style.animationName = "show-side-menu";
+    setTimeout(() => {
+        document.querySelector('.on-click-menu').classList.add("show-side-menu");
+    }, 100);
+    OnClickOutside(".on-click-menu", ".hamburger-menu", 0);
 }
 
 export function CloseMenu() {
-    document.querySelector('.on-click-menu-top-bar-close-menu').addEventListener("click", () => {
-        document.querySelector('.on-click-menu').style.animationName = "hide-side-menu";
-        setTimeout(() => {
-            document.querySelector('.on-click-menu').classList.remove("show-side-menu");
-        }, 500);
-    });
+    document.querySelector('.on-click-menu').style.animationName = "hide-side-menu";
+    setTimeout(() => {
+        document.querySelector('.on-click-menu').classList.remove("show-side-menu");
+    }, 500);
 }
 
 export function OpenFacilitiesMenu() {
-    document.querySelector('.open').addEventListener("click", () => {
-        document.querySelector('.drop-down-menu-facilities').style.animationName = "show-facilities-menu";
-        setTimeout(() => {
-            document.querySelector('.drop-down-menu-facilities').classList.add("show-facilities-menu");
-        }, 100);
-    });
+    document.querySelector('.drop-down-menu-facilities').style.animationName = "show-facilities-menu";
+    setTimeout(() => {
+        document.querySelector('.drop-down-menu-facilities').classList.add("show-facilities-menu");
+    }, 100);
+    OnClickOutside(".drop-down-menu-facilities", "#facilities-menu-open", 1);
+}
+
+export function OnClickOutside(element, element2, menu) {
+    window.addEventListener('click', function (e) {
+            if (!document.querySelector(element).contains(e.target) && !document.querySelector(element2).contains(e.target)) {
+                if (menu === 1) {
+                    CloseFacilitiesMenu();
+                } else if (menu === 2) {
+                    CloseNotifications();
+                } else if (menu === 3) {
+                    CloseUserMenu();
+                } else {
+                    CloseMenu();
+                }
+            }
+        }
+    )
 }
 
 export function CloseFacilitiesMenu() {
@@ -43,39 +57,33 @@ export function CloseFacilitiesMenu() {
 }
 
 export function OpenNotifications() {
-    document.querySelector('.open-notifications').addEventListener("click", () => {
-        document.querySelector('.drop-down-notifications').style.animationName = "show-notifications";
-        setTimeout(() => {
-            document.querySelector('.drop-down-notifications').classList.add("show-notifications");
-        }, 100);
-    });
+    document.querySelector('.drop-down-notifications').style.animationName = "show-notifications";
+    setTimeout(() => {
+        document.querySelector('.drop-down-notifications').classList.add("show-notifications");
+    }, 100);
+    OnClickOutside(".drop-down-notifications", ".open-notifications", 2);
 }
 
 export function CloseNotifications() {
-    document.querySelector('.drop-down-notifications-item-text').addEventListener("click", () => {
-        document.querySelector('.drop-down-notifications').style.animationName = "hide-notifications";
-        setTimeout(() => {
-            document.querySelector('.drop-down-notifications').classList.remove("show-notifications");
-        }, 500);
-    });
+    document.querySelector('.drop-down-notifications').style.animationName = "hide-notifications";
+    setTimeout(() => {
+        document.querySelector('.drop-down-notifications').classList.remove("show-notifications");
+    }, 500);
 }
 
 export function OpenUserMenu() {
-    document.querySelector('.open-user-menu').addEventListener("click", () => {
-        document.querySelector('.user-menu').style.animationName = "show-user-menu";
-        setTimeout(() => {
-            document.querySelector('.user-menu').classList.add("show-user-menu");
-        }, 100);
-    });
+    document.querySelector('.user-menu').style.animationName = "show-user-menu";
+    setTimeout(() => {
+        document.querySelector('.user-menu').classList.add("show-user-menu");
+    }, 100);
+    OnClickOutside(".user-menu", ".open-user-menu", 3);
 }
 
 export function CloseUserMenu() {
-    document.querySelector('.user-menu-item').addEventListener("click", () => {
-        document.querySelector('.user-menu').style.animationName = "hide-user-menu";
-        setTimeout(() => {
-            document.querySelector('.user-menu').classList.remove("show-user-menu");
-        }, 500);
-    });
+    document.querySelector('.user-menu').style.animationName = "hide-user-menu";
+    setTimeout(() => {
+        document.querySelector('.user-menu').classList.remove("show-user-menu");
+    }, 500);
 }
 
 let flag = 0;
@@ -245,7 +253,6 @@ async function getCurrentWeather() {
         document.getElementById("weather-icon").src = mist;
     }
 }
-
 
 
 export function widget() {

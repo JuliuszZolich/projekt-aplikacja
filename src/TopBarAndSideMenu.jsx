@@ -8,12 +8,12 @@ import {
     setFontSize,
     widget,
     OpenNotifications,
-    CloseNotifications,
     OpenUserMenu,
-    CloseUserMenu
+    CloseUserMenu,
+    CloseNotifications,
 }
-from
-"./TopBarAndmenuFunctions.jsx";
+    from
+        "./TopBarAndmenuFunctions.jsx";
 import {useLanguage} from './ChangeLanguage.jsx';
 import './TopBarAndSideMenu.css'
 import timetableicon from "./assets/timetable.png"
@@ -35,18 +35,15 @@ import polandflag from "./assets/pl.png"
 import ukflag from "./assets/en.png"
 import {useEffect, useRef} from "react";
 
+let isUserMenuOpen = 0;
+let isNotificationsMenuOpen = 0;
+let isFacilitiesMenuOpen = 0;
+
 const TopBarAndSideMenu = () => {
     const {t: translation, setLanguage} = useLanguage();
     const didEffectRun = useRef(false);
     useEffect(() => {
         widget();
-        OpenMenu();
-        CloseMenu();
-        OpenFacilitiesMenu();
-        OpenNotifications();
-        CloseNotifications();
-        OpenUserMenu();
-        CloseUserMenu();
     }, []);
     useEffect(() => {
         setInterval(() => {
@@ -70,7 +67,7 @@ const TopBarAndSideMenu = () => {
                         </Link>
                     </div>
                     <div className={"on-click-menu-top-bar-close-menu"}>
-                        <img src={closemenuicon} alt="close-menu-icon"/>
+                        <img src={closemenuicon} alt="close-menu-icon" onClick={() => CloseMenu()}/>
                     </div>
                 </div>
                 <div className={"on-click-menu-middle-content"}>
@@ -157,7 +154,7 @@ const TopBarAndSideMenu = () => {
                 </div>
             </div>
             <div className={"top-bar"} id={"top-bar"}>
-                <div className={"hamburger-menu"}>
+                <div className={"hamburger-menu"} onClick={() => OpenMenu()}>
                     <img src={menuicon} alt="hamburger-menu-icon"/>
                 </div>
                 <div className={"weather"}>
@@ -174,116 +171,62 @@ const TopBarAndSideMenu = () => {
                     </div>
                 </div>
                 <div className={"user-icon"}>
-                    <img src={usericon} alt="user-icon" className={"open-user-menu"}/>
+                    <img src={usericon} alt="user-icon" className={"open-user-menu"}
+                         onClick={() => {
+                             if (!isUserMenuOpen) {
+                                 OpenUserMenu();
+                                 isUserMenuOpen = 1;
+                             } else {
+                                 CloseUserMenu();
+                                 isUserMenuOpen = 0;
+                             }
+                         }
+                         }/>
                     <div className={"user-menu"}>
-                        <div className={"user-menu-item"}>
-                            Mój Profil
-                        </div>
-                        <div className={"user-menu-item"}>
-                            Ustawienia
-                        </div>
+                        <Link to={"/projekt-aplikacja/myprofile"}>
+                            <div className={"user-menu-item"}>
+                                Mój Profil
+                            </div>
+                        </Link>
+                        <Link to={"/projekt-aplikacja/settings"}>
+                            <div className={"user-menu-item"}>
+                                Ustawienia
+                            </div>
+                        </Link>
                         <div className={"user-menu-item user-menu-item-last"}>
                             Wyloguj
                         </div>
                     </div>
                 </div>
                 <div className={"notification-bell"}>
-                    <img src={notificationicon} alt="notifications-icon" className={"open-notifications"}/>
+                    <img src={notificationicon} alt="notifications-icon" className={"open-notifications"}
+                         onClick={() => {
+                             if (!isNotificationsMenuOpen) {
+                                 OpenNotifications();
+                                 isNotificationsMenuOpen = 1;
+                             } else {
+                                 CloseNotifications();
+                                 isNotificationsMenuOpen = 0;
+                             }
+                         }
+                         }/>
                     <div className={"drop-down-notifications"}>
-                        <div className={"drop-down-notifications-item"}>
-                            <div className={"drop-down-notifications-item-text"}>
-                                KOLOS AOI
-                            </div>
-                            <div className={"drop-down-notifications-item-when"}>
-                                Po jutrze!
-                            </div>
-                        </div>
-                        <div className={"drop-down-notifications-item-line"}></div>
-                        <div className={"drop-down-notifications-item"}>
-                            <div className={"drop-down-notifications-item-text"}>
-                                KOLOS AOI
-                            </div>
-                            <div className={"drop-down-notifications-item-when"}>
-                                Po jutrze!
-                            </div>
-                        </div>
-                        <div className={"drop-down-notifications-item-line"}></div>
-                        <div className={"drop-down-notifications-item"}>
-                            <div className={"drop-down-notifications-item-text"}>
-                                KOLOS AOI
-                            </div>
-                            <div className={"drop-down-notifications-item-when"}>
-                                Po jutrze!
-                            </div>
-                        </div>
-                        <div className={"drop-down-notifications-item-line"}></div>
-                        <div className={"drop-down-notifications-item"}>
-                            <div className={"drop-down-notifications-item-text"}>
-                                KOLOS AOI
-                            </div>
-                            <div className={"drop-down-notifications-item-when"}>
-                                Po jutrze!
-                            </div>
-                        </div>
-                        <div className={"drop-down-notifications-item-line"}></div>
-                        <div className={"drop-down-notifications-item"}>
-                            <div className={"drop-down-notifications-item-text"}>
-                                KOLOS AOI
-                            </div>
-                            <div className={"drop-down-notifications-item-when"}>
-                                Po jutrze!
-                            </div>
-                        </div>
-                        <div className={"drop-down-notifications-item-line"}></div>
-                        <div className={"drop-down-notifications-item"}>
-                            <div className={"drop-down-notifications-item-text"}>
-                                KOLOS AOI
-                            </div>
-                            <div className={"drop-down-notifications-item-when"}>
-                                Po jutrze!
-                            </div>
-                        </div>
-                        <div className={"drop-down-notifications-item-line"}></div>
-                        <div className={"drop-down-notifications-item"}>
-                            <div className={"drop-down-notifications-item-text"}>
-                                KOLOS AOI
-                            </div>
-                            <div className={"drop-down-notifications-item-when"}>
-                                Po jutrze!
-                            </div>
-                        </div>
-                        <div className={"drop-down-notifications-item-line"}></div>
-                        <div className={"drop-down-notifications-item"}>
-                            <div className={"drop-down-notifications-item-text"}>
-                                KOLOS AOI
-                            </div>
-                            <div className={"drop-down-notifications-item-when"}>
-                                Po jutrze!
-                            </div>
-                        </div>
-                        <div className={"drop-down-notifications-item-line"}></div>
-                        <div className={"drop-down-notifications-item"}>
-                            <div className={"drop-down-notifications-item-text"}>
-                                KOLOS AOI
-                            </div>
-                            <div className={"drop-down-notifications-item-when"}>
-                                Po jutrze!
-                            </div>
-                        </div>
-                        <div className={"drop-down-notifications-item-line"}></div>
-                        <div className={"drop-down-notifications-item"}>
-                            <div className={"drop-down-notifications-item-text"}>
-                                KOLOS AOI
-                            </div>
-                            <div className={"drop-down-notifications-item-when"}>
-                                Po jutrze!
-                            </div>
-                        </div>
+
                     </div>
                 </div>
                 <div className={"facilities"}>
-                    <img src={facilitesicon} alt="facilities-icon" className={"open"}/>
-                    <div className={"drop-down-menu-facilities"} id={"facilities-drop-down-menu"}>
+                    <img id={"facilities-menu-open"} src={facilitesicon} alt="facilities-icon"
+                         onClick={() => {
+                             if (!isFacilitiesMenuOpen) {
+                                 OpenFacilitiesMenu();
+                                 isFacilitiesMenuOpen = 1;
+                             } else {
+                                 CloseFacilitiesMenu();
+                                 isFacilitiesMenuOpen = 0;
+                             }
+                         }
+                         }/>
+                    <div className={"drop-down-menu-facilities"}>
                         <div className={"facilities-content"}>
                             <div className={"fonts font-small close-facilities-menu"} onClick={() => {
                                 ChangeFontSize('s');

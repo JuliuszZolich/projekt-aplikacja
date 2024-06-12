@@ -608,34 +608,52 @@ a {
     }
 
     .notification-bell, .facilities{
-        width: 30px;
+        width: 25px;
     }
 
     .user-icon{
-        width: 40px;
+        width: 30px;
     }
 
     .notification-bell > img {
-        width: 25px;
-        height: 25px;
+        width: 20px;
+        height: 20px;
     }
 
     .facilities > img{
-        width: 25px;
-        height: 25px;
+        width: 20px;
+        height: 20px;
     }
 
     .user-icon {
         margin-right: 10px;
     }
 
-    .user-icon > a{
-        width: 40px;
-        height: 40px;
+    .user-icon > img {
+        width: 30px;
+        height: 30px;
     }
 
-    .user-icon > a > img {
-        width: 40px;
-        height: 40px;
+    .on-click-menu{
+        width: 100%;
+    }
+
+    .on-click-menu-bottom-bar{
+        width: 90%;
+        margin-left: 5%;
+    }
+
+    .on-click-menu-top-bar{
+        width: 90%;
+        margin-left: 5%;
+    }
+
+    .on-click-menu-middle-content{
+        width: 70%;
+        margin-left: 15%;
+    }
+
+    .on-click-menu-middle-content-item-text > p{
+        font-size: 35px;
     }
 }
