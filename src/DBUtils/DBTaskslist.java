@@ -12,10 +12,10 @@ import java.util.concurrent.ExecutionException;
 import static DBUtils.FirebaseUtils.db;
 
 public class DBTaskslist {
-    public static String get_tasks(String userID) {
+    public static String getTasks(String userID) {
         System.out.println("Getting tasklist for user: " + userID);
-        ApiFuture<QuerySnapshot> query = db.collection("notes")
-                .whereEqualTo("userID", userID)
+        ApiFuture<QuerySnapshot> query = db.collection("tasklist")
+                .whereEqualTo("userid", Integer.parseInt(userID))
                 .get();
         StringBuilder json = new StringBuilder();
         json.append("{ \"tasklist\": [");
@@ -29,17 +29,17 @@ public class DBTaskslist {
             json.append("{")
                     .append("\"id\": \"").append(document.getId()).append("\",")
                     .append("\"title\": \"").append(document.getString("title")).append("\",")
-                    .append("\"content\": \"").append(document.getString("content")).append("\"")
-                    .append("\"date\": \"").append(document.getDate("date")).append("\"")
+                    .append("\"content\": \"").append(document.getString("content")).append("\",")
+                    .append("\"date\": \"").append(document.getDate("date")).append("\",")
                     .append("\"favourite\": \"").append(document.getBoolean("favourite")).append("\"")
                     .append("}").append(",");
         }
-        json.delete(json.length() - 1, json.length());
+        if(!listaQuery.isEmpty()) json.delete(json.length() - 1, json.length());
         json.append("]}");
         return json.toString();
     }
 
-    public static String get_task(String userID, String taskID) {
+    public static String getTask(String userID, String taskID) {
         DocumentSnapshot document;
         try {
         DocumentReference docRef = db.collection("notes")
@@ -67,13 +67,13 @@ public class DBTaskslist {
         }
     }
 
-    public static String add_task(String userID, String title, String content, String date, boolean favourite) {
+    public static String addTask(String userID, String title, String content, String date, boolean favourite) {
         DocumentReference docRef = db.collection("tasklist").document();
         docRef.set(Map.of("userID", userID, "title", title, "content", content, "date", date, "favourite", favourite));
         return docRef.getId();
     }
 
-    public static void delete_task(String userID, String taskID) {
+    public static void deleteTask(String userID, String taskID) {
         System.out.println("Deleting task: " + taskID);
         try {
             db.collection("tasklist")
@@ -92,7 +92,7 @@ public class DBTaskslist {
     }
 
 
-    public static void update_task(String userID, String noteID, String title, String content, String date, boolean favourite) {
+    public static void updateTask(String userID, String noteID, String title, String content, String date, boolean favourite) {
         db.collection("notes")
                 .document(noteID)
                 .update(Map.of("userID", userID,"title", title, "content", content, "date", Date.from(Instant.parse(date)), "favourite", favourite));
