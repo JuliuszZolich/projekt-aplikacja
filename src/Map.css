@@ -170,7 +170,7 @@
     border-radius: 0 0 5px 5px;
 }
 
-.find-result-item{
+.find-result-item, .map-result-find-result-item{
     min-height: 40px;
     width: 90%;
     border-top: 1px solid grey;
@@ -184,8 +184,21 @@
     transition: 0.2s;
 }
 
-.find-result-item:hover{
+.find-result-item:hover, .map-result-find-result-item:hover{
     color: #FF5555;
+}
+
+.map-result-find-result{
+    width: 71.5%;
+    position: absolute;
+    top: 54px;
+    margin-left: 30px;
+    max-height: 200px;
+    background-color: #D9D9D9;
+    border: 2px solid #b51e1e;
+    border-top: 0;
+    overflow: hidden scroll;
+    border-radius: 0 0 5px 5px;
 }
 
 @media (max-width: 1400px){
@@ -228,7 +241,7 @@
         width: 88%;
     }
 
-    .find-result-item{
+    .find-result-item,.map-result-find-result-item{
         font-size: 18px;
         line-height: 35px;
     }
@@ -266,6 +279,16 @@
         width: 300px;
     }
 
+    .map-result-find{
+        margin-left: 3%;
+    }
+
+    .map-result-find-result{
+        top: 44px;
+        left: 40px;
+        width: 67%;
+    }
+
     .map-find-input > input {
         width: 80%;
         font-size: 25px;
@@ -276,7 +299,7 @@
         width: 83.5%;
     }
 
-    .find-result-item{
+    .find-result-item, .map-result-find-result-item{
         font-size: 15px;
         line-height: 30px;
         min-height: 30px;
@@ -301,6 +324,16 @@
     .map-result-right-content{
         width: 90%;
         margin: 0 5%;
+    }
+}
+
+@media (max-width: 450px) {
+    .map-result-find{
+        margin-left: 1%;
+    }
+
+    .map-result-find-result{
+        left: 30px;
     }
 }
 
@@ -329,16 +362,22 @@
     }
 
     .map-result-iframe{
-        min-height: 500px;
+        margin-top: 80px;
+        height: 300px;
     }
 
     .map-result-location-image{
-        margin-top: 300px;
-        min-height: 600px;
+        margin-top: 20px;
+        height: 400px;
     }
 
     .find-result{
         max-height: 150px;
     }
+
+    .map-result-left-content{
+        height: 50%;
+    }
+
 }
 
