@@ -15,6 +15,18 @@ const Map = () => {
                         <img src={findicon} alt="finc-icon" title={"Znajdz"}/>
                     </Link>
                     <input type={"text"} name={"find"} className={"home-p"} placeholder={translation.Map.find}/>
+                    <div className={"find-result"}>
+                        <div className={"find-result-item"}>
+                            xddasdsadasddddd ddddddddddddddddddddddddddddddddd dddddddddddddddddddddddddddddddddddddddd
+                        </div>
+                        <div className={"find-result-item"}>
+                            xd
+                        </div>
+                        <div className={"find-result-item"}>
+                            xd
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </>
