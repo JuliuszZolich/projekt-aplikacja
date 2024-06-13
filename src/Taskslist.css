@@ -1,18 +1,18 @@
-.tasks-list-main-content{
+.tasks-list-main-content {
     position: fixed;
     width: 90%;
     height: 88%;
     margin: 100px 0 0 4%;
 }
 
-.tasks-list-top-bar{
+.tasks-list-top-bar {
     height: 5%;
     width: 90%;
     margin: 0 5%;
     position: relative;
 }
 
-.tasks-list-find{
+.tasks-list-find {
     margin-right: 12%;
     float: right;
     position: relative;
@@ -56,7 +56,7 @@
     color: transparent;
 }
 
-.tasks-list-left-content, .tasks-list-left-content-menu{
+.tasks-list-left-content, .tasks-list-left-content-menu {
     width: 450px;
     margin-top: 4%;
     height: 430px;
@@ -64,7 +64,7 @@
     position: relative;
 }
 
-.tasks-list-left-content-menu{
+.tasks-list-left-content-menu {
     z-index: 1;
     top: 150px;
     position: absolute;
@@ -78,7 +78,7 @@
     display: none;
 }
 
-.tasks-list-left-content-open-menu{
+.tasks-list-left-content-open-menu {
     z-index: 2;
     width: 40px;
     height: 40px;
@@ -91,13 +91,13 @@
     display: none;
 }
 
-.tasks-list-left-content-open-menu > img{
+.tasks-list-left-content-open-menu > img {
     margin: 5px;
     width: 30px;
     height: 30px;
 }
 
-.tasks-list-line{
+.tasks-list-line {
     float: left;
     width: 3px;
     height: 100%;
@@ -105,7 +105,7 @@
     background-color: #E32C2C;
 }
 
-.tasks-list-right-content{
+.tasks-list-right-content {
     width: 70%;
     margin-top: 3%;
     height: 100%;
@@ -113,7 +113,7 @@
     overflow: hidden scroll;
 }
 
-.tasks-list-left-content-item{
+.tasks-list-left-content-item {
     width: 80%;
     margin-left: 5%;
     height: 24%;
@@ -124,13 +124,13 @@
     transition: 0.2s;
 }
 
-.tasks-list-left-content-item:hover{
+.tasks-list-left-content-item:hover {
     color: #E32C2C;
     border-color: #E32C2C;
     cursor: pointer;
 }
 
-.tasks-list-left-content-menu-item{
+.tasks-list-left-content-menu-item {
     width: 80%;
     margin-left: 10%;
     height: 22%;
@@ -141,13 +141,13 @@
     transition: 0.2s;
 }
 
-.tasks-list-left-content-menu-item:hover{
+.tasks-list-left-content-menu-item:hover {
     color: #E32C2C;
     border-color: #E32C2C;
     cursor: pointer;
 }
 
-.tasks-list-right-content-add{
+.tasks-list-right-content-add {
     width: 90%;
     height: 8%;
     margin: 3% 5%;
@@ -167,29 +167,29 @@
     box-shadow: rgba(38, 57, 77, 0.75) 0 3px 8px 2px, rgba(0, 0, 0, 0.3) 0 0 0 0, rgba(0, 0, 0, 0.2) 0 -2px 1px inset;
 }
 
-.tasks-list-right-content-add:hover> * > img{
+.tasks-list-right-content-add:hover > * > img {
     filter: invert(24%) sepia(77%) saturate(2515%) hue-rotate(346deg) brightness(94%) contrast(91%);
 }
 
-.tasks-list-right-content-add-img{
+.tasks-list-right-content-add-img {
     width: 75px;
     height: 66px;
     float: left;
 }
 
-.tasks-list-right-content-add-img > img{
+.tasks-list-right-content-add-img > img {
     width: 60%;
     height: 60%;
     padding: 20%;
 }
 
-.tasks-list-right-content-add-text{
+.tasks-list-right-content-add-text {
     font-size: 30px;
     text-align: left;
     line-height: 70px;
 }
 
-.tasks-list-right-content-item{
+.tasks-list-right-content-item {
     width: 90%;
     height: 25%;
     margin: 3% 5%;
@@ -200,29 +200,29 @@
     min-height: 200px;
 }
 
-.tasks-list-right-content-item:hover{
+.tasks-list-right-content-item:hover {
     box-shadow: rgba(38, 57, 77, 0.75) 0 3px 8px 2px, rgba(0, 0, 0, 0.3) 0 0 0 0, rgba(0, 0, 0, 0.2) 0 -2px 1px inset;
 }
 
-.tasks-list-right-content-item-left{
+.tasks-list-right-content-item-left {
     width: 110px;
     height: 100%;
     float: left;
 }
 
-.tasks-list-right-content-item-middle{
+.tasks-list-right-content-item-middle {
     width: 70%;
     height: 100%;
     float: left;
 }
 
-.tasks-list-right-content-item-right{
+.tasks-list-right-content-item-right {
     width: 110px;
     height: 100%;
     float: right;
 }
 
-.circle{
+.circle {
     width: 60%;
     margin: 64% 20% 6% 20%;
     height: 30%;
@@ -231,22 +231,22 @@
     transition: 0.2s;
 }
 
-.circle > img{
+.circle > img {
     width: 50%;
     padding: 25%;
     height: 50%;
     display: none;
 }
 
-.circle:hover{
+.circle:hover {
     background-color: #5EC25C;
 }
 
-.circle:hover > img{
+.circle:hover > img {
     display: block;
 }
 
-.right-content-item-middle-date{
+.right-content-item-middle-date {
     font-size: 25px;
     line-height: 60px;
     width: 100%;
@@ -255,7 +255,7 @@
     font-weight: 600;
 }
 
-.right-content-item-middle-title{
+.right-content-item-middle-title {
     width: 100%;
     height: 50%;
     font-size: 50px;
@@ -265,7 +265,7 @@
     overflow: hidden;
 }
 
-.right-content-item-middle-text{
+.right-content-item-middle-text {
     width: 100%;
     height: 25%;
     font-size: 20px;
@@ -274,36 +274,36 @@
     overflow: hidden;
 }
 
-.right-content-item-right-star{
+.right-content-item-right-star {
     width: 100%;
     height: 50%;
     float: left;
 }
 
-.right-content-item-right-delete{
+.right-content-item-right-delete {
     width: 100%;
     height: 50%;
     float: left;
 }
 
-.right-content-item-right-star > img{
+.right-content-item-right-star > img {
     width: 50%;
     height: 50%;
     padding: 25%;
 }
 
-.right-content-item-right-delete > img{
+.right-content-item-right-delete > img {
     width: 50%;
     height: 50%;
     padding: 25%;
     display: none;
 }
 
-.right-content-item-right-delete:hover > img{
+.right-content-item-right-delete:hover > img {
     filter: invert(73%) sepia(73%) saturate(6867%) hue-rotate(332deg) brightness(111%) contrast(98%);
 }
 
-.tasks-list-right-content-item:hover > * > .right-content-item-right-delete > img{
+.tasks-list-right-content-item:hover > * > .right-content-item-right-delete > img {
     display: block;
 }
 
@@ -403,7 +403,7 @@
 }
 
 .add-task-window, .modify-task-window {
-    display: none;
+    display: block;
     width: 60%;
     height: 70%;
     margin: 150px 0 0 20%;
@@ -415,7 +415,7 @@
 }
 
 .modify-task-window {
-    display: block;
+    display: none;
 }
 
 .add-task-window-top-bar {
@@ -585,142 +585,187 @@
     color: #fcfafa;
 }
 
-@media (max-width: 1700px){
-    .tasks-list-right-content{
+.modify-task-window-select-date, .add-task-window-select-date {
+    position: absolute;
+    top: 110px;
+    right: 70px;
+}
+
+.add-task-window-select-date {
+    top: 120px;
+}
+
+#modify-task-window-select-day, #add-task-window-select-day {
+    width: 50px;
+    height: 42px;
+    margin-right: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+}
+
+#modify-task-window-select-month, #add-task-window-select-month {
+    width: 50px;
+    height: 42px;
+    margin-right: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+}
+
+#modify-task-window-select-year, #add-task-window-select-year {
+    width: 100px;
+    height: 42px;
+    margin-right: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+}
+
+.modify-task-window-select-date > select, .add-task-window-select-date > select {
+    outline: none;
+    padding-left: 5%;
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color: #dadada;
+    z-index: 9998;
+    font-size: 20px;
+}
+
+.modify-task-window-select-date > select > option, .add-task-window-select-date > select > option {
+    font-size: 15px;
+}
+
+@media (max-width: 1700px) {
+    .tasks-list-right-content {
         width: 65%;
     }
 }
 
-@media (max-width: 1450px){
-    .tasks-list-left-content{
+@media (max-width: 1450px) {
+    .tasks-list-left-content {
         width: 350px;
     }
 
-    .tasks-list-left-content-item{
+    .tasks-list-left-content-item {
         font-size: 40px;
     }
 
-    .tasks-list-left-content{
+    .tasks-list-left-content {
         height: 45%;
     }
 
-    .tasks-list-right-content{
+    .tasks-list-right-content {
         width: 65%;
     }
 
-    .tasks-list-right-content-item-middle{
+    .tasks-list-right-content-item-middle {
         width: 65%;
     }
 
-    .right-content-item-middle-title{
+    .right-content-item-middle-title {
         font-size: 40px;
         line-height: 90px;
     }
 }
 
-@media (max-width: 1200px){
-    .tasks-list-left-content{
+@media (max-width: 1200px) {
+    .tasks-list-left-content {
         width: 250px;
     }
 
-    .tasks-list-left-content-item{
+    .tasks-list-left-content-item {
         font-size: 30px;
     }
 
-    .tasks-list-left-content{
+    .tasks-list-left-content {
         height: 40%;
     }
 
-    .tasks-list-right-content{
+    .tasks-list-right-content {
         width: 70%;
     }
 
-    .right-content-item-middle-title{
+    .right-content-item-middle-title {
         font-size: 30px;
         line-height: 90px;
     }
 
-    .tasks-list-right-content-item-middle{
+    .tasks-list-right-content-item-middle {
         width: 60%;
     }
 }
 
-@media  (max-width: 1000px){
-    .tasks-list-left-content-open-menu{
+@media (max-width: 1000px) {
+    .tasks-list-left-content-open-menu {
         display: block;
         z-index: 2;
         transition: 0.2s;
     }
 
-    .tasks-list-line{
+    .tasks-list-line {
         display: none;
     }
 
-    .tasks-list-right-content{
+    .tasks-list-right-content {
         width: 90%;
         margin-left: 5%;
     }
 
-    .tasks-list-left-content{
+    .tasks-list-left-content {
         display: none;
     }
 
-    .tasks-list-left-content-menu{
+    .tasks-list-left-content-menu {
         display: block;
     }
 
-    .tasks-list-left-content{
+    .tasks-list-left-content {
         width: 250px;
     }
 
-    .tasks-list-left-content-item{
+    .tasks-list-left-content-item {
         font-size: 30px;
     }
 
-    .right-content-item-middle-title{
+    .right-content-item-middle-title {
         font-size: 30px;
         line-height: 90px;
     }
 
-    .tasks-list-right-content-item-middle{
+    .tasks-list-right-content-item-middle {
         width: 60%;
     }
 
-    .circle{
+    .circle {
         width: 36px;
         height: 34px;
         margin: 150% 5% 0 5%;
     }
 
-    .tasks-list-right-content-item{
+    .tasks-list-right-content-item {
         height: 10%;
     }
 
-    .tasks-list-right-content-add-text{
+    .tasks-list-right-content-add-text {
         font-size: 25px;
     }
 
-    .tasks-list-right-content-item-left{
+    .tasks-list-right-content-item-left {
         width: 50px;
     }
 
-    .right-content-item-middle-date{
+    .right-content-item-middle-date {
         font-size: 18px;
     }
 
-    .right-content-item-middle-title{
+    .right-content-item-middle-title {
         font-size: 25px;
     }
 
-    .right-content-item-middle-text{
+    .right-content-item-middle-text {
         font-size: 15px;
     }
 
-    .tasks-list-right-content-item-right{
+    .tasks-list-right-content-item-right {
         width: 50px;
     }
 
-    .right-content-item-right-star > img{
+    .right-content-item-right-star > img {
         width: 90%;
         height: 50%;
         padding: 25% 10% 25% 0;

@@ -44,7 +44,7 @@ async function getTasks(user_id, setTasks) {
                     </div>
                     <div className={"tasks-list-right-content-item-middle"}>
                         <div className={"right-content-item-middle-date"}>
-                            {(()=>{
+                            {(() => {
                                 const date = task["date"].split(" ")
                                 let day = date[2];
                                 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -232,6 +232,20 @@ const Tasklist = () => {
                 </div>
                 <div className={"add-task-window-middle-content"}>
                     <input type="text" placeholder={"Wpisz tytuł notatki"}/>
+                    <div className={"add-task-window-select-date"}>
+                        <select name="add-task-window-select-day" id="add-task-window-select-day">
+                            <option value="default">-</option>
+                            <option value="1">1</option>
+                        </select>
+                        <select name="add-task-window-select-month" id="add-task-window-select-month">
+                            <option value="default">-</option>
+                            <option value="january">1</option>
+                        </select>
+                        <select name="add-task-window-select-year" id="add-task-window-select-year">
+                            <option value="default">-</option>
+                            <option value="2024">2024</option>
+                        </select>
+                    </div>
                     <textarea id={"add-task-window-text"} name={"task-content"} placeholder={"Wpisz treść notatki"}>
                         </textarea>
                 </div>
@@ -283,9 +297,23 @@ const Tasklist = () => {
                 </div>
                 <div className={"modify-task-window-middle-content"}>
                     <input type="text" placeholder={"Wpisz tytuł notatki"}/>
+                    <div className={"modify-task-window-select-date"}>
+                        <select name="modify-task-window-select-day" id="modify-task-window-select-day">
+                            <option value="default">-</option>
+                            <option value="1">1</option>
+                        </select>
+                        <select name="modify-task-window-select-month" id="modify-task-window-select-month">
+                            <option value="default">-</option>
+                            <option value="january">1</option>
+                        </select>
+                        <select name="modify-task-window-select-year" id="modify-task-window-select-year">
+                            <option value="default">-</option>
+                            <option value="2024">2024</option>
+                        </select>
+                    </div>
                     <textarea id={"modify-task-window-text"} name={"task-content"}
                               placeholder={"Wpisz treść notatki"}>
-                        </textarea>
+                    </textarea>
                 </div>
                 <div className={"modify-task-window-bottom-bar"}>
                     <div className={"modify-task-window-bottom-bar-item modify-task-window-bottom-bar-item-cancel"}>
@@ -296,7 +324,10 @@ const Tasklist = () => {
                     </div>
                 </div>
             </div>
-            <div className={"tasks-list-left-content-open-menu"} onClick={() => {OpenCloseTasksMenu(isOpenMenu);if(isOpenMenu === 1) isOpenMenu = 0;else isOpenMenu = 1}}>
+            <div className={"tasks-list-left-content-open-menu"} onClick={() => {
+                OpenCloseTasksMenu(isOpenMenu);
+                if (isOpenMenu === 1) isOpenMenu = 0; else isOpenMenu = 1
+            }}>
                 <img className={"tasks-list-left-content-open-menu-img"} src={openmenu} alt="open-menu-icon"/>
             </div>
             <div className={"tasks-list-left-content-menu"}>
@@ -317,7 +348,8 @@ const Tasklist = () => {
                 <div className={"tasks-list-top-bar"}>
                     <div className={"tasks-list-find"}>
                         <img className={"tasks-list-find-img"} src={findicon} alt="finc-icon" title={"Wyszukaj"}/>
-                        <input type={"text"} name={"find"} className={"top-bar-p"} placeholder={translation.TasksList.find}/>
+                        <input type={"text"} name={"find"} className={"top-bar-p"}
+                               placeholder={translation.TasksList.find}/>
                     </div>
                 </div>
                 <div className={"tasks-list-left-content"}>
