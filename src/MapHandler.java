@@ -15,7 +15,6 @@ public class MapHandler implements HttpHandler {
         String BuildingID = t.getRequestHeaders().get("BuildingID").get(0);
         String response = DBMap.getMap(BuildingID);
         t.sendResponseHeaders(200, response.getBytes().length);
-        System.out.println(response.getBytes().length);
         os.write(response.getBytes());
         os.close();
     }
