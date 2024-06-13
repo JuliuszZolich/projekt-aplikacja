@@ -17,7 +17,7 @@ const Map = () => {
                     <input type={"text"} name={"find"} className={"home-p"} placeholder={translation.Map.find}/>
                     <div className={"find-result"}>
                         <div className={"find-result-item"}>
-                            xddasdsadasddddd ddddddddddddddddddddddddddddddddd dddddddddddddddddddddddddddddddddddddddd
+                            xddasdsadasddddd dd xddasdsadasddddd dd xddasdsadasddddd dd xddasdsadasddddd dd
                         </div>
                         <div className={"find-result-item"}>
                             xd
@@ -25,7 +25,15 @@ const Map = () => {
                         <div className={"find-result-item"}>
                             xd
                         </div>
-
+                        <div className={"find-result-item"}>
+                            xd
+                        </div>
+                        <div className={"find-result-item"}>
+                            xd
+                        </div>
+                        <div className={"find-result-item"}>
+                            xd
+                        </div>
                     </div>
                 </div>
             </div>

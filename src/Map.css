@@ -167,6 +167,7 @@
     border: 2px solid #b51e1e;
     border-top: 0;
     overflow: hidden scroll;
+    border-radius: 0 0 5px 5px;
 }
 
 .find-result-item{
@@ -192,6 +193,18 @@
         width: 500px;
         height: 50px;
     }
+
+    .find-result{
+        width: 100%;
+    }
+
+    .find-result-item{
+        font-size: 18px;
+    }
+
+    .map-find-input > * > img{
+        left: 10px;
+    }
 }
 
 @media (max-width: 1200px){
@@ -209,6 +222,15 @@
 @media (max-width: 1000px){
     .map-find-input {
         width: 400px;
+    }
+
+    .find-result{
+        width: 88%;
+    }
+
+    .find-result-item{
+        font-size: 18px;
+        line-height: 35px;
     }
 
     .map-find-input > input {
@@ -250,6 +272,16 @@
         padding-left: 20%;
     }
 
+    .find-result{
+        width: 83.5%;
+    }
+
+    .find-result-item{
+        font-size: 15px;
+        line-height: 30px;
+        min-height: 30px;
+    }
+
     .map-result-find > input{
         height: 40px;
         width: 80%;
@@ -284,6 +316,29 @@
     .map-result-location-image{
         margin-top: 300px;
         min-height: 600px;
+    }
+
+    .find-result{
+        max-height: 100px;
+    }
+}
+
+@media (max-height: 800px){
+    .map-find-input {
+        margin-top: 230px;
+    }
+
+    .map-result-iframe{
+        min-height: 500px;
+    }
+
+    .map-result-location-image{
+        margin-top: 300px;
+        min-height: 600px;
+    }
+
+    .find-result{
+        max-height: 150px;
     }
 }
 
