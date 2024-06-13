@@ -16,6 +16,7 @@ import Subjects from './Subjects.jsx'
 import Settings from './Settings.jsx'
 import MapResult from "./MapResult.jsx";
 import SubjectPage from "./SubjectPage.jsx";
+import ForgotPassword from "./ForgotPassword.jsx";
 import AnnouncementsPostPage from "./AnnouncementsPostPage.jsx";
 import MyProfile from "./MyProfile.jsx";
 
@@ -37,6 +38,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 <Route path={"projekt-aplikacja/settings"} element={<Settings/>}/>
                 <Route path={"projekt-aplikacja/mapresult"} element={<MapResult/>}/>
                 <Route path={"projekt-aplikacja/myprofile"} element={<MyProfile/>}/>
+                <Route path={"projekt-aplikacja/forgotpassword"} element={<ForgotPassword/>}/>
             </Routes>
         </BrowserRouter>
     </LanguageProvider>

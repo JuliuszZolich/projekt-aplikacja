@@ -52,17 +52,20 @@
 
 
 .forgot-password {
-    font-size: 15px;
     width: 60%;
     margin: 0 58% 0 22%;
     height: 10%;
     float: left;
-    color: #E32C2C;
     cursor: pointer;
     transition: 0.1s;
 }
 
-.forgot-password > p:hover {
+.forgot-password> * > p{
+    color: #E32C2C;
+    font-size: 15px;
+}
+
+.forgot-password> * > p:hover {
     text-decoration: underline;
 }
 

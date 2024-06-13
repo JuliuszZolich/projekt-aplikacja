@@ -18,7 +18,9 @@ const Login = () => {
                         <input type="password" name={"passowrd"} placeholder={translation.Login.enterPassword}/>
                     </div>
                     <div className={"forgot-password"}>
-                        <p>{translation.Login.forgotPassword}</p>
+                        <Link to={"/projekt-aplikacja/forgotpassword"}>
+                            <p>{translation.Login.forgotPassword}</p>
+                        </Link>
                     </div>
                     <div className={"wrong-login-informations"}>
                         Błędny e-mail lub hasło!
