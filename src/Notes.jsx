@@ -165,6 +165,7 @@ const Notes = () => {
                         <img src={addicon} alt="add-note-icon"/>
                     </div>
                 </div>
+                <div className={"bottom-bar"}></div>
                 {filteredNotes}
                 <div className={"note-window"}>
                     <div className={"note-window-top-bar"}>
