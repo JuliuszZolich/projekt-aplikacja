@@ -3,52 +3,116 @@ import TopBarAndSideMenu from "./TopBarAndSideMenu.jsx";
 import {Link} from "react-router-dom";
 import {useLanguage} from './ChangeLanguage.jsx';
 import findicon from "./assets/find.png"
-import locationimage from "./assets/weeia.jpg"
+import {useEffect, useState} from "react";
+import {useCookies} from "react-cookie";
+
+async function getMap(builingID, setMap, setText, setImage, removeCookies, translation) {
+    let headers = new Headers();
+    headers.append("BuildingID", builingID);
+    headers.append("UserID", -1);
+    headers.append("Action-Type", "GET");
+    const response = await fetch('http://localhost:8001/map/', {
+        method: 'GET',
+        headers: headers,
+    });
+    const data = await response.json();
+    console.log(data)
+    setMap((<iframe src={data.map.iframe.substring(1, data.map.iframe.length - 1)}></iframe>));
+    setText(() => {
+        return (
+            <div>
+                <p className={"medium-text-p"}>{translation.Map.building} {data.map.building} {data.map.address} {translation.Map.campus} {data.map.campus}</p>
+                <p className={"medium-text-p"}>{translation.Map.faculty} {data.map.facility}</p>
+            </div>
+        )
+    });
+    setImage(`${data.map.img}`);
+    removeCookies("searchedmap", {path: "/"});
+}
+
+async function getBuildings(translation, setBuildings) {
+    let headers = new Headers();
+    headers.append("UserID", -1);
+    headers.append("Action-Type", "LIST");
+    const response = await fetch("http://localhost:8001/map", {
+        method: "GET",
+        headers: headers,
+    });
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    let data = await response.json();
+    setBuildings(data["maplist"].map((building) => {
+        return (<div className={"map-result-find-result-item"} key={building.id}
+                     onClick={() => {
+                         document.querySelector(".map-result-find-result").style.display = "none";
+                         document.querySelector("input[id=search]").value = `${translation.Map.campus} ${building.campus}: ${building.building} ${building.facility}`;
+                     }}>
+            {`${translation.Map.campus} ${building.campus}: ${building.building} ${building.facility}`}
+        </div>)
+    }));
+}
 
 const MapResult = () => {
     const {t: translation} = useLanguage();
+    const [Map, setMap] = useState([]);
+    const [Text, setText] = useState([]);
+    const [Image, setImage] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [cookies, setCookies, removeCookies] = useCookies([]);
+    useEffect(() => {
+        getMap(cookies.searchedmap, setMap, setText, setImage, removeCookies, translation).then(() => console.log("Map loaded"));
+    }, [cookies.searchedmap, removeCookies, translation]);
+    const [buildings, setBuildings] = useState([]);
+    useEffect(() => {
+        getBuildings(translation, setBuildings)
+    }, [translation])
+    const filteredBuildings = buildings.filter(building => {
+        return building.props.children.toLowerCase().includes(searchTerm.toLowerCase());
+    })
     return (
         <>
             {TopBarAndSideMenu()}
             <div className={"map-result-main-content"}>
                 <div className={"map-result-left-content"}>
                     <div className={"map-result-find"}>
-                        <Link to={"/projekt-aplikacja/mapresult"}>
-                            <img src={findicon} alt="finc-icon" title={"Znajdz"}/>
+                        <Link to={"/projekt-aplikacja/mapresult"}
+                              onClick={() => {
+                                  if (cookies.searchedmap !== undefined) removeCookies("searchedmap", {path: "/"})
+                                  setCookies("searchedmap", document.querySelector("input[id=search]").value.split(" ")[2])
+                                  window.location.reload();
+                              }}
+                        >
+                            <img src={findicon} alt="find-icon" title={"Znajdz"}/>
                         </Link>
-                        <input type={"text"} name={"find"} className={"home-p"} placeholder={translation.Map.find}/>
-                        <div className={"map-result-find-result"}>
-                            <div className={"map-result-find-result-item"}>
-                                xd
-                            </div>
-                            <div className={"map-result-find-result-item"}>
-                                xd
-                            </div>
-                            <div className={"map-result-find-result-item"}>
-                                xd
-                            </div>
-                            <div className={"map-result-find-result-item"}>
-                                xd
-                            </div>
-                            <div className={"map-result-find-result-item"}>
-                                xd
-                            </div>
-                            <div className={"map-result-find-result-item"}>
-                                xd
-                            </div>
+                        <input type={"text"}
+                               name={"find"}
+                               id={"search"}
+                               className={"home-p"}
+                               placeholder={translation.Map.find}
+                               onChange={(e) => {
+                                   setSearchTerm(e.target.value);
+                                   if (e.target.value.length > 0) {
+                                       document.querySelector(".map-result-find-result").style.display = "block";
+                                   } else {
+                                       document.querySelector(".map-result-find-result").style.display = "none";
+                                   }
+                               }}
+                        />
+                        <div className={"map-result-find-result"} style={{"display": "none"}}>
+                            {filteredBuildings}
                         </div>
                     </div>
                     <div className={"map-result-iframe"}>
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2420.217857163626!2d21.744122993635052!3d52.656042454209754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471f037c7bd4657d%3A0xeedc3814c5cb25d3!2sAgroturystyka%20Na%20Zadupiu!5e0!3m2!1spl!2spl!4v1716817941116!5m2!1spl!2spl"></iframe>
+                        {Map}
                     </div>
                 </div>
                 <div className={"map-result-right-content"}>
                     <div className={"map-result-location-image"}>
-                        <img src={locationimage} alt="location-image"/>
+                        <img src={Image} alt="location-image"/>
                     </div>
                     <div className={"map-result-location-name"}>
-                        <p className={"medium-text-p"}>{translation.Map.building} A10 ul. Wólczańska 175, {translation.Map.campus} A</p>
-                        <p className={"medium-text-p"}>{translation.Map.faculty} EEIA, II {translation.Map.floor}</p>
+                        <p className={"medium-text-p"}>{Text}</p>
                     </div>
                 </div>
             </div>
