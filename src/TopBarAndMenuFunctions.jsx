@@ -9,81 +9,87 @@ import snowing from './assets/widget/snowing.png'
 import mist from './assets/widget/mist.png'
 
 
-export function OpenMenu() {
-    document.querySelector('.on-click-menu').style.animationName = "show-side-menu";
+let isWindowClickListenerAdded = false;
+let clickOutsideWindowHandler = null;
+
+let isMenuClickListenerAdded = false;
+let clickOutsideMenuHandler = null;
+
+export function OpenMenu(element, className, animationNameHide) {
+    const targetMenu = document.querySelector(element);
+    targetMenu.style.animationName = className;
     setTimeout(() => {
-        document.querySelector('.on-click-menu').classList.add("show-side-menu");
-    }, 100);
-    OnClickOutside(".on-click-menu", ".hamburger-menu", 0);
+        targetMenu.classList.add(className);
+    },100)
+    if (!isMenuClickListenerAdded) {
+        setTimeout(() => {
+            clickOutsideMenuHandler = createClickOutsideMenuHandler(element, className, animationNameHide);
+            window.addEventListener('click', clickOutsideMenuHandler);
+            isMenuClickListenerAdded = true;
+        }, 100);
+    }
 }
 
-export function CloseMenu() {
-    document.querySelector('.on-click-menu').style.animationName = "hide-side-menu";
+export function CloseMenu(element, animationName, className) {
+    const targetMenu = document.querySelector(element);
+    targetMenu.style.animationName = animationName;
     setTimeout(() => {
-        document.querySelector('.on-click-menu').classList.remove("show-side-menu");
+        targetMenu.classList.remove(className);
     }, 500);
+    removeMenuClickListener();
 }
 
-export function OpenFacilitiesMenu() {
-    document.querySelector('.drop-down-menu-facilities').style.animationName = "show-facilities-menu";
-    setTimeout(() => {
-        document.querySelector('.drop-down-menu-facilities').classList.add("show-facilities-menu");
-    }, 100);
-    OnClickOutside(".drop-down-menu-facilities", "#facilities-menu-open", 1);
-}
-
-export function OnClickOutside(element, element2, menu) {
-    window.addEventListener('click', function (e) {
-            if (!document.querySelector(element).contains(e.target) && !document.querySelector(element2).contains(e.target)) {
-                if (menu === 1) {
-                    CloseFacilitiesMenu();
-                } else if (menu === 2) {
-                    CloseNotifications();
-                } else if (menu === 3) {
-                    CloseUserMenu();
-                } else {
-                    CloseMenu();
-                }
-            }
+function createClickOutsideMenuHandler(element, className, animationName) {
+    return function handleClickOutside(e) {
+        const targetElement = document.querySelector(element);
+        if (targetElement && !targetElement.contains(e.target)) {
+            CloseMenu(element, animationName, className);
         }
-    )
+    };
 }
 
-export function CloseFacilitiesMenu() {
-    document.querySelector('.drop-down-menu-facilities').style.animationName = "hide-facilities-menu";
-    setTimeout(() => {
-        document.querySelector('.drop-down-menu-facilities').classList.remove("show-facilities-menu");
-    }, 500);
+function removeMenuClickListener() {
+    if (isMenuClickListenerAdded && clickOutsideMenuHandler) {
+        window.removeEventListener('click', clickOutsideMenuHandler);
+        isMenuClickListenerAdded = false;
+        clickOutsideMenuHandler = null;
+    }
 }
 
-export function OpenNotifications() {
-    document.querySelector('.drop-down-notifications').style.animationName = "show-notifications";
-    setTimeout(() => {
-        document.querySelector('.drop-down-notifications').classList.add("show-notifications");
-    }, 100);
-    OnClickOutside(".drop-down-notifications", ".open-notifications", 2);
+export function OpenWindow(element) {
+    const targetWindow = document.querySelector(element);
+    targetWindow.style.display = "block";
+    CloseMenu('.on-click-menu', 'hide-side-menu', 'show-side-menu');
+    if (!isWindowClickListenerAdded) {
+        setTimeout(() => {
+            clickOutsideWindowHandler = createClickOutsideWindowHandler(element);
+            window.addEventListener('click', clickOutsideWindowHandler);
+            isWindowClickListenerAdded = true;
+        }, 100);
+    }
 }
 
-export function CloseNotifications() {
-    document.querySelector('.drop-down-notifications').style.animationName = "hide-notifications";
-    setTimeout(() => {
-        document.querySelector('.drop-down-notifications').classList.remove("show-notifications");
-    }, 500);
+export function CloseWindow(element) {
+    const targetWindow = document.querySelector(element);
+    targetWindow.style.display = "none";
+    removeWindowClickListener();
 }
 
-export function OpenUserMenu() {
-    document.querySelector('.user-menu').style.animationName = "show-user-menu";
-    setTimeout(() => {
-        document.querySelector('.user-menu').classList.add("show-user-menu");
-    }, 100);
-    OnClickOutside(".user-menu", ".open-user-menu", 3);
+function createClickOutsideWindowHandler(element) {
+    return function handleClickOutside(e) {
+        const targetElement = document.querySelector(element);
+        if (targetElement && !targetElement.contains(e.target)) {
+            CloseWindow(element);
+        }
+    };
 }
 
-export function CloseUserMenu() {
-    document.querySelector('.user-menu').style.animationName = "hide-user-menu";
-    setTimeout(() => {
-        document.querySelector('.user-menu').classList.remove("show-user-menu");
-    }, 500);
+function removeWindowClickListener() {
+    if (isWindowClickListenerAdded && clickOutsideWindowHandler) {
+        window.removeEventListener('click', clickOutsideWindowHandler);
+        isWindowClickListenerAdded = false;
+        clickOutsideWindowHandler = null;
+    }
 }
 
 let flag = 0;
