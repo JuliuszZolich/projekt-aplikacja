@@ -351,18 +351,7 @@ const Tasklist = () => {
                 <div className={"add-task-window-middle-content"}>
                     <input type="text" placeholder={"Wpisz tytuł notatki"}/>
                     <div className={"add-task-window-select-date"}>
-                        <select name="add-task-window-select-day" id="add-task-window-select-day">
-                            <option value="default">-</option>
-                            <option value="1">1</option>
-                        </select>
-                        <select name="add-task-window-select-month" id="add-task-window-select-month">
-                            <option value="default">-</option>
-                            <option value="january">1</option>
-                        </select>
-                        <select name="add-task-window-select-year" id="add-task-window-select-year">
-                            <option value="default">-</option>
-                            <option value="2024">2024</option>
-                        </select>
+                        <input type="date"/>
                     </div>
                     <textarea id={"add-task-window-text"} name={"task-content"} placeholder={"Wpisz treść notatki"}>
                         </textarea>
