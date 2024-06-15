@@ -7,7 +7,15 @@ import rain from './assets/widget/rain.png'
 import thunderstorm from './assets/widget/thunderstorm.png'
 import snowing from './assets/widget/snowing.png'
 import mist from './assets/widget/mist.png'
+import {useCookies} from "react-cookie";
 
+
+export function useLoginCookie(){
+    const [cookies] = useCookies(['userID']);
+    if (cookies['userID'] === undefined) {
+        window.location.href = "/projekt-aplikacja/login";
+    }
+}
 
 let isWindowClickListenerAdded = false;
 let clickOutsideWindowHandler = null;
@@ -207,10 +215,7 @@ export function getCurrentTime() {
 
 async function getCurrentWeather() {
     const url = 'https://geolocation-db.com/json/';
-    await fetch(url)
-        .then(response => {
-            return response.json();
-        })
+    await fetch(url).then(response => {return response.json();})
         .then(data => {
             lon = data.longitude;
             lat = data.latitude;

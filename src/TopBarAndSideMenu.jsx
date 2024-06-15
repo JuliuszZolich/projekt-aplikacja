@@ -6,7 +6,8 @@ import {
     setFontSize,
     widget,
     CloseWindow,
-    OpenWindow
+    OpenWindow,
+    useLoginCookie
 }
     from "./TopBarAndMenuFunctions.jsx";
 import {useLanguage} from './ChangeLanguage.jsx';
@@ -29,9 +30,12 @@ import facilitesicon from "./assets/facilities.png"
 import polandflag from "./assets/pl.png"
 import ukflag from "./assets/en.png"
 import {useEffect, useRef} from "react";
+import {useCookies} from "react-cookie";
+
 
 const TopBarAndSideMenu = () => {
     const {t: translation, setLanguage} = useLanguage();
+    const [ , , removeCookie] = useCookies([]);
     const didEffectRun = useRef(false);
     useEffect(() => {
         widget();
@@ -47,7 +51,7 @@ const TopBarAndSideMenu = () => {
             didEffectRun.current = true;
         }
     }, []);
-
+    useLoginCookie();
     return (
         <>
             <div className={"on-click-menu"} id={"on-click-menu"}>
@@ -182,7 +186,10 @@ const TopBarAndSideMenu = () => {
                                 Ustawienia
                             </div>
                         </Link>
-                        <div className={"user-menu-item user-menu-item-last"}>
+                        <div className={"user-menu-item user-menu-item-last"} onClick={()=> {
+                            removeCookie('userID',{path: '/'});
+                            window.location.href = "/projekt-aplikacja/login";
+                        }}>
                             Wyloguj
                         </div>
                     </div>
