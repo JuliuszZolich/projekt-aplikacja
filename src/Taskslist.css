@@ -246,6 +246,14 @@
     display: block;
 }
 
+.circle-checked{
+    background-color: #5EC25C;
+}
+
+.circle-checked:hover{
+    background-color: #b32d24;
+}
+
 .right-content-item-middle-date {
     font-size: 25px;
     line-height: 60px;
