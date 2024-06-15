@@ -5,12 +5,15 @@ import findicon from "./assets/find.png"
 import addicon from "./assets/add.png"
 import completedicon from "./assets/check.png"
 import favouriteicon from "./assets/star.png"
+import filledstaricon from "./assets/checkedstar.png"
 import deleteicon from "./assets/bin.png"
 import openmenu from "./assets/arrows.png"
 import {useEffect, useState} from "react";
+import {useCookies} from "react-cookie";
 import {OpenCloseTasksMenu} from "./TasksListFunctions.jsx";
 
 let currentTaskId = 0;
+let isOpenMenu = 0;
 
 async function getTasks(user_id, setTasks) {
     let headers = new Headers();
@@ -25,29 +28,42 @@ async function getTasks(user_id, setTasks) {
         throw new Error(`HTTP error! status: ${response.status}`);
     }
     let data = await response.json();
-    console.log(data);
 
     setTasks(data["tasklist"].map(task => {
             return (
-                <div className={"tasks-list-right-content-item"} key={task["id"]}>
+                <div className={"tasks-list-right-content-item"}
+                     key={task["id"]}
+                     data-fav={task.favourite}
+                     data-fin={task.completed}
+                     onClick={() => {
+                         if(document.getElementById("delete").style.display !== "none") return;
+                         currentTaskId = task["id"];
+                         document.getElementById("display").style.display = "block";
+                         document.getElementsByClassName("task-window-text")[0].children[0].innerText = task["content"];
+                         document.getElementsByClassName("task-window-top-bar-title")[0].innerText = task["title"];
+
+                     }}
+                >
                     <div className={"tasks-list-right-content-item-left"}>
-                        <div className={"circle"}>
-                            {(() => {
-                                if (task["completed"] === "true") {
-                                    return <img src={completedicon} alt="check-icon"/>;
-                                } else {
-                                    return <img src={completedicon} alt="check-icon"/>;
-                                }
-                            })()
+                        {(() => {
+                            if (task["completed"] === true) {
+                                return (<div className={"circle"} style={{backgroundColor: "#5EC25C"}}>
+                                    <img src={completedicon} alt="check-icon" style={{display: "block"}}/>
+                                </div>);
+                            } else {
+                                return (<div className={"circle"} style={{backgroundColor: "none"}}>
+                                    <img src={completedicon} alt="check-icon" style={{display: "none"}}/>
+                                </div>);
                             }
-                        </div>
+                        })()
+                        }
                     </div>
                     <div className={"tasks-list-right-content-item-middle"}>
                         <div className={"right-content-item-middle-date"}>
                             {(() => {
                                 const date = task["date"].split(" ")
                                 let day = date[2];
-                                const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                                const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
                                 let month = months.indexOf(date[1]) + 1;
                                 let year = date[5];
                                 let hours = date[3].split(":")[0];
@@ -61,10 +77,10 @@ async function getTasks(user_id, setTasks) {
                                 return `${day}.${month}.${year} ${hours}:${minutes}`;
                             })()}
                         </div>
-                        <div className={"right-content-item-middle-title"}>
+                        <div className={"right-content-item-middle-title"} data-title={task.title}>
                             {task["title"]}
                         </div>
-                        <div className={"right-content-item-middle-text"}>
+                        <div className={"right-content-item-middle-text"} data-content={task.content}>
                             {task["content"]}
                         </div>
                     </div>
@@ -74,13 +90,17 @@ async function getTasks(user_id, setTasks) {
                                 if (task["favourite"] === "true") {
                                     return <img src={favouriteicon} alt="star - icon" title={"Dodaj do Ważnych"}/>;
                                 } else {
-                                    return <img src={favouriteicon} alt="star - icon" title={"Usuń z Ważnych"}/>;
+                                    return <img src={filledstaricon} alt="star - icon" title={"Usuń z Ważnych"}/>;
                                 }
                             })()
                             }
                         </div>
                         <div className={"right-content-item-right-delete"}>
-                            <img src={deleteicon} alt="delete-icon" title={"Usuń Zadanie"}/>
+                            <img src={deleteicon} alt="delete-icon" title={"Usuń Zadanie"} onClick={()=>
+                            {
+                                currentTaskId = task["id"];
+                                document.getElementById("delete").style.display = "block";
+                            }}/>
                         </div>
                     </div>
                 </div>
@@ -89,9 +109,9 @@ async function getTasks(user_id, setTasks) {
     ));
 }
 
-async function remove_task(task_id) {
+async function removeTask() {
     let headers = new Headers();
-    headers.append("Note-ID", note_id);
+    headers.append("Task-ID", currentTaskId);
     headers.append("Action-Type", "DELETE");
     const response = await fetch("http://localhost:8001/tasklist", {
         method: "DELETE",
@@ -104,7 +124,7 @@ async function remove_task(task_id) {
     window.location.reload();
 }
 
-async function add_task(title, content, date) {
+async function addTask(title, content, date) {
     let headers = new Headers();
     headers.append("Action-Type", "POST");
     headers.append("Content-Type", "application/json");
@@ -123,110 +143,208 @@ async function add_task(title, content, date) {
     window.location.reload();
 }
 
-let isOpenMenu = 0;
+function filterTasks(tasks, filter, inputValue) {
+    return tasks.filter(task => {
+        let typefilter;
+        switch (filter) {
+            case 0:
+                typefilter = true;
+                break;
+            case 1:
+                typefilter = task.props["data-fav"] === true;
+                break;
+            case 2:
+                typefilter = task.props["data-fin"] === false;
+                break;
+            case 3:
+                typefilter = task.props["data-fin"] === true;
+                break;
+            default:
+                typefilter = true;
+                break;
+        }
+        if (inputValue.length === 0) {
+            return typefilter;
+        }
+
+        let searchfilter = true;
+
+        let title = task.props.children[1].props.children[1].props.children.toLowerCase();
+        let content = task.props.children[1].props.children[2].props.children.toLowerCase();
+        if (!title.includes(inputValue) && !content.includes(inputValue)) {
+            searchfilter = false;
+        }
+
+        return typefilter && searchfilter;
+    });
+}
 
 const Tasklist = () => {
     const [tasks, setTasks] = useState([]);
+    const [cookies] = useCookies([]);
     useEffect(() => {
-        //todo Ustawić user_id na podstawie ciasteczek
-        getTasks("0", setTasks).then(() => console.log("Tasks loaded"));
-    }, []);
+        getTasks(cookies['userID'], setTasks).then(() => console.log("Tasks loaded"));
+    }, [cookies]);
+    const [filter, setFilter] = useState(0);
+    const [inputValue, setInputValue] = useState("");
+    let filteredTask = filterTasks(tasks, filter, inputValue);
     const {t: translation} = useLanguage();
     return (
         <>
             {TopBarAndSideMenu()}
-            <div className={"task-window"}>
+            <div className={"tasks-list-left-content-open-menu"} onClick={() => {
+                OpenCloseTasksMenu(isOpenMenu);
+                if (isOpenMenu === 1) isOpenMenu = 0; else isOpenMenu = 1
+            }}>
+                <img className={"tasks-list-left-content-open-menu-img"} src={openmenu} alt="open-menu-icon"/>
+            </div>
+            <div className={"tasks-list-left-content-menu"}>
+                <div className="tasks-list-left-content-item tasks-list-p tasks-list-p-active" id={"all1"}
+                     onClick={() => {
+                         setFilter(0);
+                         document.getElementById("all1").classList.add("tasks-list-p-active");
+                         document.getElementById("fav1").classList.remove("tasks-list-p-active");
+                         document.getElementById("act1").classList.remove("tasks-list-p-active");
+                         document.getElementById("comp1").classList.remove("tasks-list-p-active");
+                     }
+                     }>
+                    {translation.TasksList.all}
+                </div>
+                <div className="tasks-list-left-content-item tasks-list-p" id={"fav1"} onClick={() => {
+                    setFilter(1);
+                    document.getElementById("all1").classList.remove("tasks-list-p-active");
+                    document.getElementById("fav1").classList.add("tasks-list-p-active");
+                    document.getElementById("act1").classList.remove("tasks-list-p-active");
+                    document.getElementById("comp1").classList.remove("tasks-list-p-active");
+                }
+                }>
+                    {translation.TasksList.important}
+                </div>
+                <div className="tasks-list-left-content-item tasks-list-p" id={"act1"} onClick={() => {
+                    setFilter(2);
+                    document.getElementById("all1").classList.remove("tasks-list-p-active");
+                    document.getElementById("fav1").classList.remove("tasks-list-p-active");
+                    document.getElementById("act1").classList.add("tasks-list-p-active");
+                    document.getElementById("comp1").classList.remove("tasks-list-p-active");
+                }
+                }>
+                    {translation.TasksList.active}
+                </div>
+                <div className="tasks-list-left-content-item tasks-list-p" id={"comp1"} onClick={() => {
+                    setFilter(3);
+                    document.getElementById("all1").classList.remove("tasks-list-p-active");
+                    document.getElementById("fav1").classList.remove("tasks-list-p-active");
+                    document.getElementById("act1").classList.remove("tasks-list-p-active");
+                    document.getElementById("comp1").classList.add("tasks-list-p-active");
+                }
+                }>
+                    {translation.TasksList.done}
+                </div>
+            </div>
+            <div className={"tasks-list-main-content"}>
+                <div className={"tasks-list-top-bar"}>
+                    <div className={"tasks-list-find"}>
+                        <img className={"tasks-list-find-img"} src={findicon} alt="finc-icon" id={"input"}
+                             title={"Wyszukaj"}/>
+                        <input type={"text"} name={"find"} className={"top-bar-p"}
+                               placeholder={translation.TasksList.find}
+                               onChange={event => {
+                                   filteredTask = filterTasks(tasks, filter, event.target.value);
+                                   setInputValue(event.target.value);
+                               }
+                               }/>
+                    </div>
+                </div>
+                <div className={"tasks-list-left-content"}>
+                    <div className={"tasks-list-left-content-item tasks-list-p tasks-list-p-active"} id={"all"}
+                         onClick={() => {
+                             setFilter(0);
+                             document.getElementById("all").classList.add("tasks-list-p-active");
+                             document.getElementById("fav").classList.remove("tasks-list-p-active");
+                             document.getElementById("act").classList.remove("tasks-list-p-active");
+                             document.getElementById("comp").classList.remove("tasks-list-p-active");
+                         }
+                         }>
+                        {translation.TasksList.all}
+                    </div>
+                    <div className={"tasks-list-left-content-item tasks-list-p"} id={"fav"} onClick={() => {
+                        setFilter(1);
+                        document.getElementById("all").classList.remove("tasks-list-p-active");
+                        document.getElementById("act").classList.remove("tasks-list-p-active");
+                        document.getElementById("comp").classList.remove("tasks-list-p-active");
+                        document.getElementById("fav").classList.add("tasks-list-p-active");
+                    }
+                    }>
+                        {translation.TasksList.important}
+                    </div>
+                    <div className={"tasks-list-left-content-item tasks-list-p"} id={"act"} onClick={() => {
+                        setFilter(2);
+                        document.getElementById("all").classList.remove("tasks-list-p-active");
+                        document.getElementById("fav").classList.remove("tasks-list-p-active");
+                        document.getElementById("comp").classList.remove("tasks-list-p-active");
+                        document.getElementById("act").classList.add("tasks-list-p-active");
+                    }}>
+                        {translation.TasksList.active}
+                    </div>
+                    <div className={"tasks-list-left-content-item tasks-list-p"} id={"comp"} onClick={() => {
+                        setFilter(3);
+                        document.getElementById("all").classList.remove("tasks-list-p-active");
+                        document.getElementById("fav").classList.remove("tasks-list-p-active");
+                        document.getElementById("act").classList.remove("tasks-list-p-active");
+                        document.getElementById("comp").classList.add("tasks-list-p-active");
+                    }}>
+                        {translation.TasksList.done}
+                    </div>
+                </div>
+                <div className="tasks-list-line"></div>
+                <div className={"tasks-list-right-content"}>
+                    <div className={"tasks-list-right-content-add"}>
+                        <div className={"tasks-list-right-content-add-img"}>
+                            <img src={addicon} alt="add-icon"/>
+                        </div>
+                        <div className={"tasks-list-right-content-add-text home-p"} onClick={() => {
+                            document.getElementById("add").style.display = "block";
+                        }}>
+                            {translation.TasksList.addItem}
+                        </div>
+                    </div>
+                    {filteredTask}
+                </div>
+            </div>
+            <div className={"task-window"} id={"display"} style={{display: "none"}}>
                 <div className={"task-window-top-bar"}>
                     <div className={"task-window-top-bar-title"}>
                         Title
                     </div>
                     <div className={"task-window-top-bar-modify"}>
-                        <img src={"./src/assets/modify.png"} alt="modify-icon" title={"Modyfikuj"}/>
+                        <img src={"./src/assets/modify.png"}
+                             alt="modify-icon"
+                             title={"Modyfikuj"}
+                             onClick={()=>{
+                                    document.getElementById("modify").style.display = "block";
+                                    document.getElementById("modify-task-window-text").value = document.getElementsByClassName("task-window-text")[0].children[0].innerText;
+                                    document.getElementById("modify-task-window-title").value = document.getElementsByClassName("task-window-top-bar-title")[0].innerText;
+                             }}
+                        />
                     </div>
                 </div>
                 <div className={"task-window-text"}>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                        cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                        cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum
-                        dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                        cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                        cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum
-                        dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                        cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                        cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                        cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                        cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum
-                        dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                        cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                        cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum
-                        dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                        cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                        cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        a
                     </p>
                 </div>
                 <div className={"task-window-bottom-bar"}>
-                    <div className={"task-window-bottom-bar-close"}>
+                    <div className={"task-window-bottom-bar-close"}
+                         onClick={() => {
+                             document.getElementById("display").style.display = "none";
+                         }
+                         }
+                    >
                         Zamknij
                     </div>
                 </div>
             </div>
-            <div className={"add-task-window"}>
+            <div className={"add-task-window"} id={"add"} style={{display: "none"}}>
                 <div className={"add-task-window-top-bar"}>
                     Dodaj notatke
                 </div>
@@ -250,7 +368,10 @@ const Tasklist = () => {
                         </textarea>
                 </div>
                 <div className={"add-task-window-bottom-bar"}>
-                    <div className={"add-task-window-bottom-bar-item add-task-window-bottom-bar-item-cancel"}>
+                    <div className={"add-task-window-bottom-bar-item add-task-window-bottom-bar-item-cancel"}
+                         onClick={() => {
+                             document.getElementById("cancel").style.display = "block";
+                         }}>
                         Anuluj
                     </div>
                     <div className={"add-task-window-bottom-bar-item add-task-window-bottom-bar-item-add"}>
@@ -258,45 +379,69 @@ const Tasklist = () => {
                     </div>
                 </div>
             </div>
-            <div className={"cancel-window-task"}>
+            <div className={"cancel-window-task"} id={"cancel"} style={{display: "none"}}>
                 <div className={"cancel-window-task-text"}>
                     Niezapisane zmiany <span
                     className={"cancel-window-task-text-decoration"}>nie zostaną zachowane</span>,
                     czy chcesz anulować?
                 </div>
                 <div className={"cancel-window-bottom-bar"}>
-                    <div className={"cancel-window-task-bottom-bar-item cancel-window-task-bottom-bar-yes"}>
+                    <div className={"cancel-window-task-bottom-bar-item cancel-window-task-bottom-bar-yes"}
+                         onClick={() => {
+                             document.getElementById("cancel").style.display = "none";
+                             if (document.getElementById("add").style.display === "block") {
+                                 document.getElementById("add").style.display = "none";
+                             }
+                             if (document.getElementById("modify").style.display === "block") {
+                                 document.getElementById("modify").style.display = "none";
+                             }
+                         }}>
                         Tak
                     </div>
-                    <div className={"cancel-window-task-bottom-bar-item cancel-window-task-bottom-bar-no"}>
+                    <div className={"cancel-window-task-bottom-bar-item cancel-window-task-bottom-bar-no"}
+                         onClick={() => {
+                             document.getElementById("cancel").style.display = "none";
+                         }}>
                         Nie
                     </div>
                 </div>
             </div>
-            <div className={"delete-window-task"}>
+            <div className={"delete-window-task"} id={"delete"} style={{display: "none"}}>
                 <div className={"delete-window-task-text"}>
                     Czy napewno chcesz <span className={"delete-window-task-text-decoration"}>usunąć</span> notatke?
                 </div>
                 <div className={"delete-window-task-task-bottom-bar"}>
-                    <div className={"delete-window-task-bottom-bar-item delete-window-task-bottom-bar-delete"}>
+                    <div className={"delete-window-task-bottom-bar-item delete-window-task-bottom-bar-delete"}
+                        onClick={()=>{
+                            //TODO removeTask();
+                            document.getElementById("delete").style.display = "none";
+                            if(document.getElementById("modify").style.display !== "none") document.getElementById("modify").style.display = "none";
+                        }}
+                    >
                         Usuń
                     </div>
-                    <div className={"delete-window-task-bottom-bar-item delete-window-task-bottom-bar-keep"}>
+                    <div className={"delete-window-task-bottom-bar-item delete-window-task-bottom-bar-keep"} onClick={()=>{
+                        document.getElementById("delete").style.display = "none";
+                    }}>
                         Zachowaj
                     </div>
                 </div>
             </div>
-            <div className={"modify-task-window"}>
+            <div className={"modify-task-window"} id={"modify"} style={{display: "none"}}>
                 <div className={"modify-task-window-top-bar"}>
                     <div className={"modify-task-window-top-bar-text"}>
                         Modyfikuj notatke
                     </div>
-                    <div className={"modify-task-window-top-bar-delete"}>
+                    <div className={"modify-task-window-top-bar-delete"} onClick={()=>
+                    {
+                        document.getElementById("delete").style.display = "block";
+
+                    }}>
                         <img src={"./src/assets/bin.png"} alt="delete-icon" title={"Usuń"}/>
                     </div>
                 </div>
                 <div className={"modify-task-window-middle-content"}>
-                    <input type="text" placeholder={"Wpisz tytuł notatki"}/>
+                    <input type="text" placeholder={"Wpisz tytuł notatki"} id={"modify-task-window-title"}/>
                     <div className={"modify-task-window-select-date"}>
                         <select name="modify-task-window-select-day" id="modify-task-window-select-day">
                             <option value="default">-</option>
@@ -316,92 +461,15 @@ const Tasklist = () => {
                     </textarea>
                 </div>
                 <div className={"modify-task-window-bottom-bar"}>
-                    <div className={"modify-task-window-bottom-bar-item modify-task-window-bottom-bar-item-cancel"}>
+                    <div className={"modify-task-window-bottom-bar-item modify-task-window-bottom-bar-item-cancel"}
+                        onClick={() => {
+                                document.getElementById("cancel").style.display = "block";
+                            }}
+                    >
                         Anuluj
                     </div>
                     <div className={"modify-task-window-bottom-bar-item modify-task-window-bottom-bar-item-save"}>
                         Zapisz
-                    </div>
-                </div>
-            </div>
-            <div className={"tasks-list-left-content-open-menu"} onClick={() => {
-                OpenCloseTasksMenu(isOpenMenu);
-                if (isOpenMenu === 1) isOpenMenu = 0; else isOpenMenu = 1
-            }}>
-                <img className={"tasks-list-left-content-open-menu-img"} src={openmenu} alt="open-menu-icon"/>
-            </div>
-            <div className={"tasks-list-left-content-menu"}>
-                <div className="tasks-list-left-content-menu-item tasks-list-p ">
-                    {translation.TasksList.all}
-                </div>
-                <div className="tasks-list-left-content-menu-item tasks-list-p">
-                    {translation.TasksList.important}
-                </div>
-                <div className="tasks-list-left-content-menu-item tasks-list-p">
-                    {translation.TasksList.active}
-                </div>
-                <div className="tasks-list-left-content-menu-item tasks-list-p">
-                    {translation.TasksList.done}
-                </div>
-            </div>
-            <div className={"tasks-list-main-content"}>
-                <div className={"tasks-list-top-bar"}>
-                    <div className={"tasks-list-find"}>
-                        <img className={"tasks-list-find-img"} src={findicon} alt="finc-icon" title={"Wyszukaj"}/>
-                        <input type={"text"} name={"find"} className={"top-bar-p"}
-                               placeholder={translation.TasksList.find}/>
-                    </div>
-                </div>
-                <div className={"tasks-list-left-content"}>
-                    <div className="tasks-list-left-content-item tasks-list-p">
-                        {translation.TasksList.all}
-                    </div>
-                    <div className="tasks-list-left-content-item tasks-list-p">
-                        {translation.TasksList.important}
-                    </div>
-                    <div className="tasks-list-left-content-item tasks-list-p">
-                        {translation.TasksList.active}
-                    </div>
-                    <div className="tasks-list-left-content-item tasks-list-p">
-                        {translation.TasksList.done}
-                    </div>
-                </div>
-                <div className="tasks-list-line"></div>
-                <div className={"tasks-list-right-content"}>
-                    <div className={"tasks-list-right-content-add"}>
-                        <div className={"tasks-list-right-content-add-img"}>
-                            <img src={addicon} alt="add-icon"/>
-                        </div>
-                        <div className={"tasks-list-right-content-add-text home-p"}>
-                            {translation.TasksList.addItem}
-                        </div>
-                    </div>
-                    {tasks}
-                    <div className={"tasks-list-right-content-item"}>
-                        <div className={"tasks-list-right-content-item-left"}>
-                            <div className={"circle"}>
-                                <img src={completedicon} alt="check-icon"/>
-                            </div>
-                        </div>
-                        <div className={"tasks-list-right-content-item-middle"}>
-                            <div className={"right-content-item-middle-date medium-text-p"}>
-                                24.05.2024
-                            </div>
-                            <div className={"right-content-item-middle-title tasks-list-p"}>
-                                Projekt KCK Figma
-                            </div>
-                            <div className={"right-content-item-middle-text top-bar-p"}>
-                                Wykonać makiete cyfrową aplikacji
-                            </div>
-                        </div>
-                        <div className={"tasks-list-right-content-item-right"}>
-                            <div className={"right-content-item-right-star"}>
-                                <img src={favouriteicon} alt="star-icon" title={"Dodaj do Ważnych"}/>
-                            </div>
-                            <div className={"right-content-item-right-delete"}>
-                                <img src={deleteicon} alt="delete-icon" title={"Usuń Zadanie"}/>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
