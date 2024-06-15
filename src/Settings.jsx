@@ -3,7 +3,8 @@ import TopBarAndSideMenu from "./TopBarAndSideMenu.jsx";
 import { useLanguage } from './ChangeLanguage.jsx';
 
 const Settings = () => {
-    const {t: translation, setLanguage} = useLanguage();
+    const { t: translation, language, setLanguage } = useLanguage();
+
     return (
         <>
             <TopBarAndSideMenu />
@@ -46,10 +47,16 @@ const Settings = () => {
                     <div className={"settings-title side-menu-p"}>
                         {translation.Settings.mainLanguage}
                     </div>
-                    <div className={"settings-button-pl home-p active-language"} onClick={() => setLanguage('pl')}>
+                    <div
+                        className={`settings-button-pl home-p ${language === 'pl' ? 'active-language' : 'disabled-language'}`}
+                        onClick={() => setLanguage('pl')}
+                    >
                         {translation.Settings.pl}
                     </div>
-                    <div className={"settings-button-en home-p disabled-language"} onClick={() => setLanguage('en')}>
+                    <div
+                        className={`settings-button-en home-p ${language === 'en' ? 'active-language' : 'disabled-language'}`}
+                        onClick={() => setLanguage('en')}
+                    >
                         {translation.Settings.en}
                     </div>
                 </div>

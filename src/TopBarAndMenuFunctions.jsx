@@ -116,8 +116,6 @@ export function ChangeFontSize(action) {
     ChangeFontSizeByClass(action, 'medium-text-p');
     ChangeFontSizeByClass(action, 'small-text-p');
     ChangeFontSizeByClass(action, 'points-p');
-    //ChangeFontSizeByClass(action, 'topBar-p');
-    //ChangeFontSizeByClass(action, 'topBar-p');
 
     if (action === 'l') {
         flag = 1;
@@ -128,18 +126,8 @@ export function ChangeFontSize(action) {
     }
 }
 
-// home-p => 30px (homepage)
-// side-menu-p => 40px (sideMenu)
-// top-bar-p => 20px (topBar)
-// header-p => 35px (announcements)
-// announcements-posts-item-right-content-text => 16px (announcements)
-// post-page-header-text => 66px (announcementsPostPage)
-// text-header => 32px (announcementsPostPage)
-// post-page-main-content-middle-content-right => 22px (announcementsPostPage)
-// tasks-list-p => 50px (taskList)
-// medium-text-p => 25px (taskList)(mapResult)(subjects)
-// small-text-p => 14px (subjects->ogłoszenia)
-// points-p => 70px (subjects)
+let maxSize = 1.15;
+let minSize = 0.85;
 
 export function ChangeFontSizeByClass(action, className) {
     const elements = document.getElementsByClassName(className);
@@ -149,21 +137,21 @@ export function ChangeFontSizeByClass(action, className) {
 
         if (action === 'l' && flag !== 1) {
             if (flag === 0) {
-                elements[i].style.fontSize = parseFloat(fontSize) * 1.2 + "px";
+                elements[i].style.fontSize = parseFloat(fontSize) * maxSize + "px";
             } else if (flag === -1) {
-                elements[i].style.fontSize = parseFloat(fontSize) / 0.8 * 1.2 + "px";
+                elements[i].style.fontSize = parseFloat(fontSize) / minSize * maxSize + "px";
             }
         } else if (action === 'm' && flag !== 0) {
             if (flag === 1) {
-                elements[i].style.fontSize = parseFloat(fontSize) / 1.2 + "px";
+                elements[i].style.fontSize = parseFloat(fontSize) / maxSize + "px";
             } else if (flag === -1) {
-                elements[i].style.fontSize = parseFloat(fontSize) / 0.8 + "px";
+                elements[i].style.fontSize = parseFloat(fontSize) / minSize + "px";
             }
         } else if (action === 's' && flag !== -1) {
             if (flag === 0) {
-                elements[i].style.fontSize = parseFloat(fontSize) * 0.8 + "px";
+                elements[i].style.fontSize = parseFloat(fontSize) * minSize + "px";
             } else if (flag === 1) {
-                elements[i].style.fontSize = parseFloat(fontSize) / 1.2 * 0.8 + "px";
+                elements[i].style.fontSize = parseFloat(fontSize) / maxSize * minSize + "px";
             }
         }
     }

@@ -177,20 +177,20 @@ const TopBarAndSideMenu = () => {
                          }}/>
                     <div className={"user-menu"}>
                         <Link to={"/projekt-aplikacja/myprofile"}>
-                            <div className={"user-menu-item"}>
-                                Mój Profil
+                            <div className={"user-menu-item tasks-list-p"}>
+                                {translation.TopBar.profile}
                             </div>
                         </Link>
                         <Link to={"/projekt-aplikacja/settings"}>
-                            <div className={"user-menu-item"}>
-                                Ustawienia
+                            <div className={"user-menu-item tasks-list-p"}>
+                                {translation.TopBar.settings}
                             </div>
                         </Link>
-                        <div className={"user-menu-item user-menu-item-last"} onClick={()=> {
+                        <div className={"user-menu-item user-menu-item-last tasks-list-p"} onClick={()=> {
                             removeCookie('userID',{path: '/'});
                             window.location.href = "/projekt-aplikacja/login";
                         }}>
-                            Wyloguj
+                            {translation.TopBar.logOut}
                         </div>
                     </div>
                 </div>

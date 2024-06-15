@@ -9,10 +9,9 @@
     "settings": "Settings"
   },
   "TopBar": {
-    "day": "17",
-    "month": "May",
-    "year": "2024",
-    "time": "3:00 PM"
+    "profile": "My Profile",
+    "settings": "Settings",
+    "logOut": "Log out"
   },
   "Login": {
     "email": "E-mail:",
