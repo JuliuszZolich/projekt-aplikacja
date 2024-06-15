@@ -10,7 +10,7 @@ import deleteicon from "./assets/bin.png"
 import openmenu from "./assets/arrows.png"
 import {useEffect, useState} from "react";
 import {useCookies} from "react-cookie";
-import {OpenCloseTasksMenu} from "./TasksListFunctions.jsx";
+import {OpenCloseTasksMenu} from "./TaskslistFunctions.jsx";
 
 let currentTaskId = 0;
 let isOpenMenu = 0;
