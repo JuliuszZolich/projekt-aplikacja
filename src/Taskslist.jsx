@@ -14,6 +14,22 @@ import {OpenCloseTasksMenu} from "./TaskslistFunctions.jsx";
 
 let currentTaskId = 0;
 let isOpenMenu = 0;
+let temp = 0;
+
+function convertDate(date, variant) {
+    const date2 = date.split(" ")
+    let day = date2[2];
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    let month = months.indexOf(date2[1]) + 1;
+    let year = date2[5];
+    let hours = date2[3].split(":")[0];
+    let minutes = date2[3].split(":")[1];
+    if (month < 10) {
+        month = "0" + month;
+    }
+    if(variant===1) return `${day}.${month}.${year} ${hours}:${minutes}`;
+    else return `${year}-${month}-${day}`;
+}
 
 async function getTasks(user_id, setTasks) {
     let headers = new Headers();
@@ -33,49 +49,39 @@ async function getTasks(user_id, setTasks) {
             return (
                 <div className={"tasks-list-right-content-item"}
                      key={task["id"]}
+                     id={task["id"]}
                      data-fav={task.favourite}
                      data-fin={task.completed}
                      onClick={() => {
-                         if(document.getElementById("delete").style.display !== "none") return;
+                         if (document.getElementById("delete").style.display !== "none") return;
+                         if (temp) {
+                             temp = 0;
+                             return;
+                         }
                          currentTaskId = task["id"];
                          document.getElementById("display").style.display = "block";
                          document.getElementsByClassName("task-window-text")[0].children[0].innerText = task["content"];
                          document.getElementsByClassName("task-window-top-bar-title")[0].innerText = task["title"];
-
-                     }}
-                >
+                         document.getElementById("display").setAttribute("data-date", convertDate(task["date"], 2));
+                     }}>
                     <div className={"tasks-list-right-content-item-left"}>
-                        {(() => {
-                            if (task["completed"] === true) {
-                                return (<div className={"circle"} style={{backgroundColor: "#5EC25C"}}>
-                                    <img src={completedicon} alt="check-icon" style={{display: "block"}}/>
-                                </div>);
-                            } else {
-                                return (<div className={"circle"} style={{backgroundColor: "none"}}>
-                                    <img src={completedicon} alt="check-icon" style={{display: "none"}}/>
-                                </div>);
-                            }
+                        <div className={(() => {
+                            if (task["completed"] === true) return "circle circle-checked";
+                            else return "circle";
                         })()
                         }
+                             onClick={() => {
+                                 temp = 1;
+                                 const newStatus = document.getElementById(task["id"]).getAttribute("data-fin") === "true" ? "false" : "true";
+                                 document.getElementById(task["id"]).setAttribute("data-fin", newStatus);
+                                 statusUpdate(task["id"], user_id, "completion", newStatus);
+                             }}>
+                            <img src={completedicon} alt="check-icon"/>
+                        </div>
                     </div>
                     <div className={"tasks-list-right-content-item-middle"}>
                         <div className={"right-content-item-middle-date"}>
-                            {(() => {
-                                const date = task["date"].split(" ")
-                                let day = date[2];
-                                const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-                                let month = months.indexOf(date[1]) + 1;
-                                let year = date[5];
-                                let hours = date[3].split(":")[0];
-                                let minutes = date[3].split(":")[1];
-                                if (day < 10) {
-                                    day = "0" + day;
-                                }
-                                if (month < 10) {
-                                    month = "0" + month;
-                                }
-                                return `${day}.${month}.${year} ${hours}:${minutes}`;
-                            })()}
+                            {convertDate(task["date"], 1)}
                         </div>
                         <div className={"right-content-item-middle-title"} data-title={task.title}>
                             {task["title"]}
@@ -86,18 +92,20 @@ async function getTasks(user_id, setTasks) {
                     </div>
                     <div className={"tasks-list-right-content-item-right"}>
                         <div className={"right-content-item-right-star"}>
-                            {(() => {
-                                if (task["favourite"] === "true") {
-                                    return <img src={favouriteicon} alt="star - icon" title={"Dodaj do Ważnych"}/>;
-                                } else {
-                                    return <img src={filledstaricon} alt="star - icon" title={"Usuń z Ważnych"}/>;
-                                }
-                            })()
-                            }
+                            <img src={(() => {
+                                if (task.favourite === true) return filledstaricon
+                                else return favouriteicon
+                            })()} alt="star - icon" title={"Dodaj do Ważnych"}
+                                 onClick={() => {
+                                     temp = 1;
+                                     const newStatus = document.getElementById(task["id"]).getAttribute("data-fav") === "true" ? "false" : "true";
+                                     document.getElementById(task["id"]).setAttribute("data-fav", newStatus);
+                                     statusUpdate(task["id"], user_id, "favourite", newStatus);
+                                 }}
+                            />
                         </div>
                         <div className={"right-content-item-right-delete"}>
-                            <img src={deleteicon} alt="delete-icon" title={"Usuń Zadanie"} onClick={()=>
-                            {
+                            <img src={deleteicon} alt="delete-icon" title={"Usuń Zadanie"} onClick={() => {
                                 currentTaskId = task["id"];
                                 document.getElementById("delete").style.display = "block";
                             }}/>
@@ -109,8 +117,9 @@ async function getTasks(user_id, setTasks) {
     ));
 }
 
-async function removeTask() {
+async function removeTask(userId) {
     let headers = new Headers();
+    headers.append("UserID", userId);
     headers.append("Task-ID", currentTaskId);
     headers.append("Action-Type", "DELETE");
     const response = await fetch("http://localhost:8001/tasklist", {
@@ -120,12 +129,12 @@ async function removeTask() {
     if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
     }
-    document.getElementsByClassName("delete-window")[0].style.display = "none";
     window.location.reload();
 }
 
-async function addTask(title, content, date) {
+async function addTask(userid, title, content, date) {
     let headers = new Headers();
+    headers.append("UserID", userid);
     headers.append("Action-Type", "POST");
     headers.append("Content-Type", "application/json");
     const response = await fetch("http://localhost:8001/tasklist", {
@@ -135,12 +144,28 @@ async function addTask(title, content, date) {
             title: title,
             content: content,
             date: date,
+            favourite: false,
         }),
     });
     if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
     }
     window.location.reload();
+}
+
+async function statusUpdate(taskId, userID, type, completion) {
+    let headers = new Headers();
+    headers.append("UserID", "1")
+    headers.append("Task-ID", taskId);
+    headers.append("Action-Type", "UPDATE");
+    headers.append("Update-Type", type);
+    headers.append("Status", completion);
+
+    await fetch("http://localhost:8001/tasklist", {
+        method: "GET",
+        headers: headers,
+    }).then(() => window.location.reload());
+
 }
 
 function filterTasks(tasks, filter, inputValue) {
@@ -320,10 +345,12 @@ const Tasklist = () => {
                         <img src={"./src/assets/modify.png"}
                              alt="modify-icon"
                              title={"Modyfikuj"}
-                             onClick={()=>{
-                                    document.getElementById("modify").style.display = "block";
-                                    document.getElementById("modify-task-window-text").value = document.getElementsByClassName("task-window-text")[0].children[0].innerText;
-                                    document.getElementById("modify-task-window-title").value = document.getElementsByClassName("task-window-top-bar-title")[0].innerText;
+                             onClick={() => {
+                                 document.getElementById("modify").style.display = "block";
+                                 document.getElementById("modify-task-window-text").value = document.getElementsByClassName("task-window-text")[0].children[0].innerText;
+                                 document.getElementById("modify-task-window-title").value = document.getElementsByClassName("task-window-top-bar-title")[0].innerText;
+                                 document.getElementById("modify-task-input").value = document.getElementById("display").getAttribute("data-date");
+
                              }}
                         />
                     </div>
@@ -350,7 +377,7 @@ const Tasklist = () => {
                 </div>
                 <div className={"add-task-window-middle-content"}>
                     <input type="text" placeholder={"Wpisz tytuł notatki"}/>
-                    <div className={"add-task-window-select-date"}>
+                    <div className={"add-task-window-select-date"} id={"modify-task-window-data"}>
                         <input type="date"/>
                     </div>
                     <textarea id={"add-task-window-text"} name={"task-content"} placeholder={"Wpisz treść notatki"}>
@@ -363,7 +390,14 @@ const Tasklist = () => {
                          }}>
                         Anuluj
                     </div>
-                    <div className={"add-task-window-bottom-bar-item add-task-window-bottom-bar-item-add"}>
+                    <div className={"add-task-window-bottom-bar-item add-task-window-bottom-bar-item-add"}
+                        onClick={() => {
+                            const title = document.querySelector(".add-task-window-middle-content input").value;
+                            const content = document.querySelector(".add-task-window-middle-content textarea").value;
+                            const date = document.querySelector(".add-task-window-select-date input").value;
+                            addTask(cookies.userID,title, content, date);
+                        }}
+                    >
                         Dodaj
                     </div>
                 </div>
@@ -401,17 +435,18 @@ const Tasklist = () => {
                 </div>
                 <div className={"delete-window-task-task-bottom-bar"}>
                     <div className={"delete-window-task-bottom-bar-item delete-window-task-bottom-bar-delete"}
-                        onClick={()=>{
-                            //TODO removeTask();
-                            document.getElementById("delete").style.display = "none";
-                            if(document.getElementById("modify").style.display !== "none") document.getElementById("modify").style.display = "none";
-                        }}
+                         onClick={() => {
+                             removeTask(cookies.userID);
+                             document.getElementById("delete").style.display = "none";
+                             if (document.getElementById("modify").style.display !== "none") document.getElementById("modify").style.display = "none";
+                         }}
                     >
                         Usuń
                     </div>
-                    <div className={"delete-window-task-bottom-bar-item delete-window-task-bottom-bar-keep"} onClick={()=>{
-                        document.getElementById("delete").style.display = "none";
-                    }}>
+                    <div className={"delete-window-task-bottom-bar-item delete-window-task-bottom-bar-keep"}
+                         onClick={() => {
+                             document.getElementById("delete").style.display = "none";
+                         }}>
                         Zachowaj
                     </div>
                 </div>
@@ -421,8 +456,7 @@ const Tasklist = () => {
                     <div className={"modify-task-window-top-bar-text"}>
                         Modyfikuj notatke
                     </div>
-                    <div className={"modify-task-window-top-bar-delete"} onClick={()=>
-                    {
+                    <div className={"modify-task-window-top-bar-delete"} onClick={() => {
                         document.getElementById("delete").style.display = "block";
 
                     }}>
@@ -432,18 +466,7 @@ const Tasklist = () => {
                 <div className={"modify-task-window-middle-content"}>
                     <input type="text" placeholder={"Wpisz tytuł notatki"} id={"modify-task-window-title"}/>
                     <div className={"modify-task-window-select-date"}>
-                        <select name="modify-task-window-select-day" id="modify-task-window-select-day">
-                            <option value="default">-</option>
-                            <option value="1">1</option>
-                        </select>
-                        <select name="modify-task-window-select-month" id="modify-task-window-select-month">
-                            <option value="default">-</option>
-                            <option value="january">1</option>
-                        </select>
-                        <select name="modify-task-window-select-year" id="modify-task-window-select-year">
-                            <option value="default">-</option>
-                            <option value="2024">2024</option>
-                        </select>
+                        <input type="date" id={"modify-task-input"}/>
                     </div>
                     <textarea id={"modify-task-window-text"} name={"task-content"}
                               placeholder={"Wpisz treść notatki"}>
@@ -451,9 +474,9 @@ const Tasklist = () => {
                 </div>
                 <div className={"modify-task-window-bottom-bar"}>
                     <div className={"modify-task-window-bottom-bar-item modify-task-window-bottom-bar-item-cancel"}
-                        onClick={() => {
-                                document.getElementById("cancel").style.display = "block";
-                            }}
+                         onClick={() => {
+                             document.getElementById("cancel").style.display = "block";
+                         }}
                     >
                         Anuluj
                     </div>
