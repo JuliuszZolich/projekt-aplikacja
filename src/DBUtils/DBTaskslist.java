@@ -6,6 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -44,7 +45,7 @@ public class DBTaskslist {
     public static String getTask(String userID, String taskID) {
         DocumentSnapshot document;
         try {
-        DocumentReference docRef = db.collection("notes")
+        DocumentReference docRef = db.collection("tasklist")
                 .whereEqualTo("userID", userID)
                 .whereEqualTo("taskID", taskID)
                 .get()
@@ -71,7 +72,8 @@ public class DBTaskslist {
 
     public static String addTask(String userID, String title, String content, String date, boolean favourite) {
         DocumentReference docRef = db.collection("tasklist").document();
-        docRef.set(Map.of("userID", userID, "title", title, "content", content, "date", date, "favourite", favourite));
+        LocalDate date1 = LocalDate.parse(date);
+        docRef.set(Map.of("userid", Integer.parseInt(userID), "title", title, "content", content, "date", new Date(date1.getYear()-1900, date1.getMonthValue()-1, date1.getDayOfMonth()), "favourite", favourite));
         return docRef.getId();
     }
 
@@ -79,7 +81,7 @@ public class DBTaskslist {
         System.out.println("Deleting task: " + taskID);
         try {
             db.collection("tasklist")
-                    .whereEqualTo("userID", userID)
+                    .whereEqualTo("userid", Integer.parseInt(userID))
                     .get()
                     .get()
                     .getDocuments()
@@ -93,6 +95,22 @@ public class DBTaskslist {
         }
     }
 
+    public static void updateField(String userID, String taskID, Boolean status, String field){
+        System.out.println("Updating " + field + " for task: " + taskID + " to " + status);
+        try {
+            db.collection("tasklist")
+                    .whereEqualTo("userid", Integer.parseInt(userID))
+                    .get()
+                    .get()
+                    .getDocuments()
+                    .forEach(document -> {
+                        if (document.getId().equals(taskID)) {
+                            document.getReference().update(field, status);
+                        }
+                    });
+        } catch (Exception ignored) {
+        }
+    }
 
     public static void updateTask(String userID, String noteID, String title, String content, String date, boolean favourite) {
         db.collection("notes")

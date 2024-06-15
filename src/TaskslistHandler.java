@@ -38,13 +38,14 @@ public class TaskslistHandler implements HttpHandler {
     }
 
     private void addTask(HttpExchange t) throws IOException {
+        System.out.println("Adding task");
         OutputStream os = t.getResponseBody();
         String userID = t.getRequestHeaders().get("UserID").get(0);
         ObjectMapper mapper = new ObjectMapper();
         String body = new String(t.getRequestBody().readAllBytes());
         Task task = mapper.readValue(body, Task.class);
         String id = DBTaskslist.addTask(userID, task.title, task.content, task.date, task.favourite);
-        t.sendResponseHeaders(200, id.length());
+        t.sendResponseHeaders(200, id.getBytes().length);
         os.write(id.getBytes());
         os.close();
     }
@@ -59,6 +60,7 @@ public class TaskslistHandler implements HttpHandler {
     }
 
     private void updateTask(HttpExchange t) throws IOException {
+        System.out.println("Updating task");
         OutputStream os = t.getResponseBody();
         String userID = t.getRequestHeaders().get("UserID").get(0);
         String taskID = t.getRequestHeaders().get("Task-ID").get(0);
@@ -66,6 +68,28 @@ public class TaskslistHandler implements HttpHandler {
         String body = new String(t.getRequestBody().readAllBytes());
         Task task = mapper.readValue(body, Task.class);
         DBTaskslist.updateTask(userID, taskID, task.title, task.content, task.date, task.favourite);
+        t.sendResponseHeaders(200, 0);
+        os.close();
+    }
+
+    private void updateFav(HttpExchange t) throws IOException {
+        System.out.println("Updating favourite");
+        OutputStream os = t.getResponseBody();
+        String userID = t.getRequestHeaders().get("UserID").get(0);
+        String taskID = t.getRequestHeaders().get("Task-ID").get(0);
+        Boolean fav = Boolean.parseBoolean(t.getRequestHeaders().get("Status").get(0));
+        DBTaskslist.updateField(userID, taskID, fav, "favourite");
+        t.sendResponseHeaders(200, 0);
+        os.close();
+    }
+
+    private void updateCompletion(HttpExchange t) throws IOException {
+        System.out.println("Updating completion");
+        OutputStream os = t.getResponseBody();
+        String userID = t.getRequestHeaders().get("UserID").get(0);
+        String taskID = t.getRequestHeaders().get("Task-ID").get(0);
+        Boolean status = Boolean.parseBoolean(t.getRequestHeaders().get("Status").get(0));
+        DBTaskslist.updateField(userID, taskID, status, "completed");
         t.sendResponseHeaders(200, 0);
         os.close();
     }
@@ -87,7 +111,10 @@ public class TaskslistHandler implements HttpHandler {
                 deleteTask(t);
                 break;
             case "UPDATE":
-                updateTask(t);
+                String updateType = t.getRequestHeaders().get("Update-Type").get(0);
+                if (updateType.equals("favourite")) updateFav(t);
+                else if (updateType.equals("completion")) updateCompletion(t);
+                else updateTask(t);
                 break;
             default:
                 System.out.println("Invalid request: " + t.getRequestHeaders().get("Action-Type").get(0));
