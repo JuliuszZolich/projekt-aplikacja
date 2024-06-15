@@ -10,6 +10,7 @@ import mapicon from "./assets/map.png"
 import subjectsicon from "./assets/subjects.png"
 import settingsicon from "./assets/settings.png"
 import logoimage from "./assets/logo.png"
+import {OnClickPlay} from "./AudioFunctions.jsx";
 
 const Homepage = () => {
     const {t: translation} = useLanguage();
@@ -18,43 +19,43 @@ const Homepage = () => {
             {TopBarAndSideMenu()}
             <div className="main-content">
                 <div className={"menu"}>
-                    <Link to={"/projekt-aplikacja/timetable"}>
+                    <Link to={"/projekt-aplikacja/timetable"} onClick={() => OnClickPlay()}>
                         <div className={"menu-item timetable"}>
                             <img src={timetableicon} alt="timetable-icon"/>
                             <p className={"home-p"}>{translation.Homepage.timetable}</p>
                         </div>
                     </Link>
-                    <Link to={"/projekt-aplikacja/announcements"}>
+                    <Link to={"/projekt-aplikacja/announcements"} onClick={() => OnClickPlay()}>
                         <div className={"menu-item announcements"}>
                             <img src={announcementsicon} alt="announcements-icon"/>
                             <p className={"home-p"}>{translation.Homepage.news}</p>
                         </div>
                     </Link>
-                    <Link to={"/projekt-aplikacja/taskslist"}>
+                    <Link to={"/projekt-aplikacja/taskslist"} onClick={() => OnClickPlay()}>
                         <div className={"menu-item tasks-list"}>
                             <img src={taskslisticon} alt="tasks-list-icon"/>
                             <p className={"home-p"}>{translation.Homepage.tasksList}</p>
                         </div>
                     </Link>
-                    <Link to={"/projekt-aplikacja/notes"}>
+                    <Link to={"/projekt-aplikacja/notes"} onClick={() => OnClickPlay()}>
                         <div className={"menu-item notes"}>
                             <img src={notesicon} alt="notes-icon"/>
                             <p className={"home-p"}>{translation.Homepage.notes}</p>
                         </div>
                     </Link>
-                    <Link to={"/projekt-aplikacja/map"}>
+                    <Link to={"/projekt-aplikacja/map"} onClick={() => OnClickPlay()}>
                         <div className={"menu-item map"}>
                             <img src={mapicon} alt="map-icon"/>
                             <p className={"home-p"}>{translation.Homepage.map}</p>
                         </div>
                     </Link>
-                    <Link to={"/projekt-aplikacja/subjects"}>
+                    <Link to={"/projekt-aplikacja/subjects"} onClick={() => OnClickPlay()}>
                         <div className={"menu-item subjects"}>
                             <img src={subjectsicon} alt="subjects-icon"/>
                             <p className={"home-p"}>{translation.Homepage.subjects}</p>
                         </div>
                     </Link>
-                    <Link to={"/projekt-aplikacja/settings"} className={"menu-item-last"}>
+                    <Link to={"/projekt-aplikacja/settings"} className={"menu-item-last"} onClick={() => OnClickPlay()}>
                         <div className={"menu-item settings"}>
                             <img src={settingsicon} alt="settings-icon"/>
                             <p className={"home-p"}>{translation.Homepage.settings}</p>
