@@ -1,6 +1,7 @@
 package DBUtils;
 
 import com.google.cloud.firestore.QueryDocumentSnapshot;
+import org.json.JSONObject;
 
 import java.util.List;
 import java.util.Objects;
@@ -18,14 +19,18 @@ public class DBLogin {
 
         if (docRef.isEmpty()) {
             System.out.println("User not found");
-            return "{\"login\": \"false\"}";
+            return "{\"login\": \"false\", \"error\": \"email\"}";
         }
         if (Objects.equals(docRef.get(0).getString("password"), password)) {
             System.out.println("User logged in");
-            return "{\"login\": \"true\", \"userID\": \"" + docRef.get(0).getDouble("userid") + "\"}";
+            return new JSONObject()
+                    .put("login", "true")
+                    .put("userID", docRef.get(0).getDouble("userid"))
+                    .put("field", docRef.get(0).getString("field_of_studies"))
+                    .toString();
         } else {
             System.out.println("Wrong password");
-            return "{\"login\": \"false\"}";
+            return "{\"login\": \"false\", \"error\": \"password\"}";
         }
     }
 }

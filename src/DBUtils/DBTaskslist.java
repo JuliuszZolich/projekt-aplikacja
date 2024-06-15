@@ -2,6 +2,8 @@ package DBUtils;
 
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.time.Instant;
 import java.util.Date;
@@ -17,8 +19,8 @@ public class DBTaskslist {
         ApiFuture<QuerySnapshot> query = db.collection("tasklist")
                 .whereEqualTo("userid", Integer.parseInt(userID))
                 .get();
-        StringBuilder json = new StringBuilder();
-        json.append("{ \"tasklist\": [");
+        JSONObject json = new JSONObject();
+        JSONArray tasklist = new JSONArray();
         List<QueryDocumentSnapshot> listaQuery;
         try {
             listaQuery = query.get().getDocuments();
@@ -26,16 +28,16 @@ public class DBTaskslist {
             return "{\"tasklist\": []}";
         }
         for (DocumentSnapshot document : listaQuery) {
-            json.append("{")
-                    .append("\"id\": \"").append(document.getId()).append("\",")
-                    .append("\"title\": \"").append(document.getString("title")).append("\",")
-                    .append("\"content\": \"").append(document.getString("content")).append("\",")
-                    .append("\"date\": \"").append(document.getDate("date")).append("\",")
-                    .append("\"favourite\": \"").append(document.getBoolean("favourite")).append("\"")
-                    .append("}").append(",");
+            JSONObject task = new JSONObject();
+            task.put("id", document.getId());
+            task.put("title", document.getString("title"));
+            task.put("content", document.getString("content"));
+            task.put("date", document.getDate("date"));
+            task.put("favourite", document.getBoolean("favourite"));
+            task.put("completed", document.getBoolean("completed"));
+            tasklist.put(task);
         }
-        if(!listaQuery.isEmpty()) json.delete(json.length() - 1, json.length());
-        json.append("]}");
+        json.put("tasklist", tasklist);
         return json.toString();
     }
 
@@ -55,13 +57,13 @@ public class DBTaskslist {
             return "{}";
         }
         if (document.exists()) {
-            return "{" +
-                    "\"id\": \"" + document.getId() + "\"," +
-                    "\"title\": \"" + document.getString("title") + "\"," +
-                    "\"content\": \"" + document.getString("content") + "\"" +
-                    "\"date\": \"" + document.getDate("date") + "\"" +
-                    "\"favourite\": \"" + document.getBoolean("favourite")+ "\"" +
-                    "}";
+            return new JSONObject()
+                    .put("id", document.getId())
+                    .put("title", document.getString("title"))
+                    .put("content", document.getString("content"))
+                    .put("date", document.getDate("date"))
+                    .put("favourite", document.getBoolean("favourite"))
+                    .toString();
         } else {
             return "{}";
         }
