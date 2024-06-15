@@ -1,0 +1,89 @@
+.timetable-content{
+    width: 1261px;
+    margin-top: 200px;
+    margin-left: 17%;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    padding-left: 1px;
+    position: absolute;
+    background-color: #EFEFEF;
+}
+
+.timetable-navigation{
+    position: absolute;
+    width: 800px;
+    height: 70px;
+    margin-left: 230px;
+    margin-top: -100px;
+    background-color: #b3b3b3;
+    border: 1px solid black;
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.timetable-navigation-month-and-year{
+    width: 620px;
+    font-size: 40px;
+    float: left;
+    text-align: center;
+    line-height: 70px;
+}
+
+.timetable-navigation-arrow-left{
+    width: 70px;
+    height: 50px;
+    margin-left: 20px;
+    margin-top: 10px;
+    float: left;
+    cursor: pointer;
+}
+
+.timetable-navigation-date{
+    float: left;
+}
+
+.timetable-navigation-arrow-right{
+    width: 70px;
+    height: 50px;
+    margin-right: 20px;
+    margin-top: 10px;
+    float: right;
+    cursor: pointer;
+}
+
+.timetable-navigation-arrow-left > img{
+    height: 100%;
+    width: 100%;
+}
+
+.timetable-navigation-arrow-right > img{
+    height: 100%;
+    width: 100%;
+    rotate: 180deg;
+}
+
+.timetable-day-names{
+    width: 100%;
+}
+
+.timetable-day-names-item{
+    width: 179px;
+    height: 40px;
+    float: left;
+    text-align: center;
+    font-size: 20px;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    line-height: 40px;
+}
+
+.timetable-item{
+    width: 179px;
+    height: 99px;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    float: left;
+    text-align: center;
+    font-size: 30px;
+    line-height: 120px;
+}
