@@ -36,6 +36,7 @@
     margin-top: 10px;
     float: left;
     cursor: pointer;
+    transition: 0.2s;
 }
 
 .timetable-navigation-date{
@@ -49,6 +50,7 @@
     margin-top: 10px;
     float: right;
     cursor: pointer;
+    transition: 0.2s;
 }
 
 .timetable-navigation-arrow-left > img{
@@ -56,10 +58,18 @@
     width: 100%;
 }
 
+.timetable-navigation-arrow-left > img:hover{
+    filter: invert(73%) sepia(73%) saturate(6867%) hue-rotate(332deg) brightness(111%) contrast(98%);
+}
+
 .timetable-navigation-arrow-right > img{
     height: 100%;
     width: 100%;
     rotate: 180deg;
+}
+
+.timetable-navigation-arrow-right > img:hover{
+    filter: invert(73%) sepia(73%) saturate(6867%) hue-rotate(332deg) brightness(111%) contrast(98%);
 }
 
 .timetable-day-names{

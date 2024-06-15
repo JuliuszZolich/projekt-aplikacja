@@ -728,6 +728,66 @@ a {
         height: 30px;
     }
 
+    @keyframes show-user-menu {
+        0%{
+            margin-right: -250px;
+        }
+
+        100%{
+            margin-right: 100px;
+        }
+    }
+
+    @keyframes hide-user-menu {
+        0%{
+            margin-right: 100px;
+        }
+
+        100%{
+            margin-right: -250px;
+        }
+    }
+
+    @keyframes show-notifications {
+        0%{
+            margin-right: -300px;
+        }
+
+        100%{
+            margin-right: 95px;
+        }
+    }
+
+    @keyframes hide-notifications {
+        0%{
+            margin-right: 95px;
+        }
+
+        100%{
+            margin-right: -300px;
+        }
+    }
+
+    @keyframes show-facilities-menu {
+        0%{
+            margin-right: -400px;
+        }
+
+        100%{
+            margin-right: 45px;
+        }
+    }
+
+    @keyframes hide-facilities-menu {
+        0%{
+            margin-right: 45px;
+        }
+
+        100%{
+            margin-right: -400px;
+        }
+    }
+
     .on-click-menu{
         width: 100%;
     }

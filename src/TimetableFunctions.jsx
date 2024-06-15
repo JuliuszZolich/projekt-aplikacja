@@ -84,7 +84,7 @@ const GenerateTimetable = () => {
     const updateDays = () => {
         const daysInMonth = getDaysInMonth(month, year);
         const firstDayOfWeek = getFirstDayOfMonth(month, year);
-        const daysArray = Array.from({length: firstDayOfWeek === 0 ? 6 : firstDayOfWeek-1}).fill("");
+        const daysArray = Array.from({length: firstDayOfWeek === 0 ? 6 : firstDayOfWeek - 1}).fill("");
         for (let day = 1; day <= daysInMonth; day++) {
             daysArray.push(day.toString());
         }
