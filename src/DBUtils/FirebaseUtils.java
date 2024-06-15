@@ -10,7 +10,6 @@ import com.google.firebase.cloud.FirestoreClient;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-//TODO add TINK to encrypt passwords
 
 public class FirebaseUtils {
 

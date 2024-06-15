@@ -20,7 +20,7 @@ public class Main {
             server.createContext("/subjects", new SubjectsHandler());
             server.createContext("/settings", new SettingsHandler());
             server.createContext("/", new OtherHandler());
-            server.setExecutor(null); // creates a default executor
+            server.setExecutor(null);
             server.start();
             System.out.println("Server started");
         } catch (IOException e) {
