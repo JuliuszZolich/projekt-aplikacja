@@ -270,7 +270,7 @@ const TopBarAndSideMenu = () => {
             </div>
             <div className={"report-window"}>
                 <div className={"report-window-header"}>
-                    Zadaj Pytanie
+                    Zgłoś Problem
                 </div>
                 <div className={"report-window-input"}>
                     <textarea placeholder={"Wpisz treść zgłoszenia"}/>

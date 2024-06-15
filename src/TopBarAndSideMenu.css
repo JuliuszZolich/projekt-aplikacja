@@ -620,7 +620,23 @@ a {
     color: #fcfafa;
 }
 
+@media (max-width: 1600px){
+    .question-window, .report-window{
+        left:25%;
+    }
+}
+
+@media (max-width: 1200px){
+    .question-window, .report-window{
+        left:20%;
+    }
+}
+
 @media (max-width: 1000px){
+    .question-window, .report-window{
+        left:15%;
+    }
+
     .weather-bar {
         margin: 2.5% 0;
         width: 300px;
@@ -659,10 +675,62 @@ a {
     }
 }
 
+@media (max-width: 900px) {
+    .question-window, .report-window {
+        left: 22%;
+        width: 500px;
+        height: 400px;
+    }
+
+    .question-window-button-cancel, .question-window-button-send, .report-window-button-cancel, .report-window-button-send{
+        font-size: 18px;
+        line-height: 30px;
+    }
+}
+
+@media (max-width: 800px) {
+    .question-window, .report-window {
+        left: 17.5%;
+    }
+}
+
+@media (max-width: 700px) {
+    .question-window, .report-window {
+        left: 12.5%;
+    }
+}
+
+@media (max-width: 650px) {
+    .question-window, .report-window {
+        left: 7.5%;
+    }
+}
+
 @media (max-width: 600px) {
     .weather-bar {
         margin: 2.5% 0;
         width: 220px;
+    }
+
+    .question-window, .report-window {
+        left: 17%;
+        width: 380px;
+        height: 250px;
+    }
+
+    .question-window-button-cancel, .question-window-button-send, .report-window-button-cancel, .report-window-button-send{
+        font-size: 15px;
+        line-height: 18px;
+        margin-left: 11%;
+    }
+
+    .question-window-input > textarea, .report-window-input > textarea{
+        font-size: 15px;
+    }
+
+    .question-window-header, .report-window-header{
+        font-size: 25px;
+        line-height: 40px;
     }
 
     .weather-bar-date {
@@ -809,5 +877,35 @@ a {
 
     .on-click-menu-middle-content-item-text > p{
         font-size: 35px;
+    }
+}
+
+@media (max-width: 550px) {
+    .question-window, .report-window {
+        left: 13%;
+    }
+}
+
+@media (max-width: 500px) {
+    .question-window, .report-window {
+        left: 10%;
+    }
+}
+
+@media (max-width: 470px) {
+    .question-window, .report-window {
+        left: 7.5%;
+    }
+}
+
+@media (max-width: 450px) {
+    .question-window, .report-window {
+        left: 5%;
+    }
+}
+
+@media (max-width: 420px) {
+    .question-window, .report-window {
+        left: 1%;
     }
 }
