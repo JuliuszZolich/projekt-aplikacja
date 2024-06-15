@@ -17,7 +17,8 @@ const Login = () => {
                     </div>
                     <div className={"login-password"}>
                         <label htmlFor="password">{translation.Login.password}</label>
-                        <input type="password" name={"passowrd"} placeholder={translation.Login.enterPassword} id={"password"}/>
+                        <input type="password" name={"passowrd"} placeholder={translation.Login.enterPassword}
+                               id={"password"}/>
                     </div>
                     <div className={"forgot-password"}>
                         <Link to={"/projekt-aplikacja/forgotpassword"}>
@@ -25,7 +26,6 @@ const Login = () => {
                         </Link>
                     </div>
                     <div className={"wrong-login-informations"}>
-                        Błędny e-mail lub hasło!
                     </div>
                     <Link to={"/projekt-aplikacja/register"}>
                         <div className={"login-register"}>
@@ -36,31 +36,40 @@ const Login = () => {
                         <button onClick={(async () => {
                             const email = document.getElementById("email").value;
                             const password = document.getElementById("password").value;
-                            await fetch('http://localhost:8001/login/', {
-                                method: 'POST',
-                                headers: {
-                                    'UserID': '-1',
-                                    'Content-Type': 'application/json',
-                                    'Email': email,
-                                    'Password': password
-                                },
-                            }).then(response => {
-                                response.json().then(data => {
-                                        console.log(data);
-                                        if (data['login'] === "true") {
-                                            console.log("Logged in as: " + data.userID);
-                                            if(cookies.userID !== undefined) removeCookies('userID', {path: '/'})
-                                            setCookie('userID', parseInt(data.userID), {path: '/'});
-                                            if(cookies.field !== undefined) removeCookies('field', {path: '/'})
-                                            setCookie('field', data.field, {path: '/'});
-                                            window.location.href = "/projekt-aplikacja/";
-                                        } else {
-                                            alert("Błędne dane logowania");
+                            if(email === "" && password === ""){
+                                document.querySelector(".wrong-login-informations").innerHTML = "Pola e-mail oraz hasło są puste!";
+                            }
+                            else if (email === "") {
+                                document.querySelector(".wrong-login-informations").innerHTML = "Pole e-mail jest puste!";
+                            } else if (password === "") {
+                                document.querySelector(".wrong-login-informations").innerHTML = "Pole hasło jest puste!";
+                            } else {
+                                await fetch('http://localhost:8001/login/', {
+                                    method: 'POST',
+                                    headers: {
+                                        'UserID': '-1',
+                                        'Content-Type': 'application/json',
+                                        'Email': email,
+                                        'Password': password
+                                    },
+                                }).then(response => {
+                                    response.json().then(data => {
+                                            console.log(data);
+                                            if (data['login'] === "true") {
+                                                console.log("Logged in as: " + data.userID);
+                                                if (cookies.userID !== undefined) removeCookies('userID', {path: '/'})
+                                                setCookie('userID', parseInt(data.userID), {path: '/'});
+                                                if (cookies.field !== undefined) removeCookies('field', {path: '/'})
+                                                setCookie('field', data.field, {path: '/'});
+                                                window.location.href = "/projekt-aplikacja/";
+                                            } else {
+                                                document.querySelector(".wrong-login-informations").innerHTML = "Błędne dane logowania!"
+                                            }
                                         }
-                                    }
-                                );
+                                    );
 
-                            });
+                                });
+                            }
                         })}
                         >{translation.Login.logIn}</button>
                     </div>

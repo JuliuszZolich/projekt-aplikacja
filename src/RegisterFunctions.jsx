@@ -57,51 +57,117 @@ function changeVisibility(prevStep, currStep, nextStep) {
 
 function verifyFirstStep(element) {
     const elements = element.querySelectorAll("input");
+    const regex = /[A-z0-9-]+@[A-z0-9-]+\.[A-z0-9-]+/;
     if (elements[0].value === "" || elements[1].value === "" || elements[2].value === "") {
-        alert("Wszystkie pola muszą być wypełnione");
+        if (elements[0].value === "") {
+            document.querySelector(".wrong-mail").innerHTML = "Pole e-mail jest puste!";
+        } else {
+            if (!regex.test(elements[0].value)) {
+                document.querySelector(".wrong-mail").innerHTML = "Nieprawidłowy format! (xyz@exyz.xyz)";
+            } else {
+                document.querySelector(".wrong-mail").innerHTML = "";
+            }
+        }
+        if (elements[1].value === "") {
+            document.querySelector(".wrong-password").innerHTML = "Pole hasło jest puste!";
+        } else {
+            document.querySelector(".wrong-password").innerHTML = "";
+        }
+        if (elements[2].value === "") {
+            document.querySelector(".wrong-password-confirm").innerHTML = "Pole potwierdz hasło jest puste!";
+        } else {
+            document.querySelector(".wrong-password-confirm").innerHTML = "Hasła nie są takie same!";
+        }
         return false;
     }
     if (elements[1].value !== elements[2].value) {
-        alert("Hasła nie są takie same");
+        document.querySelector(".wrong-password-confirm").innerHTML = "Hasła nie są takie same!";
         return false;
     }
-    const regex = /[A-z0-9-]+@[A-z0-9-]+\.[A-z0-9-]+/;
     if (!regex.test(elements[0].value)) {
-        alert("Niepoprawny adres email");
+        document.querySelector(".wrong-mail").innerHTML = "Nieprawidłowy format! (xyz@exyz.xyz)";
         return false;
     }
+    document.querySelector(".wrong-mail").innerHTML = "";
+    document.querySelector(".wrong-password").innerHTML = "";
+    document.querySelector(".wrong-password-confirm").innerHTML = "";
     return true;
 }
 
 function verifySecondStep(element) {
     const elements = element.querySelectorAll("select");
     if (elements[0].value === "default" || elements[1].value === "default" || elements[2].value === "default") {
-        alert("Wszystkie pola muszą być wypełnione");
+        if(elements[0].value === "default"){
+            document.querySelector(".wrong-faculty").innerHTML = "Nie żadnej wybrałeś Opcji!";
+        }
+        else{
+            document.querySelector(".wrong-faculty").innerHTML = "";
+        }
+        if(elements[1].value === "default"){
+            document.querySelector(".wrong-course").innerHTML = "Nie żadnej wybrałeś Opcji!";
+        }
+        else{
+            document.querySelector(".wrong-course").innerHTML = "";
+        }
+        if(elements[2].value === "default"){
+            document.querySelector(".wrong-semester").innerHTML = "Nie żadnej wybrałeś Opcji!";
+        }
+        else{
+            document.querySelector(".wrong-semester").innerHTML = "";
+        }
         return false;
     }
+    document.querySelector(".wrong-faculty").innerHTML = "";
+    document.querySelector(".wrong-course").innerHTML = "";
+    document.querySelector(".wrong-semester").innerHTML = "";
     return true;
 }
 
 function verifyThirdStep(element) {
     const elements = element.querySelectorAll("input");
-    if (elements[0].value === "" || elements[1].value === "" || elements[2].value === "") {
-        alert("Wszystkie pola muszą być wypełnione");
-        return false;
-    }
     const regex = /^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*$/;
-    if (!regex.test(elements[2].value)) {
-        alert("Niepoprawny numer telefonu");
+    if (elements[0].value === "" || elements[1].value === "" || elements[2].value === "") {
+        if(elements[0].value === ""){
+            document.querySelector(".wrong-name").innerHTML = "Pole Imię jest puste!";
+        }
+        else{
+            document.querySelector(".wrong-name").innerHTML = "";
+        }
+        if(elements[1].value === ""){
+            document.querySelector(".wrong-surname").innerHTML = "Pole Nazwisko jest puste!";
+        }
+        else{
+            document.querySelector(".wrong-surname").innerHTML = "";
+        }
+        if(elements[2].value === ""){
+            document.querySelector(".wrong-phone-number").innerHTML = "Pole Nr Telefonu jest puste!";
+        }
+        else{
+            if(!regex.test(elements[2].value)){
+                document.querySelector(".wrong-phone-number").innerHTML = "Nieprawidłowy format! (xxx-xxx-xxx)";
+            }else {
+                document.querySelector(".wrong-phone-number").innerHTML = "";
+            }
+        }
         return false;
     }
+    document.querySelector(".wrong-name").innerHTML = "";
+    document.querySelector(".wrong-surname").innerHTML = "";
+    if (!regex.test(elements[2].value)) {
+        document.querySelector(".wrong-phone-number").innerHTML = "Nieprawidłowy format! (xxx-xxx-xxx)";
+        return false;
+    }
+    document.querySelector(".wrong-phone-number").innerHTML = "";
     return true;
 }
 
 function verifyFourthStep(element) {
     const elements = element.querySelectorAll("input");
     if (!elements[0].checked) {
-        alert("Musisz zaakceptować politykę prywatności");
+        document.querySelector(".not-confirmed").innerHTML = "Nie Zaznaczyłeś/aś wymaganych pól!";
         return false;
     }
+    document.querySelector(".not-confirmed").innerHTML = "";
     return true;
 }
 

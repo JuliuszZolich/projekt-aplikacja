@@ -40,7 +40,7 @@ const Register = () => {
                                 {translation.Register.enterEmail}
                             </div>
                             <div className={"register-input-text-wrong-information wrong-mail"}>
-                                Nie podałeś Emaila!
+
                             </div>
                         </div>
                         <div className={"register-middle-content-item"}>
@@ -49,7 +49,6 @@ const Register = () => {
                                 {translation.Register.enterPassword}
                             </div>
                             <div className={"register-input-text-wrong-information wrong-password"}>
-                                Nie podałeś Emaila!
                             </div>
                         </div>
                         <div className={"register-middle-content-item"}>
@@ -58,7 +57,6 @@ const Register = () => {
                                 {translation.Register.confirmPassword}
                             </div>
                             <div className={"register-input-text-wrong-information wrong-password-confirm"}>
-                                Nie podałeś Emaila!
                             </div>
                         </div>
                     </div>
@@ -72,7 +70,6 @@ const Register = () => {
                                 {translation.Register.selectFaculty}
                             </div>
                             <div className={"register-input-text-wrong-information wrong-faculty"}>
-                                Nie podałeś Emaila!
                             </div>
                         </div>
                         <div className={"register-middle-content-item"}>
@@ -84,7 +81,6 @@ const Register = () => {
                                 {translation.Register.selectMajor}
                             </div>
                             <div className={"register-input-text-wrong-information wrong-course"}>
-                                Nie podałeś Emaila!
                             </div>
                         </div>
                         <div className={"register-middle-content-item"}>
@@ -96,7 +92,6 @@ const Register = () => {
                                 {translation.Register.selectSemester}
                             </div>
                             <div className={"register-input-text-wrong-information wrong-semester"}>
-                                Nie podałeś Emaila!
                             </div>
                         </div>
                     </div>
@@ -107,7 +102,6 @@ const Register = () => {
                                 {translation.Register.enterName}
                             </div>
                             <div className={"register-input-text-wrong-information wrong-name"}>
-                                Nie podałeś Emaila!
                             </div>
                         </div>
                         <div className={"register-middle-content-item"}>
@@ -116,7 +110,6 @@ const Register = () => {
                                 {translation.Register.enterSurname}
                             </div>
                             <div className={"register-input-text-wrong-information wrong-surname"}>
-                                Nie podałeś Emaila!
                             </div>
                         </div>
                         <div className={"register-middle-content-item"}>
@@ -125,7 +118,6 @@ const Register = () => {
                                 {translation.Register.enterPhoneNumber}
                             </div>
                             <div className={"register-input-text-wrong-information wrong-phone-number"}>
-                                Nie podałeś Emaila!
                             </div>
                         </div>
                     </div>
@@ -150,7 +142,6 @@ const Register = () => {
                                 Wyrażam zgodę udpostępnienie mojej lokalizacji.
                             </div>
                             <div className={"register-input-text-wrong-information not-confirmed"}>
-                                Nie podałeś Emaila!
                             </div>
                         </div>
                     </div>
