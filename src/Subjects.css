@@ -1,8 +1,8 @@
 .subjects-main-content, .subject-page-main-content {
     width: 100%;
-    margin: 5% 0 0 0;
+    margin: 100px 0 0 0;
     height: 100%;
-    position: fixed;
+    position: absolute;
 }
 
 .subjects-main-content-top-bar, .subject-page-main-content-top-bar {
@@ -45,17 +45,10 @@
 .subjects-main-content-center {
     height: 73%;
     width: 70%;
-    margin: 5% 15% 0 15%;
+    margin: 100px 15% 0 15%;
 }
 
-.subjects-main-content-center-left {
-    width: 40%;
-    height: 100%;
-    margin: 0 4%;
-    float: left;
-}
-
-.subjects-main-content-center-right {
+.subjects-main-content-center-left, .subjects-main-content-center-right {
     width: 40%;
     height: 100%;
     margin: 0 4%;
@@ -98,7 +91,7 @@
     box-shadow: rgba(0, 0, 0, 0.4) 0 3px 2px, rgba(0, 0, 0, 0.3) 0 7px 13px -3px, rgba(0, 0, 0, 0.2) 0 -2px 0 inset;
     cursor: pointer;
     transition: 0.2s;
-    overflow: auto;
+    overflow: hidden;
 }
 
 .subjects-main-content-center-subjects-item:hover {
@@ -472,4 +465,63 @@
     color: #2b863a;
 }
 
+@media (max-width: 1400px) {
+    .subjects-main-content-center-right, .subjects-main-content-center-left{
+        width: 48%;
+        margin: 0;
+    }
 
+    .subjects-main-content-center{
+        margin-top: 105px;
+    }
+
+    .subjects-main-content-top-bar-item{
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 1200px){
+    .subjects-main-content-center{
+        width: 90%;
+        margin-left: 5%;
+    }
+}
+
+@media (max-width: 1200px){
+    .subjects-main-content-center-title{
+        font-size: 30px;
+        line-height: 70px;
+    }
+
+    .subjects-main-content-center-subjects-item{
+        font-size: 20px;
+    }
+
+    .subjects-main-content-top-bar-item{
+        font-size: 20px;
+    }
+
+    .subjects-main-content-top-bar-item{
+        width: 10%;
+    }
+}
+
+@media (max-width: 700px){
+    .subjects-main-content-center{
+        width: 98%;
+        margin-left: 1%;
+    }
+
+    .subjects-main-content-center-subjects-item{
+        font-size: 15px;
+    }
+
+    .subjects-main-content-top-bar-item{
+        font-size: 15px;
+        line-height: 70px;
+    }
+
+    .subjects-main-content-top-bar-item{
+        width: 15%;
+    }
+}
