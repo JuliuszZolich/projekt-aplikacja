@@ -28,32 +28,38 @@ const SubjectPage = () => {
                             </div>
                         </div>
                     </Link>
-                    <div className={"subject-page-main-content-top-bar-item lectures home-p"} onClick={() => changeScenery(1)}>
+                    <div className={"subject-page-main-content-top-bar-item lectures home-p"}
+                         onClick={() => changeScenery(1)}>
                         {translation.Subjects.lectures}
                     </div>
                     <div className={"subject-page-main-content-top-bar-item exercises home-p"}>
                         {translation.Subjects.exercises}
                     </div>
-                    <div className={"subject-page-main-content-top-bar-item subjects-page-announcements home-p"} onClick={() => changeScenery(2)}>
+                    <div className={"subject-page-main-content-top-bar-item subjects-page-announcements home-p"}
+                         onClick={() => changeScenery(2)}>
                         {translation.Subjects.news}
                     </div>
-                    <div className={"subject-page-main-content-top-bar-item marks home-p"} onClick={() => changeScenery(3)}>
+                    <div className={"subject-page-main-content-top-bar-item marks home-p"}
+                         onClick={() => changeScenery(3)}>
                         {translation.Subjects.grades}
                     </div>
                     <div className={"subject-page-main-content-top-bar-subject-name home-p"}>
                         Komunikacja Człowiek-Komputer
                     </div>
                 </div>
-                <div className={"subject-page-middle-content-lectures"}  id={"lectures"}>
+                <div className={"subject-page-middle-content-lectures"} id={"lectures"}>
                     <div className={"subject-page-middle-content-lectures-left"}>
-                        <div className={"subject-page-middle-content-lectures-left-item"}>
-                            <div className={"item-image"}>
-                                <img src={fileicon} alt="download-file-icon"/>
+                        <a href={"./src/assets/MNwI/Materiały do ćwiczenia dotyczącego równań nieliniowych.zip"}
+                           download={"MNwI_Materiały_do_ćwiczenia_dotyczącego_równań_nieliniowych.zip"}>
+                            <div className={"subject-page-middle-content-lectures-left-item"}>
+                                <div className={"item-image"}>
+                                    <img src={fileicon} alt="download-file-icon"/>
+                                </div>
+                                <div className={"item-text header-p"}>
+                                    {translation.Subjects.lecture} 1
+                                </div>
                             </div>
-                            <div className={"item-text header-p"}>
-                                {translation.Subjects.lecture} 1
-                            </div>
-                        </div>
+                        </a>
                         <div className={"subject-page-middle-content-lectures-left-item"}>
                             <div className={"item-image"}>
                                 <img src={fileicon} alt="download-file-icon"/>
