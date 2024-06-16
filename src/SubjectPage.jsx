@@ -56,7 +56,7 @@ function getLectures(setLectures, lecturesData, translation){
             <a href={lecture.link}
                download={lecture.link_name}
                 key={lecture.link_name}>
-                <div className={"subject-page-middle-content-lectures-left-item"}>
+                <div className={"subject-page-middle-content-lectures-left-item"} title={lecture.name}>
                     <div className={"item-image"}>
                         <img src={fileicon} alt="download-file-icon"/>
                     </div>
@@ -75,7 +75,7 @@ function getExercises(setExercises, exercisesData, translation){
             <a href={exercise.link}
                download={exercise.link_name}
                key={exercise.link_name}>
-                <div className={"subject-page-middle-content-lectures-left-item"}>
+                <div className={"subject-page-middle-content-lectures-left-item"} title={exercise.name}>
                     <div className={"item-image"}>
                         <img src={fileicon} alt="download-file-icon"/>
                     </div>
