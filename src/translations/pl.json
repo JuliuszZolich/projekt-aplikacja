@@ -11,7 +11,8 @@
   "TopBar": {
     "profile": "Mój Profil",
     "settings": "Ustawienia",
-    "logOut": "Wyloguj"
+    "logOut": "Wyloguj",
+    "language": "pl-PL"
   },
   "Login": {
     "email": "E-mail:",
@@ -20,7 +21,11 @@
     "enterPassword": "Wprowadź hasło",
     "forgotPassword": "Nie pamiętasz hasła?",
     "registration": "Zarejestruj się",
-    "logIn": "Zaloguj"
+    "logIn": "Zaloguj",
+    "emptyFields": "Pola e-mail oraz hasło są puste!",
+    "emptyEmail": "Pole e-mail jest puste!",
+    "emptyPassword": "Pole hasło jest puste!",
+    "wrongData": "Błędne dane logowania!"
   },
   "ForgotPassword": {
     "forgot": "Zapomniałem hasła",
@@ -64,7 +69,25 @@
     "agreementLocation": "Wyrażam zgodę udpostępnienie mojej lokalizacji."
   },
   "Timetable": {
-
+    "monday": "Poniedziałek",
+    "tuesday": "Wtorek",
+    "wednesday": "Środa",
+    "thursday": "Czwartek",
+    "friday": "Piątek",
+    "saturday": "Sobota",
+    "sunday": "Niedziela",
+    "January": "Styczeń",
+    "February": "Luty",
+    "March": "Marzec",
+    "April": "Kwiecień",
+    "May": "Maj",
+    "June": "Czerwiec",
+    "July": "Lipiec",
+    "August": "Sierpień",
+    "September": "Wrzesień",
+    "October": "Październik",
+    "November": "Listopad",
+    "December": "Grudzień"
   },
   "Announcements": {
     "latest": "Najnowsze",

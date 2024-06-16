@@ -1,36 +1,39 @@
 import TopBarAndSideMenu from "./TopBarAndSideMenu.jsx";
 import './Timetable.css'
 import GenerateTimetable, {CurrentDateTimetable} from "./TimetableFunctions.jsx";
+import {useLanguage} from './ChangeLanguage.jsx';
 import {useEffect} from "react";
+
 const Timetable = () => {
     useEffect(() => {
         CurrentDateTimetable();
     },[])
+    const {t: translation} = useLanguage();
     return(
         <>
             {TopBarAndSideMenu()}
             <div className={"timetable-content"}>
                 <div className={"timetable-day-names"}>
                     <div className={"timetable-day-names-item"}>
-                        Poniedziałek
+                        {translation.Timetable.monday}
                     </div>
                     <div className={"timetable-day-names-item"}>
-                        Wtorek
+                        {translation.Timetable.tuesday}
                     </div>
                     <div className={"timetable-day-names-item"}>
-                        Środa
+                        {translation.Timetable.wednesday}
                     </div>
                     <div className={"timetable-day-names-item"}>
-                        Czwartek
+                        {translation.Timetable.thursday}
                     </div>
                     <div className={"timetable-day-names-item"}>
-                        Piątek
+                        {translation.Timetable.friday}
                     </div>
                     <div className={"timetable-day-names-item"}>
-                        Sobota
+                        {translation.Timetable.saturday}
                     </div>
                     <div className={"timetable-day-names-item"}>
-                        Niedziela
+                        {translation.Timetable.sunday}
                     </div>
                 </div>
                 {GenerateTimetable()}

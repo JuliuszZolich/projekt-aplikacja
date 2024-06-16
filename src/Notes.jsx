@@ -297,7 +297,7 @@ const Notes = () => {
                         <div className={"modify-note-window-bottom-bar-item modify-note-window-bottom-bar-item-save"}
                              onClick={() => {
                                  if (document.getElementById("modify-note-window-title").value === "" || document.getElementById("modify-note-window-text").value === "") {
-                                     alert("Wypełnij wszystkie pola!");
+                                     alert(translation.Notes.allFields);
                                      return;
                                  }
                                  modifyNote(cookies['userID'], currentNoteId, document.getElementById("modify-note-window-title").value, document.getElementById("modify-note-window-text").value, setNotes).then(() => {

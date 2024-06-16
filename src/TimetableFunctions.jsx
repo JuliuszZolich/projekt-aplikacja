@@ -1,7 +1,8 @@
-import {useEffect, useState} from "react";
 import arrow from "./assets/closemenu.png";
+import { useEffect, useState } from "react";
+import { useLanguage } from './ChangeLanguage.jsx';
 
-export const GenerateTimetableItem = ({day}) => {
+export const GenerateTimetableItem = ({ day }) => {
     return (
         <div className="timetable-item">
             {day}
@@ -11,21 +12,6 @@ export const GenerateTimetableItem = ({day}) => {
 
 let year;
 let month;
-
-const monthNames = [
-    "Styczeń",
-    "Luty",
-    "Marzec",
-    "Kwiecień",
-    "Maj",
-    "Czerwiec",
-    "Lipiec",
-    "Sierpień",
-    "Wrzesień",
-    "Październik",
-    "Listopad",
-    "Grudzień"
-];
 
 export function CurrentDateTimetable() {
     let date = new Date();
@@ -52,7 +38,21 @@ export function ChangeMonth(option, updateDateString, updateItemsCounter, update
     updateDays();
 }
 
-export function getCurrentMonthAndYearTimetable() {
+export function getCurrentMonthAndYearTimetable(t) {
+    const monthNames = [
+        t.Timetable.January,
+        t.Timetable.February,
+        t.Timetable.March,
+        t.Timetable.April,
+        t.Timetable.May,
+        t.Timetable.June,
+        t.Timetable.July,
+        t.Timetable.August,
+        t.Timetable.September,
+        t.Timetable.October,
+        t.Timetable.November,
+        t.Timetable.December
+    ];
     return `${monthNames[month]} ${year}`;
 }
 
@@ -65,18 +65,19 @@ const getFirstDayOfMonth = (month, year) => {
 };
 
 const GenerateTimetable = () => {
+    const { t: translation } = useLanguage();
     const [itemsCounter, setItemsCounter] = useState(35);
     const [dateString, setDateString] = useState("");
     const [days, setDays] = useState([]);
 
     const updateDateString = () => {
-        const dateStr = getCurrentMonthAndYearTimetable();
+        const dateStr = getCurrentMonthAndYearTimetable(translation);
         setDateString(dateStr);
     };
 
     const updateItemsCounter = () => {
         const firstDayOfWeek = getFirstDayOfMonth(month, year);
-        const counter =  firstDayOfWeek === 0 ? 42 : 35;
+        const counter = firstDayOfWeek === 0 ? 42 : 35;
         setItemsCounter(counter);
         setHeight(counter);
     };
@@ -84,7 +85,7 @@ const GenerateTimetable = () => {
     const updateDays = () => {
         const daysInMonth = getDaysInMonth(month, year);
         const firstDayOfWeek = getFirstDayOfMonth(month, year);
-        const daysArray = Array.from({length: firstDayOfWeek === 0 ? 6 : firstDayOfWeek - 1}).fill("");
+        const daysArray = Array.from({ length: firstDayOfWeek === 0 ? 6 : firstDayOfWeek - 1 }).fill("");
         for (let day = 1; day <= daysInMonth; day++) {
             daysArray.push(day.toString());
         }
@@ -111,8 +112,8 @@ const GenerateTimetable = () => {
         });
     };
 
-    const items = Array.from({length: itemsCounter}).map((_, index) => (
-        <GenerateTimetableItem key={index} day={days[index] || ''}/>
+    const items = Array.from({ length: itemsCounter }).map((_, index) => (
+        <GenerateTimetableItem key={index} day={days[index] || ''} />
     ));
 
     return (
@@ -120,14 +121,14 @@ const GenerateTimetable = () => {
             <div className="timetable-navigation">
                 <div className="timetable-navigation-arrow-left"
                      onClick={() => ChangeMonth('-', updateDateString, updateItemsCounter, updateDays)}>
-                    <img src={arrow} alt="previous-month-icon"/>
+                    <img src={arrow} alt="previous-month-icon" />
                 </div>
                 <div className="timetable-navigation-month-and-year">
                     {dateString}
                 </div>
                 <div className="timetable-navigation-arrow-right"
                      onClick={() => ChangeMonth('+', updateDateString, updateItemsCounter, updateDays)}>
-                    <img src={arrow} alt="next-month-icon"/>
+                    <img src={arrow} alt="next-month-icon" />
                 </div>
             </div>
             <div className="timetable-container">

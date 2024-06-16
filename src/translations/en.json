@@ -11,7 +11,8 @@
   "TopBar": {
     "profile": "My Profile",
     "settings": "Settings",
-    "logOut": "Log out"
+    "logOut": "Log out",
+    "language": "en-EN"
   },
   "Login": {
     "email": "E-mail:",
@@ -20,7 +21,11 @@
     "enterPassword": "Enter password",
     "forgotPassword": "Forgot password?",
     "registration": "Register",
-    "logIn": "Log In"
+    "logIn": "Log In",
+    "emptyFields": "Email and password fields are empty!",
+    "emptyEmail": "Email field is empty!",
+    "emptyPassword": "Password field is empty!",
+    "wrongData": "Incorrect login data!"
   },
   "ForgotPassword": {
     "forgot": "Forgot password",
@@ -65,7 +70,25 @@
     "agreementLocation": "I consent to sharing my location."
   },
   "Timetable": {
-
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "saturday": "Saturday",
+    "sunday": "Sunday",
+    "January": "January",
+    "February": "February",
+    "March": "March",
+    "April": "April",
+    "May": "May",
+    "June": "June",
+    "July": "July",
+    "August": "August",
+    "September": "September",
+    "October": "October",
+    "November": "November",
+    "December": "December"
   },
   "Announcements": {
     "latest": "Latest",
