@@ -38,14 +38,18 @@ async function getAnnouncementPosts(setAnnouncementPosts, translation, setCookie
                  key={announcement.id}
                  data-time={convertDate(announcement.date,2)}
                  data-typ={announcement.type}>
-            <Link to={'/projekt-aplikacja/announcementspostpage'} onClick={setCookie("postid", announcement.id, {path:"/"})}>
-                <div className={"announcements-posts-item-left-content"}>
+            <Link to={'/projekt-aplikacja/announcementspostpage'}>
+                <div className={"announcements-posts-item-left-content"} onClick={()=> {
+                    setCookie("postid", announcement.id, {path: "/"})
+                }}>
                     <img src={announcement.img.substring(1, announcement.img.length - 1)} alt="post-image"/>
                 </div>
             </Link>
             <div className={"announcements-posts-item-right-content"}>
-                <Link to={'/projekt-aplikacja/announcementspostpage'} onClick={setCookie("postid", announcement.id, {path:"/"})}>
-                    <div className={"announcements-posts-item-right-content-title header-p"}>
+                <Link to={'/projekt-aplikacja/announcementspostpage'}>
+                    <div className={"announcements-posts-item-right-content-title header-p"} onClick={()=> {
+                        setCookie("postid", announcement.id, {path: "/"})
+                    }}>
                         {(localStorage.getItem('language') === 'en' ? announcement.title_en : announcement.title_pl).substring(0, 50) + "..."}
                     </div>
                 </Link>
@@ -56,8 +60,10 @@ async function getAnnouncementPosts(setAnnouncementPosts, translation, setCookie
                 <div className={"announcements-posts-item-right-content-text"}>
                     {localStorage.getItem('language') === 'en' ? announcement.short_text_en : announcement.short_text_pl}
                     <br/>
-                    <Link to={'/projekt-aplikacja/announcementspostpage'} onClick={setCookie("postid", announcement.id, {path:"/"})}>
-                        <span className={"announcements-posts-item-right-content-find-more"}>
+                    <Link to={'/projekt-aplikacja/announcementspostpage'}>
+                        <span className={"announcements-posts-item-right-content-find-more"} onClick={()=> {
+                            setCookie("postid", announcement.id, {path: "/"})
+                        }}>
                             {translation.Announcements.learnMore}
                         </span>
                     </Link>
