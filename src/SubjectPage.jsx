@@ -23,6 +23,16 @@ async function getGrades(userid, subjectid, setGrades, translation) {
     }
     let data = await response.json();
     setGrades(data.gradelist.map((grade) => {
+        let newColor;
+        if(grade.points_achieved / grade.points_max < 0.3){
+            newColor = "#c70219";
+        }
+        else if(grade.points_achieved / grade.points_max < 0.6){
+            newColor = "#db8c04";
+        }
+        else{
+            newColor = "#2b863a";
+        }
         return (
             <div className={"subject-page-middle-content-marks-item"} key={grade.id}>
                 <div className={"marks-item-title header-p"}>
@@ -34,14 +44,14 @@ async function getGrades(userid, subjectid, setGrades, translation) {
                     </div>
                     <div className={"marks-item-points-progress-bar"}>
                         <div className={"inner"}></div>
-                        <div className={"fill"} style={{width: `${(grade.points_achieved / grade.points_max) * 100}%`, backgroundColor:`${grade.grade>=3 ? "#2b863a":"#c70219"}`}}></div>
+                        <div className={"fill"} style={{width: `${(grade.points_achieved / grade.points_max) * 100}%`, backgroundColor:newColor}}></div>
                     </div>
                 </div>
                 <div className={"marks-item-bottom"}>
                     <div className={"marks-item-bottom-text medium-text-p"}>
                         {translation.Subjects.grade}
                     </div>
-                    <div className={"marks-item-bottom-mark tasks-list-p"} style={{color:`${grade.grade>=3 ? "#2b863a":"#c70219"}`}}>
+                    <div className={"marks-item-bottom-mark tasks-list-p"} style={{color:newColor}}>
                         {grade.grade}
                     </div>
                 </div>

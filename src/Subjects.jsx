@@ -17,6 +17,7 @@ function getSubjects(translation, setSubjects, cookies, setCookie) {
     }).then(response => {
         response.json().then(data => {
             setSubjects(data["subjectlist"].map((subject) => {
+                if(subject.semester>cookies.semester) return "";
                 return (
                     <Link to={'/projekt-aplikacja/subjectpage'} 
                           key={subject.id} 

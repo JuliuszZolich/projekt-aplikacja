@@ -179,7 +179,7 @@ async function sendRequest() {
     const phone = document.getElementById("phone").value;
     const name = document.getElementById("name").value;
     const surname = document.getElementById("surname").value;
-    const semester = document.getElementById("semester").value;
+    const semester = parseInt(document.getElementById("semester").value);
     await fetch("http://localhost:8001/register", {
             method: "POST",
             headers: {
@@ -240,8 +240,6 @@ export function changeStep(step) {
             }
             , 500);
         stepTwo.style.display = "none";
-
-
         stepOne.style.display = "block";
         stepOne.style.animationName = "show-step";
         setTimeout(() => {
