@@ -139,4 +139,37 @@ public class DBSubjects {
         json.put("gradelist", grades);
         return json.toString();
     }
+
+    public static String getPosts(String subjectID){
+        System.out.println("Getting posts for subject: " + subjectID);
+        ApiFuture<QuerySnapshot> query = db.collection("subjectposts")
+                .whereEqualTo("subjectid", subjectID)
+                .get();
+        List<QueryDocumentSnapshot> listaQuery;
+        try {
+            QuerySnapshot querySnapshot = query.get();
+            listaQuery = querySnapshot.getDocuments();
+        } catch (InterruptedException | ExecutionException e) {
+            System.out.println("Error getting posts");
+            return "{\"postlist\": []}";
+        }
+        JSONObject json = new JSONObject();
+        JSONArray posts = new JSONArray();
+        for (QueryDocumentSnapshot document : listaQuery) {
+            try {
+                JSONObject post = new JSONObject();
+                post.put("subjectid", document.getString("subjectid"));
+                post.put("title", document.getString("title"));
+                post.put("content", document.getString("content"));
+                post.put("author", document.getString("author"));
+                post.put("date", document.getDate("date"));
+                post.put("id", document.getId());
+                posts.put(post);
+            } catch (Exception e) {
+                System.out.println("Error processing document " + document.getId() + ": " + e.getMessage());
+            }
+        }
+        json.put("postlist", posts);
+        return json.toString();
+    }
 }

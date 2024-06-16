@@ -20,6 +20,8 @@ public class SubjectsHandler implements HttpHandler {
                     DBSubjects.getGrades(t.getRequestHeaders().get("UserID").get(0), t.getRequestHeaders().get("SubjectID").get(0));
             case "SUBJECT" ->
                     DBSubjects.getSubject(t.getRequestHeaders().get("SubjectID").get(0));
+            case "POSTS" ->
+                    DBSubjects.getPosts(t.getRequestHeaders().get("SubjectID").get(0));
             default -> "";
         };
         t.sendResponseHeaders(200, response.getBytes().length);
