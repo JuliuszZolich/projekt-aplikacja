@@ -190,7 +190,10 @@ let lat;
 let data;
 
 export function getCurrentDate() {
-    data = new Date().toLocaleDateString(language, {day: '2-digit', month: 'long', year: 'numeric'});
+    const savedLanguage = localStorage.getItem('language');
+    const language = savedLanguage || 'pl';
+    const options = { day: '2-digit', month: 'long', year: 'numeric' };
+    data = new Date().toLocaleDateString(language, options);
     document.getElementById("weather-bar-date").innerHTML = data;
 }
 
