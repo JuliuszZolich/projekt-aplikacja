@@ -22,11 +22,30 @@
     "registration": "Register",
     "logIn": "Log In"
   },
+  "ForgotPassword": {
+    "forgot": "Forgot password",
+    "enterEmail": "Enter e-mail",
+    "noEmail": "No such email!",
+    "enterCode": "Enter code",
+    "wrongCode": "Wrong code!",
+    "sendAgain": "Send code again!",
+    "newPassword": "Enter new password",
+    "wrongPassword": "Wrong password!",
+    "repeatPassword": "Repeat password",
+    "differentPasswords": "Passwords do not match!",
+    "changeOK": "Password changed successfully.",
+    "backToLogin": "Back to Login page.",
+    "back": "Back",
+    "next": "Next",
+    "backToHomepage": "Back to homepage."
+  },
+
   "Register": {
     "registration": "Registration",
     "step1": "Step 1",
     "step2": "Step 2",
     "step3": "Step 3",
+    "step4": "Step 4",
     "enterEmail": "Enter email",
     "enterPassword": "Enter password",
     "confirmPassword": "Confirm password",
@@ -40,7 +59,10 @@
     "backToLogin": "Back to Login page",
     "back": "Back",
     "next": "Next",
-    "account": "I already have an account."
+    "account": "I already have an account.",
+    "required": "* - Required field.",
+    "agreementData": "I consent to the processing of my personal data to tailor displayed content relevant to the provided information.",
+    "agreementLocation": "I consent to sharing my location."
   },
   "Timetable": {
 
@@ -67,7 +89,26 @@
     "addItem": "Add item"
   },
   "Notes": {
-    "find": "Search..."
+    "find": "Search...",
+    "close": "Close",
+    "addNote": "Add note",
+    "cancel": "Cancel",
+    "add": "Add",
+    "noSave1": "Unsaved changes",
+    "noSave2": "will not be saved",
+    "wantCancel": "do you want to cancel?",
+    "yes": "Yes",
+    "no": "No",
+    "wantForSure": "Are you sure you want to",
+    "delete": "delete",
+    "note": "note?",
+    "delete1": "Delete",
+    "keep": "Keep",
+    "modify": "Modify note",
+    "save": "Save",
+    "title": "Enter note title",
+    "content": "Enter note content",
+    "allFields": "Fill in all fields!"
   },
   "Map": {
     "find": "Enter location",
@@ -100,5 +141,15 @@
     "mainLanguage": "Select main language",
     "pl": "Polish",
     "en": "English"
+  },
+  "Profile": {
+    "personalData": "Personal Data:",
+    "name": "Name:",
+    "surname": "Surname:",
+    "email": "Email:",
+    "polytechnicData": "Polytechnic Data:",
+    "faculty": "Faculty:",
+    "fieldOfStudy": "Field of Study:",
+    "year": "Year:"
   }
 }

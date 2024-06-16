@@ -22,11 +22,29 @@
     "registration": "Zarejestruj się",
     "logIn": "Zaloguj"
   },
+  "ForgotPassword": {
+    "forgot": "Zapomniałem hasła",
+    "enterEmail": "Wpisz e-mail",
+    "noEmail": "Nie ma takiego e-maila!",
+    "enterCode": "Wpisz kod",
+    "wrongCode": "Błędny kod!",
+    "sendAgain": "Wyślij Kod ponownie!",
+    "newPassword": "Wpisz nowe hasło",
+    "wrongPassword": "Błędne hasło!",
+    "repeatPassword": "Powtórz hasło",
+    "differentPasswords": "Hasła nie są takie same!",
+    "changeOK": "Hasło zmienione pomyślnie.",
+    "backToLogin": "Wróć do strony Logowania.",
+    "back": "Cofnij",
+    "next": "Dalej",
+    "backToHomepage": "Powrót na stronę główną."
+  },
   "Register": {
     "registration": "Rejestracja",
     "step1": "Krok 1",
     "step2": "Krok 2",
     "step3": "Krok 3",
+    "step4": "Krok 4",
     "enterEmail": "Wpisz e-mail",
     "enterPassword": "Wpisz Hasło",
     "confirmPassword": "Potwierdz hasło",
@@ -40,7 +58,10 @@
     "backToLogin": "Wróć do strony Logowania",
     "back": "Cofnij",
     "next": "Dalej",
-    "account": "Posiadam już konto."
+    "account": "Posiadam już konto.",
+    "required": "* - Pole wymagane.",
+    "agreementData": "Wyrażam zgodę na przetwarzanie moich danych osobowych w celu dopasowania wyświetlanych treści adekwatnych do podanych informacji.",
+    "agreementLocation": "Wyrażam zgodę udpostępnienie mojej lokalizacji."
   },
   "Timetable": {
 
@@ -67,7 +88,26 @@
     "addItem": "Dodaj pozycję"
   },
   "Notes": {
-    "find": "Wyszukaj..."
+    "find": "Wyszukaj...",
+    "close": "Zamknij",
+    "addNote": "Dodaj notatke",
+    "cancel": "Anuluj",
+    "add": "Dodaj",
+    "noSave1": "Niezapisane zmiany",
+    "noSave2": "nie zostaną zachowane",
+    "wantCancel": "czy chcesz anulować?",
+    "yes": "Tak",
+    "no": "Nie",
+    "wantForSure": "Czy napewno chcesz",
+    "delete": "usunąć",
+    "note": "notatke?",
+    "delete1": "Usuń",
+    "keep": "Zachowaj",
+    "modify": "Modyfikuj notatke",
+    "save": "Zapisz",
+    "title": "Wpisz tytuł notatki",
+    "content": "Wpisz treść notatki",
+    "allFields": "Wypełnij wszystkie pola!"
   },
   "Map": {
     "find": "Wpisz lokalizacje",
@@ -100,5 +140,15 @@
     "mainLanguage": "Wybór głównego języka",
     "pl": "Polski",
     "en": "Angielski"
+  },
+  "Profile": {
+    "personalData": "Dane Personalne:",
+    "name": "Imię:",
+    "surname": "Nazwisko:",
+    "email": "E-mail:",
+    "polytechnicData": "Dane Politechniczne:",
+    "faculty": "Wydział:",
+    "fieldOfStudy": "Kierunek:",
+    "year": "Rok:"
   }
 }

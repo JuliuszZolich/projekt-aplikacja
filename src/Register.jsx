@@ -30,7 +30,7 @@ const Register = () => {
                         </div>
                         <div className={"progress-bar-line"}></div>
                         <div className={"register-progress-bar-item step-four"}>
-                            Krok 4
+                            {translation.Register.step4}
                         </div>
                     </div>
                     <div className={"register-middle-content-step-one"} style={{"display": "block"}}>
@@ -123,15 +123,15 @@ const Register = () => {
                     </div>
                     <div className={"register-middle-content-step-four"} style={{"display": "none"}}>
                         <div className={"register-step-four-information"}>
-                            * - Pole wymagane.
+                            {translation.Register.required}
                         </div>
                         <div className={"register-step-four-item"}>
                             <div className={"register-checkbox"}>
                                 <input type="checkbox" id="accept-policy" name="accept-policy"/>
                             </div>
                             <div className={"register-step-four-item-text"}>
-                                Wyrażam zgodę na przetwarzanie moich danych osobowych w celu dopasowania wyświetlanych
-                                treści adekwatnych do podanych informacji.<span className={"required-checkbox"}>*</span>
+                                {translation.Register.agreementData}
+                                <span className={"required-checkbox"}>*</span>
                             </div>
                         </div>
                         <div className={"register-step-four-item"}>
@@ -139,7 +139,7 @@ const Register = () => {
                                 <input type="checkbox" id="accept-localization" name="accept-localization"/>
                             </div>
                             <div className={"register-step-four-item-text"}>
-                                Wyrażam zgodę udpostępnienie mojej lokalizacji.
+                                {translation.Register.agreementLocation}
                             </div>
                             <div className={"register-input-text-wrong-information not-confirmed"}>
                             </div>

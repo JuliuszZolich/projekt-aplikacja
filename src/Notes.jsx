@@ -192,17 +192,17 @@ const Notes = () => {
                         <div className={"note-window-bottom-bar-close"} onClick={() => {
                             document.getElementsByClassName("note-window")[0].style.display = "none";
                         }}>
-                            Zamknij
+                            {translation.Notes.close}
                         </div>
                     </div>
                 </div>
                 <div className={"add-note-window"} style={{"display": "none"}}>
                     <div className={"add-note-window-top-bar"}>
-                        Dodaj notatke
+                        {translation.Notes.addNote}
                     </div>
                     <div className={"add-note-window-middle-content"}>
-                        <input type="text" id={"add-note-window-title"} placeholder={"Wpisz tytuł notatki"}/>
-                        <textarea id={"add-note-window-text"} name={"note-content"} placeholder={"Wpisz treść notatki"}>
+                        <input type="text" id={"add-note-window-title"} placeholder={translation.Notes.title}/>
+                        <textarea id={"add-note-window-text"} name={"note-content"} placeholder={translation.Notes.content}>
                         </textarea>
                     </div>
                     <div className={"add-note-window-bottom-bar"}>
@@ -210,13 +210,13 @@ const Notes = () => {
                              onClick={() => {
                                  document.getElementsByClassName("cancel-window")[0].style.display = "block";
                              }}>
-                            Anuluj
+                            {translation.Notes.cancel}
                         </div>
                         <div className={"add-note-window-bottom-bar-item add-note-window-bottom-bar-item-add"}
                              onClick={() => {
                                  document.getElementsByClassName("add-note-window-bottom-bar-item-add")[0].onclick = () => {
                                      if (document.getElementById("add-note-window-title").value === "" || document.getElementById("add-note-window-text").value === "") {
-                                         alert("Wypełnij wszystkie pola!");
+                                         alert(translation.Notes.allFields);
                                          return;
                                      }
                                      addNote(cookies['userID'], document.getElementById("add-note-window-title").value, document.getElementById("add-note-window-text").value, setNotes, cookies);
@@ -225,15 +225,15 @@ const Notes = () => {
                                      document.getElementById("add-note-window-text").value = "";
                                  };
                              }}>
-                            Dodaj
+                            {translation.Notes.add}
                         </div>
                     </div>
                 </div>
                 <div className={"cancel-window"}>
                     <div className={"cancel-window-text"}>
-                        <span>Niezapisane zmiany </span>
-                        <span className={"cancel-window-text-decoration"}>nie zostaną zachowane</span>,
-                        czy chcesz anulować?
+                        <span>{translation.Notes.noSave1} </span>
+                        <span className={"cancel-window-text-decoration"}>{translation.Notes.noSave2} </span>,
+                        {translation.Notes.wantCancel}
                     </div>
                     <div className={"cancel-window-bottom-bar"}>
                         <div className={"cancel-window-bottom-bar-item cancel-window-bottom-bar-yes"} onClick={() => {
@@ -246,32 +246,32 @@ const Notes = () => {
                             document.getElementsByClassName("cancel-window")[0].style.display = "none";
 
                         }}>
-                            Tak
+                            {translation.Notes.yes}
                         </div>
                         <div className={"cancel-window-bottom-bar-item cancel-window-bottom-bar-no"} onClick={() => {
                             document.getElementsByClassName("cancel-window")[0].style.display = "none";
                         }}>
-                            Nie
+                            {translation.Notes.no}
                         </div>
                     </div>
                 </div>
                 <div className={"delete-window"} style={{"display": "none"}}>
                     <div className={"delete-window-text"}>
-                        Czy napewno chcesz <span className={"delete-window-text-decoration"}>usunąć</span> notatke?
+                        {translation.Notes.wantForSure} <span className={"delete-window-text-decoration"}>{translation.Notes.delete}</span> {translation.Notes.note}
                     </div>
                     <div className={"delete-window-bottom-bar"}>
                         <div className={"delete-window-bottom-bar-item delete-window-bottom-bar-delete"}>
-                            Usuń
+                            {translation.Notes.delete1}
                         </div>
                         <div className={"delete-window-bottom-bar-item delete-window-bottom-bar-keep"}>
-                            Zachowaj
+                            {translation.Notes.keep}
                         </div>
                     </div>
                 </div>
                 <div className={"modify-note-window"} style={{"display": "none"}}>
                     <div className={"modify-note-window-top-bar"}>
                         <div className={"modify-note-window-top-bar-text"}>
-                            Modyfikuj notatke
+                            {translation.Notes.modify}
                         </div>
                         <div className={"modify-note-window-top-bar-delete"} onClick={() => {
                             document.getElementsByClassName("modify-note-window")[0].style.display = "none";
@@ -282,9 +282,9 @@ const Notes = () => {
                         </div>
                     </div>
                     <div className={"modify-note-window-middle-content"}>
-                        <input type="text" id={"modify-note-window-title"} placeholder={"Wpisz tytuł notatki"}/>
+                        <input type="text" id={"modify-note-window-title"} placeholder={translation.Notes.title}/>
                         <textarea id={"modify-note-window-text"} name={"note-content"}
-                                  placeholder={"Wpisz treść notatki"}>
+                                  placeholder={translation.Notes.cotent}>
                         </textarea>
                     </div>
                     <div className={"modify-note-window-bottom-bar"}>
@@ -292,7 +292,7 @@ const Notes = () => {
                              onClick={() => {
                                  document.getElementsByClassName("cancel-window")[0].style.display = "block";
                              }}>
-                            Anuluj
+                            {translation.Notes.cancel}
                         </div>
                         <div className={"modify-note-window-bottom-bar-item modify-note-window-bottom-bar-item-save"}
                              onClick={() => {
@@ -309,7 +309,7 @@ const Notes = () => {
                                  document.getElementById("modify-note-window-text").value = "";
 
                              }}>
-                            Zapisz
+                            {translation.Notes.save}
                         </div>
                     </div>
                 </div>
