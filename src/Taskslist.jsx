@@ -367,20 +367,20 @@ const Tasklist = () => {
                          }
                          }
                     >
-                        Zamknij
+                        {translation.Notes.close}
                     </div>
                 </div>
             </div>
             <div className={"add-task-window"} id={"add"} style={{display: "none"}}>
                 <div className={"add-task-window-top-bar"}>
-                    Dodaj notatke
+                    {translation.Notes.addNote}
                 </div>
                 <div className={"add-task-window-middle-content"}>
-                    <input type="text" placeholder={"Wpisz tytuł notatki"}/>
+                    <input type="text" placeholder={translation.Notes.title}/>
                     <div className={"add-task-window-select-date"} id={"modify-task-window-data"}>
                         <input type="date"/>
                     </div>
-                    <textarea id={"add-task-window-text"} name={"task-content"} placeholder={"Wpisz treść notatki"}>
+                    <textarea id={"add-task-window-text"} name={"task-content"} placeholder={translation.Notes.content}>
                         </textarea>
                 </div>
                 <div className={"add-task-window-bottom-bar"}>
@@ -388,25 +388,25 @@ const Tasklist = () => {
                          onClick={() => {
                              document.getElementById("cancel").style.display = "block";
                          }}>
-                        Anuluj
+                        {translation.Notes.cancel}
                     </div>
                     <div className={"add-task-window-bottom-bar-item add-task-window-bottom-bar-item-add"}
-                        onClick={() => {
-                            const title = document.querySelector(".add-task-window-middle-content input").value;
-                            const content = document.querySelector(".add-task-window-middle-content textarea").value;
-                            const date = document.querySelector(".add-task-window-select-date input").value;
-                            addTask(cookies.userID,title, content, date);
-                        }}
+                         onClick={() => {
+                             const title = document.querySelector(".add-task-window-middle-content input").value;
+                             const content = document.querySelector(".add-task-window-middle-content textarea").value;
+                             const date = document.querySelector(".add-task-window-select-date input").value;
+                             addTask(cookies.userID,title, content, date);
+                         }}
                     >
-                        Dodaj
+                        {translation.Notes.add}
                     </div>
                 </div>
             </div>
             <div className={"cancel-window-task"} id={"cancel"} style={{display: "none"}}>
                 <div className={"cancel-window-task-text"}>
-                    Niezapisane zmiany <span
-                    className={"cancel-window-task-text-decoration"}>nie zostaną zachowane</span>,
-                    czy chcesz anulować?
+                    {translation.Notes.noSave1} <span
+                    className={"cancel-window-task-text-decoration"}>{translation.Notes.noSave2}</span>,
+                    {translation.Notes.wantCancel}
                 </div>
                 <div className={"cancel-window-bottom-bar"}>
                     <div className={"cancel-window-task-bottom-bar-item cancel-window-task-bottom-bar-yes"}
@@ -419,19 +419,19 @@ const Tasklist = () => {
                                  document.getElementById("modify").style.display = "none";
                              }
                          }}>
-                        Tak
+                        {translation.Notes.yes}
                     </div>
                     <div className={"cancel-window-task-bottom-bar-item cancel-window-task-bottom-bar-no"}
                          onClick={() => {
                              document.getElementById("cancel").style.display = "none";
                          }}>
-                        Nie
+                        {translation.Notes.no}
                     </div>
                 </div>
             </div>
             <div className={"delete-window-task"} id={"delete"} style={{display: "none"}}>
                 <div className={"delete-window-task-text"}>
-                    Czy napewno chcesz <span className={"delete-window-task-text-decoration"}>usunąć</span> notatke?
+                    {translation.Notes.wantForSure} <span className={"delete-window-task-text-decoration"}>{translation.Notes.delete}</span> {translation.Notes.note}
                 </div>
                 <div className={"delete-window-task-task-bottom-bar"}>
                     <div className={"delete-window-task-bottom-bar-item delete-window-task-bottom-bar-delete"}
@@ -441,20 +441,20 @@ const Tasklist = () => {
                              if (document.getElementById("modify").style.display !== "none") document.getElementById("modify").style.display = "none";
                          }}
                     >
-                        Usuń
+                        {translation.Notes.delete1}
                     </div>
                     <div className={"delete-window-task-bottom-bar-item delete-window-task-bottom-bar-keep"}
                          onClick={() => {
                              document.getElementById("delete").style.display = "none";
                          }}>
-                        Zachowaj
+                        {translation.Notes.keep}
                     </div>
                 </div>
             </div>
             <div className={"modify-task-window"} id={"modify"} style={{display: "none"}}>
                 <div className={"modify-task-window-top-bar"}>
                     <div className={"modify-task-window-top-bar-text"}>
-                        Modyfikuj notatke
+                        {translation.Notes.modify}
                     </div>
                     <div className={"modify-task-window-top-bar-delete"} onClick={() => {
                         document.getElementById("delete").style.display = "block";
@@ -469,7 +469,7 @@ const Tasklist = () => {
                         <input type="date" id={"modify-task-input"}/>
                     </div>
                     <textarea id={"modify-task-window-text"} name={"task-content"}
-                              placeholder={"Wpisz treść notatki"}>
+                              placeholder={translation.Notes.cotent}>
                     </textarea>
                 </div>
                 <div className={"modify-task-window-bottom-bar"}>
@@ -478,10 +478,10 @@ const Tasklist = () => {
                              document.getElementById("cancel").style.display = "block";
                          }}
                     >
-                        Anuluj
+                        {translation.Notes.cancel}
                     </div>
                     <div className={"modify-task-window-bottom-bar-item modify-task-window-bottom-bar-item-save"}>
-                        Zapisz
+                        {translation.Notes.save}
                     </div>
                 </div>
             </div>
