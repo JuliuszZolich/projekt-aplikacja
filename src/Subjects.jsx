@@ -48,7 +48,7 @@ const Subjects = () => {
             {TopBarAndSideMenu()}
             <div className={"subjects-main-content"}>
                 <div className={"subjects-main-content-top-bar"}>
-                    <div className={"subjects-main-content-top-bar-item year-first home-p"} id={"year-first"} onClick={()=>{
+                    <div className={"subjects-main-content-top-bar-item year-first home-p"} id={"year-first"} tabIndex="0" onClick={()=>{
                         setCurrYear(1);
                         document.getElementById("year-first").classList.add("year-active");
                         document.getElementById("year-second").classList.remove("year-active");
@@ -58,7 +58,7 @@ const Subjects = () => {
                     }>
                         {translation.Subjects.year} I
                     </div>
-                    <div className={"subjects-main-content-top-bar-item year-second home-p"} id={"year-second"} onClick={()=>{
+                    <div className={"subjects-main-content-top-bar-item year-second home-p"} id={"year-second"} tabIndex="0" onClick={()=>{
                         setCurrYear(2);
                         document.getElementById("year-first").classList.remove("year-active");
                         document.getElementById("year-second").classList.add("year-active");
@@ -68,7 +68,7 @@ const Subjects = () => {
                     }>
                         {translation.Subjects.year} II
                     </div>
-                    <div className={"subjects-main-content-top-bar-item year-third home-p"} id={"year-third"} onClick={()=>{
+                    <div className={"subjects-main-content-top-bar-item year-third home-p"} id={"year-third"} tabIndex="0" onClick={()=>{
                         setCurrYear(3);
                         document.getElementById("year-first").classList.remove("year-active");
                         document.getElementById("year-second").classList.remove("year-active");
@@ -78,7 +78,7 @@ const Subjects = () => {
                     }>
                         {translation.Subjects.year} III
                     </div>
-                    <div className={"subjects-main-content-top-bar-item year-fourth home-p"} id={"year-fourth"} onClick={()=>{
+                    <div className={"subjects-main-content-top-bar-item year-fourth home-p"} id={"year-fourth"} tabIndex="0" onClick={()=>{
                         setCurrYear(4);
                         document.getElementById("year-first").classList.remove("year-active");
                         document.getElementById("year-second").classList.remove("year-active");

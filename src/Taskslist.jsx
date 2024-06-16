@@ -47,7 +47,7 @@ async function getTasks(user_id, setTasks) {
 
     setTasks(data["tasklist"].map(task => {
             return (
-                <div className={"tasks-list-right-content-item"}
+                <div className={"tasks-list-right-content-item"} tabIndex="0"
                      key={task["id"]}
                      id={task["id"]}
                      data-fav={task.favourite}
@@ -64,7 +64,7 @@ async function getTasks(user_id, setTasks) {
                          document.getElementsByClassName("task-window-top-bar-title")[0].innerText = task["title"];
                          document.getElementById("display").setAttribute("data-date", convertDate(task["date"], 2));
                      }}>
-                    <div className={"tasks-list-right-content-item-left"}>
+                    <div className={"tasks-list-right-content-item-left"} tabIndex="0">
                         <div className={(() => {
                             if (task["completed"] === true) return "circle circle-checked";
                             else return "circle";
@@ -91,7 +91,7 @@ async function getTasks(user_id, setTasks) {
                         </div>
                     </div>
                     <div className={"tasks-list-right-content-item-right"}>
-                        <div className={"right-content-item-right-star"}>
+                        <div className={"right-content-item-right-star"} tabIndex="0">
                             <img src={(() => {
                                 if (task.favourite === true) return filledstaricon
                                 else return favouriteicon
@@ -104,7 +104,7 @@ async function getTasks(user_id, setTasks) {
                                  }}
                             />
                         </div>
-                        <div className={"right-content-item-right-delete"}>
+                        <div className={"right-content-item-right-delete"} tabIndex="0">
                             <img src={deleteicon} alt="delete-icon" title={"Usuń Zadanie"} onClick={() => {
                                 currentTaskId = task["id"];
                                 document.getElementById("delete").style.display = "block";
@@ -217,14 +217,14 @@ const Tasklist = () => {
     return (
         <>
             {TopBarAndSideMenu()}
-            <div className={"tasks-list-left-content-open-menu"} onClick={() => {
+            <div className={"tasks-list-left-content-open-menu"} tabIndex="0" onClick={() => {
                 OpenCloseTasksMenu(isOpenMenu);
                 if (isOpenMenu === 1) isOpenMenu = 0; else isOpenMenu = 1
             }}>
                 <img className={"tasks-list-left-content-open-menu-img"} src={openmenu} alt="open-menu-icon"/>
             </div>
             <div className={"tasks-list-left-content-menu"}>
-                <div className="tasks-list-left-content-item tasks-list-p tasks-list-p-active" id={"all1"}
+                <div className="tasks-list-left-content-item tasks-list-p tasks-list-p-active" id={"all1"} tabIndex="0"
                      onClick={() => {
                          setFilter(0);
                          document.getElementById("all1").classList.add("tasks-list-p-active");
@@ -235,7 +235,7 @@ const Tasklist = () => {
                      }>
                     {translation.TasksList.all}
                 </div>
-                <div className="tasks-list-left-content-item tasks-list-p" id={"fav1"} onClick={() => {
+                <div className="tasks-list-left-content-item tasks-list-p" id={"fav1"} tabIndex="0" onClick={() => {
                     setFilter(1);
                     document.getElementById("all1").classList.remove("tasks-list-p-active");
                     document.getElementById("fav1").classList.add("tasks-list-p-active");
@@ -245,7 +245,7 @@ const Tasklist = () => {
                 }>
                     {translation.TasksList.important}
                 </div>
-                <div className="tasks-list-left-content-item tasks-list-p" id={"act1"} onClick={() => {
+                <div className="tasks-list-left-content-item tasks-list-p" id={"act1"} tabIndex="0" onClick={() => {
                     setFilter(2);
                     document.getElementById("all1").classList.remove("tasks-list-p-active");
                     document.getElementById("fav1").classList.remove("tasks-list-p-active");
@@ -255,7 +255,7 @@ const Tasklist = () => {
                 }>
                     {translation.TasksList.active}
                 </div>
-                <div className="tasks-list-left-content-item tasks-list-p" id={"comp1"} onClick={() => {
+                <div className="tasks-list-left-content-item tasks-list-p" id={"comp1"} tabIndex="0" onClick={() => {
                     setFilter(3);
                     document.getElementById("all1").classList.remove("tasks-list-p-active");
                     document.getElementById("fav1").classList.remove("tasks-list-p-active");
@@ -281,7 +281,7 @@ const Tasklist = () => {
                     </div>
                 </div>
                 <div className={"tasks-list-left-content"}>
-                    <div className={"tasks-list-left-content-item tasks-list-p tasks-list-p-active"} id={"all"}
+                    <div className={"tasks-list-left-content-item tasks-list-p tasks-list-p-active"} id={"all"} tabIndex="0"
                          onClick={() => {
                              setFilter(0);
                              document.getElementById("all").classList.add("tasks-list-p-active");
@@ -292,7 +292,7 @@ const Tasklist = () => {
                          }>
                         {translation.TasksList.all}
                     </div>
-                    <div className={"tasks-list-left-content-item tasks-list-p"} id={"fav"} onClick={() => {
+                    <div className={"tasks-list-left-content-item tasks-list-p"} id={"fav"} tabIndex="0" onClick={() => {
                         setFilter(1);
                         document.getElementById("all").classList.remove("tasks-list-p-active");
                         document.getElementById("act").classList.remove("tasks-list-p-active");
@@ -302,7 +302,7 @@ const Tasklist = () => {
                     }>
                         {translation.TasksList.important}
                     </div>
-                    <div className={"tasks-list-left-content-item tasks-list-p"} id={"act"} onClick={() => {
+                    <div className={"tasks-list-left-content-item tasks-list-p"} id={"act"} tabIndex="0" onClick={() => {
                         setFilter(2);
                         document.getElementById("all").classList.remove("tasks-list-p-active");
                         document.getElementById("fav").classList.remove("tasks-list-p-active");
@@ -311,7 +311,7 @@ const Tasklist = () => {
                     }}>
                         {translation.TasksList.active}
                     </div>
-                    <div className={"tasks-list-left-content-item tasks-list-p"} id={"comp"} onClick={() => {
+                    <div className={"tasks-list-left-content-item tasks-list-p"} id={"comp"} tabIndex="0" onClick={() => {
                         setFilter(3);
                         document.getElementById("all").classList.remove("tasks-list-p-active");
                         document.getElementById("fav").classList.remove("tasks-list-p-active");
@@ -327,7 +327,7 @@ const Tasklist = () => {
                         <div className={"tasks-list-right-content-add-img"}>
                             <img src={addicon} alt="add-icon"/>
                         </div>
-                        <div className={"tasks-list-right-content-add-text home-p"} onClick={() => {
+                        <div className={"tasks-list-right-content-add-text home-p"} tabIndex="0" onClick={() => {
                             document.getElementById("add").style.display = "block";
                         }}>
                             {translation.TasksList.addItem}
@@ -341,7 +341,7 @@ const Tasklist = () => {
                     <div className={"task-window-top-bar-title"}>
                         Title
                     </div>
-                    <div className={"task-window-top-bar-modify"}>
+                    <div className={"task-window-top-bar-modify"} tabIndex="0">
                         <img src={"./src/assets/modify.png"}
                              alt="modify-icon"
                              title={"Modyfikuj"}
@@ -361,7 +361,7 @@ const Tasklist = () => {
                     </p>
                 </div>
                 <div className={"task-window-bottom-bar"}>
-                    <div className={"task-window-bottom-bar-close"}
+                    <div className={"task-window-bottom-bar-close"} tabIndex="0"
                          onClick={() => {
                              document.getElementById("display").style.display = "none";
                          }
@@ -384,13 +384,13 @@ const Tasklist = () => {
                         </textarea>
                 </div>
                 <div className={"add-task-window-bottom-bar"}>
-                    <div className={"add-task-window-bottom-bar-item add-task-window-bottom-bar-item-cancel"}
+                    <div className={"add-task-window-bottom-bar-item add-task-window-bottom-bar-item-cancel"} tabIndex="0"
                          onClick={() => {
                              document.getElementById("cancel").style.display = "block";
                          }}>
                         {translation.Notes.cancel}
                     </div>
-                    <div className={"add-task-window-bottom-bar-item add-task-window-bottom-bar-item-add"}
+                    <div className={"add-task-window-bottom-bar-item add-task-window-bottom-bar-item-add"} tabIndex="0"
                          onClick={() => {
                              const title = document.querySelector(".add-task-window-middle-content input").value;
                              const content = document.querySelector(".add-task-window-middle-content textarea").value;
@@ -409,7 +409,7 @@ const Tasklist = () => {
                     {translation.Notes.wantCancel}
                 </div>
                 <div className={"cancel-window-bottom-bar"}>
-                    <div className={"cancel-window-task-bottom-bar-item cancel-window-task-bottom-bar-yes"}
+                    <div className={"cancel-window-task-bottom-bar-item cancel-window-task-bottom-bar-yes"} tabIndex="0"
                          onClick={() => {
                              document.getElementById("cancel").style.display = "none";
                              if (document.getElementById("add").style.display === "block") {
@@ -421,7 +421,7 @@ const Tasklist = () => {
                          }}>
                         {translation.Notes.yes}
                     </div>
-                    <div className={"cancel-window-task-bottom-bar-item cancel-window-task-bottom-bar-no"}
+                    <div className={"cancel-window-task-bottom-bar-item cancel-window-task-bottom-bar-no"} tabIndex="0"
                          onClick={() => {
                              document.getElementById("cancel").style.display = "none";
                          }}>
@@ -434,7 +434,7 @@ const Tasklist = () => {
                     {translation.Notes.wantForSure} <span className={"delete-window-task-text-decoration"}>{translation.Notes.delete}</span> {translation.Notes.note}
                 </div>
                 <div className={"delete-window-task-task-bottom-bar"}>
-                    <div className={"delete-window-task-bottom-bar-item delete-window-task-bottom-bar-delete"}
+                    <div className={"delete-window-task-bottom-bar-item delete-window-task-bottom-bar-delete"} tabIndex="0"
                          onClick={() => {
                              removeTask(cookies.userID);
                              document.getElementById("delete").style.display = "none";
@@ -443,7 +443,7 @@ const Tasklist = () => {
                     >
                         {translation.Notes.delete1}
                     </div>
-                    <div className={"delete-window-task-bottom-bar-item delete-window-task-bottom-bar-keep"}
+                    <div className={"delete-window-task-bottom-bar-item delete-window-task-bottom-bar-keep"} tabIndex="0"
                          onClick={() => {
                              document.getElementById("delete").style.display = "none";
                          }}>
@@ -456,7 +456,7 @@ const Tasklist = () => {
                     <div className={"modify-task-window-top-bar-text"}>
                         {translation.Notes.modify}
                     </div>
-                    <div className={"modify-task-window-top-bar-delete"} onClick={() => {
+                    <div className={"modify-task-window-top-bar-delete"} tabIndex="0" onClick={() => {
                         document.getElementById("delete").style.display = "block";
 
                     }}>
@@ -473,7 +473,7 @@ const Tasklist = () => {
                     </textarea>
                 </div>
                 <div className={"modify-task-window-bottom-bar"}>
-                    <div className={"modify-task-window-bottom-bar-item modify-task-window-bottom-bar-item-cancel"}
+                    <div className={"modify-task-window-bottom-bar-item modify-task-window-bottom-bar-item-cancel"} tabIndex="0"
                          onClick={() => {
                              document.getElementById("cancel").style.display = "block";
                          }}
