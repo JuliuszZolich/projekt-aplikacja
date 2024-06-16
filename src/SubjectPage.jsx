@@ -34,14 +34,14 @@ async function getGrades(userid, subjectid, setGrades, translation) {
                     </div>
                     <div className={"marks-item-points-progress-bar"}>
                         <div className={"inner"}></div>
-                        <div className={"fill"} style={{width: `${(grade.points_achieved / grade.points_max) * 100}%`}}></div>
+                        <div className={"fill"} style={{width: `${(grade.points_achieved / grade.points_max) * 100}%`, backgroundColor:`${grade.grade>=3 ? "#2b863a":"#c70219"}`}}></div>
                     </div>
                 </div>
                 <div className={"marks-item-bottom"}>
                     <div className={"marks-item-bottom-text medium-text-p"}>
                         {translation.Subjects.grade}
                     </div>
-                    <div className={"marks-item-bottom-mark tasks-list-p"}>
+                    <div className={"marks-item-bottom-mark tasks-list-p"} style={{color:`${grade.grade>=3 ? "#2b863a":"#c70219"}`}}>
                         {grade.grade}
                     </div>
                 </div>
@@ -89,8 +89,32 @@ function getExercises(setExercises, exercisesData, translation){
 
 }
 
-function getAnnouncements(setAnnouncements, announcementsData, translation){
-    setAnnouncements(announcementsData.map((announcement) => {
+function convertDate(date, type) {
+    const date2 = date.split(" ")
+    let day = date2[2];
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    let month = months.indexOf(date2[1]) + 1;
+    let year = date2[5];
+    if (month < 10) {
+        month = "0" + month;
+    }
+    if(type===1) return `${day}.${month}.${year}`;
+    else return new Date(`${year}-${month}-${day}`).getTime();
+}
+
+async function getAnnouncements(setAnnouncements, subjectid, userid){
+    let headers = new Headers();
+    headers.append("UserID", userid);
+    headers.append("Action-Type", "POSTS");
+    headers.append("SubjectID", subjectid);
+    const response = await fetch("http://localhost:8001/subjects", {
+        method: "GET", headers: headers,
+    });
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    let data = await response.json();
+    setAnnouncements(data.postlist.map(announcement => {
         return (
             <div className={"subject-page-middle-content-announcements-item"} key={announcement.id}>
                 <div className={"subject-page-middle-content-announcements-item-top"}>
@@ -102,7 +126,7 @@ function getAnnouncements(setAnnouncements, announcementsData, translation){
                             <img src={clockicon} alt="clock-icon"/>
                         </div>
                         <div className={"top-date-text medium-text-p"}>
-                            {announcement.date}
+                            {convertDate(announcement.date, 1)}
                         </div>
                     </div>
                 </div>
@@ -110,7 +134,7 @@ function getAnnouncements(setAnnouncements, announcementsData, translation){
                     {announcement.author}
                 </div>
                 <div className={"subject-page-middle-content-announcements-item-bottom medium-text-p"}>
-                    {announcement.text}
+                    {announcement.content}
                 </div>
             </div>
         )
@@ -134,12 +158,13 @@ async function getSubject(cookies, setTitle, setLectures, setExercises, setAnnou
     setTitle(data.subjectlist[0].name);
     getLectures(setLectures, data.subjectlist[0].lectures, translation);
     getExercises(setExercises, data.subjectlist[0].exercises, translation);
+    getAnnouncements(setAnnouncements, cookies.subjectid, cookies.userID);
 }
 
 const SubjectPage = () => {
     const {t: translation} = useLanguage();
     const [cookies,,removeCookies] = useCookies(['subjectid']);
-    const [title, setTitle] = useState("lmao");
+    const [title, setTitle] = useState("");
     const [grades, setGrades] = useState([]);
     const [lectures, setLectures] = useState([]);
     const [exercises, setExercises] = useState([]);
@@ -198,182 +223,7 @@ const SubjectPage = () => {
                     </div>
                 </div>
                 <div className={"subject-page-middle-content-announcements"} id={"announcements"}>
-                    <div className={"subject-page-middle-content-announcements-item"}>
-                        <div className={"subject-page-middle-content-announcements-item-top"}>
-                            <div className={"top-title side-menu-p"}>
-                                Poprawa Kolokwium
-                            </div>
-                            <div className={"top-date"}>
-                                <div className={"top-date-img"}>
-                                    <img src={clockicon} alt="clock-icon"/>
-                                </div>
-                                <div className={"top-date-text medium-text-p"}>
-                                    26.06.2024
-                                </div>
-                            </div>
-                        </div>
-                        <div className={"subject-page-middle-content-announcements-item-author small-text-p"}>
-                            Dr. inż. Jacek Kabziński
-                        </div>
-                        <div className={"subject-page-middle-content-announcements-item-bottom medium-text-p"}>
-                            Szanowni studenci, z powodu mojej absencji dnia 26.11.2023, wykład tego dnia się nie
-                            odbędzie. Nowy termin wykładu to 03.12.2023 r.
-                        </div>
-                    </div>
-                    <div className={"subject-page-middle-content-announcements-item"}>
-                        <div className={"subject-page-middle-content-announcements-item-top"}>
-                            <div className={"top-title side-menu-p"}>
-                                Poprawa Kolokwium
-                            </div>
-                            <div className={"top-date"}>
-                                <div className={"top-date-img"}>
-                                    <img src={clockicon} alt="clock-icon"/>
-                                </div>
-                                <div className={"top-date-text medium-text-p"}>
-                                    26.06.2024
-                                </div>
-                            </div>
-                        </div>
-                        <div className={"subject-page-middle-content-announcements-item-author small-text-p"}>
-                            Dr. inż. Jacek Kabziński
-                        </div>
-                        <div className={"subject-page-middle-content-announcements-item-bottom medium-text-p"}>
-                            Szanowni studenci, z powodu mojej absencji dnia 26.11.2023, wykład tego dnia się nie
-                            odbędzie. Nowy termin wykładu to 03.12.2023 r.
-                        </div>
-                    </div>
-                    <div className={"subject-page-middle-content-announcements-item"}>
-                        <div className={"subject-page-middle-content-announcements-item-top"}>
-                            <div className={"top-title side-menu-p"}>
-                                Poprawa Kolokwium
-                            </div>
-                            <div className={"top-date"}>
-                                <div className={"top-date-img"}>
-                                    <img src={clockicon} alt="clock-icon"/>
-                                </div>
-                                <div className={"top-date-text medium-text-p"}>
-                                    26.06.2024
-                                </div>
-                            </div>
-                        </div>
-                        <div className={"subject-page-middle-content-announcements-item-author small-text-p"}>
-                            Dr. inż. Jacek Kabziński
-                        </div>
-                        <div className={"subject-page-middle-content-announcements-item-bottom medium-text-p"}>
-                            Szanowni studenci, z powodu mojej absencji dnia 26.11.2023, wykład tego dnia się nie
-                            odbędzie. Nowy termin wykładu to 03.12.2023 r.
-                        </div>
-                    </div>
-                    <div className={"subject-page-middle-content-announcements-item"}>
-                        <div className={"subject-page-middle-content-announcements-item-top"}>
-                            <div className={"top-title side-menu-p"}>
-                                Poprawa Kolokwium
-                            </div>
-                            <div className={"top-date"}>
-                                <div className={"top-date-img"}>
-                                    <img src={clockicon} alt="clock-icon"/>
-                                </div>
-                                <div className={"top-date-text medium-text-p"}>
-                                    26.06.2024
-                                </div>
-                            </div>
-                        </div>
-                        <div className={"subject-page-middle-content-announcements-item-author small-text-p"}>
-                            Dr. inż. Jacek Kabziński
-                        </div>
-                        <div className={"subject-page-middle-content-announcements-item-bottom medium-text-p"}>
-                            Szanowni studenci, z powodu mojej absencji dnia 26.11.2023, wykład tego dnia się nie
-                            odbędzie. Nowy termin wykładu to 03.12.2023 r.
-                        </div>
-                    </div>
-                    <div className={"subject-page-middle-content-announcements-item"}>
-                        <div className={"subject-page-middle-content-announcements-item-top"}>
-                            <div className={"top-title side-menu-p"}>
-                                Poprawa Kolokwium
-                            </div>
-                            <div className={"top-date"}>
-                                <div className={"top-date-img"}>
-                                    <img src={clockicon} alt="clock-icon"/>
-                                </div>
-                                <div className={"top-date-text medium-text-p"}>
-                                    26.06.2024
-                                </div>
-                            </div>
-                        </div>
-                        <div className={"subject-page-middle-content-announcements-item-author small-text-p"}>
-                            Dr. inż. Jacek Kabziński
-                        </div>
-                        <div className={"subject-page-middle-content-announcements-item-bottom medium-text-p"}>
-                            Szanowni studenci, z powodu mojej absencji dnia 26.11.2023, wykład tego dnia się nie
-                            odbędzie. Nowy termin wykładu to 03.12.2023 r.
-                        </div>
-                    </div>
-                    <div className={"subject-page-middle-content-announcements-item"}>
-                        <div className={"subject-page-middle-content-announcements-item-top"}>
-                            <div className={"top-title side-menu-p"}>
-                                Poprawa Kolokwium
-                            </div>
-                            <div className={"top-date"}>
-                                <div className={"top-date-img"}>
-                                    <img src={clockicon} alt="clock-icon"/>
-                                </div>
-                                <div className={"top-date-text medium-text-p"}>
-                                    26.06.2024
-                                </div>
-                            </div>
-                        </div>
-                        <div className={"subject-page-middle-content-announcements-item-author small-text-p"}>
-                            Dr. inż. Jacek Kabziński
-                        </div>
-                        <div className={"subject-page-middle-content-announcements-item-bottom medium-text-p"}>
-                            Szanowni studenci, z powodu mojej absencji dnia 26.11.2023, wykład tego dnia się nie
-                            odbędzie. Nowy termin wykładu to 03.12.2023 r.
-                        </div>
-                    </div>
-                    <div className={"subject-page-middle-content-announcements-item"}>
-                        <div className={"subject-page-middle-content-announcements-item-top"}>
-                            <div className={"top-title side-menu-p"}>
-                                Poprawa Kolokwium
-                            </div>
-                            <div className={"top-date"}>
-                                <div className={"top-date-img"}>
-                                    <img src={clockicon} alt="clock-icon"/>
-                                </div>
-                                <div className={"top-date-text medium-text-p"}>
-                                    26.06.2024
-                                </div>
-                            </div>
-                        </div>
-                        <div className={"subject-page-middle-content-announcements-item-author small-text-p"}>
-                            Dr. inż. Jacek Kabziński
-                        </div>
-                        <div className={"subject-page-middle-content-announcements-item-bottom medium-text-p"}>
-                            Szanowni studenci, z powodu mojej absencji dnia 26.11.2023, wykład tego dnia się nie
-                            odbędzie. Nowy termin wykładu to 03.12.2023 r.
-                        </div>
-                    </div>
-                    <div className={"subject-page-middle-content-announcements-item"}>
-                        <div className={"subject-page-middle-content-announcements-item-top"}>
-                            <div className={"top-title side-menu-p"}>
-                                Poprawa Kolokwium
-                            </div>
-                            <div className={"top-date"}>
-                                <div className={"top-date-img"}>
-                                    <img src={clockicon} alt="clock-icon"/>
-                                </div>
-                                <div className={"top-date-text medium-text-p"}>
-                                    26.06.2024
-                                </div>
-                            </div>
-                        </div>
-                        <div className={"subject-page-middle-content-announcements-item-author small-text-p"}>
-                            Dr. inż. Jacek Kabziński
-                        </div>
-                        <div className={"subject-page-middle-content-announcements-item-bottom medium-text-p"}>
-                            Szanowni studenci, z powodu mojej absencji dnia 26.11.2023, wykład tego dnia się nie
-                            odbędzie. Nowy termin wykładu to 03.12.2023 r.
-                        </div>
-                    </div>
+                    {announcements}
                 </div>
                 <div className={"subject-page-middle-content-marks"} id={"marks"}>
                     {grades}
