@@ -374,7 +374,7 @@
     transition: 0.2s;
 }
 
-.cancel-window-bottom-bar-yes:hover, .delete-window-bottom-bar-delete:hover {
+.cancel-window-bottom-bar-yes:hover, .delete-window-bottom-bar-keep:hover {
     background-color: #065c0f;
     border-color: #264219;
     box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
@@ -388,7 +388,7 @@
     transition: 0.2s;
 }
 
-.cancel-window-bottom-bar-no:hover, .delete-window-bottom-bar-keep:hover {
+.cancel-window-bottom-bar-no:hover, .delete-window-bottom-bar-delete:hover {
     background-color: #b50404;
     border-color: #751212;
     box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;

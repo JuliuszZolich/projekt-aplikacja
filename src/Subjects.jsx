@@ -17,6 +17,7 @@ function getSubjects(translation, setSubjects, cookies, setCookie) {
     }).then(response => {
         response.json().then(data => {
             setSubjects(data["subjectlist"].map((subject) => {
+                if(subject.semester>cookies.semester) return "";
                 return (
                     <Link to={'/projekt-aplikacja/subjectpage'} 
                           key={subject.id} 
@@ -25,7 +26,7 @@ function getSubjects(translation, setSubjects, cookies, setCookie) {
                               setCookie("subjectid", subject.id, {path: "/"});
                           }}
                     >
-                        <div className={"subjects-main-content-center-subjects-item medium-text-p"} >
+                        <div className={"subjects-main-content-center-subjects-item medium-text-p"} title={subject.name}>
                             {subject.name}
                         </div>
                     </Link>
@@ -48,7 +49,7 @@ const Subjects = () => {
             {TopBarAndSideMenu()}
             <div className={"subjects-main-content"}>
                 <div className={"subjects-main-content-top-bar"}>
-                    <div className={"subjects-main-content-top-bar-item year-first home-p"} id={"year-first"} tabIndex="0" onClick={()=>{
+                    <div className={"subjects-main-content-top-bar-item year-first home-p year-active"} id={"year-first"} tabIndex="0" onClick={()=>{
                         setCurrYear(1);
                         document.getElementById("year-first").classList.add("year-active");
                         document.getElementById("year-second").classList.remove("year-active");

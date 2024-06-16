@@ -12,6 +12,12 @@ const Settings = () => {
                 <div className={"settings-change-email"}>
                     <div className={"settings-title side-menu-p"}>
                         {translation.Settings.changeEmail}
+                        <div className={"settings-button-email"}>
+                            Zapisz
+                        </div>
+                    </div>
+                    <div className={"settings-wrong-email"}>
+                        Pole do zmiany e-maila jest puste
                     </div>
                     <div className={"settings-input"}>
                         <input type="text" required />
@@ -23,6 +29,12 @@ const Settings = () => {
                 <div className={"settings-change-password"}>
                     <div className={"settings-title side-menu-p"}>
                         {translation.Settings.changePassword}
+                        <div className={"settings-button-change-password"}>
+                            Zapisz
+                        </div>
+                    </div>
+                    <div className={"settings-wrong-change-password"}>
+                        Pole do zmiany hasła jest puste
                     </div>
                     <div className={"settings-input"}>
                         <input type="password" required />

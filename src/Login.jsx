@@ -36,6 +36,8 @@ const Login = () => {
                         setCookie('userID', parseInt(data.userID), { path: '/' });
                         if (cookies.field !== undefined) removeCookies('field', { path: '/' })
                         setCookie('field', data.field, { path: '/' });
+                        if (cookies.semester !== undefined) removeCookies('semester', { path: '/' })
+                        setCookie('semester', data.semester, { path: '/' });
                         window.location.href = "/projekt-aplikacja/";
                     } else {
                         document.querySelector(".wrong-login-informations").innerHTML = translation.Login.wrongData
