@@ -103,6 +103,10 @@ const Announcements = () => {
     }, [setCookie, translation]);
     useEffect(() => {
         setFilteredPosts(announcementPosts);
+        setFilteredPosts(prevPosts => {
+            return [...prevPosts].sort((a, b) => {
+                return b.props['data-time'] - a.props['data-time'];
+            })});
     }, [announcementPosts]);
     return (<>
         {TopBarAndSideMenu()}
