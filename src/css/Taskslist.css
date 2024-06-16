@@ -498,7 +498,7 @@
 .cancel-window-task, .delete-window-task {
     width: 380px;
     height: 160px;
-    margin: 300px 0 0 35%;
+    margin: 400px 0 0 40%;
     padding: 1%;
     position: fixed;
     z-index: 9999;
@@ -550,7 +550,7 @@
     transition: 0.2s;
 }
 
-.cancel-window-task-bottom-bar-yes:hover, .delete-window-task-bottom-bar-delete:hover {
+.cancel-window-task-bottom-bar-yes:hover, .delete-window-task-bottom-bar-keep:hover {
     background-color: #065c0f;
     border-color: #264219;
     box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
@@ -564,7 +564,7 @@
     transition: 0.2s;
 }
 
-.cancel-window-task-bottom-bar-no:hover, .delete-window-task-bottom-bar-keep:hover {
+.cancel-window-task-bottom-bar-no:hover, .delete-window-task-bottom-bar-delete:hover {
     background-color: #b50404;
     border-color: #751212;
     box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
