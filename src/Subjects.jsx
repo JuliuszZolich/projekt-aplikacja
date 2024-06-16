@@ -48,7 +48,7 @@ const Subjects = () => {
             {TopBarAndSideMenu()}
             <div className={"subjects-main-content"}>
                 <div className={"subjects-main-content-top-bar"}>
-                    <div className={"subjects-main-content-top-bar-item year-first home-p"} id={"year-first"} tabIndex="0" onClick={()=>{
+                    <div className={"subjects-main-content-top-bar-item year-first home-p year-active"} id={"year-first"} tabIndex="0" onClick={()=>{
                         setCurrYear(1);
                         document.getElementById("year-first").classList.add("year-active");
                         document.getElementById("year-second").classList.remove("year-active");

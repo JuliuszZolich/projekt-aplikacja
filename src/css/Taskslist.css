@@ -122,6 +122,12 @@
     text-align: center;
     line-height: 100px;
     transition: 0.2s;
+    cursor: pointer;
+}
+
+.tasks-list-left-content-item:hover{
+    color: #E32C2C;
+    border-color: #E32C2C;
 }
 
 .tasks-list-left-content-menu-item:hover {
