@@ -5,16 +5,22 @@ import com.sun.net.httpserver.HttpExchange;
 import java.io.IOException;
 
 public class Utils {
-    public static boolean handleCORS(HttpExchange t) throws IOException {
-        if (t.getRequestHeaders().get("UserID") == null) {
-            System.out.println("CORS request received");
-            t.getResponseHeaders().add("Access-Control-Allow-Methods", "*");
-            t.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
-            t.getResponseHeaders().add("Access-Control-Allow-Headers", "*");
-            t.sendResponseHeaders(200, 100);
-            t.getResponseBody().close();
+    public static boolean handleCORS(HttpExchange exchange) throws IOException {
+        String requestMethod = exchange.getRequestMethod().toUpperCase();
+
+        exchange.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
+        exchange.getResponseHeaders().add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+        exchange.getResponseHeaders().add("Access-Control-Allow-Headers", "Content-Type, UserID, Access-Control-Request-Headers, Access-Control-Allow-Headers, Message, Type, Task-ID, " +
+                "Action-Type, Status, Password, Email, Post-ID, Authorization, Content-Length, Content-Type, Date, Origin, X-Requested-With, Accept, Note-ID, BuildingID, Field"
+        );
+
+        if (requestMethod.equals("OPTIONS")) {
+            System.out.println("CORS preflight request received");
+            exchange.sendResponseHeaders(204, -1);
+            exchange.close();
             return true;
         }
+
         return false;
     }
     public static String escapeCommonChars(String s) {

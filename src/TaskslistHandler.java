@@ -98,7 +98,6 @@ public class TaskslistHandler implements HttpHandler {
     public void handle(HttpExchange t) throws IOException {
         if (Utils.handleCORS(t)) return;
         System.out.println("Tasks request received");
-        t.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
         switch (t.getRequestHeaders().get("Action-Type").get(0)) {
             case "GET":
                 if (t.getRequestHeaders().get("Task-ID").get(0).equals("all")) getTasks(t);

@@ -72,7 +72,6 @@ public class NotesHandler implements HttpHandler {
     public void handle(HttpExchange t) throws IOException {
         if (Utils.handleCORS(t)) return;
         System.out.println("Notes request received");
-        t.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
         switch (t.getRequestHeaders().get("Action-Type").get(0)) {
             case "GET":
                 if (t.getRequestHeaders().get("Note-ID").get(0).equals("all")) getNotes(t);

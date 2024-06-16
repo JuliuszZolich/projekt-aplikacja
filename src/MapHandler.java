@@ -30,7 +30,6 @@ public class MapHandler implements HttpHandler {
     public void handle(HttpExchange t) throws IOException {
         if (Utils.handleCORS(t)) return;
         System.out.println("Map request received");
-        t.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
         switch (t.getRequestHeaders().get("Action-Type").get(0)) {
             case "GET":
                 try {

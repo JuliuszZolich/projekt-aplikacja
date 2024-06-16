@@ -12,7 +12,6 @@ public class LoginHandler implements HttpHandler {
     public void handle(HttpExchange t) throws IOException {
         if (Utils.handleCORS(t)) return;
         System.out.println("Login request received");
-        t.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
         String email = t.getRequestHeaders().get("Email").get(0);
         String password = t.getRequestHeaders().get("Password").get(0);
         String response;
@@ -20,11 +19,10 @@ public class LoginHandler implements HttpHandler {
             response = DBLogin.getLogin(email, password);
         } catch (ExecutionException | InterruptedException e) {
             System.out.println("Error: " + e);
-            response = "{\"login\": \"false\"}";
+            response = "{\"login\": \"false\", \"error\": \"other\"}";
         }
         OutputStream os = t.getResponseBody();
         t.sendResponseHeaders(200, response.getBytes().length);
-        System.out.println(response.getBytes().length);
         os.write(response.getBytes());
         os.close();
     }

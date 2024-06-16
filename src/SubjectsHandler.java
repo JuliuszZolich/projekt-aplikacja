@@ -13,7 +13,6 @@ public class SubjectsHandler implements HttpHandler {
     public void handle(HttpExchange t) throws IOException {
         if (Utils.handleCORS(t)) return;
         System.out.println("Subject request received");
-        t.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
         String response = switch (t.getRequestHeaders().get("Action-Type").get(0)) {
             case "LIST" ->
                     DBSubjects.getSubjects(t.getRequestHeaders().get("Field").get(0));

@@ -73,7 +73,6 @@ public class TimetableHandler implements HttpHandler {
         if (Utils.handleCORS(t)) return;
         System.out.println("Timetable request received");
         System.out.println(t.getRequestHeaders().get("UserID").get(0));
-        t.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
         switch (t.getRequestHeaders().get("Action-Type").get(0)) {
             case "GET":
                 if (t.getRequestHeaders().get("Event-ID").get(0).equals("all")) get_calendar(t);
