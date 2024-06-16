@@ -152,21 +152,22 @@
     float: left;
 }
 
-.subject-page-middle-content-lectures {
+.subject-page-middle-content-lectures, .subject-page-middle-content-exercises {
     display: none;
     width: 75%;
     height: 75%;
-    margin: 6% 0 0 15%;
+    margin: 70px 0 0 15%;
 }
 
-.subject-page-middle-content-lectures-left {
-    width: 70%;
+.subject-page-middle-content-lectures-left, .subject-page-middle-content-exercises-left {
+    width: 80%;
+    margin-left: 10%;
     height: 100%;
     overflow: hidden scroll;
     float: left;
 }
 
-.subject-page-middle-content-lectures-left-item {
+.subject-page-middle-content-lectures-left-item, .subject-page-middle-content-exercises-left-item {
     width: 80%;
     height: 10%;
     margin: 5% 10% 5% 10%;
@@ -202,106 +203,14 @@
     text-decoration: underline;
 }
 
-.subject-page-middle-content-lectures-left-item:hover {
+.subject-page-middle-content-lectures-left-item:hover, .subject-page-middle-content-exercises-left-item:hover {
     border-color: #E32C2C;
     color: #E32C2C;
     box-shadow: rgba(38, 57, 77, 0.75) 0 3px 8px 2px, rgba(0, 0, 0, 0.3) 0 0 0 0, rgba(0, 0, 0, 0.2) 0 -2px 1px inset;
 }
 
-.subject-page-middle-content-lectures-left-item:hover > .item-image {
+.subject-page-middle-content-lectures-left-item:hover > .item-image, .subject-page-middle-content-exercises-left-item:hover > .item-image {
     filter: invert(24%) sepia(77%) saturate(2515%) hue-rotate(346deg) brightness(94%) contrast(91%);
-}
-
-.subject-page-middle-content-lectures-right {
-    width: 24.8%;
-    margin: 3% 0 0 5%;
-    float: left;
-    height: 50%;
-    background-color: #D9D9D9;
-    box-shadow: rgba(0, 0, 0, 0.4) 0 3px 2px, rgba(0, 0, 0, 0.3) 0 7px 13px -3px, rgba(0, 0, 0, 0.2) 0 -2px 0 inset;
-}
-
-.teacher, .subject-location, .contact {
-    width: 90%;
-    height: 25%;
-    margin: 4% 5%;
-    float: left;
-}
-
-.header {
-    width: 100%;
-    height: 50%;
-    font-size: 25px;
-    line-height: 40px;
-    font-weight: 600;
-}
-
-.contact-img {
-    width: 20%;
-    height: 80%;
-    float: left;
-}
-
-.contact-img > img {
-    width: 60%;
-    padding: 0 20%;
-    height: 50%;
-}
-
-.contact-text {
-    width: 50%;
-    float: left;
-    font-size: 20px;
-    line-height: 35px;
-}
-
-.teacher-name {
-    width: 95%;
-    padding-left: 5%;
-    font-size: 20px;
-    line-height: 35px;
-}
-
-.subject-location-item {
-    width: 40%;
-    float: left;
-    margin: 0 5%;
-}
-
-.subject-location-item-img {
-    width: 30%;
-    height: 100%;
-    float: left;
-}
-
-.subject-location-item-img > img {
-    height: 100%;
-    width: 100%;
-}
-
-.subject-location-item-text {
-    width: 60%;
-    height: 100%;
-    text-align: center;
-    float: left;
-    font-size: 30px;
-}
-
-.subject-location-find {
-    position: absolute;
-    width: 2%;
-    right: 10%;
-    top: 50%;
-    cursor: pointer;
-}
-
-.subject-location-find > img {
-    width: 70%;
-    height: 70%;
-}
-
-.subject-location-find:hover > img {
-    filter: invert(73%) sepia(73%) saturate(6867%) hue-rotate(332deg) brightness(111%) contrast(98%);
 }
 
 .subject-page-middle-content-announcements{
@@ -465,6 +374,22 @@
     color: #2b863a;
 }
 
+@media (max-width: 1500px){
+    .subject-page-main-content-top-bar-item{
+        width: 14%;
+    }
+
+    .subject-page-main-content-top-bar-subject-name{
+        width: 28%;
+    }
+
+    .back-image > img{
+        margin-top: 7px;
+        width: 30px;
+        height: 30px;
+    }
+}
+
 @media (max-width: 1400px) {
     .subjects-main-content-center-right, .subjects-main-content-center-left{
         width: 48%;
@@ -481,16 +406,19 @@
 }
 
 @media (max-width: 1200px){
-    .subjects-main-content-center{
-        width: 90%;
-        margin-left: 5%;
+    .subject-page-middle-content-lectures-left, .subject-page-middle-content-exercises-left{
+        width: 100%;
+        margin: 0;
     }
-}
 
-@media (max-width: 1200px){
     .subjects-main-content-center-title{
         font-size: 30px;
         line-height: 70px;
+    }
+
+    .subjects-main-content-center{
+        width: 90%;
+        margin-left: 5%;
     }
 
     .subjects-main-content-center-subjects-item{
@@ -504,12 +432,51 @@
     .subjects-main-content-top-bar-item{
         width: 10%;
     }
+
+    .subject-page-main-content-top-bar-item, .subject-page-main-content-top-bar-subject-name{
+        font-size: 20px;
+        line-height: 70px;
+    }
+
+    .back-image > img{
+        margin-top: 7px;
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 800px) {
+    .subject-page-main-content-top-bar-item {
+        width: 20%;
+    }
+
+    .subject-page-main-content-top-bar-subject-name {
+        display: none;
+    }
 }
 
 @media (max-width: 700px){
     .subjects-main-content-center{
         width: 98%;
         margin-left: 1%;
+    }
+
+    .item-text{
+        font-size: 25px;
+        width: 80%;
+    }
+
+    .item-image{
+        width: 15%;
+    }
+
+    .subject-page-middle-content-lectures , .subject-page-middle-content-exercises{
+        width: 85%;
+        margin-left: 7.5%;
+    }
+
+    .subject-page-main-content-top-bar-item{
+        font-size: 15px;
     }
 
     .subjects-main-content-center-subjects-item{
@@ -523,5 +490,40 @@
 
     .subjects-main-content-top-bar-item{
         width: 15%;
+    }
+}
+
+@media  (max-width: 500px){
+    .subject-page-main-content-top-bar-item, .subject-page-main-content-top-bar-subject{
+        font-size: 13px;
+        line-height: 70px;
+    }
+
+    .back-image > img{
+        margin-top: 10px;
+        width: 13px;
+        height: 13px;
+    }
+
+    .item-text{
+        width: 75%;
+    }
+
+    .item-image{
+        width: 20%;
+    }
+}
+
+@media (max-height: 800px){
+    .subject-page-main-content{
+        margin-top: 80px;
+    }
+
+    .subject-page-middle-content-lectures, .subject-page-middle-content-exercises{
+        margin-top: 68px;
+    }
+
+    .item-text{
+        line-height: 55px;
     }
 }
