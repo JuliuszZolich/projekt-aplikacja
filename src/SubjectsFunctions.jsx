@@ -1,4 +1,3 @@
-
 export function changeScenery(i){
     if(i === 1){
         document.getElementById("marks").style.display = 'none';
