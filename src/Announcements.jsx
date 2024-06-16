@@ -57,6 +57,7 @@ async function getAnnouncementPosts(setAnnouncementPosts, translation) {
                     </Link>
                 </div>
             </div>
+            <div className={"bottom-bar"}></div>
         </div>)
     }));
 }

@@ -152,7 +152,7 @@
 }
 
 .announcements-posts-item-right-content-text{
-    height: 50%;
+    min-height: 200px;
     margin: 5% 0;
     width: 90%;
     float: left;
