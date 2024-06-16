@@ -12,7 +12,11 @@
     "profile": "Mój Profil",
     "settings": "Ustawienia",
     "logOut": "Wyloguj",
-    "language": "pl-PL"
+    "question": "Zadaj Pytanie",
+    "cancel": "Anuluj",
+    "send":"Wyślij",
+    "problem": "Zgłoś Problem",
+    "report": "Zgłoś"
   },
   "Login": {
     "email": "E-mail:",

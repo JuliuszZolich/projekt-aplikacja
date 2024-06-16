@@ -256,14 +256,14 @@ const TopBarAndSideMenu = () => {
             </div>
             <div className={"question-window"}>
                 <div className={"question-window-header"}>
-                    Zadaj Pytanie
+                    {translation.TopBar.question}
                 </div>
                 <div className={"question-window-input"}>
                     <textarea placeholder={"Wpisz treść pytania"}/>
                 </div>
                 <div className={"question-window-buttons"}>
                     <div className={"question-window-button-cancel"} onClick={() => CloseWindow(".question-window")}>
-                        Anuluj
+                        {translation.TopBar.cancel}
                     </div>
                     <div className={"question-window-button-send"}
                          onClick={() => {
@@ -271,20 +271,20 @@ const TopBarAndSideMenu = () => {
                              CloseWindow(".question-window");
                          }}
                     >
-                        Wyślij
+                        {translation.TopBar.send}
                     </div>
                 </div>
             </div>
             <div className={"report-window"}>
                 <div className={"report-window-header"}>
-                    Zgłoś Problem
+                    {translation.TopBar.problem}
                 </div>
                 <div className={"report-window-input"}>
                     <textarea placeholder={"Wpisz treść zgłoszenia"}/>
                 </div>
                 <div className={"report-window-buttons"}>
                     <div className={"report-window-button-cancel"} onClick={() => CloseWindow(".report-window")}>
-                        Anuluj
+                        {translation.TopBar.cancel}
                     </div>
                     <div className={"report-window-button-send"}
                          onClick={() => {
@@ -292,7 +292,7 @@ const TopBarAndSideMenu = () => {
                              CloseWindow(".report-window");
                          }}
                     >
-                        Zgłoś
+                        {translation.TopBar.report}
                     </div>
                 </div>
             </div>
