@@ -19,6 +19,7 @@ public class Main {
             server.createContext("/map", new MapHandler());
             server.createContext("/subjects", new SubjectsHandler());
             server.createContext("/settings", new SettingsHandler());
+            server.createContext("/myprofile", new ProfileHandler());
             server.createContext("/", new OtherHandler());
             server.setExecutor(null);
             server.start();
