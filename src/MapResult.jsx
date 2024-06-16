@@ -1,4 +1,4 @@
-import './Map.css'
+import './css/Map.css'
 import TopBarAndSideMenu from "./TopBarAndSideMenu.jsx";
 import {Link} from "react-router-dom";
 import {useLanguage} from './ChangeLanguage.jsx';
@@ -16,7 +16,6 @@ async function getMap(builingID, setMap, setText, setImage, removeCookies, trans
         headers: headers,
     });
     const data = await response.json();
-    console.log(data)
     setMap((<iframe src={data.map.iframe.substring(1, data.map.iframe.length - 1)}></iframe>));
     setText(() => {
         return (

@@ -1,5 +1,5 @@
 import TopBarAndSideMenu from "./TopBarAndSideMenu.jsx";
-import './Homepage.css'
+import './css/Homepage.css'
 import {Link} from "react-router-dom";
 import {useLanguage} from './ChangeLanguage.jsx';
 import timetableicon from "./assets/timetable.png"

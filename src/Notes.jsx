@@ -1,4 +1,4 @@
-import './Notes.css'
+import './css/Notes.css'
 import TopBarAndSideMenu from "./TopBarAndSideMenu.jsx";
 import {useLanguage} from './ChangeLanguage.jsx';
 import findicon from "./assets/find.png"

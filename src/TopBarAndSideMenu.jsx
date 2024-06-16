@@ -7,11 +7,12 @@ import {
     widget,
     CloseWindow,
     OpenWindow,
-    useLoginCookie
+    useLoginCookie,
+    sendEmail
 }
     from "./TopBarAndMenuFunctions.jsx";
 import {useLanguage} from './ChangeLanguage.jsx';
-import './TopBarAndSideMenu.css'
+import './css/TopBarAndSideMenu.css'
 import timetableicon from "./assets/timetable.png"
 import announcementsicon from "./assets/announcements.png"
 import taskslisticon from "./assets/taskslist.png"
@@ -35,7 +36,7 @@ import {useCookies} from "react-cookie";
 
 const TopBarAndSideMenu = () => {
     const {t: translation, setLanguage} = useLanguage();
-    const [ , , removeCookie] = useCookies([]);
+    const [cookies, , removeCookie] = useCookies(['userID']);
     const didEffectRun = useRef(false);
     useEffect(() => {
         widget();
@@ -43,7 +44,7 @@ const TopBarAndSideMenu = () => {
     useEffect(() => {
         setInterval(() => {
             widget();
-        }, 20000);
+        }, 60000);
     }, []);
     useEffect(() => {
         if (!didEffectRun.current) {
@@ -62,7 +63,8 @@ const TopBarAndSideMenu = () => {
                         </Link>
                     </div>
                     <div className={"on-click-menu-top-bar-close-menu"}>
-                        <img src={closemenuicon} alt="close-menu-icon" onClick={() => CloseMenu('.on-click-menu', 'hide-side-menu','show-side-menu')}/>
+                        <img src={closemenuicon} alt="close-menu-icon"
+                             onClick={() => CloseMenu('.on-click-menu', 'hide-side-menu', 'show-side-menu')}/>
                     </div>
                 </div>
                 <div className={"on-click-menu-middle-content"}>
@@ -186,8 +188,8 @@ const TopBarAndSideMenu = () => {
                                 {translation.TopBar.settings}
                             </div>
                         </Link>
-                        <div className={"user-menu-item user-menu-item-last tasks-list-p"} onClick={()=> {
-                            removeCookie('userID',{path: '/'});
+                        <div className={"user-menu-item user-menu-item-last tasks-list-p"} onClick={() => {
+                            removeCookie('userID', {path: '/'});
                             window.location.href = "/projekt-aplikacja/login";
                         }}>
                             {translation.TopBar.logOut}
@@ -215,20 +217,20 @@ const TopBarAndSideMenu = () => {
                             <div className={"fonts font-small close-facilities-menu"} onClick={() => {
                                 ChangeFontSize('s');
                                 ChangeFontSize('m');
-                                CloseMenu('.drop-down-menu-facilities',  'hide-facilities-menu', 'show-facilities-menu');
+                                CloseMenu('.drop-down-menu-facilities', 'hide-facilities-menu', 'show-facilities-menu');
                             }}>
                                 A
                             </div>
                             <div className={"fonts font-medium close-facilities-menu"} onClick={() => {
                                 ChangeFontSize('m');
-                                CloseMenu('.drop-down-menu-facilities',  'hide-facilities-menu', 'show-facilities-menu');
+                                CloseMenu('.drop-down-menu-facilities', 'hide-facilities-menu', 'show-facilities-menu');
                             }}>
                                 A
                             </div>
                             <div className={"fonts font-large close-facilities-menu"} onClick={() => {
                                 ChangeFontSize('l');
                                 ChangeFontSize('m');
-                                CloseMenu('.drop-down-menu-facilities',  'hide-facilities-menu', 'show-facilities-menu');
+                                CloseMenu('.drop-down-menu-facilities', 'hide-facilities-menu', 'show-facilities-menu');
                             }}>
                                 A
                             </div>
@@ -238,14 +240,14 @@ const TopBarAndSideMenu = () => {
                                      onClick={() => {
                                          setLanguage('pl');
                                          ChangeFontSize('m');
-                                         CloseMenu('.drop-down-menu-facilities',  'hide-facilities-menu', 'show-facilities-menu');
+                                         CloseMenu('.drop-down-menu-facilities', 'hide-facilities-menu', 'show-facilities-menu');
                                      }}/>
                             </div>
                             <div className={"language-en"}>
                                 <img className={"close-facilities-menu"} src={ukflag} alt="uk-flag" onClick={() => {
                                     setLanguage('en');
                                     ChangeFontSize('m');
-                                    CloseMenu('.drop-down-menu-facilities',  'hide-facilities-menu', 'show-facilities-menu');
+                                    CloseMenu('.drop-down-menu-facilities', 'hide-facilities-menu', 'show-facilities-menu');
                                 }}/>
                             </div>
                         </div>
@@ -263,7 +265,12 @@ const TopBarAndSideMenu = () => {
                     <div className={"question-window-button-cancel"} onClick={() => CloseWindow(".question-window")}>
                         Anuluj
                     </div>
-                    <div className={"question-window-button-send"}>
+                    <div className={"question-window-button-send"}
+                         onClick={() => {
+                             sendEmail(cookies.userID, "question", String(document.querySelector(".question-window-input textarea").value));
+                             CloseWindow(".question-window");
+                         }}
+                    >
                         Wyślij
                     </div>
                 </div>
@@ -279,7 +286,12 @@ const TopBarAndSideMenu = () => {
                     <div className={"report-window-button-cancel"} onClick={() => CloseWindow(".report-window")}>
                         Anuluj
                     </div>
-                    <div className={"report-window-button-send"}>
+                    <div className={"report-window-button-send"}
+                         onClick={() => {
+                             sendEmail(cookies.userID, "report", String(document.querySelector(".report-window-input textarea").value));
+                             CloseWindow(".report-window");
+                         }}
+                    >
                         Zgłoś
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-import './Register.css'
+import './css/Register.css'
 import {Link} from "react-router-dom";
 import {useLanguage} from './ChangeLanguage.jsx';
 import accepticon from "./assets/accept.png"

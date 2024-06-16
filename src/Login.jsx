@@ -1,4 +1,4 @@
-import './LoginPage.css'
+import './css/LoginPage.css'
 import { Link } from "react-router-dom";
 import { useLanguage } from './ChangeLanguage.jsx';
 import logoimage from "./assets/logo.png"
@@ -30,7 +30,6 @@ const Login = () => {
                 },
             }).then(response => {
                 response.json().then(data => {
-                    console.log(data);
                     if (data['login'] === "true") {
                         console.log("Logged in as: " + data.userID);
                         if (cookies.userID !== undefined) removeCookies('userID', { path: '/' })
@@ -56,7 +55,7 @@ const Login = () => {
         return () => {
             document.removeEventListener('keydown', handleEnterPress);
         }
-    }, []);
+    }, [handleLogin]);
 
     return (
         <>

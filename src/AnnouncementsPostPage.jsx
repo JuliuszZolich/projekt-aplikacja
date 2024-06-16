@@ -1,5 +1,5 @@
 import TopBarAndSideMenu from "./TopBarAndSideMenu.jsx";
-import './Announcements.css'
+import './css/Announcements.css'
 import {Link} from "react-router-dom";
 import {useLanguage} from './ChangeLanguage.jsx';
 import backicon from "./assets/arrowback.png"

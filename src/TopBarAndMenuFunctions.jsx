@@ -17,6 +17,18 @@ export function useLoginCookie(){
     }
 }
 
+export async function sendEmail(user_id, type, message) {
+    let headers = new Headers();
+    headers.append("UserID", user_id);
+    headers.append("Action-Type", "SEND");
+    headers.append("Type", type);
+    await fetch("http://localhost:8001/mail", {
+        method: "POST",
+        headers: headers,
+        body: message
+    });
+}
+
 let isWindowClickListenerAdded = false;
 let clickOutsideWindowHandler = null;
 

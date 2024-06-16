@@ -1,5 +1,5 @@
 import TopBarAndSideMenu from "./TopBarAndSideMenu.jsx";
-import './Timetable.css'
+import './css/Timetable.css'
 import GenerateTimetable, {CurrentDateTimetable} from "./TimetableFunctions.jsx";
 import {useLanguage} from './ChangeLanguage.jsx';
 import {useEffect} from "react";
