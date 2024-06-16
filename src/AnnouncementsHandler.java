@@ -1,21 +1,21 @@
+import DBUtils.DBAnnouncements;
+import Utils.Utils;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 
 public class AnnouncementsHandler implements HttpHandler {
     @Override
     public void handle(HttpExchange t) throws IOException {
-        String response = "XDDDD";
-        System.out.println("Request received");
-        t.sendResponseHeaders(200, response.length());
-        InputStream is = t.getRequestBody();
+        if (Utils.handleCORS(t)) return;
+        System.out.println("Announcements request received");
+        t.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
+        String response = DBAnnouncements.getAnnouncements();
         OutputStream os = t.getResponseBody();
-        System.out.println(new String(is.readAllBytes()));
+        t.sendResponseHeaders(200, response.getBytes().length);
         os.write(response.getBytes());
         os.close();
-        is.close();
     }
 }
