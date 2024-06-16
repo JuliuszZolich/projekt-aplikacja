@@ -11,5 +11,5 @@ public class User {
     private String course;
     private String phone;
     private String surname;
-    private String semester;
+    private Integer semester;
 }

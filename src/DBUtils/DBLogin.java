@@ -27,6 +27,7 @@ public class DBLogin {
                     .put("login", "true")
                     .put("userID", docRef.get(0).getDouble("userid"))
                     .put("field", docRef.get(0).getString("field_of_studies"))
+                    .put("semester", docRef.get(0).getDouble("semester"))
                     .toString();
         } else {
             System.out.println("Wrong password");
