@@ -11,10 +11,18 @@ import Utils.Utils;
 public class SubjectsHandler implements HttpHandler {
     @Override
     public void handle(HttpExchange t) throws IOException {
-        if(Utils.handleCORS(t)) return;
+        if (Utils.handleCORS(t)) return;
         System.out.println("Subject request received");
         t.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
-        String response = DBSubjects.getSubjects(t.getRequestHeaders().get("UserID").get(0), t.getRequestHeaders().get("Field").get(0));
+        String response = switch (t.getRequestHeaders().get("Action-Type").get(0)) {
+            case "LIST" ->
+                    DBSubjects.getSubjects(t.getRequestHeaders().get("Field").get(0));
+            case "GET" ->
+                    DBSubjects.getGrades(t.getRequestHeaders().get("UserID").get(0), t.getRequestHeaders().get("SubjectID").get(0));
+            case "SUBJECT" ->
+                    DBSubjects.getSubject(t.getRequestHeaders().get("SubjectID").get(0));
+            default -> "";
+        };
         t.sendResponseHeaders(200, response.getBytes().length);
         InputStream is = t.getRequestBody();
         OutputStream os = t.getResponseBody();
