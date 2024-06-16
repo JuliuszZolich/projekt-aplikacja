@@ -124,27 +124,13 @@
     transition: 0.2s;
 }
 
-.tasks-list-left-content-item:hover {
-    color: #E32C2C;
-    border-color: #E32C2C;
-    cursor: pointer;
-}
-
-.tasks-list-left-content-menu-item {
-    width: 80%;
-    margin-left: 10%;
-    height: 22%;
-    border-bottom: 3px solid #3E3D3D;
-    font-size: 30px;
-    text-align: center;
-    line-height: 100px;
-    transition: 0.2s;
-}
-
 .tasks-list-left-content-menu-item:hover {
+    cursor: pointer;
+}
+
+.tasks-list-p-active {
     color: #E32C2C;
     border-color: #E32C2C;
-    cursor: pointer;
 }
 
 .tasks-list-right-content-add {
@@ -242,7 +228,7 @@
     background-color: #5EC25C;
 }
 
-.circle:hover > img {
+.circle > img {
     display: block;
 }
 
