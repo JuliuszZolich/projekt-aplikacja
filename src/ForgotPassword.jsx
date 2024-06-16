@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import './ForgotPassword.css'
+import './css/ForgotPassword.css'
 import accept from './assets/accept.png'
 import {useLanguage} from './ChangeLanguage.jsx';
 

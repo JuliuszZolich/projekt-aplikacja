@@ -11,7 +11,7 @@ import {
 }
     from "./TopBarAndMenuFunctions.jsx";
 import {useLanguage} from './ChangeLanguage.jsx';
-import './TopBarAndSideMenu.css'
+import './css/TopBarAndSideMenu.css'
 import timetableicon from "./assets/timetable.png"
 import announcementsicon from "./assets/announcements.png"
 import taskslisticon from "./assets/taskslist.png"
@@ -43,7 +43,7 @@ const TopBarAndSideMenu = () => {
     useEffect(() => {
         setInterval(() => {
             widget();
-        }, 20000);
+        }, 60000);
     }, []);
     useEffect(() => {
         if (!didEffectRun.current) {

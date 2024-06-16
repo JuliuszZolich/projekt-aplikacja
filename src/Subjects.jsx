@@ -1,5 +1,5 @@
 import TopBarAndSideMenu from "./TopBarAndSideMenu.jsx";
-import './Subjects.css'
+import './css/Subjects.css'
 import {Link} from "react-router-dom";
 import {useLanguage} from "./ChangeLanguage.jsx";
 import {useEffect, useState} from "react";

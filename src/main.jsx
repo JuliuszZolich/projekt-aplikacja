@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom/client'
 
-import './index.css'
+import './css/index.css'
 
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {LanguageProvider} from "./ChangeLanguage.jsx";

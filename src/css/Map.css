@@ -3,7 +3,7 @@
     top: 7%;
     position: absolute;
     height: 93%;
-    background-image: url("./assets/mapbackground.jpg");
+    background-image: url("../assets/mapbackground.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     opacity: 0.95;

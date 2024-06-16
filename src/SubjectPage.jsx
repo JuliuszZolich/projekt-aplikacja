@@ -1,4 +1,4 @@
-import './Subjects.css'
+import './css/Subjects.css'
 import TopBarAndSideMenu from "./TopBarAndSideMenu.jsx";
 import {Link} from "react-router-dom";
 import {changeScenery} from "./SubjectsFunctions.jsx"

@@ -1,4 +1,4 @@
-import './LoginPage.css'
+import './css/LoginPage.css'
 import { Link } from "react-router-dom";
 import { useLanguage } from './ChangeLanguage.jsx';
 import logoimage from "./assets/logo.png"

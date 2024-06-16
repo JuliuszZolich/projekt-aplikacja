@@ -1,4 +1,4 @@
-import "./Settings.css";
+import "./css/Settings.css";
 import TopBarAndSideMenu from "./TopBarAndSideMenu.jsx";
 import { useLanguage } from './ChangeLanguage.jsx';
 

@@ -1,6 +1,6 @@
 import TopBarAndSideMenu from "./TopBarAndSideMenu.jsx";
 import {useLanguage} from './ChangeLanguage.jsx';
-import "./MyProfile.css"
+import "./css/MyProfile.css"
 
 const MyProfile = () => {
     const {t: translation} = useLanguage();

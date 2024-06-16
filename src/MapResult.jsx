@@ -1,4 +1,4 @@
-import './Map.css'
+import './css/Map.css'
 import TopBarAndSideMenu from "./TopBarAndSideMenu.jsx";
 import {Link} from "react-router-dom";
 import {useLanguage} from './ChangeLanguage.jsx';
