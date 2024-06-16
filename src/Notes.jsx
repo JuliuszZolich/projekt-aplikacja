@@ -53,7 +53,7 @@ async function getNotes(user_id, setNotes, cookies) {
 
     setNotes(data["notes"].map(note => {
             return (
-                <div className={'note'} key={note["id"]} onClick={() => {
+                <div className={'note'} key={note["id"]} tabIndex="0" onClick={() => {
                     showNoteWindow(note);
                 }}>
                     <div className={'note-title'}>
@@ -68,7 +68,7 @@ async function getNotes(user_id, setNotes, cookies) {
                          dangerouslySetInnerHTML={{__html: note["content"].replace(new RegExp("\\n", "g"), "<br />")}
                          }>
                     </div>
-                    <div className={'note-delete'} onClick={() => {
+                    <div className={'note-delete'} tabIndex="0" onClick={() => {
                         if (document.getElementsByClassName("delete-window")[0].style.display === "none") {
                             document.getElementsByClassName("delete-window")[0].style.display = "block";
                             document.getElementsByClassName("delete-window-bottom-bar-delete")[0].onclick = () => {
@@ -153,7 +153,7 @@ const Notes = () => {
                            onChange={event => setSearchTerm(event.target.value)}
                     />
                 </div>
-                <div className={"note"} title={"Dodaj notatke"} onClick={() => {
+                <div className={"note"} title={"Dodaj notatke"} tabIndex="0" onClick={() => {
                     if (document.getElementsByClassName("add-note-window")[0].style.display === "none") {
                         document.getElementsByClassName("add-note-window")[0].style.display = "block";
                     } else {
@@ -172,7 +172,7 @@ const Notes = () => {
                         <div className={"note-window-top-bar-title"}>
                             Title
                         </div>
-                        <div className={"note-window-top-bar-modify"} onClick={() => {
+                        <div className={"note-window-top-bar-modify"} tabIndex="0" onClick={() => {
                             if (document.getElementsByClassName("modify-note-window")[0].style.display === "none") {
                                 document.getElementsByClassName("modify-note-window")[0].style.display = "block";
                                 document.getElementById("modify-note-window-title").value = document.getElementsByClassName("note-window-top-bar-title")[0].innerHTML;
@@ -189,7 +189,7 @@ const Notes = () => {
                         <p>PLACEHOLDER</p>
                     </div>
                     <div className={"note-window-bottom-bar"}>
-                        <div className={"note-window-bottom-bar-close"} onClick={() => {
+                        <div className={"note-window-bottom-bar-close"} tabIndex="0" onClick={() => {
                             document.getElementsByClassName("note-window")[0].style.display = "none";
                         }}>
                             {translation.Notes.close}
@@ -206,13 +206,13 @@ const Notes = () => {
                         </textarea>
                     </div>
                     <div className={"add-note-window-bottom-bar"}>
-                        <div className={"add-note-window-bottom-bar-item add-note-window-bottom-bar-item-cancel"}
+                        <div className={"add-note-window-bottom-bar-item add-note-window-bottom-bar-item-cancel"} tabIndex="0"
                              onClick={() => {
                                  document.getElementsByClassName("cancel-window")[0].style.display = "block";
                              }}>
                             {translation.Notes.cancel}
                         </div>
-                        <div className={"add-note-window-bottom-bar-item add-note-window-bottom-bar-item-add"}
+                        <div className={"add-note-window-bottom-bar-item add-note-window-bottom-bar-item-add"} tabIndex="0"
                              onClick={() => {
                                  document.getElementsByClassName("add-note-window-bottom-bar-item-add")[0].onclick = () => {
                                      if (document.getElementById("add-note-window-title").value === "" || document.getElementById("add-note-window-text").value === "") {
@@ -236,7 +236,7 @@ const Notes = () => {
                         {translation.Notes.wantCancel}
                     </div>
                     <div className={"cancel-window-bottom-bar"}>
-                        <div className={"cancel-window-bottom-bar-item cancel-window-bottom-bar-yes"} onClick={() => {
+                        <div className={"cancel-window-bottom-bar-item cancel-window-bottom-bar-yes"} tabIndex="0" onClick={() => {
                             document.getElementsByClassName("add-note-window")[0].style.display = "none";
                             document.getElementById("add-note-window-title").value = "";
                             document.getElementById("add-note-window-text").value = "";
@@ -248,7 +248,7 @@ const Notes = () => {
                         }}>
                             {translation.Notes.yes}
                         </div>
-                        <div className={"cancel-window-bottom-bar-item cancel-window-bottom-bar-no"} onClick={() => {
+                        <div className={"cancel-window-bottom-bar-item cancel-window-bottom-bar-no"} tabIndex="0" onClick={() => {
                             document.getElementsByClassName("cancel-window")[0].style.display = "none";
                         }}>
                             {translation.Notes.no}
@@ -273,7 +273,7 @@ const Notes = () => {
                         <div className={"modify-note-window-top-bar-text"}>
                             {translation.Notes.modify}
                         </div>
-                        <div className={"modify-note-window-top-bar-delete"} onClick={() => {
+                        <div className={"modify-note-window-top-bar-delete"} tabIndex="0" onClick={() => {
                             document.getElementsByClassName("modify-note-window")[0].style.display = "none";
                             document.getElementsByClassName("note-window")[0].style.display = "none";
                             removeNote(currentNoteId, cookies, setNotes);
@@ -288,13 +288,13 @@ const Notes = () => {
                         </textarea>
                     </div>
                     <div className={"modify-note-window-bottom-bar"}>
-                        <div className={"modify-note-window-bottom-bar-item modify-note-window-bottom-bar-item-cancel"}
+                        <div className={"modify-note-window-bottom-bar-item modify-note-window-bottom-bar-item-cancel"} tabIndex="0"
                              onClick={() => {
                                  document.getElementsByClassName("cancel-window")[0].style.display = "block";
                              }}>
                             {translation.Notes.cancel}
                         </div>
-                        <div className={"modify-note-window-bottom-bar-item modify-note-window-bottom-bar-item-save"}
+                        <div className={"modify-note-window-bottom-bar-item modify-note-window-bottom-bar-item-save"} tabIndex="0"
                              onClick={() => {
                                  if (document.getElementById("modify-note-window-title").value === "" || document.getElementById("modify-note-window-text").value === "") {
                                      alert(translation.Notes.allFields);

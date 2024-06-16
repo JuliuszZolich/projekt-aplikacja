@@ -58,17 +58,18 @@ const TopBarAndSideMenu = () => {
             <div className={"on-click-menu"} id={"on-click-menu"}>
                 <div className={"on-click-menu-top-bar"}>
                     <div className={"on-click-menu-top-bar-home-page"}>
-                        <Link to={"/projekt-aplikacja/homepage"}>
+                        <Link to={"/projekt-aplikacja/homepage"} tabIndex="0">
                             <img src={homeicon} alt="homepage-icon"/>
                         </Link>
                     </div>
                     <div className={"on-click-menu-top-bar-close-menu"}>
                         <img src={closemenuicon} alt="close-menu-icon"
-                             onClick={() => CloseMenu('.on-click-menu', 'hide-side-menu', 'show-side-menu')}/>
+                             onClick={() => CloseMenu('.on-click-menu', 'hide-side-menu', 'show-side-menu')}
+                             tabIndex="0" />
                     </div>
                 </div>
                 <div className={"on-click-menu-middle-content"}>
-                    <Link to={"/projekt-aplikacja/timetable"}>
+                    <Link to={"/projekt-aplikacja/timetable"} tabIndex="0">
                         <div className={"on-click-menu-middle-content-item"}>
                             <div className={"on-click-menu-middle-content-item-img"}>
                                 <img src={timetableicon} alt="time-table-icon"/>
@@ -80,7 +81,7 @@ const TopBarAndSideMenu = () => {
                         </div>
                     </Link>
                     <hr className={"on-click-menu-middle-content-line"}/>
-                    <Link to={"/projekt-aplikacja/taskslist"}>
+                    <Link to={"/projekt-aplikacja/taskslist"} tabIndex="0">
                         <div className={"on-click-menu-middle-content-item"}>
                             <div className={"on-click-menu-middle-content-item-img"}>
                                 <img src={taskslisticon} alt="task-list-icon"/>
@@ -91,7 +92,7 @@ const TopBarAndSideMenu = () => {
                         </div>
                     </Link>
                     <hr className={"on-click-menu-middle-content-line"}/>
-                    <Link to={"/projekt-aplikacja/notes"}>
+                    <Link to={"/projekt-aplikacja/notes"} tabIndex="0">
                         <div className={"on-click-menu-middle-content-item"}>
                             <div className={"on-click-menu-middle-content-item-img"}>
                                 <img src={notesicon} alt="notes-icion"/>
@@ -102,7 +103,7 @@ const TopBarAndSideMenu = () => {
                         </div>
                     </Link>
                     <hr className={"on-click-menu-middle-content-line"}/>
-                    <Link to={"/projekt-aplikacja/announcements"}>
+                    <Link to={"/projekt-aplikacja/announcements"} tabIndex="0">
                         <div className={"on-click-menu-middle-content-item"}>
                             <div className={"on-click-menu-middle-content-item-img"}>
                                 <img src={announcementsicon} alt="announcements-icion"/>
@@ -113,7 +114,7 @@ const TopBarAndSideMenu = () => {
                         </div>
                     </Link>
                     <hr className={"on-click-menu-middle-content-line"}/>
-                    <Link to={"/projekt-aplikacja/subjects"}>
+                    <Link to={"/projekt-aplikacja/subjects"} tabIndex="0">
                         <div className={"on-click-menu-middle-content-item"}>
                             <div className={"on-click-menu-middle-content-item-img"}>
                                 <img src={subjectsicon} alt="subjects-icion"/>
@@ -124,7 +125,7 @@ const TopBarAndSideMenu = () => {
                         </div>
                     </Link>
                     <hr className={"on-click-menu-middle-content-line"}/>
-                    <Link to={"/projekt-aplikacja/map"}>
+                    <Link to={"/projekt-aplikacja/map"} tabIndex="0">
                         <div className={"on-click-menu-middle-content-item"}>
                             <div className={"on-click-menu-middle-content-item-img"}>
                                 <img src={mapicon} alt="map-icion"/>
@@ -136,18 +137,18 @@ const TopBarAndSideMenu = () => {
                     </Link>
                 </div>
                 <div className={"on-click-menu-bottom-bar"}>
-                    <Link to={"/projekt-aplikacja/settings"}>
+                    <Link to={"/projekt-aplikacja/settings"} tabIndex="0">
                         <div className={"on-click-menu-bottom-bar-item"}>
                             <img src={settingsicon} alt="settings-icon"/>
                         </div>
                     </Link>
-                    <div className={"on-click-menu-bottom-bar-item"}>
+                    <div className={"on-click-menu-bottom-bar-item"} tabIndex="0">
                         <img src={reporticon} alt="report-icon" onClick={() => OpenWindow(".report-window")}/>
                     </div>
-                    <div className={"on-click-menu-bottom-bar-item"}>
+                    <div className={"on-click-menu-bottom-bar-item"} tabIndex="0">
                         <img src={askicon} alt="ask-icon" onClick={() => OpenWindow(".question-window")}/>
                     </div>
-                    <Link to={"/projekt-aplikacja/myprofile"}>
+                    <Link to={"/projekt-aplikacja/myprofile"} tabIndex="0">
                         <div className={"on-click-menu-bottom-bar-item"}>
                             <img src={usericon} alt="user-icon"/>
                         </div>
@@ -156,7 +157,8 @@ const TopBarAndSideMenu = () => {
             </div>
             <div className={"top-bar"} id={"top-bar"}>
                 <div className={"hamburger-menu"}
-                     onClick={() => OpenMenu('.on-click-menu', 'show-side-menu', 'hide-side-menu')}>
+                     onClick={() => OpenMenu('.on-click-menu', 'show-side-menu', 'hide-side-menu')}
+                     tabIndex="1">
                     <img src={menuicon} alt="hamburger-menu-icon"/>
                 </div>
                 <div className={"weather"}>
@@ -176,19 +178,19 @@ const TopBarAndSideMenu = () => {
                     <img src={usericon} alt="user-icon"
                          onClick={() => {
                              OpenMenu('.user-menu', 'show-user-menu', 'hide-user-menu');
-                         }}/>
+                         }} tabIndex="1"/>
                     <div className={"user-menu"}>
-                        <Link to={"/projekt-aplikacja/myprofile"}>
+                        <Link to={"/projekt-aplikacja/myprofile"} tabIndex="1">
                             <div className={"user-menu-item tasks-list-p"}>
                                 {translation.TopBar.profile}
                             </div>
                         </Link>
-                        <Link to={"/projekt-aplikacja/settings"}>
+                        <Link to={"/projekt-aplikacja/settings"} tabIndex="1">
                             <div className={"user-menu-item tasks-list-p"}>
                                 {translation.TopBar.settings}
                             </div>
                         </Link>
-                        <div className={"user-menu-item user-menu-item-last tasks-list-p"} onClick={() => {
+                        <div className={"user-menu-item user-menu-item-last tasks-list-p"} tabIndex="1" onClick={() => {
                             removeCookie('userID', {path: '/'});
                             window.location.href = "/projekt-aplikacja/login";
                         }}>
@@ -200,8 +202,7 @@ const TopBarAndSideMenu = () => {
                     <img src={notificationicon} alt="notifications-icon"
                          onClick={() => {
                              OpenMenu('.drop-down-notifications', 'show-notifications', 'hide-notifications');
-                         }
-                         }/>
+                         }} tabIndex="1"/>
                     <div className={"drop-down-notifications"}>
 
                     </div>
@@ -210,24 +211,23 @@ const TopBarAndSideMenu = () => {
                     <img src={facilitesicon} alt="facilities-icon"
                          onClick={() => {
                              OpenMenu('.drop-down-menu-facilities', 'show-facilities-menu', 'hide-facilities-menu')
-                         }
-                         }/>
+                         }} tabIndex="0"/>
                     <div className={"drop-down-menu-facilities"}>
                         <div className={"facilities-content"}>
-                            <div className={"fonts font-small close-facilities-menu"} onClick={() => {
+                            <div className={"fonts font-small close-facilities-menu"} tabIndex="1" onClick={() => {
                                 ChangeFontSize('s');
                                 ChangeFontSize('m');
                                 CloseMenu('.drop-down-menu-facilities', 'hide-facilities-menu', 'show-facilities-menu');
                             }}>
                                 A
                             </div>
-                            <div className={"fonts font-medium close-facilities-menu"} onClick={() => {
+                            <div className={"fonts font-medium close-facilities-menu"} tabIndex="1" onClick={() => {
                                 ChangeFontSize('m');
                                 CloseMenu('.drop-down-menu-facilities', 'hide-facilities-menu', 'show-facilities-menu');
                             }}>
                                 A
                             </div>
-                            <div className={"fonts font-large close-facilities-menu"} onClick={() => {
+                            <div className={"fonts font-large close-facilities-menu"} tabIndex="1" onClick={() => {
                                 ChangeFontSize('l');
                                 ChangeFontSize('m');
                                 CloseMenu('.drop-down-menu-facilities', 'hide-facilities-menu', 'show-facilities-menu');
@@ -241,14 +241,14 @@ const TopBarAndSideMenu = () => {
                                          setLanguage('pl');
                                          ChangeFontSize('m');
                                          CloseMenu('.drop-down-menu-facilities', 'hide-facilities-menu', 'show-facilities-menu');
-                                     }}/>
+                                     }} tabIndex="1"/>
                             </div>
                             <div className={"language-en"}>
                                 <img className={"close-facilities-menu"} src={ukflag} alt="uk-flag" onClick={() => {
                                     setLanguage('en');
                                     ChangeFontSize('m');
                                     CloseMenu('.drop-down-menu-facilities', 'hide-facilities-menu', 'show-facilities-menu');
-                                }}/>
+                                }} tabIndex="1"/>
                             </div>
                         </div>
                     </div>
@@ -259,18 +259,17 @@ const TopBarAndSideMenu = () => {
                     {translation.TopBar.question}
                 </div>
                 <div className={"question-window-input"}>
-                    <textarea placeholder={"Wpisz treść pytania"}/>
+                    <textarea placeholder={"Wpisz treść pytania"} tabIndex="1"/>
                 </div>
                 <div className={"question-window-buttons"}>
-                    <div className={"question-window-button-cancel"} onClick={() => CloseWindow(".question-window")}>
+                    <div className={"question-window-button-cancel"} onClick={() => CloseWindow(".question-window")} tabIndex="0">
                         {translation.TopBar.cancel}
                     </div>
                     <div className={"question-window-button-send"}
                          onClick={() => {
                              sendEmail(cookies.userID, "question", String(document.querySelector(".question-window-input textarea").value));
                              CloseWindow(".question-window");
-                         }}
-                    >
+                         }} tabIndex="1">
                         {translation.TopBar.send}
                     </div>
                 </div>
@@ -280,18 +279,17 @@ const TopBarAndSideMenu = () => {
                     {translation.TopBar.problem}
                 </div>
                 <div className={"report-window-input"}>
-                    <textarea placeholder={"Wpisz treść zgłoszenia"}/>
+                    <textarea placeholder={"Wpisz treść zgłoszenia"} tabIndex="1"/>
                 </div>
                 <div className={"report-window-buttons"}>
-                    <div className={"report-window-button-cancel"} onClick={() => CloseWindow(".report-window")}>
+                    <div className={"report-window-button-cancel"} onClick={() => CloseWindow(".report-window")} tabIndex="1">
                         {translation.TopBar.cancel}
                     </div>
                     <div className={"report-window-button-send"}
                          onClick={() => {
                              sendEmail(cookies.userID, "report", String(document.querySelector(".report-window-input textarea").value));
                              CloseWindow(".report-window");
-                         }}
-                    >
+                         }} tabIndex="0">
                         {translation.TopBar.report}
                     </div>
                 </div>
