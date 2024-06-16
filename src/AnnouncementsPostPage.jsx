@@ -3,17 +3,61 @@ import './Announcements.css'
 import {Link} from "react-router-dom";
 import {useLanguage} from './ChangeLanguage.jsx';
 import backicon from "./assets/arrowback.png"
-import postimage from "./assets/postimage.webp"
 import clockicon from "./assets/clock.png"
+import {useEffect, useState} from "react";
+import {useCookies} from "react-cookie";
+
+function convertDate(date, type) {
+    const date2 = date.split(" ")
+    let day = date2[2];
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    let month = months.indexOf(date2[1]) + 1;
+    let year = date2[5];
+    if (month < 10) {
+        month = "0" + month;
+    }
+    if(type===1) return `${day}.${month}.${year}`;
+    else return new Date(`${year}-${month}-${day}`).getTime();
+}
+
+async function getAnnouncementPost(setTitle,setShortText,setText,setDate,setImage,postid){
+    let headers = new Headers();
+    headers.append("UserID", -1);
+    headers.append("Action-Type", "GET");
+    headers.append("Post-ID", postid);
+    const response = await fetch("http://localhost:8001/announcements", {
+        method: "GET", headers: headers,
+    });
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    let data = await response.json();
+    setTitle(localStorage.getItem('language') === 'en' ? data["announcements"][0].title_en : data["announcements"][0].title_pl);
+    setShortText(localStorage.getItem('language') === 'en' ? data["announcements"][0].short_text_en : data["announcements"][0].short_text_pl);
+    setText(localStorage.getItem('language') === 'en' ? data["announcements"][0].text_en : data["announcements"][0].text_pl);
+    setDate(convertDate(data["announcements"][0].date,1));
+    setImage(data["announcements"][0].img.substring(1, data["announcements"][0].img.length - 1));
+}
 
 const AnnouncementsPostPage = () => {
     const {t: translation} = useLanguage();
+    const [cookies,,removeCookie] = useCookies(['postid']);
+    const [title, setTitle] = useState("");
+    const [date, setDate] = useState("");
+    const [text, setText] = useState("");
+    const [shortText, setShortText] = useState("");
+    const [image, setImage] = useState("");
+    useEffect(() => {
+        getAnnouncementPost(setTitle, setShortText, setText, setDate, setImage, cookies.postid);
+    }, [cookies.postid]);
     return (<>
         {TopBarAndSideMenu()}
         <div className={"post-page-main-content"}>
             <div className={"post-page-main-content-back"}>
                 <div className={"back-button"}>
-                    <Link to={"/projekt-aplikacja/announcements"}>
+                    <Link to={"/projekt-aplikacja/announcements"} onClick={()=> {
+                        removeCookie("postid", {path: "/"})
+                    }}>
                         <div className={"back-button-image"}>
                             <img src={backicon} alt="back-icon"/>
                         </div>
@@ -25,53 +69,24 @@ const AnnouncementsPostPage = () => {
             </div>
             <div className={'post-page-header'}>
                 <div className={"post-page-header-text"}>
-                    Na PŁ rekrutacja do programu Legia Akademicka
+                    {title}
                 </div>
                 <div className={"post-page-header-date"}>
                     <div className={"post-page-header-date-img"}>
                         <img src={clockicon} alt="clock-icon"/>
                     </div>
                     <div className={"post-page-header-date-text"}>
-                        26.04.2026
+                        {date}
                     </div>
                 </div>
             </div>
             <div className={"post-page-main-content-middle-content"}>
                 <div className={"post-page-main-content-middle-content-left"}>
-                    <img src={postimage} alt="post-image"/>
+                    <img src={image} alt="post-image"/>
                 </div>
                 <div className={"post-page-main-content-middle-content-right"}>
-                    <span className={"text-header"}>Politechnika Łódzka po raz kolejny przystąpiła do programu Legia Akademicka. Absolwenci LA, jako
-                        żołnierze rezerwy, mogą ubiegać się o powołanie do zawodowej służby wojskowej w różnych
-                        formacjach i rodzajach Sił Zbrojnych RP.
-                    </span>
-                    <br/><br/>
-                    Program szkolenia podoficerskiego skierowany jest do studentów, którzy ukończyli szkolenie
-                    podstawowe Legii Akademickiej organizowane przez WCR. Moduł podoficerski składa się z dwóch
-                    części: teoretycznej, podczas której słuchacze odbywają zajęcia prowadzone przez uczelnię oraz
-                    praktycznej odbywanej pod kierunkiem Wojewódzkiego Sztabu Wojskowego w Łodzi (zajęcia terenowe
-                    na poligonie wojskowym).
-                    <br/><br/>
-                    Zajęcia teoretyczne odbędą się w semestrze letnim. Przewidziane są trzy spotkania, dokładne daty
-                    będą podane w późniejszym terminie. Planowane są zajęcia zdalne, na platformie MS Teams/Zoom.
-                    Wszystkich zainteresowanych zachęcamy do odwiedzenia strony Legia Akademicka. Zgłoszenia do
-                    programu należy dokonywać wypełniając wniosek, który należy wydrukować, podpisać i skan przesłać
-                    na adres: <span className={"text-email"}>katarzyna.zykwinska@p.lodz.pl</span>.
-                    <br/><br/>
-                    <span className={"text-italic"}>- Rekrutacja potrwa do 17.05.2024 r. Liczy się kolejność zgłoszeń. Planowane jest uruchomienie
-                    jednej grupy szkoleniowej, 15-osobowej. W przypadku dużej liczby chętnych istnieje możliwość
-                    wystąpienia do Ministerstwa o utworzenie dodatkowej grupy</span> - informuje koordynatorka programu
-                    na
-                    PŁ, dr <span className={"text-bold"}>Katarzyna Żykwińska</span>.
-                    <br/><br/>
-                    Do programu Legia Akademicka może przystąpić student studiów pierwszego stopnia, studiów
-                    drugiego stopnia lub jednolitych studiów magisterskich, dowolnego roku studiów, który posiada
-                    obywatelstwo polskie i odbył szkolenie podstawowe w ramach Legii Akademickiej.
-                    <br/><br/>
-                    Uczestnikiem programu nie może być: doktorant, student studiujący poza granicami kraju, student
-                    nieposiadający obywatelstwa polskiego, przebywający na terenie Polski na podstawie zezwolenia na
-                    pobyt stały. W razie pytań prosimy o kontakt na adres: <span
-                    className={"text-email"}>katarzyna.zykwinska@p.lodz.pl</span>.
+                    <span className={"text-header"}>{shortText}</span>
+                    <div className={"text"} dangerouslySetInnerHTML={{__html: text}}></div>
                 </div>
             </div>
         </div>
