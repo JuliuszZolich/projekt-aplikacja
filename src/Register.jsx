@@ -85,8 +85,14 @@ const Register = () => {
                         </div>
                         <div className={"register-middle-content-item"}>
                             <select name={"semester"} id={"semester"}>
-                                <option value="default">DEFAULT</option>
-                                <option value="test">TEST</option>
+                                <option value="1">Wybierz semestr</option>
+                                <option value="2">1</option>
+                                <option value="3">2</option>
+                                <option value="4">3</option>
+                                <option value="5">4</option>
+                                <option value="6">5</option>
+                                <option value="7">6</option>
+                                <option value="8">7</option>
                             </select>
                             <div className={"register-input-text"}>
                                 {translation.Register.selectSemester}

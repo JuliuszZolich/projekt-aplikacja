@@ -10,6 +10,15 @@
     position: relative;
 }
 
+.settings-wrong-email, .settings-wrong-change-password{
+    width: 95%;
+    float: left;
+    color: red;
+    font-size: 20px;
+    margin-left: 5%;
+    line-height: 30px;
+}
+
 .settings-button-email, .settings-button-change-password{
     float: right;
     background-color: #077412;
@@ -155,6 +164,9 @@
     .settings-button-pl, .settings-button-en{
         width: 60%;
         margin: 15px;
+        height: 40px;
+        font-size: 25px;
+        line-height: 40px;
     }
 
     .settings-input > input:focus + .settings-input-text, .settings-input > input:valid + .settings-input-text{
@@ -167,5 +179,9 @@
         font-size: 15px;
         line-height: 20px;
         width: 80px;
+    }
+
+    .settings-wrong-email, .settings-wrong-change-password{
+        font-size: 15px;
     }
 }
