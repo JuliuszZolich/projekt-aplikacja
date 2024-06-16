@@ -25,7 +25,7 @@ function getSubjects(translation, setSubjects, cookies, setCookie) {
                               setCookie("subjectid", subject.id, {path: "/"});
                           }}
                     >
-                        <div className={"subjects-main-content-center-subjects-item medium-text-p"} >
+                        <div className={"subjects-main-content-center-subjects-item medium-text-p"} title={subject.name}>
                             {subject.name}
                         </div>
                     </Link>

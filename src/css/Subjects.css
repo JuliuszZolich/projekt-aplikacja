@@ -420,6 +420,10 @@
         margin-left: 5%;
     }
 
+    .subjects-main-content-top-bar-item-empty{
+        width: 60%;
+    }
+
     .subject-page-middle-content-marks-item{
         width: 200px;
         height: 220px;
@@ -535,6 +539,10 @@
     .marks-item-points-text{
         font-size: 30px;
         line-height: 60px;
+    }
+
+    .subjects-main-content-top-bar-item-empty{
+        width: 40%;
     }
 
     .marks-item-bottom-text{
