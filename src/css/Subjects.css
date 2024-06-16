@@ -175,6 +175,7 @@
     box-shadow: rgba(0, 0, 0, 0.4) 0 3px 2px, rgba(0, 0, 0, 0.3) 0 7px 13px -3px, rgba(0, 0, 0, 0.2) 0 -2px 0 inset;
     cursor: pointer;
     transition: 0.2s;
+    overflow: hidden;
 }
 
 .item-image {
@@ -224,6 +225,7 @@
 .subject-page-middle-content-announcements-item{
     width: 80%;
     height: 30%;
+    min-height: 250px;
     margin: 5% 10%;
     background-color: #F8F8F8;
     border: 1px solid #000000;
@@ -248,10 +250,9 @@
 }
 
 .top-date-img{
-    width: 20%;
-    height: 100%;
-    float: left;
-    margin-left: 15%;
+    width: 40px;
+    height: 40px;
+    float: right;
 }
 
 .top-date-img > img{
@@ -261,8 +262,9 @@
 }
 
 .top-date-text{
-    font-size: 25px;
-    line-height: 40px;
+    font-size: 23px;
+    line-height: 33px;
+    text-align: right;
 }
 
 .subject-page-middle-content-announcements-item-author{
@@ -291,8 +293,8 @@
 }
 
 .subject-page-middle-content-marks-item{
-    width: 20%;
-    height: 45%;
+    width: 300px;
+    height: 320px;
     margin: 3% 6.5%;
     float: left;
     background-color: #F8F8F8;
@@ -374,6 +376,13 @@
     color: #2b863a;
 }
 
+@media  (max-width: 1600px){
+    .subject-page-middle-content-announcements{
+        width: 80%;
+        margin-left: 10%;
+    }
+}
+
 @media (max-width: 1500px){
     .subject-page-main-content-top-bar-item{
         width: 14%;
@@ -406,6 +415,35 @@
 }
 
 @media (max-width: 1200px){
+    .subject-page-middle-content-announcements{
+        width: 90%;
+        margin-left: 5%;
+    }
+
+    .subject-page-middle-content-marks-item{
+        width: 200px;
+        height: 220px;
+        margin: 2.5% 5%;
+    }
+
+    .marks-item-title{
+        font-size: 30px;
+    }
+
+    .marks-item-points-text{
+        line-height: 90px;
+        font-size: 50px;
+    }
+
+    .marks-item-bottom-text{
+        font-size: 20px;
+    }
+
+    .marks-item-bottom-mark{
+        font-size: 35px;
+        line-height: 40px;
+    }
+
     .subject-page-middle-content-lectures-left, .subject-page-middle-content-exercises-left{
         width: 100%;
         margin: 0;
@@ -445,6 +483,17 @@
     }
 }
 
+@media (max-width: 1000px){
+    .subject-page-middle-content-announcements-item{
+        width: 90%;
+        margin: 5%;
+    }
+
+    .top-date-text{
+        font-size: 20px;
+    }
+}
+
 @media (max-width: 800px) {
     .subject-page-main-content-top-bar-item {
         width: 20%;
@@ -453,9 +502,51 @@
     .subject-page-main-content-top-bar-subject-name {
         display: none;
     }
+
+    .top-date{
+        width: 35%;
+    }
+
+    .top-title{
+        width: 60%;
+        font-size: 28px;
+    }
+
+    .subject-page-middle-content-announcements-item-author{
+        font-size: 12px;
+    }
+
+    .subject-page-middle-content-announcements-item-bottom{
+        font-size: 20px;
+    }
 }
 
 @media (max-width: 700px){
+    .subject-page-middle-content-marks-item{
+        width: 130px;
+        height: 150px;
+        margin: 2.5% 3%;
+    }
+
+    .marks-item-title{
+        font-size: 20px;
+    }
+
+    .marks-item-points-text{
+        font-size: 30px;
+        line-height: 60px;
+    }
+
+    .marks-item-bottom-text{
+        font-size: 15px;
+        line-height: 30px;
+    }
+
+    .marks-item-bottom-mark{
+        font-size: 25px;
+        line-height: 20px;
+    }
+
     .subjects-main-content-center{
         width: 98%;
         margin-left: 1%;
@@ -493,10 +584,25 @@
     }
 }
 
+@media (max-width: 520px) {
+    .top-date-text{
+        font-size: 15px;
+    }
+}
+
 @media  (max-width: 500px){
     .subject-page-main-content-top-bar-item, .subject-page-main-content-top-bar-subject{
         font-size: 13px;
         line-height: 70px;
+    }
+
+    .subject-page-middle-content-announcements-item-bottom {
+        font-size: 18px;
+    }
+
+    .top-date-text{
+        font-size: 13px;
+        line-height: 33px;
     }
 
     .back-image > img{

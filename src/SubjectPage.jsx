@@ -5,10 +5,6 @@ import {changeScenery} from "./SubjectsFunctions.jsx"
 import {useLanguage} from './ChangeLanguage.jsx';
 import backicon from "./assets/arrowback.png"
 import fileicon from "./assets/file.png"
-import mailicon from "./assets/mail.png"
-import buildingicon from "./assets/building.png"
-import roomicon from "./assets/room.png"
-import locationicon from "./assets/location.png"
 import clockicon from "./assets/clock.png"
 import {useCookies} from "react-cookie";
 import {useEffect, useState} from "react";
@@ -60,7 +56,7 @@ function getLectures(setLectures, lecturesData, translation){
             <a href={lecture.link}
                download={lecture.link_name}
                 key={lecture.link_name}>
-                <div className={"subject-page-middle-content-lectures-left-item"}>
+                <div className={"subject-page-middle-content-lectures-left-item"} title={lecture.name}>
                     <div className={"item-image"}>
                         <img src={fileicon} alt="download-file-icon"/>
                     </div>
@@ -79,7 +75,7 @@ function getExercises(setExercises, exercisesData, translation){
             <a href={exercise.link}
                download={exercise.link_name}
                key={exercise.link_name}>
-                <div className={"subject-page-middle-content-lectures-left-item"}>
+                <div className={"subject-page-middle-content-lectures-left-item"} title={exercise.name}>
                     <div className={"item-image"}>
                         <img src={fileicon} alt="download-file-icon"/>
                     </div>
@@ -194,100 +190,11 @@ const SubjectPage = () => {
                     <div className={"subject-page-middle-content-lectures-left"}>
                         {lectures}
                     </div>
-                    <div className={"subject-page-middle-content-lectures-right"}>
-                        <div className={"teacher"}>
-                            <div className={"header medium-text-p"}>
-                                {translation.Subjects.lecturer}
-                            </div>
-                            <div className={"teacher-name top-bar-p"}>
-                                lorem ipsum
-                            </div>
-                        </div>
-                        <div className={"contact"}>
-                            <div className={"header medium-text-p"}>
-                                {translation.Subjects.contact}
-                            </div>
-                            <div className={"contact-img"}>
-                                <img src={mailicon} alt="mail-icon"/>
-                            </div>
-                            <div className={"contact-text top-bar-p"}>
-                                loremipsum@gmail.com
-                            </div>
-                        </div>
-                        <div className={"subject-location"}>
-                            <div className={"header medium-text-p"}>
-                                {translation.Subjects.location}
-                            </div>
-                            <div className={"subject-location-item"}>
-                                <div className={"subject-location-item-img"}>
-                                    <img src={buildingicon} alt="building-icon"/>
-                                </div>
-                                <div className={"subject-location-item-text home-p"}>
-                                    A21
-                                </div>
-                            </div>
-                            <div className={"subject-location-item"}>
-                                <div className={"subject-location-item-img"}>
-                                    <img src={roomicon} alt="room-icon"/>
-                                </div>
-                                <div className={"subject-location-item-text home-p"}>
-                                    E2
-                                </div>
-                                <div className={"subject-location-find"}>
-                                    <img src={locationicon} alt="location-icon"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
                 <div className={"subject-page-middle-content-lectures"} id={"exercises"}>
                     <div className={"subject-page-middle-content-lectures-left"}>
                         {exercises}
-                    </div>
-                    <div className={"subject-page-middle-content-lectures-right"}>
-                        <div className={"teacher"}>
-                            <div className={"header medium-text-p"}>
-                                {translation.Subjects.lecturer}
-                            </div>
-                            <div className={"teacher-name top-bar-p"}>
-                                lorem ipsum
-                            </div>
-                        </div>
-                        <div className={"contact"}>
-                            <div className={"header medium-text-p"}>
-                                {translation.Subjects.contact}
-                            </div>
-                            <div className={"contact-img"}>
-                                <img src={mailicon} alt="mail-icon"/>
-                            </div>
-                            <div className={"contact-text top-bar-p"}>
-                                loremipsum@gmail.com
-                            </div>
-                        </div>
-                        <div className={"subject-location"}>
-                            <div className={"header medium-text-p"}>
-                                {translation.Subjects.location}
-                            </div>
-                            <div className={"subject-location-item"}>
-                                <div className={"subject-location-item-img"}>
-                                    <img src={buildingicon} alt="building-icon"/>
-                                </div>
-                                <div className={"subject-location-item-text home-p"}>
-                                    A21
-                                </div>
-                            </div>
-                            <div className={"subject-location-item"}>
-                                <div className={"subject-location-item-img"}>
-                                    <img src={roomicon} alt="room-icon"/>
-                                </div>
-                                <div className={"subject-location-item-text home-p"}>
-                                    E2
-                                </div>
-                                <div className={"subject-location-find"}>
-                                    <img src={locationicon} alt="location-icon"/>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div className={"subject-page-middle-content-announcements"} id={"announcements"}>
