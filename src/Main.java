@@ -20,12 +20,13 @@ public class Main {
             server.createContext("/subjects", new SubjectsHandler());
             server.createContext("/settings", new SettingsHandler());
             server.createContext("/myprofile", new ProfileHandler());
+            server.createContext("/mail", new MailHandler());
             server.createContext("/", new OtherHandler());
             server.setExecutor(null);
             server.start();
             System.out.println("Server started");
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Error: " + e);
         }
 
     }
