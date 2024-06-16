@@ -12,7 +12,16 @@ public class AnnouncementsHandler implements HttpHandler {
         if (Utils.handleCORS(t)) return;
         System.out.println("Announcements request received");
         t.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
-        String response = DBAnnouncements.getAnnouncements();
+        String response;
+        switch (t.getRequestHeaders().get("Post-ID").get(0)){
+            case "all":
+                response = DBAnnouncements.getAnnouncements();
+                break;
+            default:
+                response = DBAnnouncements.getAnnouncement(t.getRequestHeaders().get("Post-ID").get(0));
+                break;
+
+        }
         OutputStream os = t.getResponseBody();
         t.sendResponseHeaders(200, response.getBytes().length);
         os.write(response.getBytes());
