@@ -16,7 +16,9 @@
     "cancel": "Cancel",
     "send": "Send",
     "problem": "Report a Problem",
-    "report": "Report"
+    "report": "Report",
+    "content": "Enter your question",
+    "reportContent": "Enter the content of the report"
   },
   "Login": {
     "email": "E-mail:",

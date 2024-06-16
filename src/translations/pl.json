@@ -16,7 +16,9 @@
     "cancel": "Anuluj",
     "send":"Wyślij",
     "problem": "Zgłoś Problem",
-    "report": "Zgłoś"
+    "report": "Zgłoś",
+    "content": "Wpisz treść pytania",
+    "reportContent": "Wpisz treść zgłoszenia"
   },
   "Login": {
     "email": "E-mail:",
