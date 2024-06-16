@@ -5,7 +5,8 @@ import {useLanguage} from "./ChangeLanguage.jsx";
 import {useEffect, useState} from "react";
 import {useCookies} from "react-cookie";
 
-function getSubjects(translation, setSubjects, cookies) {
+
+function getSubjects(translation, setSubjects, cookies, setCookie) {
     let headers = new Headers();
     headers.append("UserID", cookies.userID);
     headers.append("Action-Type", "LIST");
@@ -17,7 +18,13 @@ function getSubjects(translation, setSubjects, cookies) {
         response.json().then(data => {
             setSubjects(data["subjectlist"].map((subject) => {
                 return (
-                    <Link to={'/projekt-aplikacja/subjectpage'} key={subject.id} data={subject.semester}>
+                    <Link to={'/projekt-aplikacja/subjectpage'} 
+                          key={subject.id} 
+                          data={subject.semester}
+                          onClick={() => {
+                              setCookie("subjectid", subject.id, {path: "/"});
+                          }}
+                    >
                         <div className={"subjects-main-content-center-subjects-item medium-text-p"} >
                             {subject.name}
                         </div>
@@ -30,12 +37,12 @@ function getSubjects(translation, setSubjects, cookies) {
 
 const Subjects = () => {
     const {t: translation} = useLanguage();
-    const [cookies, setCookie, removeCookies] = useCookies([]);
+    const [cookies, setCookie] = useCookies([]);
     const [subjects, setSubjects] = useState([]);
     const [currYear, setCurrYear] = useState(1);
     useEffect(() => {
-        getSubjects(translation, setSubjects, cookies)
-    },[translation, cookies]);
+        getSubjects(translation, setSubjects, cookies, setCookie);
+    },[translation, cookies, setCookie]);
     return (
         <>
             {TopBarAndSideMenu()}
