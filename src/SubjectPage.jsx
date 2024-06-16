@@ -136,7 +136,6 @@ async function getSubject(cookies, setTitle, setLectures, setExercises, setAnnou
     let data = await response.json();
     getGrades(cookies.userID, cookies.subjectid, setGrades, translation);
     setTitle(data.subjectlist[0].name);
-    console.log(data.subjectlist[0].lectures)
     getLectures(setLectures, data.subjectlist[0].lectures, translation);
     getExercises(setExercises, data.subjectlist[0].exercises, translation);
 }
