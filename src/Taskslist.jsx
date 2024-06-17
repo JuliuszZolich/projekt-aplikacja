@@ -66,6 +66,7 @@ async function getTasks(user_id, setTasks) {
                      }}>
                     <div className={"tasks-list-right-content-item-left"} tabIndex="0">
                         <div className={(() => {
+                            console.log(task["completed"])
                             if (task["completed"] === true) return "circle circle-checked";
                             else return "circle";
                         })()
@@ -100,6 +101,7 @@ async function getTasks(user_id, setTasks) {
                                      temp = 1;
                                      const newStatus = document.getElementById(task["id"]).getAttribute("data-fav") === "true" ? "false" : "true";
                                      document.getElementById(task["id"]).setAttribute("data-fav", newStatus);
+                                     console.log(user_id)
                                      statusUpdate(task["id"], user_id, "favourite", newStatus);
                                  }}
                             />
@@ -145,6 +147,7 @@ async function addTask(userid, title, content, date) {
             content: content,
             date: date,
             favourite: false,
+            completed:false
         }),
     });
     if (!response.ok) {
@@ -155,7 +158,7 @@ async function addTask(userid, title, content, date) {
 
 async function statusUpdate(taskId, userID, type, completion) {
     let headers = new Headers();
-    headers.append("UserID", "1")
+    headers.append("UserID", userID);
     headers.append("Task-ID", taskId);
     headers.append("Action-Type", "UPDATE");
     headers.append("Update-Type", type);
