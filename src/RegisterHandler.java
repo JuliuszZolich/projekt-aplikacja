@@ -18,12 +18,12 @@ public class RegisterHandler implements HttpHandler {
         InputStream is = t.getRequestBody();
         OutputStream os = t.getResponseBody();
         if(Objects.equals(t.getRequestMethod(), "GET")){
-            String response = "{\"email\": \"false\"}";
-            /*try {
+            String response;
+            try {
                 response = DBRegister.checkEmail(t.getRequestHeaders().get("Email").get(0));
             } catch (ExecutionException | InterruptedException e) {
                 throw new RuntimeException(e);
-            }*/
+            }
             t.sendResponseHeaders(200, response.getBytes().length);
             os.write(response.getBytes());
         } else if(Objects.equals(t.getRequestMethod(), "POST")){
@@ -32,7 +32,11 @@ public class RegisterHandler implements HttpHandler {
             ObjectMapper mapper = new ObjectMapper();
             String body = new String(is.readAllBytes());
             User user = mapper.readValue(body, User.class);
-            DBRegister.addUser(user);
+            try {
+                DBRegister.addUser(user);
+            } catch (ExecutionException | InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         } else {
             System.out.println("Unknown request method");
             t.sendResponseHeaders(405, 0);

@@ -8,8 +8,9 @@ public class User {
     private String email;
     private String password;
     private String faculty;
-    private String course;
+    private String field_of_studies;
     private String phone;
     private String surname;
     private Integer semester;
+    private Integer userid;
 }

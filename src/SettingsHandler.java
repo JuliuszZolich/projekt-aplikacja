@@ -8,7 +8,7 @@ import java.io.OutputStream;
 public class SettingsHandler implements HttpHandler {
     @Override
     public void handle(HttpExchange t) throws IOException {
-        String response = "XDDDD";
+        String response = ".";
         System.out.println("Request received");
         t.sendResponseHeaders(200, response.length());
         InputStream is = t.getRequestBody();
