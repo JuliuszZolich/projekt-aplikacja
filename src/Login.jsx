@@ -72,7 +72,7 @@ const Login = () => {
                         <input type="password" name={"passowrd"} placeholder={translation.Login.enterPassword} id={"password"} />
                     </div>
                     <div className={"forgot-password"}>
-                        <Link to={"/projekt-aplikacja/forgotpassword"}>
+                        <Link to={"/projekt-aplikacja/forgotpassword"} style={{display:"none"}}>
                             <p>{translation.Login.forgotPassword}</p>
                         </Link>
                     </div>

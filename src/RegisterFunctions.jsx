@@ -190,11 +190,12 @@ async function sendRequest() {
                 email: email,
                 password: password,
                 faculty: faculty,
-                course: course,
+                field_of_studies: course,
                 phone: phone,
                 name: name,
                 surname: surname,
-                semester: semester
+                semester: semester,
+                userid:-1
             })
         }
     )

@@ -17,7 +17,6 @@ function getSubjects(translation, setSubjects, cookies, setCookie) {
     }).then(response => {
         response.json().then(data => {
             setSubjects(data["subjectlist"].map((subject) => {
-                if(subject.semester>cookies.semester) return "";
                 return (
                     <Link to={'/projekt-aplikacja/subjectpage'} 
                           key={subject.id} 
@@ -103,7 +102,7 @@ const Subjects = () => {
                                 </div>
                             </Link>
                             {subjects.filter(subject => {
-                                return subject.props.data === currYear*2-1;
+                                return (subject.props.data === currYear*2-1) && (subject.props.data<=cookies.semester);
                             })}
                         </div>
                     </div>
@@ -114,7 +113,7 @@ const Subjects = () => {
                         </div>
                         <div className={"subjects-main-content-center-subjects"}>
                             {subjects.filter(subject => {
-                                return subject.props.data === currYear*2;
+                                return  (subject.props.data === currYear*2) && (subject.props.data<=cookies.semester);
                             })}
                         </div>
                     </div>

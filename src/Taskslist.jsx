@@ -373,7 +373,7 @@ const Tasklist = () => {
             </div>
             <div className={"add-task-window"} id={"add"} style={{display: "none"}}>
                 <div className={"add-task-window-top-bar"}>
-                    {translation.Notes.addNote}
+                    {translation.TasksList.addItem}
                 </div>
                 <div className={"add-task-window-middle-content"}>
                     <input type="text" placeholder={translation.Notes.title}/>
