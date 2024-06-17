@@ -1,10 +1,23 @@
 import "./css/Settings.css";
 import TopBarAndSideMenu from "./TopBarAndSideMenu.jsx";
 import {useLanguage} from './ChangeLanguage.jsx';
+import {useCookies} from "react-cookie";
+
+
+async function changeField(user_id, field, value) {
+    let headers = new Headers();
+    headers.append("UserID", user_id);
+    headers.append("Field", field);
+    headers.append("Value", value);
+    await fetch("http://localhost:8001/settings", {
+        method: "GET",
+        headers: headers,
+    });
+}
 
 const Settings = () => {
     const {t: translation, language, setLanguage} = useLanguage();
-
+    const [cookies] = useCookies([]);
     return (
         <>
             <TopBarAndSideMenu/>
@@ -19,6 +32,7 @@ const Settings = () => {
                                         document.querySelector(".settings-wrong-email").style.display = "block";
                                         return;
                                     }
+                                    changeField(cookies.userID, "email", newEmail);
                                 }}
                         >
                             Zapisz
@@ -52,6 +66,7 @@ const Settings = () => {
                                      document.querySelector(".settings-wrong-change-password").style.display = "block";
                                      return;
                                  }
+                                    changeField(cookies.userID, "password", newPass);
                              }}>
                             Zapisz
                         </div>
