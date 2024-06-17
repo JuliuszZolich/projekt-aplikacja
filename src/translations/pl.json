@@ -114,7 +114,24 @@
     "important": "Ważne",
     "active": "Aktywne",
     "done": "Zakończone",
-    "addItem": "Dodaj pozycję"
+    "addItem": "Dodaj pozycję",
+    "close": "Zamknij",
+    "title": "Wpisz tytuł zadania",
+    "content": "Wpisz treść zadania",
+    "cancel": "Anuluj",
+    "add": "Dodaj",
+    "noSave1": "Niezapisane zmiany",
+    "noSave2": "nie zostaną zachowane",
+    "wantCancel": "czy chcesz anulować?",
+    "yes": "Tak",
+    "no": "Nie",
+    "wantForSure": "Czy napewno chcesz",
+    "delete1": "Usuń",
+    "keep": "Zachowaj",
+    "modify": "Modyfikuj zadanie",
+    "delete": "usunąć",
+    "task": "zadanie?",
+    "save": "Zapisz"
   },
   "Notes": {
     "find": "Wyszukaj...",
@@ -168,7 +185,10 @@
     "confirmPassword": "Potwierdz hasło",
     "mainLanguage": "Wybór głównego języka",
     "pl": "Polski",
-    "en": "Angielski"
+    "en": "Angielski",
+    "save": "Zapisz",
+    "emailFieldEmpty": "Pole do zmiany e-maila jest puste",
+    "passwordFieldEmpty": "Pole do zmiany hasła jest puste"
   },
   "Profile": {
     "personalData": "Dane Personalne:",

@@ -370,7 +370,7 @@ const Tasklist = () => {
                          }
                          }
                     >
-                        {translation.Notes.close}
+                        {translation.TasksList.close}
                     </div>
                 </div>
             </div>
@@ -379,11 +379,11 @@ const Tasklist = () => {
                     {translation.TasksList.addItem}
                 </div>
                 <div className={"add-task-window-middle-content"}>
-                    <input type="text" placeholder={translation.Notes.title}/>
+                    <input type="text" placeholder={translation.TasksList.title}/>
                     <div className={"add-task-window-select-date"} id={"modify-task-window-data"}>
                         <input type="date"/>
                     </div>
-                    <textarea id={"add-task-window-text"} name={"task-content"} placeholder={translation.Notes.content}>
+                    <textarea id={"add-task-window-text"} name={"task-content"} placeholder={translation.TasksList.content}>
                         </textarea>
                 </div>
                 <div className={"add-task-window-bottom-bar"}>
@@ -391,7 +391,7 @@ const Tasklist = () => {
                          onClick={() => {
                              document.getElementById("cancel").style.display = "block";
                          }}>
-                        {translation.Notes.cancel}
+                        {translation.TasksList.cancel}
                     </div>
                     <div className={"add-task-window-bottom-bar-item add-task-window-bottom-bar-item-add"} tabIndex="0"
                          onClick={() => {
@@ -401,15 +401,15 @@ const Tasklist = () => {
                              addTask(cookies.userID,title, content, date);
                          }}
                     >
-                        {translation.Notes.add}
+                        {translation.TasksList.add}
                     </div>
                 </div>
             </div>
             <div className={"cancel-window-task"} id={"cancel"} style={{display: "none"}}>
                 <div className={"cancel-window-task-text"}>
-                    {translation.Notes.noSave1} <span
-                    className={"cancel-window-task-text-decoration"}>{translation.Notes.noSave2}</span>,
-                    {translation.Notes.wantCancel}
+                    {translation.TasksList.noSave1} <span
+                    className={"cancel-window-task-text-decoration"}>{translation.TasksList.noSave2}</span>,
+                    {translation.TasksList.wantCancel}
                 </div>
                 <div className={"cancel-window-bottom-bar"}>
                     <div className={"cancel-window-task-bottom-bar-item cancel-window-task-bottom-bar-yes"} tabIndex="0"
@@ -422,19 +422,19 @@ const Tasklist = () => {
                                  document.getElementById("modify").style.display = "none";
                              }
                          }}>
-                        {translation.Notes.yes}
+                        {translation.TasksList.yes}
                     </div>
                     <div className={"cancel-window-task-bottom-bar-item cancel-window-task-bottom-bar-no"} tabIndex="0"
                          onClick={() => {
                              document.getElementById("cancel").style.display = "none";
                          }}>
-                        {translation.Notes.no}
+                        {translation.TasksList.no}
                     </div>
                 </div>
             </div>
             <div className={"delete-window-task"} id={"delete"} style={{display: "none"}}>
                 <div className={"delete-window-task-text"}>
-                    {translation.Notes.wantForSure} <span className={"delete-window-task-text-decoration"}>{translation.Notes.delete}</span> {translation.Notes.note}
+                    {translation.TasksList.wantForSure} <span className={"delete-window-task-text-decoration"}>{translation.TasksList.delete}</span> {translation.TasksList.task}
                 </div>
                 <div className={"delete-window-task-task-bottom-bar"}>
                     <div className={"delete-window-task-bottom-bar-item delete-window-task-bottom-bar-delete"} tabIndex="0"
@@ -444,20 +444,20 @@ const Tasklist = () => {
                              if (document.getElementById("modify").style.display !== "none") document.getElementById("modify").style.display = "none";
                          }}
                     >
-                        {translation.Notes.delete1}
+                        {translation.TasksList.delete1}
                     </div>
                     <div className={"delete-window-task-bottom-bar-item delete-window-task-bottom-bar-keep"} tabIndex="0"
                          onClick={() => {
                              document.getElementById("delete").style.display = "none";
                          }}>
-                        {translation.Notes.keep}
+                        {translation.TasksList.keep}
                     </div>
                 </div>
             </div>
             <div className={"modify-task-window"} id={"modify"} style={{display: "none"}}>
                 <div className={"modify-task-window-top-bar"}>
                     <div className={"modify-task-window-top-bar-text"}>
-                        {translation.Notes.modify}
+                        {translation.TasksList.modify}
                     </div>
                     <div className={"modify-task-window-top-bar-delete"} tabIndex="0" onClick={() => {
                         document.getElementById("delete").style.display = "block";
@@ -472,7 +472,7 @@ const Tasklist = () => {
                         <input type="date" id={"modify-task-input"}/>
                     </div>
                     <textarea id={"modify-task-window-text"} name={"task-content"}
-                              placeholder={translation.Notes.cotent}>
+                              placeholder={translation.TasksList.cotent}>
                     </textarea>
                 </div>
                 <div className={"modify-task-window-bottom-bar"}>
@@ -481,10 +481,10 @@ const Tasklist = () => {
                              document.getElementById("cancel").style.display = "block";
                          }}
                     >
-                        {translation.Notes.cancel}
+                        {translation.TasksList.cancel}
                     </div>
                     <div className={"modify-task-window-bottom-bar-item modify-task-window-bottom-bar-item-save"}>
-                        {translation.Notes.save}
+                        {translation.TasksList.save}
                     </div>
                 </div>
             </div>
