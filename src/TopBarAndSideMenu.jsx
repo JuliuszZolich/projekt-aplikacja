@@ -246,12 +246,10 @@ const TopBarAndSideMenu = () => {
                             <div className={"fonts font-small close-facilities-menu"} tabIndex="0"
                                  onClick={() => {
                                      ChangeFontSize('s');
-                                     ChangeFontSize('m');
                                      CloseMenu('.drop-down-menu-facilities', 'hide-facilities-menu', 'show-facilities-menu');
                                  }}
                                  onKeyDown={(e) => handleKeyDown(e, () => {
                                      ChangeFontSize('s');
-                                     ChangeFontSize('m');
                                      CloseMenu('.drop-down-menu-facilities', 'hide-facilities-menu', 'show-facilities-menu');
                                  })}
                             >
@@ -272,12 +270,10 @@ const TopBarAndSideMenu = () => {
                             <div className={"fonts font-large close-facilities-menu"} tabIndex="0"
                                  onClick={() => {
                                      ChangeFontSize('l');
-                                     ChangeFontSize('m');
                                      CloseMenu('.drop-down-menu-facilities', 'hide-facilities-menu', 'show-facilities-menu');
                                  }}
                                  onKeyDown={(e) => handleKeyDown(e, () => {
                                      ChangeFontSize('l');
-                                     ChangeFontSize('m');
                                      CloseMenu('.drop-down-menu-facilities', 'hide-facilities-menu', 'show-facilities-menu');
                                  })}
                             >

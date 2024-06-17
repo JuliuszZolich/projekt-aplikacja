@@ -35,13 +35,13 @@ const Settings = () => {
                                     changeField(cookies.userID, "email", newEmail);
                                 }}
                         >
-                            Zapisz
+                            {translation.Settings.save}
                         </div>
                     </div>
                     <div className={"settings-wrong-email"}
                          style={{display: "none"}}
                     >
-                        Pole do zmiany e-maila jest puste
+                        {translation.Settings.emailFieldEmpty}
                     </div>
                     <div className={"settings-input"}>
                         <input type="text" id={"newEmail"} required/>
@@ -68,13 +68,13 @@ const Settings = () => {
                                  }
                                     changeField(cookies.userID, "password", newPass);
                              }}>
-                            Zapisz
+                            {translation.Settings.save}
                         </div>
                     </div>
                     <div className={"settings-wrong-change-password"}
                          style={{display: "none"}}
                     >
-                        Pole do zmiany hasła jest puste
+                        {translation.Settings.passwordFieldEmpty}
                     </div>
                     <div className={"settings-input"}>
                         <input type="password" id={"currPass"} required/>

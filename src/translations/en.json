@@ -50,7 +50,6 @@
     "next": "Next",
     "backToHomepage": "Back to homepage."
   },
-
   "Register": {
     "registration": "Registration",
     "step1": "Step 1",
@@ -115,7 +114,24 @@
     "important": "Important",
     "active": "Active",
     "done": "Done",
-    "addItem": "Add item"
+    "addItem": "Add item",
+    "close": "Close",
+    "title": "Enter task title",
+    "content": "Enter task content",
+    "cancel": "Cancel",
+    "add": "Add",
+    "noSave1": "Unsaved changes",
+    "noSave2": "will not be saved",
+    "wantCancel": "Do you want to cancel?",
+    "yes": "Yes",
+    "no": "No",
+    "wantForSure": "Are you sure you want to",
+    "delete1": "Delete",
+    "keep": "Keep",
+    "modify": "Modify task",
+    "delete": "delete",
+    "task": "task?",
+    "save": "Save"
   },
   "Notes": {
     "find": "Search...",
@@ -169,7 +185,10 @@
     "confirmPassword": "Confirm password",
     "mainLanguage": "Select main language",
     "pl": "Polish",
-    "en": "English"
+    "en": "English",
+    "save": "Save",
+    "emailFieldEmpty": "Email change field is empty",
+    "passwordFieldEmpty": "Password change field is empty"
   },
   "Profile": {
     "personalData": "Personal Data:",
