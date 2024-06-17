@@ -73,7 +73,7 @@ public class DBTaskslist {
     public static String addTask(String userID, String title, String content, String date, boolean favourite) {
         DocumentReference docRef = db.collection("tasklist").document();
         LocalDate date1 = LocalDate.parse(date);
-        docRef.set(Map.of("userid", Integer.parseInt(userID), "title", title, "content", content, "date", new Date(date1.getYear()-1900, date1.getMonthValue()-1, date1.getDayOfMonth()), "favourite", favourite));
+        docRef.set(Map.of("userid", Integer.parseInt(userID), "title", title, "content", content, "date", new Date(date1.getYear()-1900, date1.getMonthValue()-1, date1.getDayOfMonth()), "favourite", favourite, "completed", false));
         return docRef.getId();
     }
 
@@ -97,6 +97,7 @@ public class DBTaskslist {
 
     public static void updateField(String userID, String taskID, Boolean status, String field){
         System.out.println("Updating " + field + " for task: " + taskID + " to " + status);
+        System.out.println(userID);
         try {
             db.collection("tasklist")
                     .whereEqualTo("userid", Integer.parseInt(userID))
@@ -104,7 +105,9 @@ public class DBTaskslist {
                     .get()
                     .getDocuments()
                     .forEach(document -> {
+                        System.out.println(document.getId());
                         if (document.getId().equals(taskID)) {
+                            System.out.println(":(");
                             document.getReference().update(field, status);
                         }
                     });

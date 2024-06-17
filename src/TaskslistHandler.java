@@ -14,6 +14,7 @@ class Task {
     public String content;
     public String date;
     public boolean favourite;
+    private boolean completed;
 }
 
 public class TaskslistHandler implements HttpHandler {
