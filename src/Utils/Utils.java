@@ -10,8 +10,8 @@ public class Utils {
 
         exchange.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
         exchange.getResponseHeaders().add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-        exchange.getResponseHeaders().add("Access-Control-Allow-Headers", "Content-Type, UserID, Access-Control-Request-Headers, Access-Control-Allow-Headers, Message, Type, Task-ID, " +
-                "Action-Type, Status, Password, Email, Post-ID, Authorization, Content-Length, Content-Type, Date, Origin, X-Requested-With, Accept, Note-ID, BuildingID, Field, subjectid"
+        exchange.getResponseHeaders().add("Access-Control-Allow-Headers","Access-Control-Allow-Origin, Content-Type, UserID, Access-Control-Request-Headers, Access-Control-Allow-Headers, Message, Type, Task-ID, " +
+                "Action-Type, Status, Password, Email, Post-ID, Authorization, Content-Length, Content-Type, Date, Origin, X-Requested-With, Accept, Note-ID, BuildingID, Field, subjectid, Value"
         );
 
         if (requestMethod.equals("OPTIONS")) {
