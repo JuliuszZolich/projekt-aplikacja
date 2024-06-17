@@ -63,8 +63,11 @@ const Register = () => {
                     <div className={"register-middle-content-step-two"} style={{"display": "none"}}>
                         <div className={"register-middle-content-item"}>
                             <select name={"faculty"} id={"faculty"} required>
-                                <option value="default">DEFAULT</option>
-                                <option value="test">TEST</option>
+                                <option value="default">Wybierz wydział</option>
+                                <option value="WEEIA">WEEIA</option>
+                                <option value="Mechaniczny">Mechaniczny</option>
+                                <option value="FTIMS">FTIMS</option>
+                                <option value="OIZ">OIZ</option>
                             </select>
                             <div className={"register-input-text"}>
                                 {translation.Register.selectFaculty}
@@ -74,8 +77,11 @@ const Register = () => {
                         </div>
                         <div className={"register-middle-content-item"}>
                             <select name={"course"} id={"course"}>
-                                <option value="default">DEFAULT</option>
-                                <option value="test">TEST</option>
+                                <option value="default">Wybierz kierunek</option>
+                                <option value="Informatyka">Informatyka</option>
+                                <option value="Automatyka i Robotyka">Automatyka i Robotyka</option>
+                                <option value="Automatyka i Sterowanie Robotow">Automatyka i Sterowanie Robotów</option>
+                                <option value="Informatyka Stosowana">Informatyka Stosowana</option>
                             </select>
                             <div className={"register-input-text"}>
                                 {translation.Register.selectMajor}
