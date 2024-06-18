@@ -83,7 +83,7 @@ const Login = () => {
                             <button>{translation.Login.registration}</button>
                         </div>
                     </Link>
-                    <div className={"log-in"}>
+                    <div className={"log-in"} tabIndex="0">
                         <button onClick={handleLogin}>{translation.Login.logIn}</button>
                     </div>
                 </div>

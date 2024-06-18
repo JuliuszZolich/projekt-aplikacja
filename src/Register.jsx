@@ -3,12 +3,37 @@ import {Link} from "react-router-dom";
 import {useLanguage} from './ChangeLanguage.jsx';
 import accepticon from "./assets/accept.png"
 import {changeStep} from "./RegisterFunctions";
+import {useEffect} from "react";
 
 let step = 1;
+
+const handleKeyDown = (event, callbackNext) => {
+    if (event.key === 'Enter') {
+        callbackNext();
+    }
+};
 
 const Register = () => {
     const {t: translation} = useLanguage();
     step = 1;
+
+    const handleNextStep = () => {
+        if (step < 5) {
+            if (changeStep(step + 1)) step++;
+        }
+    };
+
+    useEffect(() => {
+        const handleKeyPress = (event) => {
+            handleKeyDown(event, handleNextStep);
+        };
+
+        document.addEventListener('keydown', handleKeyPress);
+        return () => {
+            document.removeEventListener('keydown', handleKeyPress);
+        };
+    }, []);
+
     return (
         <>
             <div className={"register-main-content"}>
@@ -63,7 +88,7 @@ const Register = () => {
                     <div className={"register-middle-content-step-two"} style={{"display": "none"}}>
                         <div className={"register-middle-content-item"}>
                             <select name={"faculty"} id={"faculty"} required>
-                                <option value="default">Wybierz wydział</option>
+                                <option value="default">{translation.Register.selectFaculty}</option>
                                 <option value="WEEIA">WEEIA</option>
                                 <option value="Mechaniczny">Mechaniczny</option>
                                 <option value="FTIMS">FTIMS</option>
@@ -77,7 +102,7 @@ const Register = () => {
                         </div>
                         <div className={"register-middle-content-item"}>
                             <select name={"course"} id={"course"}>
-                                <option value="default">Wybierz kierunek</option>
+                                <option value="default">{translation.Register.selectMajor}</option>
                                 <option value="Informatyka">Informatyka</option>
                                 <option value="Automatyka i Robotyka">Automatyka i Robotyka</option>
                                 <option value="Automatyka i Sterowanie Robotow">Automatyka i Sterowanie Robotów</option>
@@ -91,7 +116,7 @@ const Register = () => {
                         </div>
                         <div className={"register-middle-content-item"}>
                             <select name={"semester"} id={"semester"}>
-                                <option value="default">Wybierz semestr</option>
+                                <option value="default">{translation.Register.selectSemester}</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -170,7 +195,7 @@ const Register = () => {
                         </div>
                     </div>
                     <div className={"register-bottom-bar"}>
-                        <div className={"register-bottom-bar-back"} style={{"display":"none"}}>
+                        <div className={"register-bottom-bar-back"} style={{"display":"none"}} tabIndex="0">
                             <span onClick={() => {
                                 if (step > 1) {
                                     if (changeStep(step-1)) step--;
@@ -179,14 +204,8 @@ const Register = () => {
                             }
                             >{translation.Register.back}</span>
                         </div>
-                        <div className={"register-bottom-bar-next"}>
-                            <span onClick={() => {
-                                if (step < 5) {
-                                    if (changeStep(step+1)) step++;
-                                }
-                            }
-                            }
-                            >{translation.Register.next}</span>
+                        <div className={"register-bottom-bar-next"} tabIndex="0" onClick={handleNextStep}>
+                            <span>{translation.Register.next}</span>
                         </div>
                         <div className={"register-bottom-bar-back-to-login-page"}>
                             <Link to={'/projekt-aplikacja/login'}>

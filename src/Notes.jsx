@@ -7,6 +7,7 @@ import deleteicon from "./assets/bin.png"
 import modifyicon from "./assets/modify.png"
 import {useEffect, useState} from "react";
 import {useCookies} from "react-cookie";
+import {OnClickPlay} from "./AudioFunctions.jsx";
 
 const titleDisplayedSize = 13;
 let currentNoteId = 0;
@@ -214,6 +215,7 @@ const Notes = () => {
                         </div>
                         <div className={"add-note-window-bottom-bar-item add-note-window-bottom-bar-item-add"} tabIndex="0"
                              onClick={() => {
+                                 OnClickPlay("add");
                                  document.getElementsByClassName("add-note-window-bottom-bar-item-add")[0].onclick = () => {
                                      if (document.getElementById("add-note-window-title").value === "" || document.getElementById("add-note-window-text").value === "") {
                                          alert(translation.Notes.allFields);
@@ -260,7 +262,8 @@ const Notes = () => {
                         {translation.Notes.wantForSure} <span className={"delete-window-text-decoration"}>{translation.Notes.delete}</span> {translation.Notes.note}
                     </div>
                     <div className={"delete-window-bottom-bar"}>
-                        <div className={"delete-window-bottom-bar-item delete-window-bottom-bar-delete"}>
+                        <div className={"delete-window-bottom-bar-item delete-window-bottom-bar-delete"}
+                             onClick={() => OnClickPlay("delete")}>
                             {translation.Notes.delete1}
                         </div>
                         <div className={"delete-window-bottom-bar-item delete-window-bottom-bar-keep"}>
