@@ -119,6 +119,30 @@ async function getTasks(user_id, setTasks) {
     ));
 }
 
+async function updateTask(user_id, taskID){
+    let headers = new Headers();
+    headers.append("UserID", user_id);
+    headers.append("Task-ID", taskID);
+    headers.append("Action-Type", "UPDATE");
+    headers.append("Update-Type", "OTHER");
+    const response = await fetch("http://localhost:8001/tasklist", {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify({
+            title: document.getElementById("modify-task-window-title").value,
+            content: document.getElementById("modify-task-window-text").value,
+            date: document.getElementById("modify-task-input").value,
+            favourite: false,
+            completed: false
+        }),
+        });
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    window.location.reload();
+
+}
+
 async function removeTask(userId) {
     let headers = new Headers();
     headers.append("UserID", userId);
@@ -483,7 +507,12 @@ const Tasklist = () => {
                     >
                         {translation.TasksList.cancel}
                     </div>
-                    <div className={"modify-task-window-bottom-bar-item modify-task-window-bottom-bar-item-save"}>
+                    <div className={"modify-task-window-bottom-bar-item modify-task-window-bottom-bar-item-save"}
+                        onClick={()=>{
+                            updateTask(cookies.userID, currentTaskId);
+                            document.getElementById("modify").style.display = "none";
+                        }}
+                    >
                         {translation.TasksList.save}
                     </div>
                 </div>
