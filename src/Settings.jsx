@@ -11,13 +11,18 @@ const handleKeyDown = (event, callback) => {
 };
 
 async function changeField(user_id, field, value) {
-    let headers = new Headers();
-    headers.append("UserID", user_id);
-    headers.append("Field", field);
-    headers.append("Value", value);
-    await fetch("http://localhost:8001/settings", {
-        method: "GET",
-        headers: headers,
+    let data = {
+        userid: user_id,
+        field: field,
+        value: value
+    };
+
+    await fetch("/api/settings", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
     });
 }
 
@@ -58,10 +63,10 @@ const Settings = () => {
                         {translation.Settings.changeEmail}
                         <div className={"settings-button-email"} tabIndex="0"
                              onClick={() => {
-                                 handleChangeEmail
+                                 handleChangeEmail()
                              }}
                              onKeyDown={(e) => handleKeyDown(e, () => {
-                                 handleChangeEmail
+                                 handleChangeEmail()
                              })}>
                             {translation.Settings.save}
                         </div>
