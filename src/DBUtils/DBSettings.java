@@ -8,7 +8,8 @@ import java.util.concurrent.ExecutionException;
 import static DBUtils.FirebaseUtils.db;
 
 public class DBSettings {
-    public static String changeField(String field, String userID, String newEmail) throws ExecutionException, InterruptedException {
+    public static String changeField(String userID, String field, String newEmail) throws ExecutionException, InterruptedException {
+        System.out.println("Changing " + field + " for user: " + userID);
         List<QueryDocumentSnapshot> docRef = db.collection("users")
                 .whereEqualTo("userid", Integer.parseInt(userID))
                 .get()
