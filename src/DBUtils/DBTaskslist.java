@@ -115,9 +115,11 @@ public class DBTaskslist {
         }
     }
 
-    public static void updateTask(String userID, String noteID, String title, String content, String date, boolean favourite) {
-        db.collection("notes")
-                .document(noteID)
-                .update(Map.of("userID", userID,"title", title, "content", content, "date", Date.from(Instant.parse(date)), "favourite", favourite));
+    public static void updateTask(String userID, String taskId, String title, String content, String date, boolean favourite) {
+        System.out.println("Updating task: " + taskId);
+        LocalDate date1 = LocalDate.parse(date);
+        db.collection("tasklist")
+                .document(taskId)
+                .update(Map.of("userID", userID,"title", title, "content", content, "date", new Date(date1.getYear()-1900, date1.getMonthValue()-1, date1.getDayOfMonth()), "favourite", favourite));
     }
 }
