@@ -19,43 +19,44 @@ const Homepage = () => {
             {TopBarAndSideMenu()}
             <div className="main-content">
                 <div className={"menu"}>
-                    <Link to={"/projekt-aplikacja/timetable"} onClick={() => OnClickPlay()}>
+                    <Link to={"/projekt-aplikacja/timetable"} onClick={() => OnClickPlay("home")}>
                         <div className={"menu-item timetable"}>
                             <img src={timetableicon} alt="timetable-icon"/>
                             <p className={"home-p"}>{translation.Homepage.timetable}</p>
                         </div>
                     </Link>
-                    <Link to={"/projekt-aplikacja/announcements"} onClick={() => OnClickPlay()}>
+                    <Link to={"/projekt-aplikacja/announcements"} onClick={() => OnClickPlay("home")}>
                         <div className={"menu-item announcements"}>
                             <img src={announcementsicon} alt="announcements-icon"/>
                             <p className={"home-p"}>{translation.Homepage.news}</p>
                         </div>
                     </Link>
-                    <Link to={"/projekt-aplikacja/taskslist"} onClick={() => OnClickPlay()}>
+                    <Link to={"/projekt-aplikacja/taskslist"} onClick={() => OnClickPlay("home")}>
                         <div className={"menu-item tasks-list"}>
                             <img src={taskslisticon} alt="tasks-list-icon"/>
                             <p className={"home-p"}>{translation.Homepage.tasksList}</p>
                         </div>
                     </Link>
-                    <Link to={"/projekt-aplikacja/notes"} onClick={() => OnClickPlay()}>
+                    <Link to={"/projekt-aplikacja/notes"} onClick={() => OnClickPlay("home")}>
                         <div className={"menu-item notes"}>
                             <img src={notesicon} alt="notes-icon"/>
                             <p className={"home-p"}>{translation.Homepage.notes}</p>
                         </div>
                     </Link>
-                    <Link to={"/projekt-aplikacja/map"} onClick={() => OnClickPlay()}>
+                    <Link to={"/projekt-aplikacja/map"} onClick={() => OnClickPlay("home")}>
                         <div className={"menu-item map"}>
                             <img src={mapicon} alt="map-icon"/>
                             <p className={"home-p"}>{translation.Homepage.map}</p>
                         </div>
                     </Link>
-                    <Link to={"/projekt-aplikacja/subjects"} onClick={() => OnClickPlay()}>
+                    <Link to={"/projekt-aplikacja/subjects"} onClick={() => OnClickPlay("home")}>
                         <div className={"menu-item subjects"}>
                             <img src={subjectsicon} alt="subjects-icon"/>
                             <p className={"home-p"}>{translation.Homepage.subjects}</p>
                         </div>
                     </Link>
-                    <Link to={"/projekt-aplikacja/settings"} className={"menu-item-last"} onClick={() => OnClickPlay()}>
+                    <Link to={"/projekt-aplikacja/settings"} className={"menu-item-last"}
+                          onClick={() => OnClickPlay("home")}>
                         <div className={"menu-item settings"}>
                             <img src={settingsicon} alt="settings-icon"/>
                             <p className={"home-p"}>{translation.Homepage.settings}</p>

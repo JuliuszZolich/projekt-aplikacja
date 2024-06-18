@@ -32,7 +32,7 @@ import polandflag from "./assets/pl.png"
 import ukflag from "./assets/en.png"
 import {useEffect, useRef} from "react";
 import {useCookies} from "react-cookie";
-
+import {OnClickPlay} from "./AudioFunctions.jsx";
 
 const handleKeyDown = (event, callback) => {
     if (event.key === 'Enter') {
@@ -63,20 +63,20 @@ const TopBarAndSideMenu = () => {
         <>
             <div className={"on-click-menu"} id={"on-click-menu"}>
                 <div className={"on-click-menu-top-bar"}>
-                    <div className={"on-click-menu-top-bar-home-page"}>
+                    <div className={"on-click-menu-top-bar-home-page"} onClick={() => OnClickPlay("home")}>
                         <Link to={"/projekt-aplikacja/homepage"} tabIndex="0">
                             <img src={homeicon} alt="homepage-icon"/>
                         </Link>
                     </div>
-                    <div className={"on-click-menu-top-bar-close-menu"}>
+                    <div className={"on-click-menu-top-bar-close-menu"} tabIndex="0"
+                         onClick={() => OnClickPlay("home")}>
                         <img src={closemenuicon} alt="close-menu-icon"
                              onClick={() => CloseMenu('.on-click-menu', 'hide-side-menu', 'show-side-menu')}
-                             onKeyDown={(e) => handleKeyDown(e, () => CloseMenu('.on-click-menu', 'hide-side-menu', 'show-side-menu'))}
-                             tabIndex="0"/>
+                             onKeyDown={(e) => handleKeyDown(e, () => CloseMenu('.on-click-menu', 'hide-side-menu', 'show-side-menu'))}/>
                     </div>
                 </div>
                 <div className={"on-click-menu-middle-content"}>
-                    <Link to={"/projekt-aplikacja/timetable"} tabIndex="0">
+                    <Link to={"/projekt-aplikacja/timetable"} tabIndex="0" onClick={() => OnClickPlay("home")}>
                         <div className={"on-click-menu-middle-content-item"}>
                             <div className={"on-click-menu-middle-content-item-img"}>
                                 <img src={timetableicon} alt="time-table-icon"/>
@@ -88,7 +88,7 @@ const TopBarAndSideMenu = () => {
                         </div>
                     </Link>
                     <hr className={"on-click-menu-middle-content-line"}/>
-                    <Link to={"/projekt-aplikacja/taskslist"} tabIndex="0">
+                    <Link to={"/projekt-aplikacja/taskslist"} tabIndex="0" onClick={() => OnClickPlay("home")}>
                         <div className={"on-click-menu-middle-content-item"}>
                             <div className={"on-click-menu-middle-content-item-img"}>
                                 <img src={taskslisticon} alt="task-list-icon"/>
@@ -99,7 +99,7 @@ const TopBarAndSideMenu = () => {
                         </div>
                     </Link>
                     <hr className={"on-click-menu-middle-content-line"}/>
-                    <Link to={"/projekt-aplikacja/notes"} tabIndex="0">
+                    <Link to={"/projekt-aplikacja/notes"} tabIndex="0" onClick={() => OnClickPlay("home")}>
                         <div className={"on-click-menu-middle-content-item"}>
                             <div className={"on-click-menu-middle-content-item-img"}>
                                 <img src={notesicon} alt="notes-icion"/>
@@ -110,7 +110,7 @@ const TopBarAndSideMenu = () => {
                         </div>
                     </Link>
                     <hr className={"on-click-menu-middle-content-line"}/>
-                    <Link to={"/projekt-aplikacja/announcements"} tabIndex="0">
+                    <Link to={"/projekt-aplikacja/announcements"} tabIndex="0" onClick={() => OnClickPlay("home")}>
                         <div className={"on-click-menu-middle-content-item"}>
                             <div className={"on-click-menu-middle-content-item-img"}>
                                 <img src={announcementsicon} alt="announcements-icion"/>
@@ -121,7 +121,7 @@ const TopBarAndSideMenu = () => {
                         </div>
                     </Link>
                     <hr className={"on-click-menu-middle-content-line"}/>
-                    <Link to={"/projekt-aplikacja/subjects"} tabIndex="0">
+                    <Link to={"/projekt-aplikacja/subjects"} tabIndex="0" onClick={() => OnClickPlay("home")}>
                         <div className={"on-click-menu-middle-content-item"}>
                             <div className={"on-click-menu-middle-content-item-img"}>
                                 <img src={subjectsicon} alt="subjects-icion"/>
@@ -132,7 +132,7 @@ const TopBarAndSideMenu = () => {
                         </div>
                     </Link>
                     <hr className={"on-click-menu-middle-content-line"}/>
-                    <Link to={"/projekt-aplikacja/map"} tabIndex="0">
+                    <Link to={"/projekt-aplikacja/map"} tabIndex="0" onClick={() => OnClickPlay("home")}>
                         <div className={"on-click-menu-middle-content-item"}>
                             <div className={"on-click-menu-middle-content-item-img"}>
                                 <img src={mapicon} alt="map-icion"/>
@@ -144,20 +144,20 @@ const TopBarAndSideMenu = () => {
                     </Link>
                 </div>
                 <div className={"on-click-menu-bottom-bar"}>
-                    <Link to={"/projekt-aplikacja/settings"} tabIndex="0">
+                    <Link to={"/projekt-aplikacja/settings"} tabIndex="0" onClick={() => OnClickPlay("home")}>
                         <div className={"on-click-menu-bottom-bar-item"}>
                             <img src={settingsicon} alt="settings-icon"/>
                         </div>
                     </Link>
-                    <div className={"on-click-menu-bottom-bar-item"} tabIndex="0"
+                    <div className={"on-click-menu-bottom-bar-item"} tabIndex="0" onClick={() => OnClickPlay("home")}
                          onKeyDown={(e) => handleKeyDown(e, () => OpenWindow(".report-window"))}>
                         <img src={reporticon} alt="report-icon" onClick={() => OpenWindow(".report-window")}/>
                     </div>
-                    <div className={"on-click-menu-bottom-bar-item"} tabIndex="0"
+                    <div className={"on-click-menu-bottom-bar-item"} tabIndex="0" onClick={() => OnClickPlay("home")}
                          onKeyDown={(e) => handleKeyDown(e, () => OpenWindow(".question-window"))}>
                         <img src={askicon} alt="ask-icon" onClick={() => OpenWindow(".question-window")}/>
                     </div>
-                    <Link to={"/projekt-aplikacja/myprofile"} tabIndex="0">
+                    <Link to={"/projekt-aplikacja/myprofile"} tabIndex="0" onClick={() => OnClickPlay("home")}>
                         <div className={"on-click-menu-bottom-bar-item"}>
                             <img src={usericon} alt="user-icon"/>
                         </div>
@@ -166,10 +166,16 @@ const TopBarAndSideMenu = () => {
             </div>
             <div className={"top-bar"} id={"top-bar"}>
                 <div className={"hamburger-menu"}
-                     onClick={() => OpenMenu('.on-click-menu', 'show-side-menu', 'hide-side-menu')}
-                     onKeyDown={(e) => handleKeyDown(e, () => OpenMenu('.on-click-menu', 'show-side-menu', 'hide-side-menu'))}
-                     tabIndex="1">
-                    <img src={menuicon} alt="hamburger-menu-icon"/>
+                     onClick={() => {
+                         OpenMenu('.on-click-menu', 'show-side-menu', 'hide-side-menu')
+                     }
+                     }
+                     onKeyDown={(e) => {
+                         handleKeyDown(e, () => OpenMenu('.on-click-menu', 'show-side-menu', 'hide-side-menu'))
+                     }
+                     }
+                >
+                    <img src={menuicon} alt="hamburger-menu-icon" tabIndex="2"/>
                 </div>
                 <div className={"weather"}>
                     <div className={"weather-bar"}>
@@ -185,27 +191,24 @@ const TopBarAndSideMenu = () => {
                     </div>
                 </div>
                 <div className={"user-icon"}>
-                    <img src={usericon} alt="user-icon"
+                    <img src={usericon} alt="user-icon" tabIndex="3"
                          onClick={() => {
                              OpenMenu('.user-menu', 'show-user-menu', 'hide-user-menu');
                          }}
-                         onKeyDown={(e) => handleKeyDown(e, () => {
-                             OpenMenu('.user-menu', 'show-user-menu', 'hide-user-menu');
-                         })}
-
-                         tabIndex="1"/>
-                    <div className={"user-menu"}>
-                        <Link to={"/projekt-aplikacja/myprofile"} tabIndex="1">
+                         onKeyDown={(e) => handleKeyDown(e, () => OpenMenu('.user-menu', 'show-user-menu', 'hide-user-menu'))}
+                    />
+                    <div className={"user-menu"} onClick={() => OnClickPlay("home")}>
+                        <Link to={"/projekt-aplikacja/myprofile"} tabIndex="0">
                             <div className={"user-menu-item tasks-list-p"}>
                                 {translation.TopBar.profile}
                             </div>
                         </Link>
-                        <Link to={"/projekt-aplikacja/settings"} tabIndex="1">
+                        <Link to={"/projekt-aplikacja/settings"} tabIndex="0">
                             <div className={"user-menu-item tasks-list-p"}>
                                 {translation.TopBar.settings}
                             </div>
                         </Link>
-                        <div className={"user-menu-item user-menu-item-last tasks-list-p"} tabIndex="1"
+                        <div className={"user-menu-item user-menu-item-last tasks-list-p"} tabIndex="0"
                              onClick={() => {
                                  removeCookie('userID', {path: '/'});
                                  window.location.href = "/projekt-aplikacja/login";
@@ -213,35 +216,31 @@ const TopBarAndSideMenu = () => {
                              onKeyDown={(e) => handleKeyDown(e, () => {
                                  removeCookie('userID', {path: '/'});
                                  window.location.href = "/projekt-aplikacja/login";
-                             })}
-                        >
+                             })}>
                             {translation.TopBar.logOut}
                         </div>
                     </div>
                 </div>
                 <div className={"notification-bell"}>
-                    <img src={notificationicon} alt="notifications-icon"
+                    <img src={notificationicon} alt="notifications-icon" tabIndex="4"
                          onClick={() => {
                              OpenMenu('.drop-down-notifications', 'show-notifications', 'hide-notifications');
                          }}
                          onKeyDown={(e) => handleKeyDown(e, () => {
                              OpenMenu('.drop-down-notifications', 'show-notifications', 'hide-notifications');
-                         })}
-                         tabIndex="1"/>
+                         })}/>
                     <div className={"drop-down-notifications"}>
-
                     </div>
                 </div>
                 <div className={"facilities"}>
-                    <img src={facilitesicon} alt="facilities-icon"
+                    <img src={facilitesicon} alt="facilities-icon" tabIndex="5"
                          onClick={() => {
                              OpenMenu('.drop-down-menu-facilities', 'show-facilities-menu', 'hide-facilities-menu')
                          }}
                          onKeyDown={(e) => handleKeyDown(e, () => {
                              OpenMenu('.drop-down-menu-facilities', 'show-facilities-menu', 'hide-facilities-menu')
-                         })}
-                         tabIndex="0"/>
-                    <div className={"drop-down-menu-facilities"}>
+                         })}/>
+                    <div className={"drop-down-menu-facilities"} onClick={() => OnClickPlay("user")}>
                         <div className={"facilities-content"}>
                             <div className={"fonts font-small close-facilities-menu"} tabIndex="0"
                                  onClick={() => {
@@ -281,32 +280,26 @@ const TopBarAndSideMenu = () => {
                             </div>
                             <div className={"facilities-content-line"}></div>
                             <div className={"language-pl"}>
-                                <img className={"close-facilities-menu"} src={polandflag} alt="poland-flag"
+                                <img className={"close-facilities-menu"} src={polandflag} alt="poland-flag" tabIndex="0"
                                      onClick={() => {
                                          setLanguage('pl');
-                                         ChangeFontSize('m');
                                          CloseMenu('.drop-down-menu-facilities', 'hide-facilities-menu', 'show-facilities-menu');
                                      }}
                                      onKeyDown={(e) => handleKeyDown(e, () => {
                                          setLanguage('pl');
-                                         ChangeFontSize('m');
                                          CloseMenu('.drop-down-menu-facilities', 'hide-facilities-menu', 'show-facilities-menu');
-                                     })}
-                                     tabIndex="0"/>
+                                     })}/>
                             </div>
                             <div className={"language-en"}>
-                                <img className={"close-facilities-menu"} src={ukflag} alt="uk-flag"
+                                <img className={"close-facilities-menu"} src={ukflag} alt="uk-flag" tabIndex="0"
                                      onClick={() => {
                                          setLanguage('en');
-                                         ChangeFontSize('m');
                                          CloseMenu('.drop-down-menu-facilities', 'hide-facilities-menu', 'show-facilities-menu');
                                      }}
                                      onKeyDown={(e) => handleKeyDown(e, () => {
                                          setLanguage('en');
-                                         ChangeFontSize('m');
                                          CloseMenu('.drop-down-menu-facilities', 'hide-facilities-menu', 'show-facilities-menu');
-                                     })}
-                                     tabIndex="0"/>
+                                     })}/>
                             </div>
                         </div>
                     </div>
@@ -317,7 +310,7 @@ const TopBarAndSideMenu = () => {
                     {translation.TopBar.question}
                 </div>
                 <div className={"question-window-input"}>
-                    <textarea placeholder={translation.TopBar.content} tabIndex="1"/>
+                    <textarea placeholder={translation.TopBar.content} tabIndex="0"/>
                 </div>
                 <div className={"question-window-buttons"}>
                     <div className={"question-window-button-cancel"}
@@ -335,7 +328,7 @@ const TopBarAndSideMenu = () => {
                              sendEmail(cookies.userID, "question", String(document.querySelector(".question-window-input textarea").value));
                              CloseWindow(".question-window");
                          })}
-                         tabIndex="1">
+                         tabIndex="0">
                         {translation.TopBar.send}
                     </div>
                 </div>
@@ -351,7 +344,7 @@ const TopBarAndSideMenu = () => {
                     <div className={"report-window-button-cancel"} tabIndex="0"
                          onClick={() => CloseWindow(".report-window")}
                          onKeyDown={(e) => handleKeyDown(e, () => CloseWindow(".report-window"))}
-                         >
+                    >
                         {translation.TopBar.cancel}
                     </div>
                     <div className={"report-window-button-send"} tabIndex="0"
@@ -363,7 +356,7 @@ const TopBarAndSideMenu = () => {
                              sendEmail(cookies.userID, "report", String(document.querySelector(".report-window-input textarea").value));
                              CloseWindow(".report-window");
                          })}
-                         >
+                    >
                         {translation.TopBar.report}
                     </div>
                 </div>
