@@ -708,7 +708,7 @@ a {
 
 @media (max-width: 600px) {
     .weather-bar {
-        margin: 2.5% 0;
+        margin: 4% 0;
         width: 220px;
     }
 
@@ -877,6 +877,8 @@ a {
 
     .on-click-menu-middle-content-item-text > p{
         font-size: 35px;
+        line-height: 65px;
+        padding-left: 5%;
     }
 }
 

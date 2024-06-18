@@ -202,7 +202,7 @@ const Notes = () => {
                         {translation.Notes.addNote}
                     </div>
                     <div className={"add-note-window-middle-content"}>
-                        <input type="text" id={"add-note-window-title"} placeholder={translation.Notes.title}/>
+                        <input type="text" id={"add-note-window-title"} placeholder={translation.Notes.title} maxLength={40}/>
                         <textarea id={"add-note-window-text"} name={"note-content"} placeholder={translation.Notes.content}>
                         </textarea>
                     </div>

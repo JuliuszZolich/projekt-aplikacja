@@ -979,4 +979,9 @@
     .task-window, .add-task-window, .modify-task-window {
         right: 5%;
     }
+
+    .right-content-item-right-delete > img{
+        display: block;
+    }
 }
+

@@ -230,6 +230,14 @@ const TopBarAndSideMenu = () => {
                              OpenMenu('.drop-down-notifications', 'show-notifications', 'hide-notifications');
                          })}/>
                     <div className={"drop-down-notifications"}>
+                        <div className={"drop-down-notifications-item"}>
+                            <div className={"drop-down-notifications-item-text"}>
+                                Prezentacja strony na KCK!
+                            </div>
+                            <div className={"drop-down-notifications-item-when"}>
+                                Dzisiaj!
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className={"facilities"}>

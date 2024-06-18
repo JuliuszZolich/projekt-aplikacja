@@ -314,4 +314,13 @@ a > .menu-item > p {
         margin: 0 10%;
         padding: 0;
     }
+
+    a > .menu-item > p{
+        font-size: 25px;
+        line-height: 55px;
+    }
+
+    a > .menu-item > img{
+        width: 15%;
+    }
 }

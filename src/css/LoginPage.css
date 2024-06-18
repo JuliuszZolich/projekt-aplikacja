@@ -255,4 +255,8 @@
         width: 150px;
         height: 150px;
     }
+
+    .login-left-content{
+        margin-top: 180px;
+    }
 }
