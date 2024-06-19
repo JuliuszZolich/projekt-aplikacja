@@ -34,7 +34,7 @@ async function getAnnouncementPost(setTitle,setShortText,setText,setDate,setImag
     let data = await response.json();
     setTitle(localStorage.getItem('language') === 'en' ? data["announcements"][0].title_en : data["announcements"][0].title_pl);
     setShortText(localStorage.getItem('language') === 'en' ? data["announcements"][0].short_text_en : data["announcements"][0].short_text_pl);
-    setText(localStorage.getItem('language') === 'en' ? data["announcements"][0].text_en : data["announcements"][0].text_pl);
+    setText(localStorage.getItem('language') === 'en' ? data["announcements"][0].text_en.replaceAll("className", "class").replaceAll("{","").replaceAll("}","") : data["announcements"][0].text_pl.replaceAll("className", "class").replaceAll("{","").replaceAll("}",""));
     setDate(convertDate(data["announcements"][0].date,1));
     setImage(data["announcements"][0].img.substring(1, data["announcements"][0].img.length - 1));
 }

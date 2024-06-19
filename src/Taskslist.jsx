@@ -29,12 +29,10 @@ function convertDate(date, variant) {
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     let month = months.indexOf(date2[1]) + 1;
     let year = date2[5];
-    let hours = date2[3].split(":")[0];
-    let minutes = date2[3].split(":")[1];
     if (month < 10) {
         month = "0" + month;
     }
-    if (variant === 1) return `${day}.${month}.${year} ${hours}:${minutes}`;
+    if (variant === 1) return `${day}.${month}.${year}`;
     else return `${year}-${month}-${day}`;
 }
 

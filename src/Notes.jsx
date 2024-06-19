@@ -9,7 +9,7 @@ import {useEffect, useState} from "react";
 import {useCookies} from "react-cookie";
 import {OnClickPlay} from "./AudioFunctions.jsx";
 
-const titleDisplayedSize = 13;
+const titleDisplayedSize = 12;
 let currentNoteId = 0;
 
 

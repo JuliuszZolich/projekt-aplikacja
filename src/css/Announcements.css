@@ -235,11 +235,13 @@
     float: left;
     border-radius: 5px;
     border: 2px solid black;
+    overflow: hidden;
 }
 
 .post-page-main-content-middle-content-left > img{
-    width: 100%;
-    height: 100%;
+    margin-left: -2%;
+    width: 104%;
+    height: 104%;
 }
 
 .post-page-main-content-middle-content-right{
